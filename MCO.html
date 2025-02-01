@@ -1,5 +1,15 @@
 <!DOCTYPE html>
 <html>
+    <!--
+    TODO: 
+    - Midway code cleaning
+    - Fix search bar
+    - Decide on default font size
+    - Checkbox and radio button design
+    - footer
+    - Page nav design
+    - Checks for errors/unaccounted values
+    -->
     <head>
         <title>
             Test for MCO
@@ -18,11 +28,94 @@
                 padding: 0;
                 font-size: 20px;
                 font-family: Rubik;
+                padding-bottom: 400px;
             }
+
+            /* HEADER */
+            .header {
+                font-weight: bolder;
+                width: 100%;
+                height: 50px;
+                background-color: #7BA167;
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                padding: 10px;
+                position: fixed;
+                font-size: 16px;
+                z-index: 10;
+            }
+            .header-content-container {
+                width: 100%;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                margin: 50px
+            }
+            .logo-container { 
+                color: #3B6724;
+                font-size: x-large;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-evenly;
+                align-items: center;
+            }
+            .header .fa-star {
+                font-size: 40px;
+                margin: 10px;
+            }
+            .options-container {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .options-item {
+                color: #D9D9D9;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                margin: 10px;
+            }
+            .profile-container {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .sign-up {
+                width: 100px;
+                height: 35px;
+                background-color: #3B6724;
+                color: #D9D9D9;
+                border-radius: 10px;
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                margin: 10px;
+            }
+            .log-in {
+                width: 100px;
+                height: 35px;
+                background-color: #3B6724;
+                color: #D9D9D9;
+                border-radius: 10px;
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+            }
+
+            /* Main Content Page */
             .content-page {
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
+                padding-top: 70px;
             }
             .content-elements {
                 display: flex;
@@ -71,7 +164,7 @@
                 padding-left: 25px;
                 padding-top: 25px;
             }
-            .header {
+            .section-header {
                 font-size: 25px;  
                 font-family: Konkhmer Sleokchher;
                 color: #1E1E1E;
@@ -90,17 +183,18 @@
                 margin-left: 5px;
                 color: white;
             }
-            .subheader {
+            .section-subheader {
                 font-weight: bold;
                 text-decoration: underline;
                 color: #363636;
             }
             .sort-header {
-                margin-left: 10px;
-                font-size: 15px;
+                margin-left: 30px;
+                font-size: 20px;
                 text-decoration: underline;
-                color: green;
+                color: #3B6724;
                 font-weight: bold;
+                
             }
             .organization-portion {
                 margin-left: 200px;
@@ -140,9 +234,14 @@
                 color: #363636;
             }
             .org-stars {
+                display: flex;
+                flex-direction: row;
                 color: #F8C437;
+                font-size: 25px;
             }
             .rating-text {
+                margin-left: 10px;
+                font-size: 22px;
                 color: #363636;
             }
             .review-desc {
@@ -156,6 +255,23 @@
         </style>
     </head>
     <body>
+        <div class = "header">
+            <div class = "header-content-container">
+                <div class = "logo-container"> <!-- TODO: make logo -->
+                    <i class = "fa-solid fa-star"></i>
+                    DLSU Orgs To Pick
+                </div>
+                <div class = "options-container">
+                    <div class = "options-item"></i>Write a Review</div>
+                    <div class = "options-item">View All Orgs</div>
+                    <div class = "options-item">Search Reviews</div>
+                </div>
+                <div class = "profile-container">
+                    <div class = "sign-up">Sign Up</div>
+                    <div class = "log-in">Log In</div>
+                </div>
+            </div>
+        </div>
         <div class="content-page">
             <div class="search-portion">
                 <input class="search-bar" type="text" placeholder="Look for an Organization"/>
@@ -166,20 +282,20 @@
             <div class="content-elements">
                 <div class="filter-portion">
                     <div class="filter-labels">
-                        <span class="header">Filters</span>
+                        <span class="section-header">Filters</span>
                         <span class="clear-feature">Clear</span>
                     </div>
                     <div class="ratings">
-                        <span class="subheader">Ratings</span>
+                        <span class="section-subheader">Ratings</span>
                         <form class="rating-list">
                             <input type="checkbox" id="5-stars" name="5-stars" value="5-stars"/>
                             <label for="5-stars">5 
                                 <span class="stars">
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
                                 </span>
                             </label><br/>
                             <input type="checkbox" id="4-stars" name="4-stars" value="4-stars"/>
@@ -216,7 +332,7 @@
                     </div>
                     <br/>
                     <div class="home-college">
-                        <span class="subheader">Home College</span>
+                        <span class="section-subheader">Home College</span>
                         <form class="college-list">
                             <input type="radio" id="ccs" name="ccs" value="ccs"/>
                             <label for="ccs">CCS </label><br/>
@@ -235,7 +351,7 @@
                 </div>  
                 <div class="organization-portion">
                     <div class="organization-labels">
-                        <span class="header">Organizations</span>
+                        <span class="section-header">Organizations</span>
                         <span class="sort-header">Sort by</span>
                     </div>
                     <div class="organization-list">
@@ -247,19 +363,17 @@
                                 <div class="org-name">
                                     LSCS
                                 </div>
-                                <div class="rating">
-                                    <div class="stars">
-                                        <span class="org-stars">
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                        </span>
+                                <div class="org-rating">
+                                    <span class="org-stars">
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
                                         <span class="rating-text">
                                             5(69 reviews)
                                         </span>
-                                    </div>
+                                    </span>
                                 </div>
                                 <div class="review-desc">
                                     Org ng mga mahilig pumindot sa laptop.
@@ -281,13 +395,15 @@
                                 <div class="org-name">
                                     GDSC
                                 </div>
-                                <div class="rating">
-                                    <div class="stars">
-
-                                    </div>
-                                    <div class="rating-text">
-                                        3(1k reviews)
-                                    </div>
+                                <div class="org-rating">
+                                    <span class="org-stars">
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <span class="rating-text">
+                                            3(1k reviews)
+                                        </span>
+                                    </span>
                                 </div>
                                 <div class="review-desc">
                                     Org ng mga mahilig pumindot sa laptop.
@@ -309,13 +425,15 @@
                                 <div class="org-name">
                                     ACM
                                 </div>
-                                <div class="rating">
-                                    <div class="stars">
-                                    <!--Insert Star Icon-->
-                                    </div>
-                                    <div class="rating-text">
-                                        3(1k reviews)
-                                    </div>
+                                <div class="org-rating">
+                                    <span class="org-stars">
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <span class="rating-text">
+                                            3(1k reviews)
+                                        </span>
+                                    </span>
                                 </div>
                                 <div class="review-desc">
                                     Org ng mga mahilig pumindot sa laptop.
@@ -337,13 +455,15 @@
                                 <div class="org-name">
                                     SPRINT
                                 </div>
-                                <div class="rating">
-                                    <div class="stars">
-                                    <!--Insert Star Icon-->
-                                    </div>
-                                    <div class="rating-text">
-                                        3(1k reviews)
-                                    </div>
+                                <div class="org-rating">
+                                    <span class="org-stars">
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <span class="rating-text">
+                                            3(1k reviews)
+                                        </span>
+                                    </span>
                                 </div>
                                 <div class="review-desc">
                                     Org ng mga mahilig pumindot sa laptop.
