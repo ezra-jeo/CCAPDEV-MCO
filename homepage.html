@@ -6,7 +6,8 @@
     <title>Orgs To Pick</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">  
-    <link href="https://fonts.googleapis.com/css2?family=Koulen&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Koulen&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">    
+    <link href="https://fonts.googleapis.com/css2?family=Konkhmer+Sleokchher&family=Koulen&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/3b737d3964.js" crossorigin="anonymous"></script>
 
     <style>
@@ -14,6 +15,7 @@
 			font-family: 'Rubik', sans-serif;
             margin: 0px;
             background-color: #D9D9D9;
+            overflow-x: hidden;
 		}
 
         /* HEADER */
@@ -148,17 +150,89 @@
         }
 
         /* RECENT REVIEWS SECTION */
-        .recent-reviews {
+        .recent-reviews-section {
             background-color: #BBCAB2;
             width: 100%;
 			height: 50vh;
-			align-items: center;
-            flex-direction: row;
-            justify-content: space-around;
             display: flex;
+            flex-direction: column;
+            padding: 50px;
         }
+        .header-text {
+            justify-content: left;
+            align-items: left;
+            font-size: x-large;
+            font-weight: bold;
+            margin-bottom: 25px;
+        }
+        .recent-reviews-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            justify-items: left;
+        }
+
+        /* REVIEWS */
         .review {
+            height: 250px;
+            width: 350px;
             background: #FFFFFF;
+            border-radius: 10px; 
+            box-shadow: 15px 15px 10px #728569;
+        }
+        .review-container {
+            font-size: 14px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: left;
+            padding: 20px;
+        }
+        .review-header {
+            display: flex;
+            flex-direction: row;
+            align-items: left;
+            justify-content: left;
+        }
+        .post-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .user-name {
+            font-weight: normal;
+            font-size: 14px;
+        }
+        .time {
+            font-weight: lighter;
+            font-size: 14px;
+        }
+        .rating-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: left;
+        }
+        .review-body {
+            display: flex;
+            flex-direction: column;
+            align-items: left;
+            font-size: 12px;
+        }
+        .review-body-header {
+            font-size: 14px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .review-footer {
+            display: flex;
+            flex-direction: column;
+            align-items: left;
+        }
+        .fa-user {
+            font-size: 40px;
+            color:#3B6724; 
+            margin-right: 10px;
         }
 
         /* SORT BY SECTION */
@@ -166,10 +240,9 @@
             background: #D9D9D9;
             width: 100%;
 			height: 50vh;
-			align-items: center;
-            flex-direction: row;
-            justify-content: space-around;
-            display: flex;
+			display: flex;
+            flex-direction: column;
+            padding: 50px;
         }
 
         /* FOOTER */
@@ -177,10 +250,9 @@
             width: 100%;
 			min-height: 30vh;
 			background-color: #3B6724;
-			align-items: center;
-            flex-direction: row;
-            justify-content: space-around;
-            display: flex;
+			display: flex;
+            flex-direction: column;
+            padding: 50px;
         }
     </style>
 </head>
@@ -209,16 +281,42 @@
             <input type = "text" class="search" placeholder = "Join an organization in DLSU!">
         </div>
     </div>
-    <div class = "recent-reviews">
-        <div>Recent Reviews</div>
+    <div class = "recent-reviews-section">
+        <div class = "header-text">Recent Reviews</div>
+        <div class = "recent-reviews-container">
+            <div class = "review">
+                <div class = "review-container">
+                    <div class = "review-header">
+                        <i class="fa-solid fa-user"></i>
+                        <div class = "post-info">
+                            <div class = "user-name">Chynna Mae</div>
+                            <div class = "time">5 hours ago</div>
+                        </div>
+                        <div class = "rating-container">
+                        </div>
+                    </div>
+                    <div class = "review-body">
+                        <div class = "review-body-header">LSCS</div>
+                        Puro mga achiever dito, talented pa at super friendly! Parang lahat ng tao dito chill pero hardworking din. May sense of humor pa at parang laging may dalang good vibes. 💯 Parang laging ang saya ng usapan, lagi pang may bagong kwento.
+                    </div>
+                    <div class = "review-footer">
+
+                    </div>
+                    
+                </div>
+            </div>
+            <div class = "review"></div>
+            <div class = "review"></div>
+        </div>
     </div>
     <div>
 
     <div class = "sort-portion">
-        <div>Search By College</div>
+        <div class = "header-text">Search by Rating</div>
+        <div class = "header-text">Search By College</div>
     </div>
     <div class = "footer">
-        <div>Recent Reviews</div>
+        <div class = "header-text">Footer</div>
     </div>
 </body>
 </html>
