@@ -13,16 +13,22 @@
     <style>
         body {
 			font-family: 'Rubik', sans-serif;
-            margin: 0px;
+            margin: 0;
+            padding: 0;
             background-color: #D9D9D9;
-            overflow-x: hidden;
+            max-width: 100%;
 		}
 
+        /* TODO: for testing only
+        * {
+            outline: 1px solid #000; 
+        }*/
+       
         /* HEADER */
         .header {
             font-weight: bolder;
 			width: 100%;
-            height: 50px;
+            height: 80px;
 			background-color: #7BA167;
             display: flex;
             flex-direction: row;
@@ -31,45 +37,55 @@
             padding: 10px;
             position: fixed;
             z-index: 10;
+            box-sizing: border-box;
 		}
         .header-content-container {
-            width: 100%;
             display: flex;
             flex-direction: row;
             justify-content: space-between;
             align-items: center;
-            margin: 50px
+            margin: 0 auto;
+            padding: 0 20px;
+            flex-grow: 1;
+            max-width: 100%;
         }
         .logo-container { 
-            color: #3B6724;
+            color: #D9D9D9;
             font-size: x-large;
             display: flex;
             flex-direction: row;
-            justify-content: space-evenly;
+            justify-content: left;
             align-items: center;
         }
-        .fa-star {
-            font-size: 40px;
+        .fa-regular {
             margin: 10px;
+        }
+        .fa-people-group {
+            font-size: 40px;
+            padding: 10px;
         }
         .options-container {
             display: flex;
             flex-direction: row;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
         }
         .options-item {
-            color: #D9D9D9;
+            color: #3B6724;
             display: flex;
             flex-direction: row;
             justify-content: space-between;
             align-items: center;
+            padding: 10px;
             margin: 10px;
         }
         .profile-container {
             display: flex;
             flex-direction: row;
-            justify-content: space-between;
+            justify-content: right;
             align-items: center;
         }
         .sign-up {
@@ -94,6 +110,7 @@
             flex-direction: row;
             justify-content: center;
             align-items: center;
+            margin: 10px;
         }
 
         /* TITLE AND SEARCH BAR SECTION */
@@ -109,13 +126,14 @@
         }
         .hook-container {
             display: flex;
-            flex-direction: row;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
+            text-align: center;
         }
         .title {
             font-family: 'Koulen', sans-serif;
-            font-size: 60px;
+            font-size: 80px;
             font-weight: lighter;
             color: #7BA167;
             display: flex;
@@ -125,34 +143,37 @@
         }   
         .search-container {
             position: relative;
-            width: 500px;
+            width: 50%;
             height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         .search {
             font-weight: bold;
             padding: 10px;
             border-radius: 25px;
             width: 100%;
-            padding-left: 40px;
+            height: 70%;
             background: #FFFFFF;
             border-color: #FFFFFF;
             border-style: unset;
             box-shadow: 15px 15px 10px #AB9D99;
+            justify-content: center;
         }
         .search-icon {
             position: absolute;
-            margin-top: -3px;
-            left: 10px;
+            right: 10px;
             top: 50%;
             transform: translateY(-50%);
             color: #7BA167;
-            font-size: 18px;
+            font-size: 25px;
         }
 
         /* RECENT REVIEWS SECTION */
         .recent-reviews-section {
             background-color: #BBCAB2;
-            width: 100%;
+            max-width: 100%;
 			height: 50vh;
             display: flex;
             flex-direction: column;
@@ -163,18 +184,20 @@
             align-items: left;
             font-size: x-large;
             font-weight: bold;
-            margin-bottom: 25px;
-        }
-        .recent-reviews-container {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            justify-items: left;
+            margin-bottom: 20px;
         }
 
         /* REVIEWS */
+        .recent-reviews-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            justify-items: left;
+            row-gap: 20px;
+            column-gap: 15px;
+        }
         .review {
             height: 250px;
-            width: 350px;
+            width: 90%;
             background: #FFFFFF;
             border-radius: 10px; 
             box-shadow: 15px 15px 10px #728569;
@@ -199,6 +222,13 @@
             justify-content: space-between;
             align-items: center;
         }
+        .user-info-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: left;
+            width: 100%;
+        }
         .user-name {
             font-weight: normal;
             font-size: 14px;
@@ -210,8 +240,13 @@
         .rating-container {
             display: flex;
             flex-direction: row;
-            justify-content: space-between;
-            align-items: left;
+            justify-content: flex-end;
+            align-items: right;
+            margin-left: auto;
+        }
+        .fa-star {
+            color: #F8C437;
+            font-size: 20px;
         }
         .review-body {
             display: flex;
@@ -225,6 +260,7 @@
             margin-top: 10px;
         }
         .review-footer {
+            color: #363636;
             display: flex;
             flex-direction: column;
             align-items: left;
@@ -232,35 +268,122 @@
         .fa-user {
             font-size: 40px;
             color:#3B6724; 
+            padding-right: 10px;
+        }
+        .image {
+            width: 100%;
+            height: 50px;
+            background:#3B6724;
+            border-radius: 10px; 
+            margin-top: 10px;
+        }
+        .helpfulness-container {
+            font-size: 14px;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+        }
+        .helpfulness-item {
+            font-size: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: left;
             margin-right: 10px;
+        }
+        .likes-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+            align-items: center;
+            margin-left: auto;
+        }
+        .fa-thumbs-up {
+            font-size: 20px;
+        }
+        .fa-thumbs-down {
+            font-size: 20px;
         }
 
         /* SORT BY SECTION */
-        .sort-portion {
-            background: #D9D9D9;
-            width: 100%;
-			height: 50vh;
-			display: flex;
+        .sort-section {
+            background-color: #D9D9D9;
+            max-width: 100%;
+			height: 60vh;
+            display: flex;
             flex-direction: column;
             padding: 50px;
+        }
+        .sort-by-rating-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+			height: 10vh;
+            padding-bottom: 50px;
+        }
+        .sort-stars-container {
+            display: flex;
+            flex-direction: row;
+            height: 40px;
+            width: 15%;
+            background: #FFFFFF;
+            border-radius: 75px; 
+            box-shadow: 15px 15px 10px #AB9D99;
+            align-items: center;
+            justify-content: center;
+            margin: 10px;
+        }
+        .star-number {
+            color: #363636;
+            font-size: 20px;
+            margin: 10px
+        }
+        .sort-by-school-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+			height: 20vh;
+            padding: 10px;
+            padding-bottom: 20px;
+        }
+        .sort-school-container {
+            display: flex;
+            flex-direction: column;
+            height: 100px;
+            width: 100px;
+            background: #FFFFFF;
+            border-radius: 10px; 
+            box-shadow: 15px 15px 10px #AB9D99;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+        }
+        .college-icon {
+            font-size: 50px;
         }
 
         /* FOOTER */
         .footer {
             width: 100%;
-			min-height: 30vh;
+			height: 12vh;
 			background-color: #3B6724;
 			display: flex;
             flex-direction: column;
-            padding: 50px;
+            color: #FFFFFF;
         }
+        .footer-text {
+            padding: 10px;
+        }
+        
     </style>
 </head>
 <body>
     <div class = "header">
         <div class = "header-content-container">
             <div class = "logo-container"> <!-- TODO: make logo -->
-                <i class = "fa-solid fa-star"></i>
+                <i class="fa-solid fa-people-group"></i>
                 DLSU Orgs To Pick
             </div>
             <div class = "options-container">
@@ -274,6 +397,7 @@
             </div>
         </div>
     </div>
+
     <div class = "hook-section">
         <div class = "title">Be Part of Something Bigger...</div>
         <div class ="search-container">
@@ -284,39 +408,210 @@
     <div class = "recent-reviews-section">
         <div class = "header-text">Recent Reviews</div>
         <div class = "recent-reviews-container">
+
             <div class = "review">
                 <div class = "review-container">
                     <div class = "review-header">
                         <i class="fa-solid fa-user"></i>
                         <div class = "post-info">
-                            <div class = "user-name">Chynna Mae</div>
-                            <div class = "time">5 hours ago</div>
+                            <div class = "user-info-container">
+                                <div class = "user-name">Chynna Mae</div>
+                                <div class = "time">5 hours ago</div>
+                            </div>
                         </div>
                         <div class = "rating-container">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
                         </div>
                     </div>
                     <div class = "review-body">
                         <div class = "review-body-header">LSCS</div>
-                        Puro mga achiever dito, talented pa at super friendly! Parang lahat ng tao dito chill pero hardworking din. May sense of humor pa at parang laging may dalang good vibes. 💯 Parang laging ang saya ng usapan, lagi pang may bagong kwento.
+                        <div>
+                            Puro mga achiever dito, talented pa at super friendly! Parang lahat ng tao dito chill pero hardworking din. 
+                            May sense of humor pa at parang laging may dalang good vibes. 
+                        </div>
+                        <div class = "image"></div>
                     </div>
                     <div class = "review-footer">
-
+                        <div class = "helpfulness-container">
+                            <div class = "helpfulness-item">Mark as Helpful</div>
+                            <div class = "helpfulness-item">Mark as Unhelpful</div>
+                            <div class = "likes-container">
+                                <div>10</div>
+                                <i class = "fa-regular fa-thumbs-down"></i>
+                                <div>151</div>
+                                <i class = "fa-regular fa-thumbs-up"></i>
+                            </div>
+                        </div>
                     </div>
-                    
                 </div>
             </div>
-            <div class = "review"></div>
-            <div class = "review"></div>
+
+            <div class = "review">
+                <div class = "review-container">
+                    <div class = "review-header">
+                        <i class="fa-solid fa-user"></i>
+                        <div class = "post-info">
+                            <div class = "user-info-container">
+                                <div class = "user-name">Emmanuel Gerald Punsalan</div>
+                                <div class = "time">8 hours ago</div>
+                            </div>
+                        </div>
+                        <div class = "rating-container">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                    </div>
+                    <div class = "review-body">
+                        <div class = "review-body-header">GDSC</div>
+                        <div>
+                            Puro mga achiever dito, talented pa at super friendly! Parang lahat ng tao dito chill pero hardworking din. 
+                            May sense of humor pa at parang laging may dalang good vibes. 
+                            Puro mga achiever dito, talented pa at super friendly! Parang lahat ng tao dito chill pero hardworking din. 
+                            May sense of humor pa at parang laging may dalang good vibes. 
+                            Puro mga achiever dito, talented pa at super friendly!
+                        </div>
+                    </div>
+                    <div class = "review-footer">
+                        <div class = "helpfulness-container">
+                            <div class = "helpfulness-item">Mark as Helpful</div>
+                            <div class = "helpfulness-item">Mark as Unhelpful</div>
+                            <div class = "likes-container">
+                                <div>100</div>
+                                <i class = "fa-regular fa-thumbs-down"></i>
+                                <div>10</div>
+                                <i class = "fa-regular fa-thumbs-up"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class = "review">
+                <div class = "review-container">
+                    <div class = "review-header">
+                        <i class="fa-solid fa-user"></i>
+                        <div class = "post-info">
+                            <div class = "user-info-container">
+                                <div class = "user-name">Ezra D.R.</div>
+                                <div class = "time">1 day ago</div>
+                            </div>
+                        </div>
+                        <div class = "rating-container">
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                    </div>
+                    <div class = "review-body">
+                        <div class = "review-body-header">SPRINT</div>
+                        <div>
+                            Puro mga achiever dito, talented pa at super friendly! Parang lahat ng tao dito chill pero hardworking din. 
+                            May sense of humor pa at parang laging may dalang good vibes. 
+                        </div>
+                        <div class = "image"></div>
+                    </div>
+                    <div class = "review-footer">
+                        <div class = "helpfulness-container">
+                            <div class = "helpfulness-item">Mark as Helpful</div>
+                            <div class = "helpfulness-item">Mark as Unhelpful</div>
+                            <div class = "likes-container">
+                                <div>1k</div>
+                                <i class = "fa-regular fa-thumbs-down"></i>
+                                <div>23</div>
+                                <i class = "fa-regular fa-thumbs-up"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <div>
+        <div class = "sort-section">
+            <div class = "header-text">Search by Rating</div>
+            <div class = "sort-by-rating-container">
+                <div class = "sort-stars-container">
+                    <div class = "star-number">5</div>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                </div>
+                <div class = "sort-stars-container">
+                    <div class = "star-number">4</div>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                </div>
+                <div class = "sort-stars-container">
+                    <div class = "star-number">3</div>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                </div>
+                <div class = "sort-stars-container">
+                    <div class = "star-number">2</div>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                </div>
+                <div class = "sort-stars-container">
+                    <div class = "star-number">1</div>
+                    <i class="fa-solid fa-star"></i>
+                </div>
+            </div>
 
-    <div class = "sort-portion">
-        <div class = "header-text">Search by Rating</div>
-        <div class = "header-text">Search By College</div>
-    </div>
-    <div class = "footer">
-        <div class = "header-text">Footer</div>
+            <div class = "header-text">Search By College</div>
+            <div class = "sort-by-school-container">
+                <div class = "sort-school-container">
+                    <div class = "college-icon">
+                        <i class="fa-solid fa-computer"></i>
+                    </div>
+                    <div class = "star-number">CCS</div>
+                </div>
+                <div class = "sort-school-container">
+                    <div class = "college-icon">
+                        <i class="fa-solid fa-brain"></i>
+                    </div>
+                    <div class = "star-number">CLA</div>
+                </div>
+                <div class = "sort-school-container">
+                    <div class = "college-icon">
+                        <i class="fa-solid fa-suitcase"></i>
+                    </div>
+                    <div class = "star-number">COB</div>
+                </div>
+                <div class = "sort-school-container">
+                    <div class = "college-icon">
+                        <i class="fa-solid fa-book"></i>
+                    </div>
+                    <div class = "star-number">COE</div>
+                </div>
+                <div class = "sort-school-container">
+                    <div class = "college-icon">
+                        <i class="fa-solid fa-gear"></i>
+                    </div>
+                    <div class = "star-number">GCOE</div>
+                </div>
+                <div class = "sort-school-container">
+                    <div class = "college-icon">
+                        <i class="fa-regular fa-comment"></i>
+                    </div>
+                    <div class = "star-number">Other</div>
+                </div>
+            </div>
+        </div>
+        <div class = "footer">
+            <div class = "footer-text">
+                <div>MCO1</div>
+                <div>CCAPDEV S15</div>
+                <div>Del Rosario Ong Punsalan Tria</div>
+            </div>
+        </div>
     </div>
 </body>
 </html>
