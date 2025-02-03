@@ -184,8 +184,19 @@
             .ratings, .home-college {
                 color: #363636;
             }
-            .rating-list, .college-list {
+            .ratings-list, .college-list {
                 line-height: 40px;
+            }
+            .ratings-input-field {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                gap: 8px;
+            }
+            .ratings-list {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
             }
             .stars {
                 margin-left: 5px;
@@ -198,7 +209,31 @@
                 color: #3B6724;
                 font-weight: bold; 
             }
+            .ratings-input-field input[type="checkbox"] {
+                appearance: none;
+                background-color: white;
+                height: 25px;
+                width: 26px;
+                cursor: pointer;
+            }
+            .ratings-input-field:hover input[type="checkbox"] {
+                outline: solid #728569;
 
+            }
+            .ratings-input-field input[type="checkbox"]:checked {
+                background-color: #728569;
+            }
+            .ratings-input-field input[type="checkbox"]:checked:after {
+                content:'\2714';
+                margin-left: 5px;
+                color: white;
+                font-weight: bold;
+                font-size: 20px;
+                line-height: auto;
+            }
+            .filter-portion label {
+                margin-top: 5px;
+            }
             /* ORGANIZATION */
             .org-portion {
                 margin-left: 200px;
@@ -323,47 +358,57 @@
                     </div>
                     <div class="ratings">
                         <span class="section-subheader">Ratings</span>
-                        <form class="rating-list">
-                            <input type="checkbox" id="5-stars" name="5-stars" value="5-stars"/>
-                            <label for="5-stars">5 
-                                <span class="stars">
+                        <form class="ratings-list">
+                            <div class="ratings-input-field">
+                                <input type="checkbox" id="5-stars" name="5-stars" value="5-stars"/>
+                                <label for="5-stars">5 
+                                    <span class="stars">
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                    </span>
+                                </label>
+                            </div>
+                            <div class="ratings-input-field">
+                                <input type="checkbox" id="4-stars" name="4-stars" value="4-stars"/>
+                                <label for="4-stars">4 
+                                    <span class="stars">
                                     <i class="fa-solid fa-star"></i>
                                     <i class="fa-solid fa-star"></i>
                                     <i class="fa-solid fa-star"></i>
                                     <i class="fa-solid fa-star"></i>
+                                    </span>
+                                </label>
+                            </div>
+                            <div class="ratings-input-field">
+                                <input type="checkbox" id="3-stars" name="3-stars" value="3-stars"/>
+                                <label for="3-stars">3 
+                                    <span class="stars">
                                     <i class="fa-solid fa-star"></i>
-                                </span>
-                            </label><br/>
-                            <input type="checkbox" id="4-stars" name="4-stars" value="4-stars"/>
-                            <label for="4-stars">4 
-                                <span class="stars">
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                </span>
-                            </label><br/>
-                            <input type="checkbox" id="3-stars" name="3-stars" value="3-stars"/>
-                            <label for="3-stars">3 
-                                <span class="stars">
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                </span>
-                            </label><br/>
-                            <input type="checkbox" id="2-stars" name="2-stars" value="2-stars"/>
-                            <label for="2-stars">2
-                                <span class="stars">
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                </span>
-                            </label><br/>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    </span>
+                                </label>
+                            </div>
+                            <div class="ratings-input-field">
+                                <input type="checkbox" id="2-stars" name="2-stars" value="2-stars"/>
+                                <label for="2-stars">2
+                                    <span class="stars">
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    </span>
+                                </label>
+                            </div>
+                            <div class="ratings-input-field">
                             <input type="checkbox" id="1-stars" name="1-stars" value="1-stars"/>
-                            <label for="1-stars">1
-                                <span class="stars">
-                                <i class="fa-solid fa-star"></i>
-                                </span>
-                            </label><br/>
+                                <label for="1-stars">1
+                                    <span class="stars">
+                                    <i class="fa-solid fa-star"></i>
+                                    </span>
+                                </label>
+                            </div>
                         </form>
                     </div>
                     <br/>
