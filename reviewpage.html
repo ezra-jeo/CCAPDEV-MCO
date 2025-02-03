@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Write a Review</title>
+
+        <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">  
+        <link href="https://fonts.googleapis.com/css2?family=Koulen&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">    
+        <link href="https://fonts.googleapis.com/css2?family=Konkhmer+Sleokchher&family=Koulen&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/3b737d3964.js" crossorigin="anonymous"></script>
+        
+        <style>
+            body {
+                font-family: 'Rubik', sans-serif;
+                margin: 0;
+                padding: 0;
+                background-color: #D9D9D9;
+                max-width: 100%;
+            }
+           
+            /* HEADER */
+            .header {
+                font-weight: bolder;
+                width: 100%;
+                height: 80px;
+                background-color: #7BA167;
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                padding: 10px;
+                position: fixed;
+                top: 0;
+                z-index: 10;
+                box-sizing: border-box;
+            }
+            .header-content-container {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                margin: 0 auto;
+                padding: 0 20px;
+                flex-grow: 1;
+                max-width: 100%;
+            }
+            .logo-container { 
+                color: #D9D9D9;
+                font-size: x-large;
+                display: flex;
+                flex-direction: row;
+                justify-content: left;
+                align-items: center;
+            }
+            .fa-regular {
+                margin: 10px;
+            }
+            .fa-people-group {
+                font-size: 40px;
+                padding: 10px;
+            }
+            .options-container {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            .options-item {
+                color: #3B6724;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                padding: 10px;
+                margin: 10px;
+            }
+            .profile-container {
+                display: flex;
+                flex-direction: row;
+                justify-content: right;
+                align-items: center;
+            }
+            .profile-pic {
+                height: 50px;
+                width: 50px;
+                border-radius: 50%;
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                margin: 10px;
+            }
+
+            /*Write a Review*/
+            .review-container {
+                background: white;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+                width: 70%;
+                text-align: center;
+                margin: auto;
+                margin-top: 90px;
+                margin-bottom: 10px;
+            }
+            
+            .profile img {
+                width: 100px;
+                height: 100px;
+                border-radius: 50%;
+                margin-bottom: 10px;
+            }
+            
+            .rating {
+                display: flex;
+                justify-content: center;
+                gap: 5px;
+                cursor: pointer;
+                top: 0;
+            }
+            
+            .star {
+                font-size: 40px;
+                color: black;
+            }
+            
+            .star.selected, .star:hover {
+                color: gold;
+            }
+
+            select {
+                width: 100%;
+                padding: 5px;
+                margin: 5px 0 5px 0;
+                border-radius: 5px;
+                background-color: rgb(187, 202, 178);
+            }
+            
+            textarea {
+                width: 100%;
+                height: 150px;
+                margin: 5px 0 5px 0;
+                background-color: rgb(187, 202, 178);
+                border-radius: 5px;
+            }
+            
+            .buttons {
+                display: flex;
+                justify-content: space-between;
+                margin-top: 10px;
+            }
+            
+            .discard {
+                background-color: transparent;
+                color: black;
+                padding: 10px;
+                border: none;
+                border-radius: 30px;
+                cursor: pointer;
+            }
+
+            .discard:hover {
+                background: transparent;
+                color: red;
+                padding: 10px;
+                border: none;
+                border-radius: 30px;
+                cursor: pointer;
+                font-weight: bold;
+            }
+
+            .submit {
+                background-color: transparent;
+                color: black;
+                padding: 10px;
+                border: none;
+                border-radius: 30px;
+                cursor: pointer;
+            }
+            
+            .submit:hover {
+                background: rgb(59, 103, 36);
+                color: white;
+                padding: 10px;
+                border: none;
+                border-radius: 30px;
+                cursor: pointer;
+                font-weight: bold;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="header">
+            <div class="header-content-container">
+                <div class="logo-container">
+                    <i class="fa-solid fa-star"></i>
+                    DLSU Orgs To Pick
+                </div>
+                <div class="options-container">
+                    <div class="options-item">Write a Review</div>
+                    <div class="options-item">View All Orgs</div>
+                    <div class="options-item">Search Reviews</div>
+                </div>
+                <div class="profile-container">
+                    <u>John D.</u>
+                    <img class="profile-pic" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png">
+                </div>
+            </div>
+        </div>
+
+        <div class="review-container">
+            <h2>Writing a Review</h2>
+            <div class="profile">
+                <img class="review-profile" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="profile">
+            </div>
+            
+            <form id="reviewForm">
+                <label>Rating:</label>
+                <div class="rating">
+                    <span class="star" data-value="1">☆</span>
+                    <span class="star" data-value="2">☆</span>
+                    <span class="star" data-value="3">☆</span>
+                    <span class="star" data-value="4">☆</span>
+                    <span class="star" data-value="5">☆</span>
+                </div>
+                <input type="hidden" id="rating" name="rating" required>
+                
+                <label for="organization">Organization<span class="required">*</span></label>
+                <select id="organization" required>
+                    <option value="">Select an organization</option>
+                    <option value="Org1">La Salle Computer Society (LSCS)</option>
+                    <option value="Org2">Google Developer Student Clubs (GDSC)</option>
+                    <option value="Org3">The Society of Proactive Role Models INspiring Total Development (SPRINT)</option>
+                </select>
+                
+                <label for="description">Description</label>
+                <textarea id="description" placeholder="Write your review..." required></textarea>
+                
+                <label for="attachments" class="file-label">Add attachments</label>
+                <input type="file" id="attachments" accept="image/*,video/*" multiple>
+                
+                <div class="buttons">
+                    <button type="reset" class="discard">Discard</button>
+                    <button type="submit" class="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>
