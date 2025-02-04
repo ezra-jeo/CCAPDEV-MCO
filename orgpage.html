@@ -128,13 +128,19 @@
                 font-size: 24px;
                 cursor: pointer;
             }
-            .edit-icon button:hover {
-                border: solid;
+            .edit-icon a {
+                color: #3B6724;
+                padding: 5px;
                 border-radius: 40px;
-                background: rgb(59, 103, 36);
+                text-decoration: none;
+            }
+
+            .edit-icon a:hover {
                 color: white;
-                font-size: 24px;
-                cursor: pointer;
+                background-color: #3B6724;
+                padding: 5px;
+                border-radius: 40px;
+                text-decoration: none;
             }
             .review-container {
                 width: 100%;
@@ -172,6 +178,7 @@
                 align-items: center;
             }
             .filter-btn {
+                font-family: 'Rubik', sans-serif;
                 background: transparent;
                 border-color: #3B6724;
                 border-style: solid;
@@ -224,6 +231,7 @@
                 display: block;
             }
             #searchBar {
+                font-family: 'Rubik', sans-serif;
                 width: 100%;
                 padding: 5px;
                 border: none;
@@ -278,13 +286,26 @@
         <div class="org-profile">
             <img class="org-pic" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="org-pic">
             <h2>La Salle Computer Society (LSCS)</h2>
-            <p><span class="star">☆☆☆☆☆</span>(69 reviews)</p>
+            <p>
+                <span class="star">
+                    ☆☆☆☆☆
+                </span>
+                (69 reviews)
+            </p>
             <p>Description | Description | Description</p>
-            <span class="edit-icon"><button>✎</button></span>
+            <span class="edit-icon"><button>
+                <a href="editorg.html">
+                    ✎</a>
+                </button>
+            </span>
         </div>
         
         <div class="filters">
-            <button class="filter-btn"><a href="reviewpage.html">Write a Review</a></button>
+            <button class="filter-btn">
+                <a href="reviewpage.html">
+                    Write a Review
+                </a>
+            </button>
             <button class="filter-btn" onclick="sortReviews()">Sort by Latest</button>
             <div class="filter-rating">
                 <button class="filter-btn">Filter by Rating</button>
