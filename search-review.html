@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html>
+    <!--
+    TODO: 
+    - Decide on default font size
+    - Checkbox and radio button design
+    - footer
+    - find a better page nav code for alignment.
+    - Organization Profile Pictures
+    - Checks for errors/unaccounted values
+    -->
+    <head>
+        <title>
+            Search for Reviews
+        </title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Konkhmer+Sleokchher&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Konkhmer+Sleokchher&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/7777c7816b.js" crossorigin="anonymous"></script>
+        
+        <style>
+            /* GENERAL */
+            body {
+                background-color: #D9D9D9;
+                margin: 0;
+                padding: 0;
+                font-size: 20px;
+                font-family: Rubik;
+                padding-bottom: 225px;
+                position: relative;
+
+            }
+            .section-header {
+                font-size: 25px;  
+                font-family: Konkhmer Sleokchher;
+                color: #1E1E1E;
+            }
+            .section-subheader {
+                font-weight: bold;
+                text-decoration: underline;
+                color: #363636;
+            }
+
+            /* HEADER */
+            .header {
+                display: flex;
+                flex-direction: row;
+                font-weight: bolder;
+                width: 100%;
+                height: 50px;
+                background-color: #7BA167;
+                justify-content: center;
+                align-items: center;
+                padding: 10px;
+                position: fixed;
+                font-size: 16px;
+                z-index: 10;
+            }
+            .header-content-container {
+                display: flex;
+                flex-direction: row;
+                width: 100%;
+                justify-content: space-between;
+                align-items: center;
+                margin: 50px
+            }
+            .logo-container { 
+                display: flex;
+                flex-direction: row;
+                color: #3B6724;
+                font-size: x-large;
+                justify-content: space-evenly;
+                align-items: center;
+            }
+            .header .fa-star {
+                font-size: 40px;
+                margin: 10px;
+            }
+            .options-container {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .options-item {
+                display: flex;
+                flex-direction: row;
+                color: #D9D9D9;
+                justify-content: space-between;
+                align-items: center;
+                margin: 10px;
+            }
+            .profile-container {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .sign-up {
+                display: flex;
+                flex-direction: row;
+                width: 100px;
+                height: 35px;
+                background-color: #3B6724;
+                color: #D9D9D9;
+                border-radius: 10px;
+                justify-content: center;
+                align-items: center;
+                margin: 10px;
+            }
+            .log-in {
+                display: flex;
+                flex-direction: row;
+                width: 100px;
+                height: 35px;
+                background-color: #3B6724;
+                color: #D9D9D9;
+                border-radius: 10px;
+                justify-content: center;
+                align-items: center;
+            }
+
+            /* MAIN CONTENT */
+            .content-page {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                padding-top: 70px;
+            }
+            .content-elements {
+                display: flex;
+                flex-direction: row;
+            }
+
+            /* SEARCH */
+            .search-portion {
+                display: flex;
+                flex-direction: row;
+                width: 100%;
+                height: 150px;
+                justify-content: center;
+                align-items: center;
+                position: relative;
+            }
+            .search-bar {
+                font-family: Konkhmer Sleokchher;
+                font-size: 20px;
+                width: 700px;
+                height: 50px;
+                border-radius: 35px;
+                border: none;
+                text-indent: 15px;
+                font-size: 25px;
+            }
+            .search-bar::placeholder {
+                color: #AB9D99;
+            }
+            #search-icon-container {
+                position: absolute;
+                width: 40px;
+                margin-left: 635px;
+                color: #7BA167;
+                font-size: 30px;
+            }
+
+            /* FILTER */
+            .filter-portion {
+                display: flex;
+                flex-direction: column;
+                background-color: #BBCAB2;
+                width: 285px;
+                height: 888.81px;
+                border-top-right-radius: 25px;
+                border-bottom-right-radius: 25px;
+                padding-left: 25px;
+                padding-top: 25px;
+            }
+
+            .clear-feature {
+                text-decoration: underline;
+                margin-left: 10px;
+            }
+            .ratings, .home-college {
+                color: #363636;
+            }
+            .ratings-list, .college-list {
+                line-height: 40px;
+            }
+            .ratings-input-field {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                gap: 8px;
+            }
+            .ratings-list {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+            .stars {
+                margin-left: 5px;
+                color: white;
+            }
+            .sort-header {
+                margin-left: 30px;
+                font-size: 20px;
+                text-decoration: underline;
+                color: #3B6724;
+                font-weight: bold; 
+            }
+            /* .ratings-input-field input[type="checkbox"] {
+                appearance: none;
+                background-color: white;
+                height: 25px;
+                width: 26px;
+                cursor: pointer;
+            }
+            .ratings-input-field:hover input[type="checkbox"] {
+                outline: solid #728569;
+
+            }
+            .ratings-input-field input[type="checkbox"]:checked {
+                background-color: #728569;
+            }
+            .ratings-input-field input[type="checkbox"]:checked:after {
+                content:'\2714';
+                margin-left: 5px;
+                color: white;
+                font-weight: bold;
+                font-size: 20px;
+                line-height: auto;
+            }
+            .home-college input[type="radio"] {
+                appearance: none;
+                background-color: white;
+                height: 25px;
+                width: 26px;
+                cursor: pointer;
+                border-radius: 13px;
+            }  */
+            .filter-portion label {
+                margin-top: 5px;
+            }
+            /* ORGANIZATION */
+            .org-portion {
+                margin-left: 200px;
+                flex: 1;
+            }
+            .org-list {
+                display: grid;
+                grid-template-columns: 1fr;
+                row-gap: 20px;
+                align-items: center;
+            }
+            .org-section {
+                display: grid;
+                grid-template-columns: 225px 1fr;
+                column-gap: 10px;
+                background-color: white;
+                width: 700px;
+                height: 225px;
+                align-items: center;
+                border-radius: 10px;
+            }
+            .org-profile-pic {
+                width: 200px;
+                height: 200px;
+                border-radius: 100px;
+                justify-self: center;
+                box-shadow: 5px 5px 15px rgba(0,0,0,0.25)
+            }
+            .org-info {
+                display: flex;
+                flex-direction: column;
+            }
+            .org-name {
+                text-decoration: underline;
+                font-size: 35px;
+                font-weight: bold;
+                color: #363636;
+            }
+            .org-stars {
+                display: flex;
+                flex-direction: row;
+                color: #F8C437;
+                font-size: 25px;
+            }
+            .rating-text {
+                margin-left: 10px;
+                font-size: 22px;
+                color: #363636;
+            }
+            .review-desc {
+                width: 450px;
+                font-size: 18px;
+            }
+            .org-college {
+                color: #728569;
+                margin-top: 15px;
+            }
+            
+            /* BOX SHADOW */
+            .search-bar, .filter-portion, .org-section {
+                box-shadow: 20px 20px 15px rgba(0,0,0,0.25);
+            }
+
+            /* PAGE NAV */
+            .page-nav {
+                margin-top: 80px;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                width: 100%;
+            }
+            #page-numbers {
+                font-size: 18px;
+                color: #9F9F9F;
+                font-weight: bold;
+                letter-spacing: 5px;
+            }
+            #cur-page, #cur-page-num {
+                font-size: 18px;
+                color: #363636;
+                font-weight: bold;
+            }
+            #cur-page {
+                margin-left: 515px;
+            }
+            #cur-page-num {
+                margin-left: 515px;   
+                flex: 1;
+            }
+            
+            /* FOOTER */
+            .footer {
+                width: 100%;
+                height: 21vh;
+                background-color: #3B6724;
+                display: flex;
+                flex-direction: column;
+                color: #FFFFFF;
+                position: absolute;
+                bottom: 0;
+            }
+            .footer-text {
+                padding: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class = "header">
+            <div class = "header-content-container">
+                <div class = "logo-container"> <!-- TODO: make logo -->
+                    <i class = "fa-solid fa-star"></i>
+                    DLSU Orgs To Pick
+                </div>
+                <div class = "options-container">
+                    <div class = "options-item"></i>Write a Review</div>
+                    <div class = "options-item">View All Orgs</div>
+                    <div class = "options-item">Search Reviews</div>
+                </div>
+                <div class = "profile-container">
+                    <div class = "sign-up">Sign Up</div>
+                    <div class = "log-in">Log In</div>
+                </div>
+            </div>
+        </div>
+        <div class="content-page">
+            <div class="search-portion">
+                <input class="search-bar" type="text" placeholder="Search for a Review"/>
+                <div id="search-icon-container">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+            </div>
+            <div class="content-elements">
+                <div class="filter-portion">
+                    <div class="filter-labels">
+                        <span class="section-header">Filters</span>
+                        <span class="clear-feature">Clear</span>
+                    </div>
+                    <div class="ratings">
+                        <span class="section-subheader">Ratings</span>
+                        <form class="ratings-list">
+                            <div class="ratings-input-field">
+                                <input type="checkbox" id="5-stars" name="5-stars" value="5-stars"/>
+                                <label for="5-stars">5 
+                                    <span class="stars">
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                    </span>
+                                </label>
+                            </div>
+                            <div class="ratings-input-field">
+                                <input type="checkbox" id="4-stars" name="4-stars" value="4-stars"/>
+                                <label for="4-stars">4 
+                                    <span class="stars">
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    </span>
+                                </label>
+                            </div>
+                            <div class="ratings-input-field">
+                                <input type="checkbox" id="3-stars" name="3-stars" value="3-stars"/>
+                                <label for="3-stars">3 
+                                    <span class="stars">
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    </span>
+                                </label>
+                            </div>
+                            <div class="ratings-input-field">
+                                <input type="checkbox" id="2-stars" name="2-stars" value="2-stars"/>
+                                <label for="2-stars">2
+                                    <span class="stars">
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    </span>
+                                </label>
+                            </div>
+                            <div class="ratings-input-field">
+                            <input type="checkbox" id="1-stars" name="1-stars" value="1-stars"/>
+                                <label for="1-stars">1
+                                    <span class="stars">
+                                    <i class="fa-solid fa-star"></i>
+                                    </span>
+                                </label>
+                            </div>
+                        </form>
+                    </div>
+                    <br/>
+                    <div class="home-college">
+                        <span class="section-subheader">Home College</span>
+                        <form class="college-list">
+                            <input type="radio" id="ccs" name="ccs" value="ccs"/>
+                            <label for="ccs">CCS </label><br/>
+                            <input type="radio" id="RVCOB" name="RVCOB" value="RVCOB"/>
+                            <label for="RVCOB">RVCOB </label><br/>
+                            <input type="radio" id="cos" name="cos" value="cos"/>
+                            <label for="cos">COS </label><br/>
+                            <input type="radio" id="cla" name="cla" value="cla"/>
+                            <label for="cla">CLA </label><br/>
+                            <input type="radio" id="gcoe" name="gcoe" value="gcoe"/>
+                            <label for="gcoe">GCOE </label><br/>
+                            <input type="radio" id="other" name="other" value="other"/>
+                            <label for="other">Other </label><br/>
+                        </form>
+                    </div>
+                </div>  
+                <div class="org-portion">
+                    <div class="org-labels">
+                        <span class="section-header">Reviews</span>
+                    </div>
+                    <div class="org-list">
+                        <div class="org-section">
+                            <img class="org-profile-pic" src="https://images.ctfassets.net/61mmmjz7t2hb/LYaxJ195ZBD5yOEKXOQOR/c09ea48259f53fdf6cb9b4d0992f61eb/Untitled__4_.png"/>
+                            <div class="org-info">
+                                <div class="org-name">
+                                    LSCS
+                                </div>
+                                <div class="org-rating">
+                                    <span class="org-stars">
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <span class="rating-text">
+                                            5(69 reviews)
+                                        </span>
+                                    </span>
+                                </div>
+                                <div class="review-desc">
+                                    Org ng mga mahilig pumindot sa laptop.
+                                    Org ng mga mahilig  sa laptop
+                                    Org ng mga mahilig pumindot sa laptop
+                                    mahilig pumindot sa laptop
+                                    Org ng mga  pumindot  Org ng mga mahilig
+                                </div>
+                                <div class="org-college">
+                                    CCS
+                                </div>
+                            </div>
+                        </div>
+                        <div class="org-section">
+                            <img class="org-profile-pic" src="https://images.ctfassets.net/61mmmjz7t2hb/4vnDrX0eGKubRAZj4ZgSj8/b180847b648beabe61acdfa7fb03f145/276299850_855070862555233_5428224711235080768_n.jpg"/>
+                            <div class="org-info">
+                                <div class="org-name">
+                                    GDSC
+                                </div>
+                                <div class="org-rating">
+                                    <span class="org-stars">
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <span class="rating-text">
+                                            3(1k reviews)
+                                        </span>
+                                    </span>
+                                </div>
+                                <div class="review-desc">
+                                    Org ng mga mahilig pumindot sa laptop.
+                                    Org ng mga mahilig  sa laptop
+                                    Org ng mga mahilig pumindot sa laptop
+                                    mahilig pumindot sa laptop
+                                    Org ng mga  pumindot  Org ng mga mahilig
+                                </div>
+                                <div class="org-college">
+                                    CCS
+                                </div>
+                            </div>
+                        </div>
+                        <div class="org-section">
+                            <img class="org-profile-pic" src="https://images.ctfassets.net/61mmmjz7t2hb/5sij3G8Ja0xudFKYzB0G5X/9a2e6225b0041f30a4491074f0269b7e/309635725_119364917577616_2019543968390839357_n.jpg"/>
+
+                            <div class="org-info">
+                                <div class="org-name">
+                                    ACM
+                                </div>
+                                <div class="org-rating">
+                                    <span class="org-stars">
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <span class="rating-text">
+                                            3(1k reviews)
+                                        </span>
+                                    </span>
+                                </div>
+                                <div class="review-desc">
+                                    Org ng mga mahilig pumindot sa laptop.
+                                    Org ng mga mahilig  sa laptop
+                                    Org ng mga mahilig pumindot sa laptop
+                                    mahilig pumindot sa laptop
+                                    Org ng mga  pumindot  Org ng mga mahilig
+                                </div>
+                                <div class="org-college">
+                                    Other
+                                </div>
+                            </div>
+                        </div>
+                        <div class="org-section">
+                            <img class="org-profile-pic" src="https://images.ctfassets.net/61mmmjz7t2hb/5aDb2bL9ky65AGlwFgSoxY/17abffcebead21cf116afc40de28805e/308096425_483440627162009_3432782778026634183_n.jpg"/>
+
+                            <div class="org-info">
+                                <div class="org-name">
+                                    SPRINT
+                                </div>
+                                <div class="org-rating">
+                                    <span class="org-stars">
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <span class="rating-text">
+                                            3(1k reviews)
+                                        </span>
+                                    </span>
+                                </div>
+                                <div class="review-desc">
+                                    Org ng mga mahilig pumindot sa laptop.
+                                    Org ng mga mahilig  sa laptop
+                                    Org ng mga mahilig pumindot sa laptop
+                                    mahilig pumindot sa laptop
+                                    Org ng mga  pumindot  Org ng mga mahilig
+                                </div>
+                                <div class="org-college">
+                                    Other
+                                </div>
+                            </div>
+                        </div>
+                        <div class="org-section">
+                            <img class="org-profile-pic" src="https://images.ctfassets.net/61mmmjz7t2hb/1Ywaa1YxRhq7jddpLB2Kkw/91e6f289d6af5febe5f10294e7251127/vertical_logo_ver__black_.png"/>
+
+                            <div class="org-info">
+                                <div class="org-name">
+                                    DSS
+                                </div>
+                                <div class="org-rating">
+                                    <span class="org-stars">
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <span class="rating-text">
+                                            3(1k reviews)
+                                        </span>
+                                    </span>
+                                </div>
+                                <div class="review-desc">
+                                    Org ng mga mahilig pumindot sa laptop.
+                                    Org ng mga mahilig  sa laptop
+                                    Org ng mga mahilig pumindot sa laptop
+                                    mahilig pumindot sa laptop
+                                    Org ng mga  pumindot  Org ng mga mahilig
+                                </div>
+                                <div class="org-college">
+                                    Other
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="page-nav">
+                <span id="page-numbers"><span id="cur-page">1</span> 2 3 4 5 6 ></span>
+                <span id="cur-page-num">1 of 6 </span>
+            </div>
+        </div>
+        <div class = "footer">
+            <div class = "footer-text">
+                <div class = "footer-text">MCO1</div>
+                <div class = "footer-text">CCAPDEV S15</div>
+                <div class = "footer-text">Del Rosario | Ong | Punsalan | Tria</div>
+            </div>
+        </div>
+    </body>
+</html>
