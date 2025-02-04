@@ -382,17 +382,20 @@
         }
         .college-container {
             height: 100%;
-            width: 15%;
             background: #FFFFFF;
             border-radius: 10px; 
             box-shadow: 15px 15px 20px #AB9D99;
             display: flex;
             flex-direction: column;
+            flex-wrap: wrap;
             justify-content: center;
             align-items: center;
             color:#3B6724;
+            padding: 30px;
         }
         .college-content-container {
+            height: 60px;
+            width: 60px;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -425,7 +428,7 @@
             text-decoration: none;
         }
         a:visited {
-            color: #3B6724; 
+            color: initial; 
         }
         a:hover {
             color: initial;
@@ -439,7 +442,7 @@
 <body>
     <div class = "header">
         <div class = "header-content-container">
-            <a href="loggedin.html">
+            <a href="homepage.html">
                 <div class = "logo-container">
                     <i class="fa-solid fa-people-group"></i>
                     DLSU Orgs To Pick
@@ -449,16 +452,20 @@
                 <a href = "reviewpage.html">
                     <div class = "options-item"></i>Write a Review</div>
                 </a>
-                <div class = "options-item">View All Orgs</div>
-                <div class = "options-item">Search Reviews</div>
+                <a href = "search-org.html">
+                    <div class = "options-item">View All Orgs</div>
+                </a>
+                <a href = "search-review.html">
+                    <div class = "options-item">Search Reviews</div>
+                </a>           
             </div>
             <div class = "profile-container">
                 <div class = "user-name-profile">
-                    <a href = "userpage.html">
-                        Student
+                    <a href = "orgpage.html">
+                        Organization
                     </a>
                 </div>
-                <a href = "userpage.html">
+                <a href = "orgpage.html">
                     <i class="fa-solid fa-user"></i>
                 </a>         
             </div>
@@ -468,7 +475,9 @@
     <div class = "hook-section">
         <div class = "title">Be Part of Something Bigger...</div>
         <div class ="search-container">
-            <i class = "fa-solid fa-magnifying-glass search-icon"></i>
+            <a href = "search-org.html">
+                <i class = "fa-solid fa-magnifying-glass search-icon"></i>
+            </a>    
             <input type = "text" class="search" placeholder = "Join an organization in DLSU!">
         </div>
     </div>
@@ -497,7 +506,9 @@
                             </div>
                         </div>
                         <div class = "review-body">
-                            <div class = "review-body-header">LSCS</div>
+                            <a href = "orgpage.html">
+                                <div class = "review-body-header">LSCS</div>
+                            </a>    
                             <div>
                                 Super saya ko sa pagiging bahagi ng org na ito! Mabait at supportive ang mga members, laging may mga fun activities, at may mga pagkakataon pa para matuto at mag-grow. 
                                 Masaya akong nakakasama ko ang mga tao dito, hindi lang dahil sa mga events, kundi dahil sa mga friendship na nabubuo. 
@@ -711,7 +722,9 @@
                             <i class="fa-solid fa-user"></i>
                             <div class = "post-info">
                                 <div class = "user-info-container">
-                                    <div class = "user-name">Jane Doe</div>
+                                    <a href = "userpage.html">
+                                        <div class = "user-name">Jane Doe</div>
+                                    </a>    
                                     <div class = "time">2 days ago</div>
                                 </div>
                             </div>
@@ -790,60 +803,71 @@
         <div class = "sort-by-college-section">
             <div class = "header-text">Search By College</div>
             <div class = "sort-by-school-container">
-
-                <div class = "college-container">
-                    <div class = "college-content-container">
-                        <div class = "college-icon">
-                            <i class="fa-solid fa-computer"></i>
+                <a href = "search-org.html">
+                    <div class = "college-container">
+                        <div class = "college-content-container">
+                            <div class = "college-icon">
+                                <i class="fa-solid fa-computer"></i>
+                            </div>
+                            <div class = "college-text">CCS</div>
                         </div>
-                        <div class = "college-text">CCS</div>
                     </div>
-                </div>
+                </a>
 
-                <div class = "college-container">
-                    <div class = "college-content-container">
-                        <div class = "college-icon">
-                            <i class="fa-solid fa-brain"></i>
+                <a href = "search-org.html">
+                    <div class = "college-container">
+                        <div class = "college-content-container">
+                            <div class = "college-icon">
+                                <i class="fa-solid fa-brain"></i>
+                            </div>
+                            <div class = "college-text">CLA</div>
                         </div>
-                        <div class = "college-text">CLA</div>
                     </div>
-                </div>
+                </a>
 
-                <div class = "college-container">
-                    <div class = "college-content-container">
-                        <div class = "college-icon">
-                            <i class="fa-solid fa-suitcase"></i>
+                <a href = "search-org.html">
+                    <div class = "college-container">
+                        <div class = "college-content-container">
+                            <div class = "college-icon">
+                                <i class="fa-solid fa-suitcase"></i>
+                            </div>
+                            <div class = "college-text">COB</div>
                         </div>
-                        <div class = "college-text">COB</div>
                     </div>
-                </div>
+                </a>
 
-                <div class = "college-container">
-                    <div class = "college-content-container">
-                        <div class = "college-icon">
-                            <i class="fa-solid fa-book"></i>
+                <a href = "search-org.html">
+                    <div class = "college-container">
+                        <div class = "college-content-container">
+                            <div class = "college-icon">
+                                <i class="fa-solid fa-book"></i>
+                            </div>
+                            <div class = "college-text">COE</div>
                         </div>
-                        <div class = "college-text">COE</div>
                     </div>
-                </div>
+                </a>
 
-                <div class = "college-container">
-                    <div class = "college-content-container">
-                        <div class = "college-icon">
-                            <i class="fa-solid fa-gear"></i>
+                <a href = "search-org.html">
+                    <div class = "college-container">
+                        <div class = "college-content-container">
+                            <div class = "college-icon">
+                                <i class="fa-solid fa-gear"></i>
+                            </div>
+                            <div class = "college-text">GCOE</div>
                         </div>
-                        <div class = "college-text">GCOE</div>
                     </div>
-                </div>
-
-                <div class = "college-container">
-                    <div class = "college-content-container">
-                        <div class = "college-icon">
-                            <i class="fa-solid fa-comment"></i>
+                </a>
+                
+                <a href = "search-org.html">
+                    <div class = "college-container">
+                        <div class = "college-content-container">
+                            <div class = "college-icon">
+                                <i class="fa-solid fa-comment"></i>
+                            </div>
+                            <div class = "college-text">Other</div>
                         </div>
-                        <div class = "college-text">Other</div>
                     </div>
-                </div>
+                </a>
             </div>
         </div>
     </div>

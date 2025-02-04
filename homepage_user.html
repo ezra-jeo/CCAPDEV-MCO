@@ -110,6 +110,10 @@
             align-items: center;
             margin: 10px;
         }
+        .user-name-profile {
+            color:#3B6724;
+            padding: 10px;
+        }
 
         /* TITLE AND SEARCH BAR SECTION */
         .hook-section {
@@ -406,10 +410,6 @@
             font-size: 20px;
         }
 
-        a {
-            display: inline-block;
-        }
-
         /* FOOTER */
         .footer {
             width: 100%;
@@ -460,11 +460,13 @@
                 </a>           
             </div>
             <div class = "profile-container">
-                <a href="signup.html">
-                    <div class = "sign-up">Sign Up</div>
-                </a>
-                <a href="login.html">
-                    <div class = "log-in">Log In</div>
+                <div class = "user-name-profile">
+                    <a href = "userpage.html">
+                        Student
+                    </a>
+                </div>
+                <a href = "userpage.html">
+                    <i class="fa-solid fa-user"></i>
                 </a>         
             </div>
         </div>
@@ -475,7 +477,7 @@
         <div class ="search-container">
             <a href = "search-org.html">
                 <i class = "fa-solid fa-magnifying-glass search-icon"></i>
-            </a>           
+            </a>    
             <input type = "text" class="search" placeholder = "Join an organization in DLSU!">
         </div>
     </div>
@@ -765,46 +767,36 @@
         <div class = "sort-by-rating-section">
             <div class = "header-text">Search by Rating</div>
             <div class = "sort-by-rating-container">
-                <a href = "search-org.html">
-                    <div class = "sort-stars-container">
-                        <div class = "star-number">5</div>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                    </div>
-                </a>
-                <a href = "search-org.html">
-                    <div class = "sort-stars-container">
-                        <div class = "star-number">4</div>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                    </div>
-                </a>
-                <a href = "search-org.html">
-                    <div class = "sort-stars-container">
-                        <div class = "star-number">3</div>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                    </div>
-                </a>
-                <a href = "search-org.html">
-                    <div class = "sort-stars-container">
-                        <div class = "star-number">2</div>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                    </div>
-                </a>
-                <a href = "search-org.html">
-                    <div class = "sort-stars-container">
-                        <div class = "star-number">1</div>
-                        <i class="fa-solid fa-star"></i>
-                    </div>
-                </a>
+                <div class = "sort-stars-container">
+                    <div class = "star-number">5</div>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                </div>
+                <div class = "sort-stars-container">
+                    <div class = "star-number">4</div>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                </div>
+                <div class = "sort-stars-container">
+                    <div class = "star-number">3</div>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                </div>
+                <div class = "sort-stars-container">
+                    <div class = "star-number">2</div>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                </div>
+                <div class = "sort-stars-container">
+                    <div class = "star-number">1</div>
+                    <i class="fa-solid fa-star"></i>
+                </div>
             </div>
         </div>
 
