@@ -18,6 +18,11 @@
                 background-color: #D9D9D9;
                 max-width: 100%;
             }
+    
+            /*
+            * {
+                outline: 1px solid #000; 
+            } */
            
             /* HEADER */
             .header {
@@ -52,9 +57,6 @@
                 flex-direction: row;
                 justify-content: left;
                 align-items: center;
-            }
-            .fa-regular {
-                margin: 10px;
             }
             .fa-people-group {
                 font-size: 40px;
@@ -95,7 +97,7 @@
                 margin: 10px;
             }
 
-            /* BODY */
+            /* ORG HEADER */
             .org-profile {
                 width: 90%;
                 padding: 20px;
@@ -111,11 +113,6 @@
                 width: 80px;
                 height: 80px;
                 border-radius: 50%;
-            }
-
-            .star {
-                color: gold;
-                font-size: 30px; 
             }
             .edit-icon {
                 top: 15px;
@@ -134,7 +131,6 @@
                 border-radius: 40px;
                 text-decoration: none;
             }
-
             .edit-icon a:hover {
                 color: white;
                 background-color: #3B6724;
@@ -142,36 +138,14 @@
                 border-radius: 40px;
                 text-decoration: none;
             }
-            .review-container {
-                width: 100%;
-                height: 100%;
-                background-color: transparent;
-                display: grid;
-                grid-template-columns: 300px 300px 300px 300px;
-                grid-column-gap: 60px;
-                align-items: center;
-                justify-content: center;
-            }
-            .reviews {
-                width: 100%;
-                padding: 20px;
-                padding-bottom: 20px;
-                margin-top: 10px;
-                margin-bottom: 10px;
-                border-radius: 40px;
-                display: space-around;
-                font-family: 'Rubik', sans-serif;
-                box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
-                background: white;
-            }
             .rating {
                 color: gold;
                 font-size: 24px;
             }
             .filters {
                 display: flex;
-                margin-top: 30px;
-                margin-bottom: 10px;
+                margin-top: 20px;
+                margin-bottom: 20px;
                 width: 100%;
                 gap: 10px;
                 justify-content: center;
@@ -186,14 +160,12 @@
                 border-radius: 40px;
                 text-decoration: underline;
                 font-weight: bold;
-                color:#3B6724;
             }
             .filter-btn a {
                 display: block;
                 width: 100%;
                 height: 100%;
                 text-decoration: none;
-                color: #3B6724;
                 background-color: transparent;
                 border: 40px;
             }
@@ -247,11 +219,160 @@
                 color: #3B6724;
                 cursor: pointer;
             }
-            
+
+            /* REVIEWS SECTION */
+            .recent-reviews-section {
+                background-color: #BBCAB2;
+                max-width: 100%;
+                display: flex;
+                flex-direction: column;
+                padding: 50px;
+            }
+            .recent-reviews-container {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                justify-items: center;
+                align-items: center;
+                row-gap: 30px;
+                column-gap: 30px;
+            }
+
+            /* REVIEWS */
+            .review {
+                height: 100%;
+                width: 100%;
+                background: #FFFFFF;
+                border-radius: 10px; 
+                box-shadow: 15px 15px 20px #728569;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+            }
+            .review-container {
+                font-size: 14px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                align-items: left;
+                padding: 20px;
+            }
+            .review-proper-container {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                align-items: left;
+            }
+            .review-header {
+                display: flex;
+                flex-direction: row;
+                align-items: left;
+                justify-content: left;
+            }
+            .post-info {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .user-info-container {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                align-items: left;
+                width: 100%;
+            }
+            .user-name {
+                font-weight: normal;
+                font-size: 14px;
+            }
+            .time {
+                font-weight: lighter;
+                font-size: 14px;
+            }
+            .rating-container {
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-end;
+                align-items: flex-start;
+                margin-left: auto;
+            }
+            .fa-star {
+                color: #F8C437;
+                font-size: 20px;
+            }
+            .review-body {
+                display: flex;
+                flex-direction: column;
+                align-items: left;
+                font-size: 12px;
+            }
+            .review-body-header {
+                font-size: 14px;
+                font-weight: bold;
+                margin-top: 10px;
+            }
+            .review-footer {
+                color: #363636;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+                padding-left: 20px;
+                padding-right: 20px;
+                padding-bottom: 10px;
+            }
+            .fa-user {
+                font-size: 40px;
+                color:#3B6724; 
+                padding-right: 10px;
+            }
+            img {
+                max-width: 100%;
+                height: auto;
+                background:#3B6724;
+                border-radius: 10px; 
+                margin-top: 10px;
+            }
+            .helpfulness-container {
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-start;
+                align-items: center;
+            }
+            .helpfulness-item {
+                font-size: 12px;
+                display: flex;
+                flex-direction: column;
+                align-items: left;
+                margin-right: 10px;
+            }
+            .likes-container {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+            }
+            .likes-container-2 {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+                padding-left: 10px;
+            }
+            .fa-thumbs-up {
+                font-size: 20px;
+                padding: 0px;
+                padding-left: 10px;
+            }
+            .fa-thumbs-down {
+                font-size: 20px;
+                padding: 0px;
+                padding-left: 10px;
+            }
+
             /* FOOTER */
             .footer {
                 width: 100%;
-                height: 12vh;
                 background-color: #3B6724;
                 display: flex;
                 flex-direction: column;
@@ -260,24 +381,49 @@
             .footer-text {
                 padding: 10px;
             }
+
+            /* LINK COLORS */
+            a {
+                color: initial; 
+                text-decoration: none;
+            }
+            a:visited {
+                color: initial; 
+            }
+            a:hover {
+                color: initial;
+            }
+            a:active {
+                color: initial;
+            }
         </style>
     </head>
     <body>
         <!-- HEADER -->
-        <div class="header">
-            <div class="header-content-container">
-                <div class="logo-container">
-                    <i class="fa-solid fa-star"></i>
-                    DLSU Orgs To Pick
+        <div class = "header">
+            <div class = "header-content-container">
+                <a href="loggedin.html">
+                    <div class = "logo-container">
+                        <i class="fa-solid fa-people-group"></i>
+                        DLSU Orgs To Pick
+                    </div>
+                </a>
+                <div class = "options-container">
+                    <a href = "reviewpage.html">
+                        <div class = "options-item"></i>Write a Review</div>
+                    </a>
+                    <div class = "options-item">View All Orgs</div>
+                    <div class = "options-item">Search Reviews</div>
                 </div>
-                <div class="options-container">
-                    <div class="options-item">Write a Review</div>
-                    <div class="options-item">View All Orgs</div>
-                    <div class="options-item">Search Reviews</div>
-                </div>
-                <div class="profile-container">
-                    <u>John D.</u>
-                    <img class="profile-pic" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png">
+                <div class = "profile-container">
+                    <div class = "user-name-profile">
+                        <a href = "userpage.html">
+                            Student
+                        </a>
+                    </div>
+                    <a href = "userpage.html">
+                        <i class="fa-solid fa-user"></i>
+                    </a>         
                 </div>
             </div>
         </div>
@@ -287,9 +433,11 @@
             <img class="org-pic" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="org-pic">
             <h2>La Salle Computer Society (LSCS)</h2>
             <p>
-                <span class="star">
-                    ☆☆☆☆☆
-                </span>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
                 (69 reviews)
             </p>
             <p>Description | Description | Description</p>
@@ -323,48 +471,285 @@
                 <i class="fa-solid fa-magnifying-glass search-icon"></i>
             </div>
         </div>
-            
-        <div class="review-container">
-            <div class="reviews">
-                <h4>Chy T.</h4>
-                <p class="rating">☆☆☆☆☆</p>
-                <p>Puro mga achiever dito, talented pa at super friendly! Parang lahat ng tao dito chill pero hardworking din. May sense of humor pa at parang laging may dalang good vibes. Puro mga achiever dito, talented pa at super friendly! Parang lahat ng tao dito chill pero hardworking din. May sense of humor pa at parang laging may dalang good vibes.
-                </p>
-            </div>
-                
-            <div class="reviews">
-                <h4>Kyle O.</h4>
-                <p class="rating">☆☆☆☆</p>
-                <p>Puro mga achiever dito, talented pa at super friendly! Parang lahat ng tao dito chill pero hardworking din. May sense of humor pa at parang laging may dalang good vibes.
-                </p>
-            </div>
-    
-            <div class="reviews">
-                <h4>Emmanuel P.</h4>
-                <p class="rating">☆☆☆</p>
-                <p>Puro mga achiever dito, talented pa at super friendly! Parang lahat ng tao dito chill pero hardworking din. May sense of humor pa at parang laging may dalang good vibes. Puro mga achiever dito, talented pa at super friendly! Parang lahat ng tao dito chill pero hardworking din. May sense of humor pa at parang laging may dalang good vibes. Puro mga achiever dito, talented pa at super friendly!</p>
-            </div>
-    
-            <div class="reviews">
-                <h4>Ezra R.</h4>
-                <p class="rating">☆☆</p>
-                <p>Puro mga achiever dito, talented pa at super friendly! Parang lahat ng tao dito chill pero hardworking din. May sense of humor pa at parang laging may dalang good vibes.
-                </p>
-            </div>
 
-            <div class="reviews">
-                <h4>Anonymous.</h4>
-                <p class="rating">☆</p>
-                <p>Puro mga cool dito, mga maganda at pogi pa. Ang vibe parang laging nasa red carpet, bawat galaw may swag at confidence. Kung saan-saan tumingin, parang lahat bida sa sariling kwento—walang.</p>
+        <div class = "recent-reviews-section">
+            <div class = "recent-reviews-container">
+    
+                <div class = "review">
+                    <div class = "review-proper-container">
+                        <div class = "review-container">
+                            <div class = "review-header">
+                                <i class="fa-solid fa-user"></i>
+                                <div class = "post-info">
+                                    <div class = "user-info-container">
+                                        <div class = "user-name">Chynna Mae</div>
+                                        <div class = "time">5 hours ago</div>
+                                    </div>
+                                </div>
+                                <div class = "rating-container">
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                </div>
+                            </div>
+                            <div class = "review-body">
+                                <div class = "review-body-header">LSCS</div>
+                                <div>
+                                    Super saya ko sa pagiging bahagi ng org na ito! Mabait at supportive ang mga members, laging may mga fun activities, at may mga pagkakataon pa para matuto at mag-grow. 
+                                    Masaya akong nakakasama ko ang mga tao dito, hindi lang dahil sa mga events, kundi dahil sa mga friendship na nabubuo. 
+                                    Highly recommended para sa mga gusto ng organized at welcoming na group!
+                                </div>
+                                <div class = "image">
+                                    <img src = "https://dlsu-lscs.org/assets/static/GA_Pic.42db587.aea95c14ba5b1047884eb534e923fe12.jpg"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class = "review-footer">
+                        <div class = "helpfulness-container">
+                            <div class = "helpfulness-item">Mark as Helpful</div>
+                            <div class = "helpfulness-item">Mark as Unhelpful</div>
+                        </div>
+                        <div class = "likes-container">
+                            <div class = "likes-container-2">
+                                <div>10</div>
+                                <i class = "fa-regular fa-thumbs-down"></i>
+                            </div>
+                            <div class = "likes-container-2">
+                                <div>151</div>
+                                <i class = "fa-regular fa-thumbs-up"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class = "review">
+                    <div class = "review-proper-container">
+                        <div class = "review-container">
+                            <div class = "review-header">
+                                <i class="fa-solid fa-user"></i>
+                                <div class = "post-info">
+                                    <div class = "user-info-container">
+                                        <div class = "user-name">Emman Punsalan</div>
+                                        <div class = "time">7 hours ago</div>
+                                    </div>
+                                </div>
+                                <div class = "rating-container">
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                </div>
+                            </div>
+                            <div class = "review-body">
+                                <div class = "review-body-header">LSCS</div>
+                                <div>
+                                    While I appreciate the effort and hard work the organization puts into its activities, I feel there are a few areas that could be improved. Sometimes, the events can feel a bit disorganized, which makes it challenging to fully enjoy the experience. It would also be great if there were more opportunities for quieter members to participate in leadership roles or events, as it sometimes feels like only a small group is involved in the decision-making process.
+                                    Te kind and supportive, and there’s definitely a sense of community, so I still think it’s a good group to be a part of. I just hope that with a bit more planning and inclusivity, the organization can become even better in the future.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class = "review-footer">
+                        <div class = "helpfulness-container">
+                            <div class = "helpfulness-item">Mark as Helpful</div>
+                            <div class = "helpfulness-item">Mark as Unhelpful</div>
+                        </div>
+                        <div class = "likes-container">
+                            <div class = "likes-container-2">
+                                <div>103</div>
+                                <i class = "fa-regular fa-thumbs-down"></i>
+                            </div>
+                            <div class = "likes-container-2">
+                                <div>10</div>
+                                <i class = "fa-regular fa-thumbs-up"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class = "review">
+                    <div class = "review-proper-container">
+                        <div class = "review-container">
+                            <div class = "review-header">
+                                <i class="fa-solid fa-user"></i>
+                                <div class = "post-info">
+                                    <div class = "user-info-container">
+                                        <div class = "user-name">Ezra D.R.</div>
+                                        <div class = "time">10 hours ago</div>
+                                    </div>
+                                </div>
+                                <div class = "rating-container">
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                </div>
+                            </div>
+                            <div class = "review-body">
+                                <div class = "review-body-header">LSCS</div>
+                                <div>
+                                    Maganda naman ang aking naging karanasan sa org na ito. Lahat ng mga miyembro ay magiliw at supportive, kaya madali akong nakisama. Madalas kaming may mga activities na hindi lang nakaka-enjoy, kundi nakakatulong din sa personal na pag-unlad. Mahusay din ang mga leadership workshops at mga proyekto na ginagawa namin, kaya nakakakita kami ng maraming pagkakataon para matuto.
+                                    Ang tanging suggestion ko lang ay sana mas mapagtuunan pa ng pansin ang pagpaplano ng mga events, minsan kasi parang kulang sa coordination kaya nauurong ang ilan sa mga gawain. Pero overall, ayos na ayos pa rin at marami akong natutunan sa org na ito. Highly recommended pa rin para sa mga gustong mag-join!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class = "review-footer">
+                        <div class = "helpfulness-container">
+                            <div class = "helpfulness-item">Mark as Helpful</div>
+                            <div class = "helpfulness-item">Mark as Unhelpful</div>
+                        </div>
+                        <div class = "likes-container">
+                            <div class = "likes-container-2">
+                                <div>5</div>
+                                <i class = "fa-regular fa-thumbs-down"></i>
+                            </div>
+                            <div class = "likes-container-2">
+                                <div>545</div>
+                                <i class = "fa-regular fa-thumbs-up"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class = "review">
+                    <div class = "review-proper-container">
+                        <div class = "review-container">
+                            <div class = "review-header">
+                                <i class="fa-solid fa-user"></i>
+                                <div class = "post-info">
+                                    <div class = "user-info-container">
+                                        <div class = "user-name">Kyle</div>
+                                        <div class = "time">11 hours ago</div>
+                                    </div>
+                                </div>
+                                <div class = "rating-container">
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                </div>
+                            </div>
+                            <div class = "review-body">
+                                <div class = "review-body-header">LSCS</div>
+                                <div>
+                                    Talaga namang 4-star ang karanasan ko sa org na ito! Mula sa mga unang araw, ramdam ko na ang suporta at pagmamahal ng mga miyembro. Lahat kami ay may pagkakataon na mag-express ng ideas, at ang bawat isa ay nire-respeto at pinahahalagahan. Napaka-organized ng mga activities at events, kaya naman laging may pagkakataon na matuto at mag-enjoy sa mga ginagawa namin.
+                                    Ang pinakagusto ko pa ay ang sense of community na nararamdaman ko. Hindi lang kami mga kasamahan sa org, kundi parang pamilya na rin. Marami akong natutunan na mga skills, at marami akong bagong kaibigan. Kung naghahanap ka ng org na may purpose, masaya, at supportive, ito na ‘yon! Highly recommended sa lahat!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class = "review-footer">
+                        <div class = "helpfulness-container">
+                            <div class = "helpfulness-item">Mark as Helpful</div>
+                            <div class = "helpfulness-item">Mark as Unhelpful</div>
+                        </div>
+                        <div class = "likes-container">
+                            <div class = "likes-container-2">
+                                <div>9</div>
+                                <i class = "fa-regular fa-thumbs-down"></i>
+                            </div>
+                            <div class = "likes-container-2">
+                                <div>1.1k</div>
+                                <i class = "fa-regular fa-thumbs-up"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class = "review">
+                    <div class = "review-proper-container">
+                        <div class = "review-container">
+                            <div class = "review-header">
+                                <i class="fa-solid fa-user"></i>
+                                <div class = "post-info">
+                                    <div class = "user-info-container">
+                                        <div class = "user-name">Emman Punsalan</div>
+                                        <div class = "time">1 day ago</div>
+                                    </div>
+                                </div>
+                                <div class = "rating-container">
+                                    <i class="fa-solid fa-star"></i>
+                                </div>
+                            </div>
+                            <div class = "review-body">
+                                <div class = "review-body-header">LSCS</div>
+                                <div>
+                                    Nakakalungkot dahil hindi ko nahanap ang inaasahan ko sa org na ito. Kulang sa organisasyon at madalas hindi malinaw ang mga plano. Hindi ko naramdaman ang suporta mula sa mga miyembro, kaya nahirapan akong mag-adjust. Sana maging mas maayos ang pamamahala nila sa mga susunod na events.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class = "review-footer">
+                        <div class = "helpfulness-container">
+                            <div class = "helpfulness-item">Mark as Helpful</div>
+                            <div class = "helpfulness-item">Mark as Unhelpful</div>
+                        </div>
+                        <div class = "likes-container">
+                            <div class = "likes-container-2">
+                                <div>103</div>
+                                <i class = "fa-regular fa-thumbs-down"></i>
+                            </div>
+                            <div class = "likes-container-2">
+                                <div>10</div>
+                                <i class = "fa-regular fa-thumbs-up"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class = "review">
+                    <div class = "review-proper-container">
+                        <div class = "review-container">
+                            <div class = "review-header">
+                                <i class="fa-solid fa-user"></i>
+                                <div class = "post-info">
+                                    <div class = "user-info-container">
+                                        <div class = "user-name">Jane Doe</div>
+                                        <div class = "time">2 days ago</div>
+                                    </div>
+                                </div>
+                                <div class = "rating-container">
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                </div>
+                            </div>
+                            <div class = "review-body">
+                                <div class = "review-body-header">LSCS</div>
+                                <div>
+                                    Medyo okay naman ang org na ito, pero may mga bagay pa na pwedeng mapabuti. Maganda ang mga activities at may mga pagkakataon na nakakatuwa, pero minsan ay nagiging magulo ang mga plano at hindi sapat ang komunikasyon. May mga miyembro na friendly at welcoming, pero may mga pagkakataon na parang hindi lahat ay nagkakasundo. Kung magiging mas maayos ang organisasyon at coordination, mas magiging maganda pa sana ang karanasan ko. Pero overall, okay lang.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class = "review-footer">
+                        <div class = "helpfulness-container">
+                            <div class = "helpfulness-item">Mark as Helpful</div>
+                            <div class = "helpfulness-item">Mark as Unhelpful</div>
+                        </div>
+                        <div class = "likes-container">
+                            <div class = "likes-container-2">
+                                <div>103</div>
+                                <i class = "fa-regular fa-thumbs-down"></i>
+                            </div>
+                            <div class = "likes-container-2">
+                                <div>10</div>
+                                <i class = "fa-regular fa-thumbs-up"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
         <!-- FOOTER -->
         <div class = "footer">
             <div class = "footer-text">
-                <div>MCO1</div>
-                <div>CCAPDEV S15</div>
-                <div>Del Rosario Ong Punsalan Tria</div>
+                <div class = "footer-text">MCO1</div>
+                <div class = "footer-text">CCAPDEV (S15)</div>
+                <div class = "footer-text">Del Rosario | Ong | Punsalan | Tria</div>
             </div>
         </div>
     </body>
