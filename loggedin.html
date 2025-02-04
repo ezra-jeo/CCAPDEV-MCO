@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">  
     <link href="https://fonts.googleapis.com/css2?family=Koulen&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">    
     <link href="https://fonts.googleapis.com/css2?family=Konkhmer+Sleokchher&family=Koulen&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Konkhmer+Sleokchher&family=Koulen&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/3b737d3964.js" crossorigin="anonymous"></script>
 
     <style>
@@ -22,8 +23,7 @@
         /*
         * {
             outline: 1px solid #000; 
-        }*/
-    
+        } */
        
         /* HEADER */
         .header {
@@ -57,9 +57,6 @@
             flex-direction: row;
             justify-content: left;
             align-items: center;
-        }
-        .fa-regular {
-            margin: 10px;
         }
         .fa-people-group {
             font-size: 40px;
@@ -140,7 +137,7 @@
             font-family: 'Koulen', sans-serif;
             font-size: 80px;
             font-weight: lighter;
-            color: #7BA167;
+            color: #3B6724;
             display: flex;
             align-items: center;
             flex-direction: column;
@@ -155,7 +152,7 @@
             align-items: center;
         }
         .search {
-            font-weight: bold;
+            font-family: 'Konkhmer Sleokchher', sans-serif;
             padding: 10px;
             border-radius: 25px;
             width: 100%;
@@ -190,22 +187,25 @@
             font-weight: bold;
             margin-bottom: 20px;
         }
-
-        /* REVIEWS */
         .recent-reviews-container {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             justify-items: center;
             align-items: center;
             row-gap: 30px;
-            column-gap: 10px;
+            column-gap: 30px;
         }
+
+        /* REVIEWS */
         .review {
-            height: 250px;
-            width: 95%;
+            height: 100%;
+            width: 100%;
             background: #FFFFFF;
             border-radius: 10px; 
             box-shadow: 15px 15px 20px #728569;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
         .review-container {
             font-size: 14px;
@@ -214,6 +214,12 @@
             justify-content: space-between;
             align-items: left;
             padding: 20px;
+        }
+        .review-proper-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: left;
         }
         .review-header {
             display: flex;
@@ -246,7 +252,7 @@
             display: flex;
             flex-direction: row;
             justify-content: flex-end;
-            align-items: right;
+            align-items: flex-start;
             margin-left: auto;
         }
         .fa-star {
@@ -267,23 +273,26 @@
         .review-footer {
             color: #363636;
             display: flex;
-            flex-direction: column;
-            align-items: left;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-bottom: 10px;
         }
         .fa-user {
             font-size: 40px;
             color:#3B6724; 
             padding-right: 10px;
         }
-        .image {
-            width: 100%;
-            height: 50px;
+        img {
+            max-width: 100%;
+            height: auto;
             background:#3B6724;
             border-radius: 10px; 
             margin-top: 10px;
         }
         .helpfulness-container {
-            font-size: 14px;
             display: flex;
             flex-direction: row;
             justify-content: flex-start;
@@ -299,15 +308,25 @@
         .likes-container {
             display: flex;
             flex-direction: row;
-            justify-content: flex-end;
             align-items: center;
-            margin-left: auto;
+            justify-content: center;
+        }
+        .likes-container-2 {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            padding-left: 10px;
         }
         .fa-thumbs-up {
             font-size: 20px;
+            padding: 0px;
+            padding-left: 10px;
         }
         .fa-thumbs-down {
             font-size: 20px;
+            padding: 0px;
+            padding-left: 10px;
         }
 
         /* SORT BY SECTION */
@@ -318,24 +337,36 @@
             flex-direction: column;
             padding: 50px;
         }
+        .sort-by-rating-section {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+        }
+        .sort-by-college-section {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            margin-top: 40px;
+        }
         .sort-by-rating-container {
             display: flex;
             flex-direction: row;
             justify-content: flex-start;
             align-items: center;
-            padding-bottom: 40px;
         }
         .sort-stars-container {
             display: flex;
             flex-direction: row;
             height: 40px;
-            width: 15%;
             background: #FFFFFF;
             border-radius: 75px; 
             box-shadow: 15px 15px 20px #AB9D99;
             align-items: center;
-            justify-content: center;
-            margin: 10px;
+            justify-content: flex-start;
+            padding-right: 10px;
+            margin-right: 20px;
         }
         .star-number {
             color: #363636;
@@ -347,30 +378,38 @@
             flex-direction: row;
             justify-content: space-between;
             align-items: center;
-			height: 25vh;
-            padding: 10px;
-            padding-bottom: 20px;
+            width: 100%;
         }
-        .sort-school-container {
-            display: flex;
-            flex-direction: column;
-            height: 100px;
-            width: 100px;
+        .college-container {
+            height: 100%;
+            width: 15%;
             background: #FFFFFF;
             border-radius: 10px; 
             box-shadow: 15px 15px 20px #AB9D99;
-            align-items: center;
+            display: flex;
+            flex-direction: column;
             justify-content: center;
-            padding: 30px;
+            align-items: center;
+            color:#3B6724;
+        }
+        .college-content-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
         }
         .college-icon {
             font-size: 50px;
+        }
+        .college-text {
+            color: #3B6724;
+            font-size: 20px;
         }
 
         /* FOOTER */
         .footer {
             width: 100%;
-			height: 21vh;
 			background-color: #3B6724;
 			display: flex;
             flex-direction: column;
@@ -382,17 +421,17 @@
 
         /* LINK COLORS */
         a {
-            color:#3B6724;
+            color: initial; 
             text-decoration: none;
         }
         a:visited {
             color: #3B6724; 
         }
         a:hover {
-            color: #3B6724;
+            color: initial;
         }
         a:active {
-            color: #3B6724;
+            color: initial;
         }
         
     </style>
@@ -416,7 +455,7 @@
             <div class = "profile-container">
                 <div class = "user-name-profile">
                     <a href = "userpage.html">
-                        User
+                        Student
                     </a>
                 </div>
                 <a href = "userpage.html">
@@ -433,214 +472,286 @@
             <input type = "text" class="search" placeholder = "Join an organization in DLSU!">
         </div>
     </div>
+    
     <div class = "recent-reviews-section">
         <div class = "header-text">Recent Reviews</div>
         <div class = "recent-reviews-container">
 
             <div class = "review">
-                <div class = "review-container">
-                    <div class = "review-header">
-                        <i class="fa-solid fa-user"></i>
-                        <div class = "post-info">
-                            <div class = "user-info-container">
-                                <div class = "user-name">Chynna Mae</div>
-                                <div class = "time">5 hours ago</div>
+                <div class = "review-proper-container">
+                    <div class = "review-container">
+                        <div class = "review-header">
+                            <i class="fa-solid fa-user"></i>
+                            <div class = "post-info">
+                                <div class = "user-info-container">
+                                    <div class = "user-name">Chynna Mae</div>
+                                    <div class = "time">5 hours ago</div>
+                                </div>
+                            </div>
+                            <div class = "rating-container">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
                             </div>
                         </div>
-                        <div class = "rating-container">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                        </div>
-                    </div>
-                    <div class = "review-body">
-                        <div class = "review-body-header">LSCS</div>
-                        <div>
-                            Puro mga achiever dito, talented pa at super friendly! Parang lahat ng tao dito chill pero hardworking din. 
-                            May sense of humor pa at parang laging may dalang good vibes. 
-                        </div>
-                        <div class = "image"></div>
-                    </div>
-                    <div class = "review-footer">
-                        <div class = "helpfulness-container">
-                            <div class = "helpfulness-item">Mark as Helpful</div>
-                            <div class = "helpfulness-item">Mark as Unhelpful</div>
-                            <div class = "likes-container">
-                                <div>10</div>
-                                <i class = "fa-regular fa-thumbs-down"></i>
-                                <div>151</div>
-                                <i class = "fa-regular fa-thumbs-up"></i>
+                        <div class = "review-body">
+                            <div class = "review-body-header">LSCS</div>
+                            <div>
+                                Super saya ko sa pagiging bahagi ng org na ito! Mabait at supportive ang mga members, laging may mga fun activities, at may mga pagkakataon pa para matuto at mag-grow. 
+                                Masaya akong nakakasama ko ang mga tao dito, hindi lang dahil sa mga events, kundi dahil sa mga friendship na nabubuo. 
+                                Highly recommended para sa mga gusto ng organized at welcoming na group!
                             </div>
+                            <div class = "image">
+                                <img src = "https://dlsu-lscs.org/assets/static/GA_Pic.42db587.aea95c14ba5b1047884eb534e923fe12.jpg"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class = "review-footer">
+                    <div class = "helpfulness-container">
+                        <div class = "helpfulness-item">Mark as Helpful</div>
+                        <div class = "helpfulness-item">Mark as Unhelpful</div>
+                    </div>
+                    <div class = "likes-container">
+                        <div class = "likes-container-2">
+                            <div>10</div>
+                            <i class = "fa-regular fa-thumbs-down"></i>
+                        </div>
+                        <div class = "likes-container-2">
+                            <div>151</div>
+                            <i class = "fa-regular fa-thumbs-up"></i>
                         </div>
                     </div>
                 </div>
             </div>
 
             <div class = "review">
-                <div class = "review-container">
-                    <div class = "review-header">
-                        <i class="fa-solid fa-user"></i>
-                        <div class = "post-info">
-                            <div class = "user-info-container">
-                                <div class = "user-name">Emmanuel Gerald Punsalan</div>
-                                <div class = "time">8 hours ago</div>
+                <div class = "review-proper-container">
+                    <div class = "review-container">
+                        <div class = "review-header">
+                            <i class="fa-solid fa-user"></i>
+                            <div class = "post-info">
+                                <div class = "user-info-container">
+                                    <div class = "user-name">Emman Punsalan</div>
+                                    <div class = "time">7 hours ago</div>
+                                </div>
+                            </div>
+                            <div class = "rating-container">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
                             </div>
                         </div>
-                        <div class = "rating-container">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                        </div>
-                    </div>
-                    <div class = "review-body">
-                        <div class = "review-body-header">GDSC</div>
-                        <div>
-                            Puro mga achiever dito, talented pa at super friendly! Parang lahat ng tao dito chill pero hardworking din. 
-                            May sense of humor pa at parang laging may dalang good vibes. 
-                            Puro mga achiever dito, talented pa at super friendly! Parang lahat ng tao dito chill pero hardworking din. 
-                            May sense of humor pa at parang laging may dalang good vibes. 
-                            Puro mga achiever dito, talented pa at super friendly!
-                        </div>
-                    </div>
-                    <div class = "review-footer">
-                        <div class = "helpfulness-container">
-                            <div class = "helpfulness-item">Mark as Helpful</div>
-                            <div class = "helpfulness-item">Mark as Unhelpful</div>
-                            <div class = "likes-container">
-                                <div>100</div>
-                                <i class = "fa-regular fa-thumbs-down"></i>
-                                <div>10</div>
-                                <i class = "fa-regular fa-thumbs-up"></i>
+                        <div class = "review-body">
+                            <div class = "review-body-header">GDSC</div>
+                            <div>
+                                While I appreciate the effort and hard work the organization puts into its activities, I feel there are a few areas that could be improved. Sometimes, the events can feel a bit disorganized, which makes it challenging to fully enjoy the experience. It would also be great if there were more opportunities for quieter members to participate in leadership roles or events, as it sometimes feels like only a small group is involved in the decision-making process.
+                                Te kind and supportive, and there’s definitely a sense of community, so I still think it’s a good group to be a part of. I just hope that with a bit more planning and inclusivity, the organization can become even better in the future.
                             </div>
+                        </div>
+                    </div>
+                </div>
+                <div class = "review-footer">
+                    <div class = "helpfulness-container">
+                        <div class = "helpfulness-item">Mark as Helpful</div>
+                        <div class = "helpfulness-item">Mark as Unhelpful</div>
+                    </div>
+                    <div class = "likes-container">
+                        <div class = "likes-container-2">
+                            <div>103</div>
+                            <i class = "fa-regular fa-thumbs-down"></i>
+                        </div>
+                        <div class = "likes-container-2">
+                            <div>10</div>
+                            <i class = "fa-regular fa-thumbs-up"></i>
                         </div>
                     </div>
                 </div>
             </div>
 
             <div class = "review">
-                <div class = "review-container">
-                    <div class = "review-header">
-                        <i class="fa-solid fa-user"></i>
-                        <div class = "post-info">
-                            <div class = "user-info-container">
-                                <div class = "user-name">Emmanuel Gerald Punsalan</div>
-                                <div class = "time">8 hours ago</div>
+                <div class = "review-proper-container">
+                    <div class = "review-container">
+                        <div class = "review-header">
+                            <i class="fa-solid fa-user"></i>
+                            <div class = "post-info">
+                                <div class = "user-info-container">
+                                    <div class = "user-name">Ezra D.R.</div>
+                                    <div class = "time">10 hours ago</div>
+                                </div>
+                            </div>
+                            <div class = "rating-container">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
                             </div>
                         </div>
-                        <div class = "rating-container">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                        </div>
-                    </div>
-                    <div class = "review-body">
-                        <div class = "review-body-header">GDSC</div>
-                        <div>
-                            Puro mga achiever dito, talented pa at super friendly! Parang lahat ng tao dito chill pero hardworking din. 
-                            May sense of humor pa at parang laging may dalang good vibes. 
-                            Puro mga achiever dito, talented pa at super friendly! Parang lahat ng tao dito chill pero hardworking din. 
-                            May sense of humor pa at parang laging may dalang good vibes. 
-                            Puro mga achiever dito, talented pa at super friendly!
-                        </div>
-                    </div>
-                    <div class = "review-footer">
-                        <div class = "helpfulness-container">
-                            <div class = "helpfulness-item">Mark as Helpful</div>
-                            <div class = "helpfulness-item">Mark as Unhelpful</div>
-                            <div class = "likes-container">
-                                <div>100</div>
-                                <i class = "fa-regular fa-thumbs-down"></i>
-                                <div>10</div>
-                                <i class = "fa-regular fa-thumbs-up"></i>
+                        <div class = "review-body">
+                            <div class = "review-body-header">SPRINT</div>
+                            <div>
+                                Maganda naman ang aking naging karanasan sa org na ito. Lahat ng mga miyembro ay magiliw at supportive, kaya madali akong nakisama. Madalas kaming may mga activities na hindi lang nakaka-enjoy, kundi nakakatulong din sa personal na pag-unlad. Mahusay din ang mga leadership workshops at mga proyekto na ginagawa namin, kaya nakakakita kami ng maraming pagkakataon para matuto.
+                                Ang tanging suggestion ko lang ay sana mas mapagtuunan pa ng pansin ang pagpaplano ng mga events, minsan kasi parang kulang sa coordination kaya nauurong ang ilan sa mga gawain. Pero overall, ayos na ayos pa rin at marami akong natutunan sa org na ito. Highly recommended pa rin para sa mga gustong mag-join!
                             </div>
+                        </div>
+                    </div>
+                </div>
+                <div class = "review-footer">
+                    <div class = "helpfulness-container">
+                        <div class = "helpfulness-item">Mark as Helpful</div>
+                        <div class = "helpfulness-item">Mark as Unhelpful</div>
+                    </div>
+                    <div class = "likes-container">
+                        <div class = "likes-container-2">
+                            <div>5</div>
+                            <i class = "fa-regular fa-thumbs-down"></i>
+                        </div>
+                        <div class = "likes-container-2">
+                            <div>545</div>
+                            <i class = "fa-regular fa-thumbs-up"></i>
                         </div>
                     </div>
                 </div>
             </div>
 
             <div class = "review">
-                <div class = "review-container">
-                    <div class = "review-header">
-                        <i class="fa-solid fa-user"></i>
-                        <div class = "post-info">
-                            <div class = "user-info-container">
-                                <div class = "user-name">Emmanuel Gerald Punsalan</div>
-                                <div class = "time">8 hours ago</div>
+                <div class = "review-proper-container">
+                    <div class = "review-container">
+                        <div class = "review-header">
+                            <i class="fa-solid fa-user"></i>
+                            <div class = "post-info">
+                                <div class = "user-info-container">
+                                    <div class = "user-name">Kyle</div>
+                                    <div class = "time">11 hours ago</div>
+                                </div>
+                            </div>
+                            <div class = "rating-container">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
                             </div>
                         </div>
-                        <div class = "rating-container">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                        </div>
-                    </div>
-                    <div class = "review-body">
-                        <div class = "review-body-header">GDSC</div>
-                        <div>
-                            Puro mga achiever dito, talented pa at super friendly! Parang lahat ng tao dito chill pero hardworking din. 
-                            May sense of humor pa at parang laging may dalang good vibes. 
-                            Puro mga achiever dito, talented pa at super friendly! Parang lahat ng tao dito chill pero hardworking din. 
-                            May sense of humor pa at parang laging may dalang good vibes. 
-                            Puro mga achiever dito, talented pa at super friendly!
-                        </div>
-                    </div>
-                    <div class = "review-footer">
-                        <div class = "helpfulness-container">
-                            <div class = "helpfulness-item">Mark as Helpful</div>
-                            <div class = "helpfulness-item">Mark as Unhelpful</div>
-                            <div class = "likes-container">
-                                <div>100</div>
-                                <i class = "fa-regular fa-thumbs-down"></i>
-                                <div>10</div>
-                                <i class = "fa-regular fa-thumbs-up"></i>
+                        <div class = "review-body">
+                            <div class = "review-body-header">GDSC</div>
+                            <div>
+                                Talaga namang 4-star ang karanasan ko sa org na ito! Mula sa mga unang araw, ramdam ko na ang suporta at pagmamahal ng mga miyembro. Lahat kami ay may pagkakataon na mag-express ng ideas, at ang bawat isa ay nire-respeto at pinahahalagahan. Napaka-organized ng mga activities at events, kaya naman laging may pagkakataon na matuto at mag-enjoy sa mga ginagawa namin.
+                                Ang pinakagusto ko pa ay ang sense of community na nararamdaman ko. Hindi lang kami mga kasamahan sa org, kundi parang pamilya na rin. Marami akong natutunan na mga skills, at marami akong bagong kaibigan. Kung naghahanap ka ng org na may purpose, masaya, at supportive, ito na ‘yon! Highly recommended sa lahat!
                             </div>
+                        </div>
+                    </div>
+                </div>
+                <div class = "review-footer">
+                    <div class = "helpfulness-container">
+                        <div class = "helpfulness-item">Mark as Helpful</div>
+                        <div class = "helpfulness-item">Mark as Unhelpful</div>
+                    </div>
+                    <div class = "likes-container">
+                        <div class = "likes-container-2">
+                            <div>9</div>
+                            <i class = "fa-regular fa-thumbs-down"></i>
+                        </div>
+                        <div class = "likes-container-2">
+                            <div>1.1k</div>
+                            <i class = "fa-regular fa-thumbs-up"></i>
                         </div>
                     </div>
                 </div>
             </div>
 
             <div class = "review">
-                <div class = "review-container">
-                    <div class = "review-header">
-                        <i class="fa-solid fa-user"></i>
-                        <div class = "post-info">
-                            <div class = "user-info-container">
-                                <div class = "user-name">Ezra D.R.</div>
-                                <div class = "time">1 day ago</div>
+                <div class = "review-proper-container">
+                    <div class = "review-container">
+                        <div class = "review-header">
+                            <i class="fa-solid fa-user"></i>
+                            <div class = "post-info">
+                                <div class = "user-info-container">
+                                    <div class = "user-name">Emman Punsalan</div>
+                                    <div class = "time">1 day ago</div>
+                                </div>
+                            </div>
+                            <div class = "rating-container">
+                                <i class="fa-solid fa-star"></i>
                             </div>
                         </div>
-                        <div class = "rating-container">
-                            <i class="fa-solid fa-star"></i>
-                        </div>
-                    </div>
-                    <div class = "review-body">
-                        <div class = "review-body-header">SPRINT</div>
-                        <div>
-                            Puro mga achiever dito, talented pa at super friendly! Parang lahat ng tao dito chill pero hardworking din. 
-                            May sense of humor pa at parang laging may dalang good vibes. 
-                        </div>
-                        <div class = "image"></div>
-                    </div>
-                    <div class = "review-footer">
-                        <div class = "helpfulness-container">
-                            <div class = "helpfulness-item">Mark as Helpful</div>
-                            <div class = "helpfulness-item">Mark as Unhelpful</div>
-                            <div class = "likes-container">
-                                <div>1k</div>
-                                <i class = "fa-regular fa-thumbs-down"></i>
-                                <div>23</div>
-                                <i class = "fa-regular fa-thumbs-up"></i>
+                        <div class = "review-body">
+                            <div class = "review-body-header">AU</div>
+                            <div>
+                                Nakakalungkot dahil hindi ko nahanap ang inaasahan ko sa org na ito. Kulang sa organisasyon at madalas hindi malinaw ang mga plano. Hindi ko naramdaman ang suporta mula sa mga miyembro, kaya nahirapan akong mag-adjust. Sana maging mas maayos ang pamamahala nila sa mga susunod na events.
+                            </div>
+                            <div class = "image">
+                                <img src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlSiZlvkpMq6fhG1T6Y3_MFfY3ENrcmlCqLA&s"/>
                             </div>
                         </div>
                     </div>
                 </div>
+                <div class = "review-footer">
+                    <div class = "helpfulness-container">
+                        <div class = "helpfulness-item">Mark as Helpful</div>
+                        <div class = "helpfulness-item">Mark as Unhelpful</div>
+                    </div>
+                    <div class = "likes-container">
+                        <div class = "likes-container-2">
+                            <div>103</div>
+                            <i class = "fa-regular fa-thumbs-down"></i>
+                        </div>
+                        <div class = "likes-container-2">
+                            <div>10</div>
+                            <i class = "fa-regular fa-thumbs-up"></i>
+                        </div>
+                    </div>
+                </div>
             </div>
+
+            <div class = "review">
+                <div class = "review-proper-container">
+                    <div class = "review-container">
+                        <div class = "review-header">
+                            <i class="fa-solid fa-user"></i>
+                            <div class = "post-info">
+                                <div class = "user-info-container">
+                                    <div class = "user-name">Jane Doe</div>
+                                    <div class = "time">2 days ago</div>
+                                </div>
+                            </div>
+                            <div class = "rating-container">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                        </div>
+                        <div class = "review-body">
+                            <div class = "review-body-header">GDSC</div>
+                            <div>
+                                Medyo okay naman ang org na ito, pero may mga bagay pa na pwedeng mapabuti. Maganda ang mga activities at may mga pagkakataon na nakakatuwa, pero minsan ay nagiging magulo ang mga plano at hindi sapat ang komunikasyon. May mga miyembro na friendly at welcoming, pero may mga pagkakataon na parang hindi lahat ay nagkakasundo. Kung magiging mas maayos ang organisasyon at coordination, mas magiging maganda pa sana ang karanasan ko. Pero overall, okay lang.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class = "review-footer">
+                    <div class = "helpfulness-container">
+                        <div class = "helpfulness-item">Mark as Helpful</div>
+                        <div class = "helpfulness-item">Mark as Unhelpful</div>
+                    </div>
+                    <div class = "likes-container">
+                        <div class = "likes-container-2">
+                            <div>103</div>
+                            <i class = "fa-regular fa-thumbs-down"></i>
+                        </div>
+                        <div class = "likes-container-2">
+                            <div>10</div>
+                            <i class = "fa-regular fa-thumbs-up"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
-    <div>
-        <div class = "sort-section">
+
+    <div class = "sort-section">
+        <div class = "sort-by-rating-section">
             <div class = "header-text">Search by Rating</div>
             <div class = "sort-by-rating-container">
                 <div class = "sort-stars-container">
@@ -674,52 +785,74 @@
                     <i class="fa-solid fa-star"></i>
                 </div>
             </div>
+        </div>
+
+        <div class = "sort-by-college-section">
             <div class = "header-text">Search By College</div>
             <div class = "sort-by-school-container">
-                <div class = "sort-school-container">
-                    <div class = "college-icon">
-                        <i class="fa-solid fa-computer"></i>
+
+                <div class = "college-container">
+                    <div class = "college-content-container">
+                        <div class = "college-icon">
+                            <i class="fa-solid fa-computer"></i>
+                        </div>
+                        <div class = "college-text">CCS</div>
                     </div>
-                    <div class = "star-number">CCS</div>
                 </div>
-                <div class = "sort-school-container">
-                    <div class = "college-icon">
-                        <i class="fa-solid fa-brain"></i>
+
+                <div class = "college-container">
+                    <div class = "college-content-container">
+                        <div class = "college-icon">
+                            <i class="fa-solid fa-brain"></i>
+                        </div>
+                        <div class = "college-text">CLA</div>
                     </div>
-                    <div class = "star-number">CLA</div>
                 </div>
-                <div class = "sort-school-container">
-                    <div class = "college-icon">
-                        <i class="fa-solid fa-suitcase"></i>
+
+                <div class = "college-container">
+                    <div class = "college-content-container">
+                        <div class = "college-icon">
+                            <i class="fa-solid fa-suitcase"></i>
+                        </div>
+                        <div class = "college-text">COB</div>
                     </div>
-                    <div class = "star-number">COB</div>
                 </div>
-                <div class = "sort-school-container">
-                    <div class = "college-icon">
-                        <i class="fa-solid fa-book"></i>
+
+                <div class = "college-container">
+                    <div class = "college-content-container">
+                        <div class = "college-icon">
+                            <i class="fa-solid fa-book"></i>
+                        </div>
+                        <div class = "college-text">COE</div>
                     </div>
-                    <div class = "star-number">COE</div>
                 </div>
-                <div class = "sort-school-container">
-                    <div class = "college-icon">
-                        <i class="fa-solid fa-gear"></i>
+
+                <div class = "college-container">
+                    <div class = "college-content-container">
+                        <div class = "college-icon">
+                            <i class="fa-solid fa-gear"></i>
+                        </div>
+                        <div class = "college-text">GCOE</div>
                     </div>
-                    <div class = "star-number">GCOE</div>
                 </div>
-                <div class = "sort-school-container">
-                    <div class = "college-icon">
-                        <i class="fa-regular fa-comment"></i>
+
+                <div class = "college-container">
+                    <div class = "college-content-container">
+                        <div class = "college-icon">
+                            <i class="fa-solid fa-comment"></i>
+                        </div>
+                        <div class = "college-text">Other</div>
                     </div>
-                    <div class = "star-number">Other</div>
                 </div>
             </div>
         </div>
+    </div>
 
         <div class = "footer">
             <div class = "footer-text">
                 <div class = "footer-text">MCO1</div>
                 <div class = "footer-text">CCAPDEV (S15)</div>
-                <div class = "footer-text">Del | Rosario | Ong | Punsalan | Tria</div>
+                <div class = "footer-text">Del Rosario | Ong | Punsalan | Tria</div>
             </div>
         </div>
 
