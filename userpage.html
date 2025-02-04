@@ -3,81 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Orgs To Pick</title>
+    <title>DLSU Orgs To Pick - Home</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">  
     <link href="https://fonts.googleapis.com/css2?family=Koulen&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">    
+    <link href="https://fonts.googleapis.com/css2?family=Konkhmer+Sleokchher&family=Koulen&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Konkhmer+Sleokchher&family=Koulen&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/3b737d3964.js" crossorigin="anonymous"></script>
 
     <style>
         body {
-            font-family: 'Rubik', sans-serif;
-            margin: 0px;
+			font-family: 'Rubik', sans-serif;
+            margin: 0;
+            padding-top: 20px;
             background-color: #D9D9D9;
-            overflow-x: hidden;
-        }
+            max-width: 100%;
+		}
 
+        /*
+        * {
+            outline: 1px solid #000; 
+        } */
+       
         /* HEADER */
         .header {
             font-weight: bolder;
 			width: 100%;
-            height: 50px;
+            height: 80px;
 			background-color: #7BA167;
             display: flex;
             flex-direction: row;
             justify-content: center;
             align-items: center;
+            top: 0;
             padding: 10px;
             position: fixed;
-            top: 0;
             z-index: 10;
+            box-sizing: border-box;
 		}
         .header-content-container {
-            width: 100%;
             display: flex;
             flex-direction: row;
             justify-content: space-between;
             align-items: center;
-            margin: 50px
+            margin: 0 auto;
+            padding: 0 20px;
+            flex-grow: 1;
+            max-width: 100%;
         }
         .logo-container { 
-            color: #3B6724;
+            color: #D9D9D9;
             font-size: x-large;
             display: flex;
             flex-direction: row;
-            justify-content: space-evenly;
+            justify-content: left;
             align-items: center;
         }
-        .fa-star {
+        .fa-people-group {
             font-size: 40px;
-            margin: 10px;
+            padding: 10px;
         }
         .options-container {
             display: flex;
             flex-direction: row;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
         }
         .options-item {
-            color: #D9D9D9;
+            color: #3B6724;
             display: flex;
             flex-direction: row;
             justify-content: space-between;
             align-items: center;
+            padding: 10px;
             margin: 10px;
         }
         .profile-container {
             display: flex;
             flex-direction: row;
-            justify-content: space-between;
+            justify-content: right;
             align-items: center;
-            color: #3B6724;
         }
-        .profile-pic {
-            height: 50px;
-            width: 50px;
-            border-radius: 50%;
+        .sign-up {
+            width: 100px;
+            height: 35px;
+            background-color: #3B6724;
+            color: #D9D9D9;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            margin: 10px;
+        }
+        .log-in {
+            width: 100px;
+            height: 35px;
+            background-color: #3B6724;
+            color: #D9D9D9;
+            border-radius: 10px;
             display: flex;
             flex-direction: row;
             justify-content: center;
@@ -98,15 +125,16 @@
         }
         .hook-container {
             display: flex;
-            flex-direction: row;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
+            text-align: center;
         }
         .title {
             font-family: 'Koulen', sans-serif;
-            font-size: 60px;
+            font-size: 80px;
             font-weight: lighter;
-            color: #7BA167;
+            color: #3B6724;
             display: flex;
             align-items: center;
             flex-direction: column;
@@ -114,28 +142,31 @@
         }   
         .search-container {
             position: relative;
-            width: 500px;
+            width: 50%;
             height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         .search {
-            font-weight: bold;
+            font-family: 'Konkhmer Sleokchher', sans-serif;
             padding: 10px;
             border-radius: 25px;
             width: 100%;
-            padding-left: 40px;
+            height: 70%;
             background: #FFFFFF;
             border-color: #FFFFFF;
             border-style: unset;
-            box-shadow: 15px 15px 10px #AB9D99;
+            box-shadow: 15px 15px 20px #AB9D99;
+            justify-content: center;
         }
         .search-icon {
             position: absolute;
-            margin-top: -3px;
-            left: 10px;
+            right: 10px;
             top: 50%;
             transform: translateY(-50%);
             color: #7BA167;
-            font-size: 18px;
+            font-size: 25px;
         }
 
         /*CONTENT*/
@@ -249,7 +280,7 @@
         }
         .review-top {
             display: flex;
-            flex-direction: row;
+            flex-direction: row;   
             align-items: start;
             margin-top: 20px;
             margin-left: 20px;
@@ -277,33 +308,59 @@
             align-items: center;
         }
 
-        /* FOOTER */
-        .footer {
+       /* FOOTER */
+       .footer {
             width: 100%;
-            min-height: 30vh;
-            background-color: #3B6724;
-            display: flex;
+			background-color: #3B6724;
+			display: flex;
             flex-direction: column;
-            padding: 50px;
+            color: #FFFFFF;
         }
+        .footer-text {
+            padding: 10px;
+        }
+
+        /* LINK COLORS */
+        a {
+            color: initial; 
+            text-decoration: none;
+        }
+        a:visited {
+            color: initial; 
+        }
+        a:hover {
+            color: initial;
+        }
+        a:active {
+            color: initial;
+        }
+        
     </style>
 </head>
 
 <body>
-    <div class="header">
-        <div class="header-content-container">
-            <div class="logo-container">
-                <i class="fa-solid fa-star"></i>
-                DLSU Orgs To Pick
+    <div class = "header">
+        <div class = "header-content-container">
+            <a href="homepage.html">
+                <div class = "logo-container">
+                    <i class="fa-solid fa-people-group"></i>
+                    DLSU Orgs To Pick
+                </div>
+            </a>
+            <div class = "options-container">
+                <a href = "reviewpage.html">
+                    <div class = "options-item"></i>Write a Review</div>
+                </a>
+                <div class = "options-item">View All Orgs</div>
+                <div class = "options-item">Search Reviews</div>
             </div>
-            <div class="options-container">
-                <div class="options-item">Write a Review</div>
-                <div class="options-item">View All Orgs</div>
-                <div class="options-item">Search Reviews</div>
-            </div>
-            <div class="profile-container">
-                <u>John D.</u>
-                <img class="profile-pic" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png">
+            <div class = "profile-container">
+                <a href="signup.html">
+                    <div class = "sign-up">Sign Up</div>
+                </a>
+                <a href="login.html">
+                    <div class = "log-in">Log In</div>
+                </a>         
             </div>
         </div>
     </div>
@@ -312,8 +369,8 @@
         <div class="user-box">
             <div class="user-container">
                 <img class="user-pic" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png">
-                <h5 class="user-name">John Doe</h5>
-                <div class="user-desc">Desc ni John Doe</div> 
+                <h5 class="user-name">Jane Doe</h5>
+                <div class="user-desc">CCS ID 123</div>
             </div> 
         </div>
 
@@ -332,11 +389,11 @@
                 <div class="review-top">
                     <img class="review-pic" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png">
                     <div class="review-nametime">
-                        <b style="font-size: 20px;">John D.</b>
+                        <b style="font-size: 20px;">Jane D.</b>
                         <div style="color: #5d5d5d; font-size: 15px;">5 hours ago</div>
                     </div>
                 </div>
-                <h1 style="font-size: 20px; padding-left: 5px;"><u>LSCS</u></h1>
+                <h1 style="font-size: 20px; padding-left: 5px;"><u>CATCH2024</u></h1>
                 <div style="padding-left: 15px;">
                     <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
                     <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
@@ -345,7 +402,7 @@
                     <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
                 </div>
                 <div style="padding: 20px; margin: 10px;">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet aliquet dui, id efficitur mauris. Quisque sollicitudin quis magna quis pulvinar. Donec sed suscipit mi, sed auctor orci. Nunc ut pellentesque nisi, eu feugiat sem. Mauris ut lobortis nunc, nec luctus turpis. Duis gravida facilisis ligula nec auctor. 
+                    Isa sa pinakamahusay na organizations sa school! Laging well-organized ang activities, at ramdam mo talaga ang effort nilang gawing makabuluhan at enjoyable ang bawat event. Sana mas dumami pa ang ganitong klaseng org sa campus <33
                 </div>
                 <div class="review-bottom">
                     <div>Mark as Helpful | Mark as Unhelpful </div>
@@ -355,11 +412,125 @@
                     </div>
                 </div>
             </div>
+
+            <div class="review-box">
+                <div class="review-top">
+                    <img class="review-pic" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png">
+                    <div class="review-nametime">
+                        <b style="font-size: 20px;">Jane D.</b>
+                        <div style="color: #5d5d5d; font-size: 15px;">5 hours ago</div>
+                    </div>
+                </div>
+                <h1 style="font-size: 20px; padding-left: 5px;"><u>DLSU PUSA</u></h1>
+                <div style="padding-left: 15px;">
+                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                </div>
+                <div style="padding: 20px; margin: 10px;">
+                    Love na love ko ang org na ito. Ang galing nila sa pag-alaga sa mga pusa natin sa campus! Ipagpatuloy nyo lang ang ginagawa nyo!
+                </div>
+                <div class="review-bottom">
+                    <div>Mark as Helpful | Mark as Unhelpful </div>
+                    <div class="thumbs-container">
+                        21 <i class="fa-solid fa-thumbs-up"></i>    
+                        3 <i class="fa-solid fa-thumbs-down"></i> 
+                    </div>
+                </div>
+            </div>
+
+            <div class="review-box">
+                <div class="review-top">
+                    <img class="review-pic" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png">
+                    <div class="review-nametime">
+                        <b style="font-size: 20px;">Jane D.</b>
+                        <div style="color: #5d5d5d; font-size: 15px;">5 hours ago</div>
+                    </div>
+                </div>
+                <h1 style="font-size: 20px; padding-left: 5px;"><u>LSCS</u></h1>
+                <div style="padding-left: 15px;">
+                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                </div>
+                <div style="padding: 20px; margin: 10px;">
+                    Maganda ang mga proyekto at events ng org na ito, pero may ilang bagay pang maaaring pagbutihin. Mas magiging engaging pa siguro kung mas interactive ang mga activities at mas maraming opportunities para sa mga bagong miyembro.
+                </div>
+                <div class="review-bottom">
+                    <div>Mark as Helpful | Mark as Unhelpful </div>
+                    <div class="thumbs-container">
+                        21 <i class="fa-solid fa-thumbs-up"></i>    
+                        3 <i class="fa-solid fa-thumbs-down"></i> 
+                    </div>
+                </div>
+            </div>
+
+            <div class="review-box">
+                <div class="review-top">
+                    <img class="review-pic" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png">
+                    <div class="review-nametime">
+                        <b style="font-size: 20px;">Jane D.</b>
+                        <div style="color: #5d5d5d; font-size: 15px;">5 hours ago</div>
+                    </div>
+                </div>
+                <h1 style="font-size: 20px; padding-left: 5px;"><u>NKK</u></h1>
+                <div style="padding-left: 15px;">
+                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                </div>
+                <div style="padding: 20px; margin: 10px;">
+                    Napakagandang org na may maraming magagandang proyekto. Konting improvement lang sa communication at organization, at siguradong mas magiging excellent pa kayo!
+                </div>
+                <div class="review-bottom">
+                    <div>Mark as Helpful | Mark as Unhelpful </div>
+                    <div class="thumbs-container">
+                        17 <i class="fa-solid fa-thumbs-up"></i>    
+                        0 <i class="fa-solid fa-thumbs-down"></i> 
+                    </div>
+                </div>
+            </div>
+
+            <div class="review-box">
+                <div class="review-top">
+                    <img class="review-pic" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png">
+                    <div class="review-nametime">
+                        <b style="font-size: 20px;">Jane D.</b>
+                        <div style="color: #5d5d5d; font-size: 15px;">5 hours ago</div>
+                    </div>
+                </div>
+                <h1 style="font-size: 20px; padding-left: 5px;"><u>GDSC</u></h1>
+                <div style="padding-left: 15px;">
+                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                </div>
+                <div style="padding: 20px; margin: 10px;">
+                    Medyo okay naman ang org na ito, pero may mga bagay pa na pwedeng mapabuti. Maganda ang mga activities at may mga pagkakataon na nakakatuwa, pero minsan ay nagiging magulo ang mga plano at hindi sapat ang komunikasyon. May mga miyembro na friendly at welcoming, pero may mga pagkakataon na parang hindi lahat ay nagkakasundo. Kung magiging mas maayos ang organisasyon at coordination, mas magiging maganda pa sana ang karanasan ko. Pero overall, okay lang.
+                </div>
+                <div class="review-bottom">
+                    <div>Mark as Helpful | Mark as Unhelpful </div>
+                    <div class="thumbs-container">
+                        9 <i class="fa-solid fa-thumbs-up"></i>    
+                        2 <i class="fa-solid fa-thumbs-down"></i> 
+                    </div>
+                </div>
+            </div>
+
+            
         </div>
     </div>
     
-    <div class="footer">
-        <div class="header-text">MCO1</div>
+    <div class = "footer">
+        <div class = "footer-text">
+            <div class = "footer-text">MCO1</div>
+            <div class = "footer-text">CCAPDEV (S15)</div>
+            <div class = "footer-text">Del Rosario | Ong | Punsalan | Tria</div>
+        </div>
     </div>
 </body>
 </html>
