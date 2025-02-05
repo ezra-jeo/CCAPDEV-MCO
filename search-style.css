@@ -240,7 +240,8 @@ a:active {
     border-radius: 100px;
     justify-self: center;
     align-items: center;
-    box-shadow: 5px 5px 15px rgba(0,0,0,0.25)
+    background-color: white;
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.25);
 }
 .org-info {
     display: flex;
