@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Orgs</title>
+        <title>DLSU Orgs To Pick - Org Profile</title>
 
         <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">  
         <link href="https://fonts.googleapis.com/css2?family=Koulen&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">    
@@ -49,6 +49,10 @@
                 padding: 0 20px;
                 flex-grow: 1;
                 max-width: 100%;
+            }
+            .user-name-profile {
+                color:#3B6724;
+                padding: 10px;
             }
             .logo-container { 
                 color: #D9D9D9;
@@ -99,12 +103,12 @@
 
             /* ORG HEADER */
             .org-profile {
-                width: 90%;
+                width: 95%;
                 padding: 20px;
                 margin: auto;
                 margin-top: 90px;
                 border-radius: 10px;
-                box-shadow: 10px 10px 10px rgba(171, 157, 153, 1);
+                box-shadow: 15px 15px 20px rgba(171, 157, 153, 1);
                 background: white;
                 text-align: center;
                 position: relative;
@@ -144,7 +148,7 @@
             }
             .filters {
                 display: flex;
-                margin-top: 20px;
+                margin-top: 50px;
                 margin-bottom: 20px;
                 width: 100%;
                 gap: 10px;
@@ -179,7 +183,7 @@
                 display: none;
                 position: absolute;
                 background: white;
-                box-shadow: 10px 10px 10px rgba(171, 157, 153, 1);
+                box-shadow: 15px 15px 20px rgba(171, 157, 153, 1);
                 border-radius: 5px;
                 padding: 5px;
             }
@@ -203,17 +207,18 @@
                 display: block;
             }
             #searchBar {
-                font-family: 'Rubik', sans-serif;
-                width: 100%;
+                font-family: Konkhmer Sleokchher;
+                width: 130%;
+                text-indent: 10px;
                 padding: 5px;
                 border: none;
                 border-color: #3B6724;
                 border-radius: 40px;
-                box-shadow: 10px 10px 10px rgba(171, 157, 153, 1);
+                box-shadow: 15px 15px 20px rgba(171, 157, 153, 1);
             }
             .search-icon {
                 position: absolute;
-                right: 10px;
+                right: -40px;
                 top: 50%;
                 transform: translateY(-50%);
                 color: #3B6724;
@@ -226,9 +231,11 @@
                 max-width: 100%;
                 display: flex;
                 flex-direction: column;
-                padding: 50px;
             }
             .recent-reviews-container {
+                padding-right: 50px;
+                padding-left: 50px;
+                padding-bottom: 50px;
                 display: grid;
                 grid-template-columns: repeat(3, 1fr);
                 justify-items: center;
@@ -243,7 +250,7 @@
                 width: 100%;
                 background: #FFFFFF;
                 border-radius: 10px; 
-                box-shadow: 15px 15px 20px #728569;
+                box-shadow: 15px 15px 20px #AB9D99;
                 display: flex;
                 flex-direction: column;
                 justify-content: space-between;
@@ -382,6 +389,40 @@
                 padding: 10px;
             }
 
+            /* PAGE NAV */
+            .page-nav {
+                margin-bottom: 30px;
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+            }
+            #page-numbers {
+                font-size: 18px;
+                color: #9F9F9F;
+                font-weight: bold;
+                letter-spacing: 5px;
+            }
+            #cur-page, #cur-page-num {
+                font-size: 18px;
+                color: #363636;
+                font-weight: bold;
+            }
+            #cur-page {
+                margin-left: 400px;
+            }
+            #cur-page-num {
+                margin-left: 300px;
+                flex: 1;
+            }
+
+            .org-profile-pic {
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
+            }
+
             /* LINK COLORS */
             a {
                 color: initial; 
@@ -421,12 +462,12 @@
                 </div>
                 <div class = "profile-container">
                     <div class = "user-name-profile">
-                        <a href = "userpage.html">
-                            Student
+                        <a href = "orgpage.html">
+                            LSCS
                         </a>
                     </div>
-                    <a href = "userpage.html">
-                        <i class="fa-solid fa-user"></i>
+                    <a href = "orgpage.html">
+                        <img class="org-profile-pic" src="https://images.ctfassets.net/61mmmjz7t2hb/LYaxJ195ZBD5yOEKXOQOR/c09ea48259f53fdf6cb9b4d0992f61eb/Untitled__4_.png">
                     </a>         
                 </div>
             </div>
@@ -434,17 +475,15 @@
 
         <!-- BODY -->
         <div class="org-profile">
-            <img class="org-pic" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="org-pic">
+            <img class="org-profile-pic" src="https://images.ctfassets.net/61mmmjz7t2hb/LYaxJ195ZBD5yOEKXOQOR/c09ea48259f53fdf6cb9b4d0992f61eb/Untitled__4_.png">
             <h2>La Salle Computer Society (LSCS)</h2>
             <p>
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
                 (69 reviews)
             </p>
-            <p>Description | Description | Description</p>
+            <p>The premier organization for computer science and technology enthusiasts at DLSU. LSCS provides workshops, coding competitions, and networking opportunities for students interested in software development, cybersecurity, and emerging tech.</p>
             <span class="edit-icon"><button>
                 <a href="editorg.html">
                     ✎</a>
@@ -475,10 +514,7 @@
                 <i class="fa-solid fa-magnifying-glass search-icon"></i>
             </div>
         </div>
-
-        <div class = "recent-reviews-section">
             <div class = "recent-reviews-container">
-    
                 <div class = "review">
                     <div class = "review-proper-container">
                         <div class = "review-container">
@@ -536,11 +572,12 @@
                                 <i class="fa-solid fa-user"></i>
                                 <div class = "post-info">
                                     <div class = "user-info-container">
-                                        <div class = "user-name">Emman Punsalan</div>
-                                        <div class = "time">7 hours ago</div>
+                                        <div class = "user-name">Gerald Punsalan</div>
+                                        <div class = "time">9 hours ago</div>
                                     </div>
                                 </div>
                                 <div class = "rating-container">
+                                    <i class="fa-solid fa-star"></i>
                                     <i class="fa-solid fa-star"></i>
                                     <i class="fa-solid fa-star"></i>
                                 </div>
@@ -548,8 +585,7 @@
                             <div class = "review-body">
                                 <div class = "review-body-header">LSCS</div>
                                 <div>
-                                    While I appreciate the effort and hard work the organization puts into its activities, I feel there are a few areas that could be improved. Sometimes, the events can feel a bit disorganized, which makes it challenging to fully enjoy the experience. It would also be great if there were more opportunities for quieter members to participate in leadership roles or events, as it sometimes feels like only a small group is involved in the decision-making process.
-                                    Te kind and supportive, and there’s definitely a sense of community, so I still think it’s a good group to be a part of. I just hope that with a bit more planning and inclusivity, the organization can become even better in the future.
+                                    Joining LSCS has been one of the best decisions I’ve made in school! The supportive community, engaging activities, and opportunities for growth make it a fantastic place to develop leadership and skills. Highly recommend it to anyone looking to grow and have fun!
                                 </div>
                             </div>
                         </div>
@@ -561,11 +597,11 @@
                         </div>
                         <div class = "likes-container">
                             <div class = "likes-container-2">
-                                <div>103</div>
+                                <div>13</div>
                                 <i class = "fa-regular fa-thumbs-down"></i>
                             </div>
                             <div class = "likes-container-2">
-                                <div>10</div>
+                                <div>102</div>
                                 <i class = "fa-regular fa-thumbs-up"></i>
                             </div>
                         </div>
@@ -579,53 +615,52 @@
                                 <i class="fa-solid fa-user"></i>
                                 <div class = "post-info">
                                     <div class = "user-info-container">
-                                        <div class = "user-name">Ezra D.R.</div>
-                                        <div class = "time">10 hours ago</div>
-                                    </div>
-                                </div>
-                                <div class = "rating-container">
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                </div>
-                            </div>
-                            <div class = "review-body">
-                                <div class = "review-body-header">LSCS</div>
-                                <div>
-                                    Maganda naman ang aking naging karanasan sa org na ito. Lahat ng mga miyembro ay magiliw at supportive, kaya madali akong nakisama. Madalas kaming may mga activities na hindi lang nakaka-enjoy, kundi nakakatulong din sa personal na pag-unlad. Mahusay din ang mga leadership workshops at mga proyekto na ginagawa namin, kaya nakakakita kami ng maraming pagkakataon para matuto.
-                                    Ang tanging suggestion ko lang ay sana mas mapagtuunan pa ng pansin ang pagpaplano ng mga events, minsan kasi parang kulang sa coordination kaya nauurong ang ilan sa mga gawain. Pero overall, ayos na ayos pa rin at marami akong natutunan sa org na ito. Highly recommended pa rin para sa mga gustong mag-join!
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class = "review-footer">
-                        <div class = "helpfulness-container">
-                            <div class = "helpfulness-item">Mark as Helpful</div>
-                            <div class = "helpfulness-item">Mark as Unhelpful</div>
-                        </div>
-                        <div class = "likes-container">
-                            <div class = "likes-container-2">
-                                <div>5</div>
-                                <i class = "fa-regular fa-thumbs-down"></i>
-                            </div>
-                            <div class = "likes-container-2">
-                                <div>545</div>
-                                <i class = "fa-regular fa-thumbs-up"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-    
-                <div class = "review">
-                    <div class = "review-proper-container">
-                        <div class = "review-container">
-                            <div class = "review-header">
-                                <i class="fa-solid fa-user"></i>
-                                <div class = "post-info">
-                                    <div class = "user-info-container">
-                                        <div class = "user-name">Kyle</div>
+                                        <div class = "user-name">Jeo</div>
                                         <div class = "time">11 hours ago</div>
+                                    </div>
+                                </div>
+                                <div class = "rating-container">
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                </div>
+                            </div>
+                            <div class = "review-body">
+                                <div class = "review-body-header">LSCS</div>
+                                <div>
+                                    While LSCS has great potential, I felt that some events were not as organized as they could be. Communication within the team could also be improved to make things run more smoothly.
+                                    Being part of LSCS was a mixed experience. While there are passionate members, there were moments when leadership decisions felt unclear, making it hard to stay motivated. A bit more structure would definitely help.
+                                    LSCS has a great mission, but sometimes it feels like only a few people are really doing the work while others take credit. More teamwork and accountability could make the org much better.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class = "review-footer">
+                        <div class = "helpfulness-container">
+                            <div class = "helpfulness-item">Mark as Helpful</div>
+                            <div class = "helpfulness-item">Mark as Unhelpful</div>
+                        </div>
+                        <div class = "likes-container">
+                            <div class = "likes-container-2">
+                                <div>500</div>
+                                <i class = "fa-regular fa-thumbs-down"></i>
+                            </div>
+                            <div class = "likes-container-2">
+                                <div>51</div>
+                                <i class = "fa-regular fa-thumbs-up"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class = "review">
+                    <div class = "review-proper-container">
+                        <div class = "review-container">
+                            <div class = "review-header">
+                                <i class="fa-solid fa-user"></i>
+                                <div class = "post-info">
+                                    <div class = "user-info-container">
+                                        <div class = "user-name">John Doe</div>
+                                        <div class = "time">16 hours ago</div>
                                     </div>
                                 </div>
                                 <div class = "rating-container">
@@ -669,7 +704,7 @@
                                 <i class="fa-solid fa-user"></i>
                                 <div class = "post-info">
                                     <div class = "user-info-container">
-                                        <div class = "user-name">Emman Punsalan</div>
+                                        <div class = "user-name">Anonymouse</div>
                                         <div class = "time">1 day ago</div>
                                     </div>
                                 </div>
@@ -680,7 +715,7 @@
                             <div class = "review-body">
                                 <div class = "review-body-header">LSCS</div>
                                 <div>
-                                    Nakakalungkot dahil hindi ko nahanap ang inaasahan ko sa org na ito. Kulang sa organisasyon at madalas hindi malinaw ang mga plano. Hindi ko naramdaman ang suporta mula sa mga miyembro, kaya nahirapan akong mag-adjust. Sana maging mas maayos ang pamamahala nila sa mga susunod na events.
+                                    There are definitely some great things about LSCS, but I wish the organization focused more on supporting its members instead of just meeting event quotas. More mentorship and appreciation for volunteers would go a long way.
                                 </div>
                             </div>
                         </div>
@@ -692,11 +727,11 @@
                         </div>
                         <div class = "likes-container">
                             <div class = "likes-container-2">
-                                <div>103</div>
+                                <div>1k</div>
                                 <i class = "fa-regular fa-thumbs-down"></i>
                             </div>
                             <div class = "likes-container-2">
-                                <div>10</div>
+                                <div>1</div>
                                 <i class = "fa-regular fa-thumbs-up"></i>
                             </div>
                         </div>
@@ -711,19 +746,19 @@
                                 <div class = "post-info">
                                     <div class = "user-info-container">
                                         <div class = "user-name">Jane Doe</div>
-                                        <div class = "time">2 days ago</div>
+                                        <div class = "time">4 days ago</div>
                                     </div>
                                 </div>
                                 <div class = "rating-container">
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
                                     <i class="fa-solid fa-star"></i>
                                 </div>
                             </div>
                             <div class = "review-body">
                                 <div class = "review-body-header">LSCS</div>
                                 <div>
-                                    Medyo okay naman ang org na ito, pero may mga bagay pa na pwedeng mapabuti. Maganda ang mga activities at may mga pagkakataon na nakakatuwa, pero minsan ay nagiging magulo ang mga plano at hindi sapat ang komunikasyon. May mga miyembro na friendly at welcoming, pero may mga pagkakataon na parang hindi lahat ay nagkakasundo. Kung magiging mas maayos ang organisasyon at coordination, mas magiging maganda pa sana ang karanasan ko. Pero overall, okay lang.
+                                    I joined LSCS with high expectations, hoping to be part of a supportive and dynamic organization that values teamwork and learning. While there were some great experiences, I also encountered several issues that made my time here frustrating.
+                                    One of the biggest concerns is the lack of clear communication and organization. Events often feel rushed, with last-minute announcements and unclear instructions, making it difficult for members to properly prepare. Leadership could improve by being more transparent about planning processes and expectations.
+                                    Another issue is the uneven distribution of work. It often feels like the same few people handle most of the responsibilities while others either take credit or are left out of decision-making. This can make it difficult for new members to feel involved, leading to frustration and disengagement. The organization could definitely benefit from a fairer delegation of tasks and better mentorship for newcomers.
                                 </div>
                             </div>
                         </div>
@@ -735,18 +770,22 @@
                         </div>
                         <div class = "likes-container">
                             <div class = "likes-container-2">
-                                <div>103</div>
+                                <div>12.8k</div>
                                 <i class = "fa-regular fa-thumbs-down"></i>
                             </div>
                             <div class = "likes-container-2">
-                                <div>10</div>
+                                <div>1</div>
                                 <i class = "fa-regular fa-thumbs-up"></i>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+
+            <div class="page-nav">
+                <span id="page-numbers"><span id="cur-page">1</span> 2 3 4 5 6 ></span>
+                <span id="cur-page-num">1 of 6 </span>
+            </div>
 
         <!-- FOOTER -->
         <div class = "footer">

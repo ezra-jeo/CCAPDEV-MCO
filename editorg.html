@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Edit Org Profile</title>
+        <title>DLSU Orgs To Pick - Edit Org Profile</title>
 
         <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">  
         <link href="https://fonts.googleapis.com/css2?family=Koulen&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">    
@@ -123,7 +123,7 @@
                 font-size: 40px;
                 color:#3B6724; 
             }
-            .profile i {
+            .profile img {
                 font-size: 70px;
                 color:#3B6724; 
                 padding-bottom: 10px;
@@ -171,10 +171,12 @@
             }
             .desc-box {
                 display: flex;
-                background-color: #7BA167;
+                background-color: #BBCAB2;
                 width: 100%;
                 min-height: 150px;
                 font-size: 16px;
+                border: none;
+                
             }
             .btn-container {
                 display: flex;
@@ -186,7 +188,8 @@
             }
             .change-btn {
                 font-family: 'Rubik', sans-serif;
-                width: 20%;
+                width: 40%;
+                background-color: white;
                 border-radius: 40px;
                 padding: 5px 10px;
                 margin-bottom: 20px;
@@ -222,12 +225,19 @@
                 width: 200px;
                 height: 40px;
                 border-radius: 15px;
+                background-color: white;
                 border: none;
                 font-family: 'Rubik', sans-serif;
                 font-size: 20px;
                 align-items: center;
                 justify-content: center;
                 cursor: pointer;
+            }
+
+            .org-profile-pic {
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
             }
 
             /* LINK COLORS */
@@ -270,12 +280,12 @@
                 </div>
                 <div class = "profile-container">
                     <div class = "user-name-profile">
-                        <a href = "userpage.html">
-                            Student
+                        <a href = "orgpage.html">
+                            LSCS
                         </a>
                     </div>
-                    <a href = "userpage.html">
-                        <i class="fa-solid fa-user"></i>
+                    <a href = "orgpage.html">
+                        <img class="org-profile-pic" src="https://images.ctfassets.net/61mmmjz7t2hb/LYaxJ195ZBD5yOEKXOQOR/c09ea48259f53fdf6cb9b4d0992f61eb/Untitled__4_.png">
                     </a>         
                 </div>
             </div>
@@ -288,12 +298,12 @@
                     <div class="edit-container">
                         <h5 style="font-size: 40px; margin: 0px; margin-top: 10px;">Edit Org Profile</h5>
                         <div class="profile">
-                            <i class="fa-solid fa-user"></i>
+                            <img class="org-profile-pic" src="https://images.ctfassets.net/61mmmjz7t2hb/LYaxJ195ZBD5yOEKXOQOR/c09ea48259f53fdf6cb9b4d0992f61eb/Untitled__4_.png">
                         </div>
                         <button class="change-btn">Change Logo</button>
                         <div class="desc-container">
                             <div style="font-size: 20px; margin-right: 10px;"><b>Description</b></div>
-                            <div class="desc-box-container"><textarea class="desc-box" placeholder="Write your description..."></textarea></textarea></div>
+                            <div class="desc-box-container"><textarea class="desc-box"></textarea></textarea></div>
                         </div> 
                         <div class="btn-container">
                             <button type="reset" class="discard-btn" type>Discard Changes</button>

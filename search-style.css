@@ -142,13 +142,12 @@ a:active {
 }
 .search-bar {
     font-family: Konkhmer Sleokchher;
-    font-size: 20px;
+    font-size: 15px;
+    text-indent: 15px;
     width: 700px;
     height: 50px;
     border-radius: 35px;
     border: none;
-    text-indent: 15px;
-    font-size: 25px;
 }
 .search-bar::placeholder {
     color: #AB9D99;
@@ -166,7 +165,7 @@ a:active {
     display: flex;
     flex-direction: column;
     background-color: #BBCAB2;
-    width: 285px;
+    width: 210px;
     height: 888.81px;
     border-top-right-radius: 25px;
     border-bottom-right-radius: 25px;
@@ -211,7 +210,7 @@ a:active {
 
 /* ORGANIZATION */
 .org-portion {
-    margin-left: 200px;
+    margin-left: 100px;
     flex: 1;
 }
 .org-labels {
@@ -281,6 +280,7 @@ a:active {
     align-items: left;
     padding: 20px;
     background-color: white;
+    box-shadow: 15px 15px 20px #AB9D99;
     width: 700px;
     height: auto;
     border-radius: 10px;
@@ -399,7 +399,7 @@ img {
     padding-left: 10px;
 }
 .review-portion {
-    margin-left: 200px;
+    margin-left: 100px;
     flex: 1;
 }
 .review-list {
@@ -434,10 +434,10 @@ img {
     font-weight: bold;
 }
 #cur-page {
-    margin-left: 515px;
+    margin-left: 340px;
 }
 #cur-page-num {
-    margin-left: 515px;   
+    margin-left: 490px;   
     flex: 1;
 }
 

@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Write a Review</title>
+        <title>DLSU Orgs To Pick - Write a Review</title>
 
         <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">  
         <link href="https://fonts.googleapis.com/css2?family=Koulen&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">    
@@ -124,8 +124,8 @@
                 background: white;
                 padding: 20px;
                 border-radius: 10px;
-                box-shadow: 10px 10px 10px rgba(171, 157, 153, 1);
-                width: 50%;
+                box-shadow: 15px 15px 20px rgba(171, 157, 153, 1);
+                width: 60%;
                 text-align: center;
                 margin: auto;
                 margin-top: 120px;
@@ -156,20 +156,22 @@
             }
             select {
                 font-family: 'Rubik', sans-serif;
-                width: 100%;
+                width: 80%;
                 font-size: 16px;
                 padding: 5px;
                 margin: 5px 0 5px 0;
                 border-radius: 5px;
-                background-color: #7BA167;
+                background-color: #BBCAB2;
             }
             textarea {
                 font-family: 'Rubik', sans-serif;
-                width: 100%;
+                width: 80%;
                 height: 150px;
                 margin: 5px 0 5px 0;
-                background-color: #7BA167;
+                background-color: #BBCAB2;
                 border-radius: 5px;
+                border: none;
+                outline: none;
             }
             .btn-container {
                 display: flex;
@@ -230,6 +232,12 @@
             a:active {
                 color: initial;
             }
+
+            .fa-star {
+                font-size: 30px;
+                padding-bottom: 10px;
+            }
+
         </style>
     </head>
     <body>
@@ -276,15 +284,15 @@
             <form id="reviewForm">
                 <label><b>Rating:</b></label>
                 <div class="rating">
-                    <span class="star" data-value="1">☆</span>
-                    <span class="star" data-value="2">☆</span>
-                    <span class="star" data-value="3">☆</span>
-                    <span class="star" data-value="4">☆</span>
-                    <span class="star" data-value="5">☆</span>
+                    <span class="star" data-value="1"><i class="fa-solid fa-star"></i></span>
+                    <span class="star" data-value="2"><i class="fa-solid fa-star"></i></span>
+                    <span class="star" data-value="3"><i class="fa-solid fa-star"></i></span>
+                    <span class="star" data-value="4"><i class="fa-solid fa-star"></i></span>
+                    <span class="star" data-value="5"><i class="fa-solid fa-star"></i></span>
                 </div>
                 <input type="hidden" id="rating" name="rating" required>
                 
-                <label for="organization"><b>Organization</b></label>
+                <label for="organization"><b>Organization</b></label><br/>
                 <select id="organization" required>
                     <option>Select an organization</option>
                     <option>La Salle Computer Society (LSCS)</option>
@@ -293,10 +301,10 @@
                     <option>DLSU Association for Computing Machinery Student Chapter (ACM)</option>
                     <option>DLSU Data Science Society (DSS)</option>
                 </select>
-                
-                <label for="description"><b>Description</b></label>
-                <textarea id="description" placeholder="Write your review..." required></textarea>
-                
+
+                <br/>
+                <label for="description"><b>Description</b></label><br/>
+                <textarea id="description" required></textarea><br/>
                 <label for="attachments" class="file-label">Add attachments</label>
                 <input type="file" id="attachments" accept="image/*,video/*" multiple>
                 

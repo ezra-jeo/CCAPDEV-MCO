@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DLSU Orgs To Pick - Home</title>
+    <title>DLSU Orgs To Pick - Edit Profile</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">  
     <link href="https://fonts.googleapis.com/css2?family=Koulen&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">    
@@ -247,6 +247,20 @@
             margin: 25px;
         }
 
+        .fa-user {
+            font-size: 40px;
+            color:#3B6724; 
+            padding-right: 10px;
+        }
+        .user-name-profile {
+            color:#3B6724;
+            padding: 10px;
+        }
+
+        h5 .fa-star {
+            font-size: 40px;
+        }
+
         /* LINK COLORS */
         a {
             color: initial; 
@@ -277,12 +291,22 @@
                 <a href = "reviewpage.html">
                     <div class = "options-item"></i>Write a Review</div>
                 </a>
-                <div class = "options-item">View All Orgs</div>
-                <div class = "options-item">Search Reviews</div>
+                <a href = "search-org.html">
+                    <div class = "options-item">View All Orgs</div>
+                </a>
+                <a href = "search-review.html">
+                    <div class = "options-item">Search Reviews</div>
+                </a>           
             </div>
-            <div class="profile-container">
-                <u style="color: #3B6724;">Jane D.</u>
-                <img style="width: 50px; height: 50px; border-radius: 50%; margin: 20px;" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png">
+            <div class = "profile-container">
+                <div class = "user-name-profile">
+                    <a href = "userpage.html">
+                        Jane Doe
+                    </a>
+                </div>
+                <a href = "userpage.html">
+                    <i class="fa-solid fa-user"></i>
+                </a>         
             </div>
         </div>
     </div>
@@ -291,7 +315,7 @@
         <div class="edit-box">
             <div class="edit-container">
                 <h5 style="font-size: 40px; margin: 0px; margin-top: 10px;">Edit Profile</h5>
-                <img class="user-pic" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png">
+                <i class="fa-solid fa-user" style="font-size: 80px; margin: 10px;"></i>
                 <h5 style="font-size: 20px; margin: 0px;"><u>Change Avatar</u></h5>
                 <div class="desc-container">
                     <div style="font-size: 20px; margin-right: 10px;"><b>Description</b></div>
