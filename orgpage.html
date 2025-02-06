@@ -19,11 +19,10 @@
                 max-width: 100%;
             }
     
-            /*
+            
             * {
                 outline: 1px solid #000; 
-            } */
-           
+            } 
             /* HEADER */
             .header {
                 font-weight: bolder;
@@ -146,8 +145,32 @@
                 color: gold;
                 font-size: 24px;
             }
+            .filter-review-container {
+                display: flex;
+                justify-content: center;
+                width: 70%;
+                gap: 20px;
+            }
+            .add-review-container{
+                width: 150px;
+                height: 35px;
+                background-color: #3B6724;
+                border-radius: 10px;
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                zoom: 120%;
+                margin-bottom: 10px;
+            }
+            .add-review-container a {
+                color: #D9D9D9;
+                font-family: 'Rubik';
+                font-weight: bold;
+            }
             .filters {
                 display: flex;
+                flex-direction: column;
                 margin-top: 50px;
                 margin-bottom: 20px;
                 width: 100%;
@@ -188,7 +211,6 @@
                 padding: 5px;
             }
             .filter-rating {
-                position: relative;
                 display: inline-block;
             }
             .filter-rating:hover .dropdown {
@@ -202,13 +224,12 @@
                 background: #7BA167;
             }
             .search-container {
-                position: relative;
-                width: 10%;
-                display: block;
+                width: 50%;
             }
             #searchBar {
+                position: relative;
                 font-family: Konkhmer Sleokchher;
-                width: 130%;
+                width: 100%;
                 text-indent: 10px;
                 padding: 5px;
                 border: none;
@@ -218,8 +239,7 @@
             }
             .search-icon {
                 position: absolute;
-                right: -40px;
-                top: 50%;
+                right: -100px;
                 transform: translateY(-50%);
                 color: #3B6724;
                 cursor: pointer;
@@ -253,7 +273,6 @@
                 box-shadow: 15px 15px 20px #AB9D99;
                 display: flex;
                 flex-direction: column;
-                justify-content: space-between;
             }
             .review-container {
                 font-size: 14px;
@@ -262,6 +281,7 @@
                 justify-content: space-between;
                 align-items: left;
                 padding: 20px;
+                height: auto;
             }
             .review-proper-container {
                 display: flex;
@@ -326,7 +346,12 @@
                 justify-content: space-between;
                 padding-left: 20px;
                 padding-right: 20px;
-                padding-bottom: 10px;
+                margin-bottom: 10px;
+            }
+            .review-footer-container {
+                justify-content: flex-start;
+                display: flex;
+                flex-direction: column;
             }
             .fa-user {
                 font-size: 40px;
@@ -376,7 +401,6 @@
                 padding: 0px;
                 padding-left: 10px;
             }
-
             /* FOOTER */
             .footer {
                 width: 100%;
@@ -388,7 +412,6 @@
             .footer-text {
                 padding: 10px;
             }
-
             /* PAGE NAV */
             .page-nav {
                 margin-bottom: 30px;
@@ -423,6 +446,14 @@
                 border-radius: 50%;
             }
 
+            .add-comment {
+                font-size: 10px;
+                color: #363636;
+                margin-bottom: 10px;
+                margin-right: 10px;             
+                text-indent: 5px;
+                text-align: right;
+            }
             /* LINK COLORS */
             a {
                 color: initial; 
@@ -492,26 +523,29 @@
         </div>
         
         <div class="filters">
-            <button class="filter-btn">
+            <div class="add-review-container">
                 <a href="reviewpage.html">
                     Write a Review
                 </a>
-            </button>
-            <button class="filter-btn" onclick="sortReviews()">Sort by Latest</button>
-            <div class="filter-rating">
-                <button class="filter-btn">Filter by Rating</button>
-                <div class="dropdown">
-                    <div onclick="filterReviews(1)">1 star</div>
-                    <div onclick="filterReviews(2)">2 stars</div>
-                    <div onclick="filterReviews(3)">3 stars</div>
-                    <div onclick="filterReviews(4)">4 stars</div>
-                    <div onclick="filterReviews(5)">5 stars</div>
-                </div>
             </div>
-
-            <div class="search-container">
-                <input type="text" Id="searchBar" placeholder="Search for a Review" onkeyup="searchReviews()">
-                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            <div class="filter-review-container">
+                <div class="search-container">
+                    <div class="search-bar-container">
+                        <input type="text" id="searchBar" placeholder="Search for a Review" onkeyup="searchReviews()">
+                        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    </div>
+                </div>
+                <div class="filter-rating">
+                    <button class="filter-btn" onclick="sortReviews()">Sort by Latest</button>
+                    <button class="filter-btn">Filter by Rating</button>
+                    <div class="dropdown">
+                        <div onclick="filterReviews(1)">1 star</div>
+                        <div onclick="filterReviews(2)">2 stars</div>
+                        <div onclick="filterReviews(3)">3 stars</div>
+                        <div onclick="filterReviews(4)">4 stars</div>
+                        <div onclick="filterReviews(5)">5 stars</div>
+                    </div>
+                </div>
             </div>
         </div>
             <div class = "recent-reviews-container">
@@ -547,20 +581,25 @@
                             </div>
                         </div>
                     </div>
-                    <div class = "review-footer">
-                        <div class = "helpfulness-container">
-                            <div class = "helpfulness-item">Mark as Helpful</div>
-                            <div class = "helpfulness-item">Mark as Unhelpful</div>
+                    <div class="review-footer-container">
+                        <div class = "review-footer">
+                            <div class = "helpfulness-container">
+                                <div class = "helpfulness-item">Mark as Helpful</div>
+                                <div class = "helpfulness-item">Mark as Unhelpful</div>
+                            </div>
+                            <div class = "likes-container">
+                                <div class = "likes-container-2">
+                                    <div>10</div>
+                                    <i class = "fa-regular fa-thumbs-down"></i>
+                                </div>
+                                <div class = "likes-container-2">
+                                    <div>151</div>
+                                    <i class = "fa-regular fa-thumbs-up"></i>
+                                </div>
+                            </div>
                         </div>
-                        <div class = "likes-container">
-                            <div class = "likes-container-2">
-                                <div>10</div>
-                                <i class = "fa-regular fa-thumbs-down"></i>
-                            </div>
-                            <div class = "likes-container-2">
-                                <div>151</div>
-                                <i class = "fa-regular fa-thumbs-up"></i>
-                            </div>
+                        <div class="add-comment">
+                            Reply to this review
                         </div>
                     </div>
                 </div>
@@ -606,6 +645,9 @@
                             </div>
                         </div>
                     </div>
+                    <div class="add-comment">
+                        Reply to this review
+                    </div>
                 </div>
     
                 <div class = "review">
@@ -649,6 +691,9 @@
                                 <i class = "fa-regular fa-thumbs-up"></i>
                             </div>
                         </div>
+                    </div>
+                    <div class="add-comment">
+                        Reply to this review
                     </div>
                 </div>
     
@@ -695,6 +740,9 @@
                             </div>
                         </div>
                     </div>
+                    <div class="add-comment">
+                        Reply to this review
+                    </div>
                 </div>
     
                 <div class = "review">
@@ -735,6 +783,9 @@
                                 <i class = "fa-regular fa-thumbs-up"></i>
                             </div>
                         </div>
+                    </div>
+                    <div class="add-comment">
+                        Reply to this review
                     </div>
                 </div>
     
@@ -779,6 +830,9 @@
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="add-comment">
+                    Reply to this review
                 </div>
             </div>
 
