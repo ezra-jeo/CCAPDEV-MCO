@@ -1,0 +1,308 @@
+/* TITLE AND SEARCH BAR SECTION */
+.hook-section {
+    font-weight: bolder;
+    width: 100%;
+    min-height: 100vh;
+    background-color: #D9D9D9;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.hook-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.title {
+    font-family: 'Koulen', sans-serif;
+    font-size: 80px;
+    font-weight: lighter;
+    color: #3B6724;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-around;
+}   
+.search-container {
+    position: relative;
+    width: 50%;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.search {
+    font-family: Konkhmer Sleokchher;
+    font-size: 15px;
+    text-indent: 15px;
+    padding: 10px;
+    border-radius: 25px;
+    width: 100%;
+    height: 70%;
+    background: #FFFFFF;
+    border-color: #FFFFFF;
+    border-style: unset;
+    box-shadow: 15px 15px 20px #AB9D99;
+    justify-content: center;
+}
+.search-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #7BA167;
+    font-size: 25px;
+}
+
+/* RECENT REVIEWS SECTION */
+.recent-reviews-section {
+    background-color: #BBCAB2;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
+}
+.header-text {
+    justify-content: left;
+    align-items: left;
+    font-size: x-large;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.recent-reviews-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    align-items: flex-start;
+    row-gap: 30px;
+    column-gap: 30px;
+}
+
+/* REVIEWS */
+.review {
+    height: auto;
+    width: 100%;
+    background: #FFFFFF;
+    border-radius: 10px; 
+    box-shadow: 15px 15px 20px #728569;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.review-container {
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: left;
+    padding: 20px;
+}
+.review-proper-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: left;
+}
+.review-header {
+    display: flex;
+    flex-direction: row;
+    align-items: left;
+    justify-content: left;
+}
+.post-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.user-info-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: left;
+    width: 100%;
+}
+.user-name {
+    font-weight: normal;
+    font-size: 14px;
+}
+.time {
+    font-weight: lighter;
+    font-size: 14px;
+}
+.rating-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: flex-start;
+    margin-left: auto;
+}
+.fa-star {
+    color: #F8C437;
+    font-size: 20px;
+}
+.review-body {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    font-size: 12px;
+}
+.review-body-header {
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+.review-footer {
+    color: #363636;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 10px;
+}
+.fa-user {
+    font-size: 40px;
+    color:#3B6724; 
+    padding-right: 10px;
+}
+img {
+    max-width: 100%;
+    height: auto;
+    background:#3B6724;
+    border-radius: 10px; 
+    margin-top: 10px;
+}
+.helpfulness-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+.helpfulness-item {
+    font-size: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    margin-right: 10px;
+}
+.likes-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.likes-container-2 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding-left: 10px;
+}
+.fa-thumbs-up {
+    font-size: 20px;
+    padding: 0px;
+    padding-left: 10px;
+}
+.fa-thumbs-down {
+    font-size: 20px;
+    padding: 0px;
+    padding-left: 10px;
+}
+
+/* SORT BY SECTION */
+.sort-section {
+    background-color: #D9D9D9;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
+}
+.sort-by-rating-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+.sort-by-college-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 40px;
+}
+.sort-by-rating-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+.sort-stars-container {
+    display: flex;
+    flex-direction: row;
+    height: 40px;
+    background: #FFFFFF;
+    border-radius: 75px; 
+    box-shadow: 15px 15px 20px #AB9D99;
+    align-items: center;
+    justify-content: flex-start;
+    padding-right: 10px;
+    margin-right: 20px;
+}
+.star-number {
+    color: #363636;
+    font-size: 20px;
+    margin: 10px
+}
+.sort-by-school-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+.college-container {
+    height: 100%;
+    background: #FFFFFF;
+    border-radius: 10px; 
+    box-shadow: 15px 15px 20px #AB9D99;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    color:#3B6724;
+    padding: 30px;
+}
+.college-content-container {
+    height: 60px;
+    width: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+.college-icon {
+    font-size: 50px;
+}
+.college-text {
+    color: #3B6724;
+    font-size: 20px;
+}
+
+/* FOOTER */
+.footer {
+    width: 100%;
+    background-color: #3B6724;
+    display: flex;
+    flex-direction: column;
+    color: #FFFFFF;
+}
+.footer-text {
+    padding: 10px;
+}

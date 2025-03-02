@@ -1,0 +1,11 @@
+/* FOOTER */
+.footer {
+    width: 100%;
+    background-color: #3B6724;
+    display: flex;
+    flex-direction: column;
+    color: #FFFFFF;
+}
+.footer-text {
+    padding: 10px;
+}
