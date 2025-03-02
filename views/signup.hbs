@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DLSU Orgs to Pick - Sign Up</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">  
+    <link href="https://fonts.googleapis.com/css2?family=Koulen&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">    
+    <link href="https://fonts.googleapis.com/css2?family=Konkhmer+Sleokchher&family=Koulen&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/3b737d3964.js" crossorigin="anonymous"></script>
+
+    <style>
+        body {
+			font-family: 'Rubik', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #D9D9D9;
+            max-width: 100%;
+		}
+
+        .fa-user {
+            font-size: 100px;
+            color:#3B6724; 
+            padding: 10px;
+            align-items: center;
+            justify-content: center;
+        }
+       
+        .signup-section {
+            font-weight: bolder;
+			width: 100%;
+            height: 100vh;
+			background-color: #D9D9D9;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .signup-container {
+            height: 85%;
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #FFFFFF;
+            border-radius: 10px; 
+            box-shadow: 15px 15px 20px #AB9D99;
+            padding: 10px;
+        }
+        .header-text {
+            justify-content: left;
+            align-items: left;
+            font-size: x-large;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .avatar-container {
+            height: 150px;
+            width: 75%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+        }
+        .input-field-container {
+            height: 20px;
+            width: 75%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+        }
+        .text-field-container {
+            height: 20px;
+            width: 75%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+        }
+        .remember-me-container {
+            height: 20px;
+            width: 75%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-end;
+            padding: 10px;
+        }
+        .remember-me-child {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-start;
+        }
+        .remember-me-text-container {
+            font-weight: lighter;
+            padding-left: 5px;
+            padding-right: 20px;
+        }
+        #username, #password {
+            width: 100%;
+            height: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            background-color: #BBCAB2;
+            border: none;
+            outline: none;
+        }
+        .submit-container {
+            height: 20px;
+            width: 75%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-end;
+            padding: 10px;
+            color: #3B6724;
+        }
+        .submit-button {
+            width: 100px;
+            height: 35px;
+            background-color: #3B6724;
+            color: #D9D9D9;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+        textarea{
+            width: 100%;
+            height: 75px;
+            background-color: #BBCAB2;
+            border: none;
+            outline: none;
+            padding: 10px;
+        }
+        .input-field-container-2 {
+            width: 75%;
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            justify-content: space-between;
+            padding: 10px;
+        }
+        .text-area-container {
+            width: 75%;
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            justify-content: space-between;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        .input-field-container-3 {
+            height: 40px;
+            width: 75%;
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            justify-content: space-between;
+        }
+        .account-type-group {
+            width: 75%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 10px;
+        }
+        #organization, #student {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            background-color: #BBCAB2;
+            border: none;
+            outline: none;
+            padding-right: 10px;
+        }
+
+        /* LINK COLORS */
+        a {
+            color: #3B6724; 
+            text-decoration: none;
+        }
+        a:visited {
+            color: #3B6724; 
+        }
+        a:hover {
+            color: #3B6724;
+        }
+        a:active {
+            color: #3B6724;
+        }
+
+    </style>
+
+</head>
+<body>
+    <div class = "signup-section">
+        <div class = "signup-container">
+            <div class = "header-text">Sign Up</div>
+            <div class = "avatar-container">
+                <i class = "fa-solid fa-user"></i>
+            <div>Change Avatar</div>
+            </div>
+            <div class = "input-field-container">
+                <div>Username</div>
+                <div class = "text-field-container">
+                    <input type= "text" id = "username" name = "username" required>
+                </div>
+            </div>
+
+            <div class = "input-field-container">
+                <div>Password</div>
+                <div class = "text-field-container">
+                    <input type= "text" id = "password" name = "password" required>
+                </div>
+            </div>
+
+            <div class = "input-field-container-2">
+                <div>Description</div>
+                <div class = "text-area-container">
+                    <textarea type= "description" id = "description" name = "description"></textarea>
+                </div>
+            </div>
+
+            <div class = "input-field-container">
+                <div>Account</div>
+                    <div class = "account-type-group">
+                        <input type = "radio" id = "student" name = "account_type" value = "student">
+                        <div class = "remember-me-text-container">Student</div>
+                        <input type = "radio" id = "organization" name = "account_type" value = "organization">
+                        <div class = "remember-me-text-container">Organization</div>
+                    </div>
+            </div>
+
+            <div class = "remember-me-container"> 
+                <div class = "submit-container">
+                    <a href="login.html">
+                        Already have an account?
+                    </a>
+                        <div class = "submit-button">Sign Up</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- logic for org and student -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.querySelector(".submit-button").addEventListener("click", function(event) {
+                event.preventDefault();
+                
+                const studentRadio = document.getElementById("student");
+                const organizationRadio = document.getElementById("organization");
+    
+                if(studentRadio.checked) {
+                    window.location.href = "homepage_user.html";
+                } else if(organizationRadio.checked) {
+                    window.location.href = "homepage_org.html";
+                } else {
+                    alert("Please select an account type (Student or Organization).");
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

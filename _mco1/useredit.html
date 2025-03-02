@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DLSU Orgs To Pick - Edit Profile</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">  
+    <link href="https://fonts.googleapis.com/css2?family=Koulen&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">    
+    <link href="https://fonts.googleapis.com/css2?family=Konkhmer+Sleokchher&family=Koulen&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Konkhmer+Sleokchher&family=Koulen&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/3b737d3964.js" crossorigin="anonymous"></script>
+
+    <style>
+        body {
+			font-family: 'Rubik', sans-serif;
+            margin: 0;
+            padding-top: 20px;
+            background-color: #D9D9D9;
+            max-width: 100%;
+		}
+
+        /*
+        * {
+            outline: 1px solid #000; 
+        } */
+       
+        /* HEADER */
+        .header {
+            font-weight: bolder;
+			width: 100%;
+            height: 80px;
+			background-color: #7BA167;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            top: 0;
+            padding: 10px;
+            position: fixed;
+            z-index: 10;
+            box-sizing: border-box;
+		}
+        .header-content-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            margin: 0 auto;
+            padding: 0 20px;
+            flex-grow: 1;
+            max-width: 100%;
+        }
+        .logo-container { 
+            color: #D9D9D9;
+            font-size: x-large;
+            display: flex;
+            flex-direction: row;
+            justify-content: left;
+            align-items: center;
+        }
+        .fa-people-group {
+            font-size: 40px;
+            padding: 10px;
+        }
+        .options-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .options-item {
+            color: #3B6724;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            margin: 10px;
+        }
+        .profile-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: right;
+            align-items: center;
+        }
+        .sign-up {
+            width: 100px;
+            height: 35px;
+            background-color: #3B6724;
+            color: #D9D9D9;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            margin: 10px;
+        }
+        .log-in {
+            width: 100px;
+            height: 35px;
+            background-color: #3B6724;
+            color: #D9D9D9;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            margin: 10px;
+        }
+
+        /* TITLE AND SEARCH BAR SECTION */
+        .hook-section {
+            font-weight: bolder;
+			width: 100%;
+            height: 100vh;
+			background-color: #D9D9D9;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .hook-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        .title {
+            font-family: 'Koulen', sans-serif;
+            font-size: 80px;
+            font-weight: lighter;
+            color: #3B6724;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: space-around;
+        }   
+        .search-container {
+            position: relative;
+            width: 50%;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .search {
+            font-family: 'Konkhmer Sleokchher', sans-serif;
+            padding: 10px;
+            border-radius: 25px;
+            width: 100%;
+            height: 70%;
+            background: #FFFFFF;
+            border-color: #FFFFFF;
+            border-style: unset;
+            box-shadow: 15px 15px 20px #AB9D99;
+            justify-content: center;
+        }
+        .search-icon {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #7BA167;
+            font-size: 25px;
+        }
+
+        /*EDIT PROFILE*/
+        .content {
+            display: flex;
+            flex-direction: row;
+            margin: 100px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .edit-box {
+            display: flex;
+            flex-direction: column;
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 15px 15px 10px #AB9D99;
+            height: 90%;
+            width: 60%;
+            align-items: center; 
+            padding: 20px;   
+        }
+        .edit-container {
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            width: 90%;
+            height: fit-content;
+        }
+        .desc-container {
+            display: flex;
+            flex-direction: row;
+            gap: 15px;
+            align-items: stretch;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .desc-box-container {
+            display: flex;
+            width: 75%;
+            min-height: 150px;
+            font-size: 16px;
+        }
+        .desc-box {
+            display: flex;
+            background-color: #7BA167;
+            width: 100%;
+            min-height: 150px;
+            font-size: 16px;
+        }
+        .changes-container {
+            display: flex;
+            flex-direction: row;
+            gap: 10px;   
+            margin-top: 20px;
+            align-items: center;
+            justify-content: right;
+        }
+        .changes-button {
+            display: flex;
+            width: 200px;
+            height: 40px;
+            background-color: #3B6724;
+            border-radius: 15px;
+            border: none;
+            font-family: 'Rubik', sans-serif;
+            color: white;
+            font-size: 20px;
+            align-items: center;
+            justify-content: center;
+        }
+        .user-pic {
+            max-height: 150px;
+            max-width: 150px;
+            height: auto;
+            width: 100%;
+            border-radius: 50%;
+            margin: 25px;
+        }
+
+        .fa-user {
+            font-size: 40px;
+            color:#3B6724; 
+            padding-right: 10px;
+        }
+        .user-name-profile {
+            color:#3B6724;
+            padding: 10px;
+        }
+
+        h5 .fa-star {
+            font-size: 40px;
+        }
+
+        /* LINK COLORS */
+        a {
+            color: initial; 
+            text-decoration: none;
+        }
+        a:visited {
+            color: initial; 
+        }
+        a:hover {
+            color: initial;
+        }
+        a:active {
+            color: initial;
+        }
+    </style>
+</head>
+
+<body>
+    <div class = "header">
+        <div class = "header-content-container">
+            <a href="homepage.html">
+                <div class = "logo-container">
+                    <i class="fa-solid fa-people-group"></i>
+                    DLSU Orgs To Pick
+                </div>
+            </a>
+            <div class = "options-container">
+                <a href = "reviewpage.html">
+                    <div class = "options-item"></i>Write a Review</div>
+                </a>
+                <a href = "search-org.html">
+                    <div class = "options-item">View All Orgs</div>
+                </a>
+                <a href = "search-review.html">
+                    <div class = "options-item">Search Reviews</div>
+                </a>           
+            </div>
+            <div class = "profile-container">
+                <div class = "user-name-profile">
+                    <a href = "userpage.html">
+                        Jane Doe
+                    </a>
+                </div>
+                <a href = "userpage.html">
+                    <i class="fa-solid fa-user"></i>
+                </a>         
+            </div>
+        </div>
+    </div>
+ 
+    <div class="content">
+        <div class="edit-box">
+            <div class="edit-container">
+                <h5 style="font-size: 40px; margin: 0px; margin-top: 10px;">Edit Profile</h5>
+                <i class="fa-solid fa-user" style="font-size: 80px; margin: 10px;"></i>
+                <h5 style="font-size: 20px; margin: 0px;"><u>Change Avatar</u></h5>
+                <div class="desc-container">
+                    <div style="font-size: 20px; margin-right: 10px;"><b>Description</b></div>
+                    <div class="desc-box-container"><textarea class="desc-box"></textarea></textarea></div>
+                </div> 
+                <div class="changes-container">
+                    <u style="font-size: 20px;">Discard Changes</u>
+                    <button class="changes-button">Make Changes</button>
+                </div>
+
+            </div> 
+        </div>
+    </div>
+</body>
+</html>
