@@ -30,6 +30,7 @@ const searchRevRoutes = require('./routes/searchreview');
 
 const revPageRoutes = require('./routes/reviewpage');
 const revEditRoutes = require('./routes/reviewedit');
+const editOrgRoutes = require('./routes/editorg');
 const orgPageRoutes = require('./routes/orgpage');
 
 // using routes
@@ -42,6 +43,7 @@ app.use('/searchreview', searchRevRoutes);
 
 app.use('/reviewpage', revPageRoutes);
 app.use('/reviewedit', revEditRoutes);
+app.use('/editorg', editOrgRoutes);
 app.use('/orgpage', orgPageRoutes);
 
 app.listen(3000, () => console.log('Server running on http://localhost:3000'));
