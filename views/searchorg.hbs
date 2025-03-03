@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            DLSU Orgs To Pick - Search for Organizations
+        </title>
+        <link rel="stylesheet" href="/css/search-style.css"/>
+    </head>
+    <body>
+        
+        {{> header}}
+        
+        <div class="content-page">
+            <div class="search-portion">
+                <input class="search-bar" type="text" placeholder="Look for an Organization"/>
+                <div id="search-icon-container">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+            </div>
+            <div class="content-elements">
+                <div class="filter-portion">
+                    <div class="filter-labels">
+                        <span class="section-header">Filters</span>
+                        <span class="clear-feature">Clear</span>
+                    </div>
+                    <div class="ratings">
+                        <span class="section-subheader">Ratings</span>
+                        <form class="ratings-list">
+                            <div class="ratings-input-field">
+                                <input type="checkbox" id="5-stars" name="5-stars" value="5-stars"/>
+                                <label for="5-stars">5 
+                                    <span class="stars">
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                    </span>
+                                </label>
+                            </div>
+                            <div class="ratings-input-field">
+                                <input type="checkbox" id="4-stars" name="4-stars" value="4-stars"/>
+                                <label for="4-stars">4 
+                                    <span class="stars">
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    </span>
+                                </label>
+                            </div>
+                            <div class="ratings-input-field">
+                                <input type="checkbox" id="3-stars" name="3-stars" value="3-stars"/>
+                                <label for="3-stars">3 
+                                    <span class="stars">
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    </span>
+                                </label>
+                            </div>
+                            <div class="ratings-input-field">
+                                <input type="checkbox" id="2-stars" name="2-stars" value="2-stars"/>
+                                <label for="2-stars">2
+                                    <span class="stars">
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    </span>
+                                </label>
+                            </div>
+                            <div class="ratings-input-field">
+                            <input type="checkbox" id="1-stars" name="1-stars" value="1-stars"/>
+                                <label for="1-stars">1
+                                    <span class="stars">
+                                    <i class="fa-solid fa-star"></i>
+                                    </span>
+                                </label>
+                            </div>
+                        </form>
+                    </div>
+                    <br/>
+                    <div class="home-college">
+                        <span class="section-subheader">Home College</span>
+                        <form class="college-list">
+                            <input type="radio" id="ccs" name="ccs" value="ccs"/>
+                            <label for="ccs">CCS </label><br/>
+                            <input type="radio" id="RVCOB" name="RVCOB" value="RVCOB"/>
+                            <label for="RVCOB">RVCOB </label><br/>
+                            <input type="radio" id="cos" name="cos" value="cos"/>
+                            <label for="cos">COS </label><br/>
+                            <input type="radio" id="cla" name="cla" value="cla"/>
+                            <label for="cla">CLA </label><br/>
+                            <input type="radio" id="gcoe" name="gcoe" value="gcoe"/>
+                            <label for="gcoe">GCOE </label><br/>
+                            <input type="radio" id="other" name="other" value="other"/>
+                            <label for="other">Other </label><br/>
+                        </form>
+                    </div>
+                </div>  
+                <div class="org-portion">
+                    <div class="org-labels">
+                        <span class="section-header">Organizations</span>
+                        <span class="sort-header">Sort by</span>
+                    </div>
+                    <div class="org-list">
+                        <div class="org-section">
+                            <img class="org-profile-pic" src="https://images.ctfassets.net/61mmmjz7t2hb/LYaxJ195ZBD5yOEKXOQOR/c09ea48259f53fdf6cb9b4d0992f61eb/Untitled__4_.png"/>
+                            <div class="org-info">
+                                <a href = "orgpage.html">
+                                    <div class="org-name">
+                                        LSCS
+                                    </div>
+                                </a>
+                                <div class="org-rating">
+                                    <span class="org-stars">
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <span class="rating-text">
+                                            5(69 reviews)
+                                        </span>
+                                    </span>
+                                </div>
+                                <div class="review-desc">
+                                    The premier organization for computer science and technology enthusiasts at DLSU. LSCS provides workshops, 
+                                    coding competitions, and networking opportunities for students interested in software development, cybersecurity, and emerging tech.
+                                </div>
+                                <div class="org-college">
+                                    CCS
+                                </div>
+                            </div>
+                        </div>
+                        <div class="org-section">
+                            <img class="org-profile-pic" src="https://images.ctfassets.net/61mmmjz7t2hb/4vnDrX0eGKubRAZj4ZgSj8/b180847b648beabe61acdfa7fb03f145/276299850_855070862555233_5428224711235080768_n.jpg"/>
+                            <div class="org-info">
+                                <div class="org-name">
+                                    GDSC
+                                </div>
+                                <div class="org-rating">
+                                    <span class="org-stars">
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <span class="rating-text">
+                                            3(1k reviews)
+                                        </span>
+                                    </span>
+                                </div>
+                                <div class="review-desc">
+                                    A student community supported by Google Developers aims to equip students with technical skills 
+                                    through hands-on projects, coding workshops, and mentorship programs especially mobile and web development, cloud computing, and AI.
+                                </div>
+                                <div class="org-college">
+                                    CCS
+                                </div>
+                            </div>
+                        </div>
+                        <div class="org-section">
+                            <img class="org-profile-pic" src="https://images.ctfassets.net/61mmmjz7t2hb/5sij3G8Ja0xudFKYzB0G5X/9a2e6225b0041f30a4491074f0269b7e/309635725_119364917577616_2019543968390839357_n.jpg"/>
+
+                            <div class="org-info">
+                                <div class="org-name">
+                                    ACM
+                                </div>
+                                <div class="org-rating">
+                                    <span class="org-stars">
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <span class="rating-text">
+                                            3(1k reviews)
+                                        </span>
+                                    </span>
+                                </div>
+                                <div class="review-desc">
+                                    A globally recognized computing organization that fosters knowledge sharing and 
+                                    innovation in computer science. The DLSU ACM chapter organizes hackathons, research discussions, and career-building events for tech-driven students.
+                                </div>
+                                <div class="org-college">
+                                    Other
+                                </div>
+                            </div>
+                        </div>
+                        <div class="org-section">
+                            <img class="org-profile-pic" src="https://images.ctfassets.net/61mmmjz7t2hb/5aDb2bL9ky65AGlwFgSoxY/17abffcebead21cf116afc40de28805e/308096425_483440627162009_3432782778026634183_n.jpg"/>
+
+                            <div class="org-info">
+                                <div class="org-name">
+                                    SPRINT
+                                </div>
+                                <div class="org-rating">
+                                    <span class="org-stars">
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <span class="rating-text">
+                                            3(1k reviews)
+                                        </span>
+                                    </span>
+                                </div>
+                                <div class="review-desc">
+                                    A student organization dedicated to software engineering and development. 
+                                    SPRINT offers training sessions, development boot camps, and hands-on projects to help students gain real-world programming experience.
+                                </div>
+                                <div class="org-college">
+                                    Other
+                                </div>
+                            </div>
+                        </div>
+                        <div class="org-section">
+                            <img class="org-profile-pic" src="https://images.ctfassets.net/61mmmjz7t2hb/1Ywaa1YxRhq7jddpLB2Kkw/91e6f289d6af5febe5f10294e7251127/vertical_logo_ver__black_.png"/>
+
+                            <div class="org-info">
+                                <div class="org-name">
+                                    DSS
+                                </div>
+                                <div class="org-rating">
+                                    <span class="org-stars">
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <span class="rating-text">
+                                            3(1k reviews)
+                                        </span>
+                                    </span>
+                                </div>
+                                <div class="review-desc">
+                                    The go-to organization for data science and analytics enthusiasts at DLSU. 
+                                    DSS provides training in machine learning, big data, and statistical analysis, preparing students for careers in data-driven industries.
+                                </div>
+                                <div class="org-college">
+                                    Other
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="page-nav">
+                <span id="page-numbers"><span id="cur-page">1</span> 2 3 4 5 6 ></span>
+                <span id="cur-page-num">1 of 6 </span>
+            </div>
+        </div>
+        <div class = "footer">
+            <div class = "footer-text">
+                <div class = "footer-text">MCO1</div>
+                <div class = "footer-text">CCAPDEV S15</div>
+                <div class = "footer-text">Del Rosario | Ong | Punsalan | Tria</div>
+            </div>
+        </div>
+    </body>
+</html>

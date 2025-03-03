@@ -21,12 +21,19 @@ app.use(express.json());
 
 // initializing routes
 const homepageRoutes = require('./routes/homepage');
+
 const signupRoutes = require('./routes/signup');
 const loginRoutes = require('./routes/login');
+
+const searchOrgRoutes = require('./routes/searchorg');
+const searchRevRoutes = require('./routes/searchreview');
 
 // using routes
 app.use('/', homepageRoutes);
 app.use('/signup', signupRoutes);
 app.use('/login', loginRoutes);
+
+app.use('/searchorg', searchOrgRoutes);
+app.use('/searchreview', searchRevRoutes);
 
 app.listen(3000, () => console.log('Server running on http://localhost:3000'));
