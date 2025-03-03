@@ -1,3 +1,6 @@
+.indicator {
+    font-size: 14px;
+}
 .login-section {
     font-weight: bolder;
     width: 100%;
@@ -70,6 +73,7 @@
 }
 .remember-me-text-container {
     padding: 10px;
+    font-size: 12px;
     font-weight: lighter;
 }
 #username, #password {
@@ -86,6 +90,7 @@
 .submit-container {
     height: 20px;
     width: 80%;
+    font-size: 14px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -100,6 +105,7 @@
 .submit-button {
     width: 100px;
     height: 35px;
+    font-size: 14px;
     background-color: #3B6724;
     color: #D9D9D9;
     border-radius: 10px;

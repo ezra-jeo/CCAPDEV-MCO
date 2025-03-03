@@ -6,6 +6,10 @@
     flex-direction: column;
     color: #FFFFFF;
 }
-.footer-text {
+.footer-container {
     padding: 10px;
+}
+.footer-text {
+    font-size: small;
+    height: auto;
 }

@@ -8,21 +8,15 @@ body {
     position: relative;
 }
 
-* {
+/* {
     outline: 1px solid #000; 
-}
+} */
 
-/* LINK */
+/* LINKS */
 a {
-    color: #3B6724; 
+    color: inherit; 
     text-decoration: none;
 }
-a:visited {
-    color: #3B6724; 
-}
-a:hover {
-    color: #3B6724;
-}
-a:active {
-    color: #3B6724;
+a:visited, a:hover, a:active {
+    color: inherit;
 }

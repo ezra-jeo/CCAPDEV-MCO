@@ -1,6 +1,7 @@
-const express = require('express');
-const exphbs = require('express-handlebars');
-const path = require('path');
+const express = require("express");
+const mongoose = require("mongoose");
+const exphbs = require("express-handlebars");
+const path = require("path");
 
 const app = express();
 
