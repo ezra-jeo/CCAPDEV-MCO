@@ -28,6 +28,10 @@ const loginRoutes = require('./routes/login');
 const searchOrgRoutes = require('./routes/searchorg');
 const searchRevRoutes = require('./routes/searchreview');
 
+const revPageRoutes = require('./routes/reviewpage');
+const revEditRoutes = require('./routes/reviewedit');
+const orgPageRoutes = require('./routes/orgpage');
+
 // using routes
 app.use('/', homepageRoutes);
 app.use('/signup', signupRoutes);
@@ -35,5 +39,9 @@ app.use('/login', loginRoutes);
 
 app.use('/searchorg', searchOrgRoutes);
 app.use('/searchreview', searchRevRoutes);
+
+app.use('/reviewpage', revPageRoutes);
+app.use('/reviewedit', revEditRoutes);
+app.use('/orgpage', orgPageRoutes);
 
 app.listen(3000, () => console.log('Server running on http://localhost:3000'));
