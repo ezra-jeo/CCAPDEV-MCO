@@ -1,0 +1,208 @@
+/*USER PAGE*/
+.user-page {
+    display: flex;
+    flex-direction: row;
+    margin-top: 100px;
+    margin-bottom: 40px;
+    margin-left: 100px;
+    margin-right: 100px;
+    align-items: flex-start;
+    justify-content: space-evenly;
+}
+
+/*CONTENT-USER*/
+.user-box {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 15px 15px 10px #AB9D99;
+    height: 550px;
+    width: 40%;
+    align-items: center;    
+}
+.user-container {
+    margin-top: 70px;
+    text-align: center;
+}
+.user-pic {
+    height: auto;
+    width: auto;
+    max-height: 200px;
+    max-width: 100%;
+    border-radius: 50%;
+}
+.user-name {
+    font-size: 30px;
+    margin-bottom: 5px;
+}
+.user-desc {
+    font-size: 15px;
+}
+.edit-button {
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    top: 25px;
+    right: 20px;
+    padding: 10px;
+    border-radius: 50%;
+}
+.profile-container img{
+    height: 100px;
+    width: 100px;
+}
+
+/*CONTENT-REVIEWS*/
+.review-container {
+    display: flex;
+    flex-direction: column;
+    margin-left: 100px;
+    width: 60%;
+}
+.review-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 20px;
+}
+.review-button {
+    height: 50px;
+    width: 200px;
+    border-radius: 25px;
+    border-style: solid;
+    border-width: 5px;
+    border-color: #3B6724;
+    background-color: #ab9d9900;
+    font-size: 20px;
+    font-family: 'Rubik', sans-serif;
+    color: #3B6724;
+}
+.review-search-container {
+    position: relative;
+    width: 250px;
+    height: 50px;
+}
+.review-search {
+    padding: 10px;
+    border-radius: 25px;
+    width: 80%;
+    padding-right: 40px;
+    padding-left: 10px;
+    background: #FFFFFF;
+    border-color: #FFFFFF;
+    border-style: solid;
+    box-shadow: 15px 15px 10px #AB9D99;
+    font-size: 20px;
+}   
+.review-search::placeholder {
+    font-family: Konkhmer Sleokchher;
+    font-size: 15px;
+}
+.review-search-container .fa-magnifying-glass {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-60%);
+    color: #7BA167;
+}
+.filter-dropdown {
+    position: relative;
+    display: inline-block;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 160px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    z-index: 10;
+    overflow: hidden;
+}
+.dropdown-content a {
+    color: black;
+    padding: 10px 15px;
+    display: block;
+    text-decoration: none;
+}
+
+/* FOOTER */
+.footer {
+    width: 100%;
+    background-color: #3B6724;
+    display: flex;
+    flex-direction: column;
+    color: #FFFFFF;
+}
+.footer-text {
+    padding: 10px;
+}
+
+.fa-people-group {
+    font-size: 40px;
+    padding: 10px;
+}
+
+.fa-user {
+    font-size: 40px;
+    color:#3B6724; 
+    padding-right: 10px;
+}
+.user-name-profile {
+    color:#3B6724;
+    padding: 10px;
+}
+
+.custom-size-1 {
+    font-size: 200px;
+}
+.custom-size-2 {
+    font-size: 80px;
+    margin-left: 15px;
+    margin-top: 15px;
+}
+
+/* LINK COLORS */
+a {
+    color: initial; 
+    text-decoration: none;
+}
+a:visited {
+    color: initial; 
+}
+a:hover {
+    color: initial;
+}
+a:active {
+    color: initial;
+}
+
+/* PAGE NAV */
+.page-nav {
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+#page-numbers {
+    font-size: 18px;
+    color: #9F9F9F;
+    font-weight: bold;
+    letter-spacing: 5px;
+}
+#cur-page, #cur-page-num {
+    font-size: 18px;
+    color: #363636;
+    font-weight: bold;
+}
+#cur-page {
+    margin-left: 400px;
+}
+#cur-page-num {
+    margin-left: 300px;
+    flex: 1;
+}
