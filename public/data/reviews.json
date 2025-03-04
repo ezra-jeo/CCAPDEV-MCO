@@ -1,0 +1,80 @@
+[
+    {
+        "userName": "Chynna Mae",
+        "profileImage": "/images/icon.png",
+        "timePosted": "2025-03-04T10:30:00.000Z",
+        "ratings": 5,
+        "orgPage": "",
+        "orgName": "LSCS",
+        "reviewText": "Super saya ko sa pagiging bahagi ng org na ito! Mabait at supportive ang mga members, laging may mga fun activities, at may mga pagkakataon pa para matuto at mag-grow. Masaya akong nakakasama ko ang mga tao dito, hindi lang dahil sa mga events, kundi dahil sa mga friendship na nabubuo. Highly recommended para sa mga gusto ng organized at welcoming na group!",
+        "reviewImage": "https://dlsu-lscs.org/assets/static/GA_Pic.42db587.aea95c14ba5b1047884eb534e923fe12.jpg",
+        "responseMessage": "Thank you for your feedback!",
+        "likes": 12,
+        "dislikes": 1
+    },
+    {
+        "userName": "Emman P.",
+        "profileImage": "/images/icon.png",
+        "timePosted": "2025-02-28T15:45:00.000Z",
+        "ratings": 4,
+        "orgPage": "",
+        "orgName": "LSCS",
+        "reviewText": "Maganda ang vision ng org na ito at maayos ang leadership. Marami kang matututunan, lalo na sa pag-organize ng events. Minsan lang medyo nakakapagod ang workload, pero worth it naman!",
+        "reviewImage": "",
+        "responseMessage": "Salamat sa feedback mo! We’ll continue improving.",
+        "likes": 8,
+        "dislikes": 0
+    },
+    {
+        "userName": "Jeo",
+        "profileImage": "/images/icon.png",
+        "timePosted": "2025-03-01T08:20:00.000Z",
+        "ratings": 3,
+        "orgPage": "",
+        "orgName": "GDGOC",
+        "reviewText": "Okay naman ang org, pero minsan kulang sa organization ang events. Maganda sana kung mas structured ang planning para mas madaming makasali nang maayos.",
+        "reviewImage": "",
+        "responseMessage": "",
+        "likes": 5,
+        "dislikes": 3
+    },
+    {
+        "userName": "Kyle",
+        "profileImage": "/images/icon.png",
+        "timePosted": "2025-02-26T19:10:00.000Z",
+        "ratings": 5,
+        "orgPage": "",
+        "orgName": "DSS",
+        "reviewText": "Best org ever para sa mga gamers! Laging may exciting tournaments at may solid na community na handang tumulong. Sobrang saya ng experience ko dito!",
+        "reviewImage": "",
+        "responseMessage": "",
+        "likes": 20,
+        "dislikes": 1
+    },
+    {
+        "userName": "Mae Tria",
+        "profileImage": "/images/icon.png",
+        "timePosted": "2025-03-02T13:55:00.000Z",
+        "ratings": 2,
+        "orgPage": "",
+        "orgName": "AU",
+        "reviewText": "Maganda ang goal ng org, pero parang kulang sa engagement. Sana mas maraming activities na talagang hands-on para maramdaman ang impact.",
+        "reviewImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlSiZlvkpMq6fhG1T6Y3_MFfY3ENrcmlCqLA&s",
+        "responseMessage": "Thank you for your feedback! We’ll work on making our projects more interactive.",
+        "likes": 3,
+        "dislikes": 4
+    },
+    {
+        "userName": "Mae Tria",
+        "profileImage": "/images/icon.png",
+        "timePosted": "2025-03-02T13:55:00.000Z",
+        "ratings": 2,
+        "orgPage": "",
+        "orgName": "GDGOC",
+        "reviewText": "Maganda ang goal ng org, pero parang kulang sa engagement. Sana mas maraming activities na talagang hands-on para maramdaman ang impact.",
+        "reviewImage": "",
+        "responseMessage": "Thank you for your feedback! We’ll work on making our projects more interactive.",
+        "likes": 3,
+        "dislikes": 4
+    }
+]
