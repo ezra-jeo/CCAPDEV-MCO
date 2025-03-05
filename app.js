@@ -49,12 +49,26 @@ app.use('/orgpage', orgPageRoutes);
 // Search org
 app.get("/search/org=:org", async (req, res) => {
         try {
-            const org = await orgs.find({orgName: req.params.org}).toArray();
-            res.send({result: org});
+            if (req.params.org) {
+                const org = await orgs.find({orgName: (req.params.org).toUpperCase()}).toArray();
+                res.send({orgList: org});
+            }
+            else {
+                res.status(400).send("No search entered");
+            }
         }
         catch (err) {
             res.status(500).send("Error in Searching for " + req.params.org);
         }
 
     });
+
+// Displaying stars
+// exphbs.handlebars.registerHelper("stars", function (rating) {
+//     let stars = "";
+//     for (let i = 0; i < rating; i++) {
+//         stars += `<i class="fa-solid fa-star"></i>`;  // Unicode star symbol
+//     }
+//     return new Handlebars.SafeString(stars);
+// });
 app.listen(3000, () => console.log('Server running on http://localhost:3000'));

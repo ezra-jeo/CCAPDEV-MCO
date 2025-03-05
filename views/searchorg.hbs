@@ -6,7 +6,8 @@
         </title>
         <link rel="stylesheet" href="/css/search-style.css"/>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-        <script type="text/javascript" src="/js/searchorg_controller.js"></script>
+        <script type="text/javascript" src="/js/searchorg_function.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
     </head>
     <body>
         <div class="content-page">
@@ -100,7 +101,7 @@
                         <span class="section-header">Organizations</span>
                         <span class="sort-header">Sort by</span>
                     </div>
-                    <div class="org-list">
+                    <div id="org-list">
                         {{#each orgList}}
                         <div class="org-section">
                             <img class="org-profile-pic" src="{{this.orgPic}}"/>
@@ -112,11 +113,9 @@
                                 </a>
                                 <div class="org-rating">
                                     <span class="org-stars">
+                                        {{#each this.orgRating}}
                                         <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
+                                        {{/each}}
                                         <span class="rating-text">
                                             {{this.orgRating}}({{this.orgReviews}} reviews)
                                         </span>

@@ -108,16 +108,17 @@
 
 /* ORGANIZATION */
 .org-portion {
-    margin-left: auto;
     flex: 1;
     padding-bottom: 5%;
+    display: flex;
+    flex-direction: column;
 }
 .org-labels {
     display: flex;
     gap: 5%;    
     align-items: center;
 }
-.org-list {
+#org-list {
     display: grid;
     grid-template-columns: 1fr;
     row-gap: 2%;
