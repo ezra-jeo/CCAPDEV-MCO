@@ -36,9 +36,8 @@
     align-items: center;
     position: relative;
     align-self: center;
-
-}
-.search-bar {
+}    
+#search-bar {
     font-family: Konkhmer Sleokchher;
     font-size: 15px;
     text-indent: 15px;
@@ -50,12 +49,16 @@
 .search-bar::placeholder {
     color: #AB9D99;
 }
-#search-icon-container {
+#search-button {
+    all: unset;
+}
+#search-button {
     position: absolute;
     width: 40px;
     color: #7BA167;
     font-size: 30px;
     right: 0;
+    cursor: pointer;
 }
 
 /* FILTER */
@@ -64,7 +67,7 @@
     flex-direction: column;
     background-color: #BBCAB2;
     width: 65%;
-    height: 70%;
+    height: 100vh;
     border-top-right-radius: 25px;
     border-bottom-right-radius: 25px;
     padding-left: 5%;
@@ -106,7 +109,6 @@
 /* ORGANIZATION */
 .org-portion {
     margin-left: auto;
-    align-self: center;
     flex: 1;
     padding-bottom: 5%;
 }
