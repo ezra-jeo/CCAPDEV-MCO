@@ -7,8 +7,6 @@
         <link rel="stylesheet" href="/css/userpage.css">
 
         <script>
-
-            
             document.addEventListener("DOMContentLoaded", function() {
                 const filterBtn = document.querySelector(".filter-btn");
                 const dropdownContent = document.querySelector(".dropdown-content");
@@ -55,7 +53,6 @@
                         urlParams.set("rating", filters.rating);
                     }
 
-        // Create new URL with updated parameters
                     const newUrl = window.location.pathname + "?" + urlParams.toString();
                     window.history.pushState({}, "", newUrl); // Update URL without refreshing
 
@@ -139,12 +136,9 @@
                 </div>
 
                 <div id="review-container" class="review-container">
-                    {{!{{#each reviews}}
+                    {{#each reviews}}
                         {{> review}}
-                        {{> review}}
-                        {{> review}}
-                        {{> review}}
-                    {{!{{/each}}
+                    {{/each}}
                 </div>    
             </div>
         </div>
