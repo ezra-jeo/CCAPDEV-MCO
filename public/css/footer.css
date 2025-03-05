@@ -10,3 +10,8 @@
 .footer-container {
     padding: 10px;
 }
+.footer-text {
+    font-size: small;
+    padding: 10px;
+    height: auto;
+}
