@@ -16,7 +16,7 @@
                     </div>
                 </div>
                 <div class="rating-container">
-                    {{#times ratings}}
+                    {{#times reviewRating}}
                         <i class="fa-solid fa-star"></i>
                     {{/times}}
                 </div>
@@ -50,9 +50,9 @@
             <div class="helpfulness-item">Mark as Unhelpful</div>
         </div>
         <div class="likes-container">
-            <div class="likes-container-content">{{dislikes}}</div>
+            <div class="likes-container-content">{{dislikesCount}}</div>
             <div class="likes-container-content"><i class="fa-regular fa-thumbs-down"></i></div>
-            <div class="likes-container-content">{{likes}}</div>  
+            <div class="likes-container-content">{{likesCount}}</div>  
             <div class="likes-container-content"><i class="fa-regular fa-thumbs-up"></i></div>
         </div>
     </div>
