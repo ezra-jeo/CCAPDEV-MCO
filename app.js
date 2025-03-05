@@ -56,29 +56,38 @@ app.use('/editorg', editOrgRoutes);
 app.use('/orgpage', orgPageRoutes);
 
 // Search org
-app.get("/search/org=:org", async (req, res) => {
-        try {
-            if (req.params.org) {
-                const org = await orgs.find({orgName: (req.params.org).toUpperCase()}).toArray();
-                console.log(org);
-                res.send({orgList: org});
-            }
-            else {
-                res.status(400).send("No search entered");
-            }
+app.get("/search/org=:org?", async (req, res) => {
+    try {
+        if (req.params.org) {
+            const org = await orgs.find({orgName: (req.params.org).toUpperCase()}).toArray();
+            console.log(org);
+            res.send({orgList: org});
         }
-        catch (err) {
-            res.status(500).send("Error in Searching for " + req.params.org);
+        else if (req.params.org == "_"){
+            const def = await orgs.find().toArray();
+            console.log(def);
+            res.send({orgList: def});
+            
+            //res.status(400).send("No search entered");
         }
+    }
+    catch (err) {
+        res.status(500).send("Error in Searching for " + req.params.org);
+    }
 
-    });
+});
 
-// Filter
+//Filter
 app.get("/filter/query=:query?", async (req, res) => {
         try {
             if (req.params.query) {
-                if (req.params.query >= "1" && req.params.query <= "5") {
-                    const org = await orgs.find({orgRating: Number(req.params.query)}).toArray();
+                let filterStars = [];
+                for (let filter of req.params.query) {
+                    if (filter >= "1" && filter <= "5") 
+                        filterStars.push(Number(filter));
+                }
+                if (filterStars.length > 0) {
+                    const org = await orgs.find({orgRating: {$in: filterStars}}).toArray();
                     res.send({orgList: org});
                 }
             }
@@ -91,4 +100,6 @@ app.get("/filter/query=:query?", async (req, res) => {
         }
 
     });
+
+
 app.listen(3000, () => console.log('Server running on http://localhost:3000'));
