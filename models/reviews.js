@@ -7,8 +7,6 @@ const reviewSchema = new mongoose.Schema({
     ratings: { type: Number, required: true, min: 1, max: 5 },
     orgPage: { type: String, required: true },
     orgName: { type: String, required: true },
-    shortReview: { type: String, required: true },
-    fullReview: { type: String, required: true },
     reviewImage: { type: String },
     responseOrg: { type: String },
     responseMessage: { type: String },

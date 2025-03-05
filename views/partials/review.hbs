@@ -1,57 +1,57 @@
-<div class = "review">
-    <div class = "review-proper-container">
-        <div class = "review-container">
-            <div class = "review-header">
-                <div class = "profile-container">
-                    <img src = "/images/icon.png">
+<link rel="stylesheet" href="/css/review.css">
+
+<div class="review">
+    <div class="review-proper-container">
+        <div class="review-container">
+            <div class="review-header">
+                <div class="profile-container">
+                    <img src="{{profileImage}}" alt="Profile">
                 </div>
-                <div class = "post-info">
-                    <div class = "user-info-container">
-                        <div class = "user-name">Chynna Mae</div>
-                        <div class = "time">5 hours ago</div>
+                <div class="post-info">
+                    <div class="user-info-container">
+                        <div class="user-name">{{userName}}</div>
+                        <div class="time">{{timeAgo timePosted}}</div>
                     </div>
                 </div>
-                <div class = "rating-container">
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
+                <div class="rating-container">
+                    {{#times ratings}}
+                        <i class="fa-solid fa-star"></i>
+                    {{/times}}
                 </div>
             </div>
-            <div class = "review-body">
-                <a href = "orgpage.html">
-                    <div class = "review-body-header">LSCS</div>
+            <div class="review-body">
+                <a href="{{orgPage}}">
+                    <div class="review-body-header">{{orgName}}</div>
                 </a>    
-                <div class = "review-text">
-                    Super saya ko sa pagiging bahagi ng org na ito! Mabait at supportive ang mga members, laging may mga fun activities, at may mga pagkakataon pa para matuto at mag-grow. 
-                    Masaya akong nakakasama ko ang mga tao dito, hindi lang dahil sa mga events, kundi dahil sa mga friendship na nabubuo. 
-                    Highly recommended para sa mga gusto ng organized at welcoming na group!
-                </div>
-                <div class = "image">
-                    <img src = "https://dlsu-lscs.org/assets/static/GA_Pic.42db587.aea95c14ba5b1047884eb534e923fe12.jpg"/>
-                </div>
-                <div class = "response-container">
-                    <div class = "response-header">LSCS replied</div>
-                    <div class = "response-message">
-                        <div>
-                            oms, pre.
-                        </div>
+                <div class="review-text">{{reviewText}}</div>
+
+                {{#if reviewImage}}
+                    <div class="image">
+                        <img src="{{reviewImage}}" alt="Review Image">
+                    </div>
+                {{/if}}
+
+                {{#if responseMessage}}
+                <div class="response-container">
+                    <div class="response-header">{{orgName}} replied</div>
+                    <div class="response-message">
+                        <div>{{responseMessage}}</div>
                     </div>
                 </div>
+                {{/if}} 
             </div>
         </div>
     </div>
-    <div class = "review-footer">
-        <div class = "helpfulness-container">
-            <div class = "helpfulness-item">Mark as Helpful</div>
-            <div class = "helpfulness-item">Mark as Unhelpful</div>
+    <div class="review-footer">
+        <div class="helpfulness-container">
+            <div class="helpfulness-item">Mark as Helpful</div>
+            <div class="helpfulness-item">Mark as Unhelpful</div>
         </div>
-        <div class = "likes-container">
-            <div class = "likes-container-content">10</div>
-            <div class = "likes-container-content"><i class = "fa-regular fa-thumbs-down"></i></div>
-            <div class = "likes-container-content">151</div>  
-            <div class = "likes-container-content"><i class = "fa-regular fa-thumbs-up"></i></div>
+        <div class="likes-container">
+            <div class="likes-container-content">{{dislikes}}</div>
+            <div class="likes-container-content"><i class="fa-regular fa-thumbs-down"></i></div>
+            <div class="likes-container-content">{{likes}}</div>  
+            <div class="likes-container-content"><i class="fa-regular fa-thumbs-up"></i></div>
         </div>
     </div>
 </div>
