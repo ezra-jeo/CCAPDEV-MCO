@@ -4,6 +4,11 @@ const exphbs = require("express-handlebars");
 const path = require("path");
 const fs = require("fs");
 
+require("./db"); // connecting to mongoDB
+const Review = require("./models/reviews");
+const Organization = require("./models/orgs");
+const User = require("./models/users");
+
 const app = express();
 
 // handlebars
@@ -12,14 +17,14 @@ const hbs = exphbs.create({
     defaultLayout: "main",
     layoutsDir: path.join(__dirname, "views", "layouts"),
     helpers: {
-        times: function(n, block) { 
+        times: function(n, block) { // for showing stars in reviews
             let result = "";
             for (let i = 0; i < n; i++) {
                 result += block.fn(i);
             }
             return result;
         },
-        timeAgo: function(timestamp) {
+        timeAgo: function(timestamp) { // computing time posted in reviews
             const now = new Date();
             const past = new Date(timestamp);
             const diffInSeconds = Math.floor((now - past) / 1000);
@@ -45,10 +50,12 @@ const hbs = exphbs.create({
     }
 });
 
+// hbs views
 app.engine("hbs", hbs.engine);
 app.set("view engine", "hbs");
 app.set("views", path.join(__dirname, "views"));
 
+// public
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -69,27 +76,16 @@ const orgPageRoutes = require('./routes/orgpage');
 
 const userPageRoutes = require('./routes/userpage');
 
-// reading data from json #FIXME: only for testing
-app.get("/", (req, res) => {
-    const filePath = path.join(__dirname, "public", "data", "reviews.json");
-
-    fs.readFile(filePath, "utf8", (err, data) => {
-        if (err) {
-            console.error("Error reading JSON:", err);
-            res.status(500).send("Error loading reviews");
-            return;
-        }
-
-        try {
-            const reviews = JSON.parse(data);
-            res.render("homepage", { reviews });
-        } catch (parseErr) {
-            console.error("JSON Parse Error:", parseErr);
-            res.status(500).send("Error parsing reviews data");
-        }
-    });
+// fetching reviews
+app.get("/", async (req, res) => {
+    try {
+        const reviews = await Review.find().lean(); // converting to json
+        res.render("homepage", { reviews });
+    } catch (error) {
+        console.error("Error fetching reviews:", error);
+        res.status(500).send("Error loading reviews");
+    }
 });
-
 
 // using routes
 app.use('/', homepageRoutes);
@@ -107,3 +103,18 @@ app.use('/orgpage', orgPageRoutes);
 app.use('/userpage', userPageRoutes);
 
 app.listen(3000, () => console.log('Server running on http://localhost:3000'));
+
+// closing db connection
+const closeDatabase = () => {
+    mongoose.connection.close(() => {
+        console.log("MongoDB connection closed.");
+        process.exit(0);
+    });
+};
+
+process.on("SIGINT", closeDatabase);
+process.on("SIGTERM", closeDatabase);
+process.on("uncaughtException", (err) => {
+    console.error("Uncaught Exception:", err);
+    closeDatabase();
+});
