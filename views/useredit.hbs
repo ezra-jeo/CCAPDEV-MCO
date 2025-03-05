@@ -1,31 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="/css/useredit.css">
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/useredit.css">
+</head>
+<body>
+    <div class = "signup-section">
+        <div class = "signup-container">
+            <div class = "header-text">Sign Up</div>
+            <div class = "avatar-container">
+                <img src = "/images/icon.png">
+            <div class = "indicator-2">Change Avatar</div>
+            </div>
+            <div class = "input-field-container">
+                <div class = "indicator">Username</div>
+                <div class = "text-field-container">
+                    <input type= "text" id = "username" name = "username" required>
+                </div>
+            </div>
 
-    <body>
-        {{> header}}
+            <div class = "input-field-container">
+                <div class = "indicator">Password</div>
+                <div class = "text-field-container">
+                    <input type= "password" id = "password" name = "password" required>
+                </div>
+            </div>
 
-        <div class="user-edit">
-            <div class="edit-box">
-                <div class="edit-container">
-                    <h5 style="font-size: 40px; margin: 0px; margin-top: 10px;">Edit Profile</h5>
-                    <img id="profile-pic" src="/images/icon.png">
-                    <h5 style="font-size: 20px; margin: 0px;"><u>Change Avatar</u></h5>
-                    <div class="desc-container">
-                        <div style="font-size: 20px; margin-right: 10px;"><b>Description</b></div>
-                        <div class="desc-box-container"><textarea class="desc-box"></textarea></div>
-                    </div> 
+            <div class = "input-field-container">
+                <div class = "indicator" style = "font-size: 12px;">Confirm Password</div>
+                <div class = "text-field-container">
+                    <input type= "password" id = "password" name = "password-confirm" required>
+                </div>
+            </div>
 
-                    <div class="changes-container">
-                        <button><u style="font-size: 20px;">Discard Changes</u></button>
-                        <button class="changes-button">Make Changes</button>
-                    </div>
-                </div> 
+            <div class = "input-field-container-2">
+                <div class = "indicator">Description</div>
+                <div class = "text-area-container">
+                    <textarea type= "description" id = "description" name = "description"></textarea>
+                </div>
+            </div>
+
+            <div class = "input-field-container">
+                <div class = "indicator">Account</div>
+                <div class = "account-type-group">
+                    <input type = "radio" id = "student" name = "account_type" value = "student">
+                    <div class = "remember-me-text-container">Student</div>
+                    <input type = "radio" id = "organization" name = "account_type" value = "organization">
+                    <div class = "remember-me-text-container">Organization</div>
+                </div>
+            </div>  
+
+            <div class = "remember-me-container"> 
+                <div class = "submit-container">
+                    <a href="/login">
+                        Already have an account?
+                    </a>
+                        <div class = "submit-button">Sign Up</div>
+                </div>
             </div>
         </div>
-    </body>
+    </div>
+
+    <!-- logic for org and student -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.querySelector(".submit-button").addEventListener("click", function(event) {
+                event.preventDefault();
+                
+                const studentRadio = document.getElementById("student");
+                const organizationRadio = document.getElementById("organization");
+    
+                if(studentRadio.checked) {
+                    window.location.href = "homepage_user.html";
+                } else if(organizationRadio.checked) {
+                    window.location.href = "homepage_org.html";
+                } else {
+                    alert("Please select an account type (Student or Organization).");
+                }
+            });
+        });
+    </script>
+
+</body>
 </html>

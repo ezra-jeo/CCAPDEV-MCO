@@ -17,14 +17,15 @@ html, body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     background-color: white;
     border-radius: 20px;
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.15);
     width: 20%;
-    margin: 30px;
+    margin: 0px;
     text-align: center;
-    padding: 30px 20px;
+    padding: 20px;
+    min-height: 400px;
 }
 .edit-button {
     display: flex;
@@ -63,8 +64,10 @@ html, body {
     font-size: 14px;
     color: #555;
     margin-bottom: 10px;
+    min-height: 100px;
+    justify-content: center;
 }
-.logout-btn {
+.logout-btn {  
     margin-top: 15px;
     background-color: #3B6724;
     color: white;
@@ -73,7 +76,6 @@ html, body {
     border-radius: 8px;
     cursor: pointer;
     font-size: 14px;
-    transition: background 0.3s ease;
 }
 
 /*CONTENT-REVIEWS*/
@@ -84,12 +86,17 @@ html, body {
     flex-direction: column;
     width: 60%;
 }
+.review-content h1{
+    margin-left: 30px;
+    margin-top: 100px;
+}
 .review-nav {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     gap: 20px;
     margin-bottom: 20px;
+    margin-left: 20px;
 }
 .review-button {
     height: 50px;
@@ -102,6 +109,7 @@ html, body {
     font-size: 20px;
     font-family: 'Rubik', sans-serif;
     color: #3B6724;
+    cursor: pointer;
 }
 .review-search-container {
     position: relative;
@@ -157,4 +165,14 @@ html, body {
 }
 .show {
     display: block;
+}
+
+.fa-star {
+    color: yellow;
+}
+
+.review-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
 }
