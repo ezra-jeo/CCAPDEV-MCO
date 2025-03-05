@@ -4,9 +4,12 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">  
         <link rel="stylesheet" href="/css/orgpage.css">  
+        <script src="/js/orgpage.js"></script>
     </head> 
 
     <body>
+		{{> header}}
+
         <div class="org-profile">
             <img class="org-profile-pic" src="https://images.ctfassets.net/61mmmjz7t2hb/LYaxJ195ZBD5yOEKXOQOR/c09ea48259f53fdf6cb9b4d0992f61eb/Untitled__4_.png">
             <h2>La Salle Computer Society (LSCS)</h2>
@@ -18,7 +21,7 @@
             </p>
             <p>The premier organization for computer science and technology enthusiasts at DLSU. LSCS provides workshops, coding competitions, and networking opportunities for students interested in software development, cybersecurity, and emerging tech.</p>
             <span class="edit-icon"><button>
-                <a href="editorg.html">
+                <a href="/editorg">
                     ✎</a>
                 </button>
             </span>
@@ -26,14 +29,14 @@
         
         <div class="filters">
             <div class="add-review-container">
-                <a href="reviewpage.html">
+                <a href="/reviewpage">
                     Write a Review
                 </a>
             </div>
             <div class="filter-review-container">
                 <div class="search-container">
                     <div class="search-bar-container">
-                        <input type="text" id="searchBar" placeholder="Search for a Review" onkeyup="searchReviews()">
+                        <input type="text" id="searchBar" placeholder="Search for a Review" onclick="searchReviews()">
                         <i class="fa-solid fa-magnifying-glass search-icon"></i>
                     </div>
                 </div>
@@ -41,317 +44,25 @@
                 <div class="filter-rating">
                     <button class="filter-btn">Filter by Rating</button>
                     <div class="dropdown">
-                        <div onclick="filterReviews(1)">1 star</div>
-                        <div onclick="filterReviews(2)">2 stars</div>
-                        <div onclick="filterReviews(3)">3 stars</div>
-                        <div onclick="filterReviews(4)">4 stars</div>
-                        <div onclick="filterReviews(5)">5 stars</div>
+                        <a href="#" data-rating="all" onclick="filterByRating('all')">All Ratings</a>
+                        <a href="#" data-rating="5" onclick="filterByRating(5)">5 Stars</a>
+                        <a href="#" data-rating="4" onclick="filterByRating(4)">4 Stars</a>
+                        <a href="#" data-rating="3" onclick="filterByRating(3)">3 Stars</a>
+                        <a href="#" data-rating="2" onclick="filterByRating(2)">2 Stars</a>
+                        <a href="#" data-rating="1" onclick="filterByRating(1)">1 Star</a>
                     </div>
                 </div>
             </div>
         </div>
-        
-		<div class = "recent-reviews-container">
-			<div class = "review">
-				<div class = "review-proper-container">
-					<div class = "review-container">
-						<div class = "review-header">
-							<i class="fa-solid fa-user"></i>
-							<div class = "post-info">
-								<div class = "user-info-container">
-									<div class = "user-name">Chynna Mae</div>
-									<div class = "time">5 hours ago</div>
-								</div>
-							</div>
-							<div class = "rating-container">
-								<i class="fa-solid fa-star"></i>
-								<i class="fa-solid fa-star"></i>
-								<i class="fa-solid fa-star"></i>
-								<i class="fa-solid fa-star"></i>
-								<i class="fa-solid fa-star"></i>
-							</div>
-						</div>
-						<div class = "review-body">
-							<div class = "review-body-header">LSCS</div>
-							<div>
-								Super saya ko sa pagiging bahagi ng org na ito! Mabait at supportive ang mga members, laging may mga fun activities, at may mga pagkakataon pa para matuto at mag-grow. 
-								Masaya akong nakakasama ko ang mga tao dito, hindi lang dahil sa mga events, kundi dahil sa mga friendship na nabubuo. 
-								Highly recommended para sa mga gusto ng organized at welcoming na group!
-							</div>
-							<div class = "image">
-								<img src = "https://dlsu-lscs.org/assets/static/GA_Pic.42db587.aea95c14ba5b1047884eb534e923fe12.jpg"/>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="review-footer-container">
-					<div class = "review-footer">
-						<div class = "helpfulness-container">
-							<div class = "helpfulness-item">Mark as Helpful</div>
-							<div class = "helpfulness-item">Mark as Unhelpful</div>
-						</div>
-						<div class = "likes-container">
-							<div class = "likes-container-2">
-								<div>10</div>
-								<i class = "fa-regular fa-thumbs-down"></i>
-							</div>
-							<div class = "likes-container-2">
-								<div>151</div>
-								<i class = "fa-regular fa-thumbs-up"></i>
-							</div>
-						</div>
-					</div>
-					<div class="add-comment">
-						Reply to this review
-					</div>
-				</div>
-			</div>
+        <div class="recent-reviews-container">
+            {{#each reviews}}
+                {{> review orgpage=true}}
+            {{/each}}
+        </div>
 
-			<div class = "review">
-				<div class = "review-proper-container">
-					<div class = "review-container">
-						<div class = "review-header">
-							<i class="fa-solid fa-user"></i>
-							<div class = "post-info">
-								<div class = "user-info-container">
-									<div class = "user-name">Gerald Punsalan</div>
-									<div class = "time">9 hours ago</div>
-								</div>
-							</div>
-							<div class = "rating-container">
-								<i class="fa-solid fa-star"></i>
-								<i class="fa-solid fa-star"></i>
-								<i class="fa-solid fa-star"></i>
-							</div>
-						</div>
-						<div class = "review-body">
-							<div class = "review-body-header">LSCS</div>
-							<div>
-								Joining LSCS has been one of the best decisions I’ve made in school! The supportive community, engaging activities, and opportunities for growth make it a fantastic place to develop leadership and skills. Highly recommend it to anyone looking to grow and have fun!
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="review-footer-container">
-					<div class = "review-footer">
-						<div class = "helpfulness-container">
-							<div class = "helpfulness-item">Mark as Helpful</div>
-							<div class = "helpfulness-item">Mark as Unhelpful</div>
-						</div>
-						<div class = "likes-container">
-							<div class = "likes-container-2">
-								<div>21</div>
-								<i class = "fa-regular fa-thumbs-down"></i>
-							</div>
-							<div class = "likes-container-2">
-								<div>171</div>
-								<i class = "fa-regular fa-thumbs-up"></i>
-							</div>
-						</div>
-					</div>
-					<div class="add-comment">
-						Reply to this review
-					</div>
-				</div>
-			</div>
-
-			<div class = "review">
-				<div class = "review-proper-container">
-					<div class = "review-container">
-						<div class = "review-header">
-							<i class="fa-solid fa-user"></i>
-							<div class = "post-info">
-								<div class = "user-info-container">
-									<div class = "user-name">Jeo</div>
-									<div class = "time">11 hours ago</div>
-								</div>
-							</div>
-							<div class = "rating-container">
-								<i class="fa-solid fa-star"></i>
-								<i class="fa-solid fa-star"></i>
-							</div>
-						</div>
-						<div class = "review-body">
-							<div class = "review-body-header">LSCS</div>
-							<div>
-								While LSCS has great potential, I felt that some events were not as organized as they could be. Communication within the team could also be improved to make things run more smoothly.
-								Being part of LSCS was a mixed experience. While there are passionate members, there were moments when leadership decisions felt unclear, making it hard to stay motivated. A bit more structure would definitely help.
-								LSCS has a great mission, but sometimes it feels like only a few people are really doing the work while others take credit. More teamwork and accountability could make the org much better.
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="review-footer-container">
-					<div class = "review-footer">
-						<div class = "helpfulness-container">
-							<div class = "helpfulness-item">Mark as Helpful</div>
-							<div class = "helpfulness-item">Mark as Unhelpful</div>
-						</div>
-						<div class = "likes-container">
-							<div class = "likes-container-2">
-								<div>9</div>
-								<i class = "fa-regular fa-thumbs-down"></i>
-							</div>
-							<div class = "likes-container-2">
-								<div>171</div>
-								<i class = "fa-regular fa-thumbs-up"></i>
-							</div>
-						</div>
-					</div>
-					<div class="add-comment">
-						Reply to this review
-					</div>
-				</div>
-			</div>
-
-			<div class = "review">
-				<div class = "review-proper-container">
-					<div class = "review-container">
-						<div class = "review-header">
-							<i class="fa-solid fa-user"></i>
-							<div class = "post-info">
-								<div class = "user-info-container">
-									<div class = "user-name">John Doe</div>
-									<div class = "time">16 hours ago</div>
-								</div>
-							</div>
-							<div class = "rating-container">
-								<i class="fa-solid fa-star"></i>
-								<i class="fa-solid fa-star"></i>
-								<i class="fa-solid fa-star"></i>
-								<i class="fa-solid fa-star"></i>
-							</div>
-						</div>
-						<div class = "review-body">
-							<div class = "review-body-header">LSCS</div>
-							<div>
-								Talaga namang 4-star ang karanasan ko sa org na ito! Mula sa mga unang araw, ramdam ko na ang suporta at pagmamahal ng mga miyembro. Lahat kami ay may pagkakataon na mag-express ng ideas, at ang bawat isa ay nire-respeto at pinahahalagahan. Napaka-organized ng mga activities at events, kaya naman laging may pagkakataon na matuto at mag-enjoy sa mga ginagawa namin.
-								Ang pinakagusto ko pa ay ang sense of community na nararamdaman ko. Hindi lang kami mga kasamahan sa org, kundi parang pamilya na rin. Marami akong natutunan na mga skills, at marami akong bagong kaibigan. Kung naghahanap ka ng org na may purpose, masaya, at supportive, ito na ‘yon! Highly recommended sa lahat!
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="review-footer-container">
-					<div class = "review-footer">
-						<div class = "helpfulness-container">
-							<div class = "helpfulness-item">Mark as Helpful</div>
-							<div class = "helpfulness-item">Mark as Unhelpful</div>
-						</div>
-						<div class = "likes-container">
-							<div class = "likes-container-2">
-								<div>100</div>
-								<i class = "fa-regular fa-thumbs-down"></i>
-							</div>
-							<div class = "likes-container-2">
-								<div>2.1k</div>
-								<i class = "fa-regular fa-thumbs-up"></i>
-							</div>
-						</div>
-					</div>
-					<div class="add-comment">
-						Reply to this review
-					</div>
-				</div>
-			</div>
-
-			<div class = "review">
-				<div class = "review-proper-container">
-					<div class = "review-container">
-						<div class = "review-header">
-							<i class="fa-solid fa-user"></i>
-							<div class = "post-info">
-								<div class = "user-info-container">
-									<div class = "user-name">Anonymouse</div>
-									<div class = "time">1 day ago</div>
-								</div>
-							</div>
-							<div class = "rating-container">
-								<i class="fa-solid fa-star"></i>
-							</div>
-						</div>
-						<div class = "review-body">
-							<div class = "review-body-header">LSCS</div>
-							<div>
-								There are definitely some great things about LSCS, but I wish the organization focused more on supporting its members instead of just meeting event quotas. More mentorship and appreciation for volunteers would go a long way.
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="review-footer-container">
-					<div class = "review-footer">
-						<div class = "helpfulness-container">
-							<div class = "helpfulness-item">Mark as Helpful</div>
-							<div class = "helpfulness-item">Mark as Unhelpful</div>
-						</div>
-						<div class = "likes-container">
-							<div class = "likes-container-2">
-								<div>56</div>
-								<i class = "fa-regular fa-thumbs-down"></i>
-							</div>
-							<div class = "likes-container-2">
-								<div>567</div>
-								<i class = "fa-regular fa-thumbs-up"></i>
-							</div>
-						</div>
-					</div>
-					<div class="add-comment">
-						Reply to this review
-					</div>
-				</div>
-			</div>
-
-			<div class = "review">
-				<div class = "review-proper-container">
-					<div class = "review-container">
-						<div class = "review-header">
-							<i class="fa-solid fa-user"></i>
-							<div class = "post-info">
-								<div class = "user-info-container">
-									<div class = "user-name">Jane Doe</div>
-									<div class = "time">4 days ago</div>
-								</div>
-							</div>
-							<div class = "rating-container">
-								<i class="fa-solid fa-star"></i>
-							</div>
-						</div>
-						<div class = "review-body">
-							<div class = "review-body-header">LSCS</div>
-							<div>
-								I joined LSCS with high expectations, hoping to be part of a supportive and dynamic organization that values teamwork and learning. While there were some great experiences, I also encountered several issues that made my time here frustrating.
-								One of the biggest concerns is the lack of clear communication and organization. Events often feel rushed, with last-minute announcements and unclear instructions, making it difficult for members to properly prepare. Leadership could improve by being more transparent about planning processes and expectations.
-								Another issue is the uneven distribution of work. It often feels like the same few people handle most of the responsibilities while others either take credit or are left out of decision-making. This can make it difficult for new members to feel involved, leading to frustration and disengagement. The organization could definitely benefit from a fairer delegation of tasks and better mentorship for newcomers.
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="review-footer-container">
-					<div class = "review-footer">
-						<div class = "helpfulness-container">
-							<div class = "helpfulness-item">Mark as Helpful</div>
-							<div class = "helpfulness-item">Mark as Unhelpful</div>
-						</div>
-						<div class = "likes-container">
-							<div class = "likes-container-2">
-								<div>69</div>
-								<i class = "fa-regular fa-thumbs-down"></i>
-							</div>
-							<div class = "likes-container-2">
-								<div>710</div>
-								<i class = "fa-regular fa-thumbs-up"></i>
-							</div>
-						</div>
-					</div>
-					<div class="add-comment">
-						Reply to this review
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div class="page-nav">
-			<span id="page-numbers"><span id="cur-page">1</span> 2 3 4 5 6 ></span>
-			<span id="cur-page-num">1 of 6 </span>
-		</div>
+	<div class="page-nav">
+		<span id="page-numbers"><span id="cur-page">1</span> 2 3 4 5 6 ></span>
+		<span id="cur-page-num">1 of 6 </span>
+	</div>
     </body>
 </html>
