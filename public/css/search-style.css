@@ -77,6 +77,7 @@
 .clear-feature {
     text-decoration: underline;
     margin-left: 5%;
+    margin-left: 5%;
 }
 .ratings, .home-college {
     color: #363636;
@@ -89,6 +90,7 @@
     flex-direction: row;
     align-items: center;
     gap: 4%;
+    gap: 4%;
 }
 .ratings-list {
     display: flex;
@@ -98,6 +100,7 @@
 .stars {
     color: white;
 }
+
 
 .sort-header {
     font-size: 20px;
@@ -163,10 +166,13 @@
 }
 .rating-text {
     margin-left: 2%;
+    margin-left: 2%;
     font-weight: lighter;
     font-size: 18px;
     color: #363636;
 }
+.review-desc {    
+    width: 100%;
 .review-desc {    
     width: 100%;
     font-size: 16px;
@@ -242,8 +248,7 @@
     flex-direction: column;
     align-items: left;
     font-size: 14px;
-    margin-bottom: 2%;
-    gap: 0.5rem;
+    margin-bottom: 20px;
 }
 .review-body-header {
     font-size: 20px;
