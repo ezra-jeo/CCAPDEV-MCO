@@ -22,9 +22,13 @@
                 </div>
             </div>
             <div class="review-body">
-                <a href="{{orgPage}}">
-                    <div class="review-body-header">{{orgName}}</div>
-                </a>    
+                <a href = "{{orgPage}}">
+                    <div class = "review-body-header">{{orgName}}
+                        {{#if orgpage}}
+                            <a href="/reviewedit">Edit Review</a>
+                        {{/if}}
+                    </div>
+                </a>     
                 <div class="review-text">{{reviewText}}</div>
 
                 {{#if reviewImage}}
@@ -41,6 +45,16 @@
                     </div>
                 </div>
                 {{/if}} 
+
+                {{#if orgpage}}
+                <div class="reply-section">
+                    <button class="reply-btn">Reply to this Review</button>
+                    <div class="reply-box-container">
+                        <textarea class="reply-textbox" placeholder="Write a reply..."></textarea>
+                        <button class="submit-reply-btn">Submit</button>
+                    </div>
+                </div>
+                {{/if}}
             </div>
         </div>
     </div>
