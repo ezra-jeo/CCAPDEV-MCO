@@ -11,7 +11,16 @@ const app = express();
 app.engine('hbs', exphbs.engine({
     extname: 'hbs',
     defaultLayout: 'main', 
-    layoutsDir: path.join(__dirname, 'views', 'layouts')
+    layoutsDir: path.join(__dirname, 'views', 'layouts'),
+    helpers: {
+        times: function(n, block) { 
+            let result = "";
+            for (let i = 0; i < n; i++) {
+                result += block.fn(i);
+            }
+            return result;
+        },
+    }
 }));    
 
 app.set('view engine', 'hbs');
@@ -51,6 +60,7 @@ app.get("/search/org=:org", async (req, res) => {
         try {
             if (req.params.org) {
                 const org = await orgs.find({orgName: (req.params.org).toUpperCase()}).toArray();
+                console.log(org);
                 res.send({orgList: org});
             }
             else {
@@ -63,12 +73,22 @@ app.get("/search/org=:org", async (req, res) => {
 
     });
 
-// Displaying stars
-// exphbs.handlebars.registerHelper("stars", function (rating) {
-//     let stars = "";
-//     for (let i = 0; i < rating; i++) {
-//         stars += `<i class="fa-solid fa-star"></i>`;  // Unicode star symbol
-//     }
-//     return new Handlebars.SafeString(stars);
-// });
+// Filter
+app.get("/filter/query=:query?", async (req, res) => {
+        try {
+            if (req.params.query) {
+                if (req.params.query >= "1" && req.params.query <= "5") {
+                    const org = await orgs.find({orgRating: Number(req.params.query)}).toArray();
+                    res.send({orgList: org});
+                }
+            }
+            else {
+                res.status(400).send("No filter entered");
+            }
+        }
+        catch (err) {
+            res.status(500).send("Error in Filtering for");
+        }
+
+    });
 app.listen(3000, () => console.log('Server running on http://localhost:3000'));
