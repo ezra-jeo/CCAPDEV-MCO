@@ -55,27 +55,40 @@ app.use('/reviewedit', revEditRoutes);
 app.use('/editorg', editOrgRoutes);
 app.use('/orgpage', orgPageRoutes);
 
-app.get("/searchfilter/org:org?/query:query?", async (req, res) => {
+app.get("/searchfilter/org:org?/qry1:qry1?/qry2:qry2?", async (req, res) => {
     try {
 
         let filterStars = [];
-        if (req.params.query) {
-            for (let filter of req.params.query) {
+        if (req.params.qry1) {
+            for (let filter of req.params.qry1.split(",")) {
                 if (filter >= "1" && filter <= "5") 
                     filterStars.push(Number(filter));
             }
         }    
+        console.log(req.params.qry1);
 
+        let filterCollege = [];
+        if (req.params.qry2) {
+            for (let filter of req.params.qry2.split(",")) {
+                filterCollege.push(filter);
+            }
+        }    
+
+        console.log("filterCollege" + filterCollege);
         let query = {};
-        if (filterStars.length > 0) {
-            query["orgRating"] = {$in: filterStars};
-        }
         if (req.params.org) {
             query["orgName"] = {$regex: new RegExp(req.params.org, "i")};
         }   
+        if (filterStars.length > 0) {
+            query["orgRating"] = {$in: filterStars};
+        }
+        if (filterCollege.length > 0) {
+            query["orgCollege"] = {$in: filterCollege};
+        }
         if (Object.keys(query).length == 0) {
              query = {};
         }
+        
         console.log(query);
         const result = await orgs.find(query).toArray();
         console.log(result);
