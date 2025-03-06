@@ -1,31 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="/css/useredit.css">
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/useredit.css">
+</head>
+<body>
+    <div class = "edit-section">
+        <div class = "edit-container">
+            <div class = "header-text">Edit Profile</div>
+            <div class = "avatar-container">
+                <img src = "/images/icon.png">
+            <div class = "indicator-2">Change Avatar</div>
+            </div>
 
-    <body>
-        {{> header}}
+            <div class = "input-field-container">
+                <div class = "indicator">Description</div>
+                <div class = "text-area-container">
+                    <textarea type= "description" id = "description" name = "description"></textarea>
+                </div>
+            </div>
 
-        <div class="user-edit">
-            <div class="edit-box">
-                <div class="edit-container">
-                    <h5 style="font-size: 40px; margin: 0px; margin-top: 10px;">Edit Profile</h5>
-                    <img id="profile-pic" src="/images/icon.png">
-                    <h5 style="font-size: 20px; margin: 0px;"><u>Change Avatar</u></h5>
-                    <div class="desc-container">
-                        <div style="font-size: 20px; margin-right: 10px;"><b>Description</b></div>
-                        <div class="desc-box-container"><textarea class="desc-box"></textarea></div>
-                    </div> 
-
-                    <div class="changes-container">
-                        <button><u style="font-size: 20px;">Discard Changes</u></button>
-                        <button class="changes-button">Make Changes</button>
-                    </div>
-                </div> 
+            <div class = "remember-me-container"> 
+                <div class = "submit-container">
+                    <a href="/userpage">
+                        <u>Discard Changes</u>
+                    </a>
+                        <div class = "submit-button">Save</div>
+                </div>
             </div>
         </div>
-    </body>
+    </div>
+</body>
 </html>

@@ -1,0 +1,45 @@
+[{
+  "_id": {
+    "$oid": "67c85c7d48fabfa781931bc8"
+  },
+  "userName": "Chynna Mae",
+  "userDesc": "Dogshow",
+  "profileImage": "",
+  "userPassword": "jay143"
+},
+{
+  "_id": {
+    "$oid": "67c85c7d48fabfa781931bc9"
+  },
+  "userName": "Emman P.",
+  "userDesc": "I love my dogs!",
+  "profileImage": "",
+  "userPassword": "tofustella0928"
+},
+{
+  "_id": {
+    "$oid": "67c85c7d48fabfa781931bca"
+  },
+  "userName": "ezra-jeo",
+  "userDesc": "Avid gamer and web developer",
+  "profileImage": "",
+  "userPassword": "delrosario"
+},
+{
+  "_id": {
+    "$oid": "67c85c7d48fabfa781931bcb"
+  },
+  "userName": "Kyle",
+  "userDesc": "Loves writing reviews on clubs",
+  "profileImage": "https://example.com/profiles/sarah.jpg",
+  "userPassword": "hashed_password_321"
+},
+{
+  "_id": {
+    "$oid": "67c85c7d48fabfa781931bcc"
+  },
+  "userName": "Jane Doe",
+  "userDesc": "UX designer exploring communities",
+  "profileImage": "",
+  "userPassword": "password123"
+}]
