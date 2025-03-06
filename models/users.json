@@ -1,60 +1,45 @@
 [{
   "_id": {
-    "$oid": "67c8602b48fabfa781931bf0"
+    "$oid": "67c85c7d48fabfa781931bc8"
   },
-  "orgName": "GDGOC",
-  "orgPic": "",
-  "orgRating": 4.7,
-  "orgReviews": 128,
-  "reviewDesc": "A tech community focused on Google Developer technologies.",
-  "orgCollege": "CCS",
-  "orgPassword": "securepass123"
+  "userName": "Chynna Mae",
+  "userDesc": "Dogshow",
+  "profileImage": "",
+  "userPassword": "jay143"
 },
 {
   "_id": {
-    "$oid": "67c8602b48fabfa781931bf1"
+    "$oid": "67c85c7d48fabfa781931bc9"
   },
-  "orgName": "LSCS",
-  "orgPic": "",
-  "orgRating": 4.5,
-  "orgReviews": 98,
-  "reviewDesc": "The leading organization for software development enthusiasts.",
-  "orgCollege": "CCS",
-  "orgPassword": "lscsrocks456"
+  "userName": "Emman P.",
+  "userDesc": "I love my dogs!",
+  "profileImage": "",
+  "userPassword": "tofustella0928"
 },
 {
   "_id": {
-    "$oid": "67c8602b48fabfa781931bf2"
+    "$oid": "67c85c7d48fabfa781931bca"
   },
-  "orgName": "DSS",
-  "orgPic": "",
-  "orgRating": 4.3,
-  "orgReviews": 75,
-  "reviewDesc": "Data Science Society - a hub for analytics, AI, and machine learning enthusiasts.",
-  "orgCollege": "CCS",
-  "orgPassword": "datasciencerulez"
+  "userName": "ezra-jeo",
+  "userDesc": "Avid gamer and web developer",
+  "profileImage": "",
+  "userPassword": "delrosario"
 },
 {
   "_id": {
-    "$oid": "67c8602b48fabfa781931bf3"
+    "$oid": "67c85c7d48fabfa781931bcb"
   },
-  "orgName": "AU",
-  "orgPic": "",
-  "orgRating": 4.8,
-  "orgReviews": 145,
-  "reviewDesc": "For the women and for the children.",
-  "orgCollege": "CLA",
-  "orgPassword": "auroraleaders789"
+  "userName": "Kyle",
+  "userDesc": "Loves writing reviews on clubs",
+  "profileImage": "https://example.com/profiles/sarah.jpg",
+  "userPassword": "hashed_password_321"
 },
 {
   "_id": {
-    "$oid": "67c8602b48fabfa781931bf4"
+    "$oid": "67c85c7d48fabfa781931bcc"
   },
-  "orgName": "PTS",
-  "orgPic": "",
-  "orgRating": 4.6,
-  "orgReviews": 87,
-  "reviewDesc": "Peer Tutor Society",
-  "orgCollege": "CCS",
-  "orgPassword": "ptssuccess2025"
+  "userName": "Jane Doe",
+  "userDesc": "UX designer exploring communities",
+  "profileImage": "",
+  "userPassword": "password123"
 }]

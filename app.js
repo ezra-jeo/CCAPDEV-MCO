@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const exphbs = require("express-handlebars");
 const path = require("path");
 const fs = require("fs");
+const bcrypt = require("bcrypt");
 
 require("./db"); // connecting to mongoDB
 const Review = require("./models/reviews");
@@ -83,10 +84,10 @@ const orgPageRoutes = require('./routes/orgpage');
 
 const userPageRoutes = require('./routes/userpage');
 
-// fetching reviews
+// fetching recent reviews for homepage
 app.get("/", async (req, res) => {
     try {
-        const reviews = await Review.find().lean(); // converting to json
+        const reviews = await Review.find().sort({ timePosted: -1 }).lean(); // sort by latest time
         res.render("homepage", { reviews });
     } catch (error) {
         console.error("Error fetching reviews:", error);
@@ -170,6 +171,47 @@ app.get("/orgs/:orgName", async (req, res) => {
     } catch (err) {
         console.error("Error fetching organization data:", err);
         res.status(500).send("Error loading orgpage"); 
+    }
+});
+
+// signing up
+app.post("/signup", async (req, res) => {
+    try {
+        const { username, password, accountType, description } = req.body;
+
+        if (!accountType) {
+            return res.status(400).json({ error: "Account type is required." });
+        }
+
+        let newAccount;
+
+        if (accountType === "student") {
+            if (!username || !password) {
+                return res.status(400).json({ error: "Username and password are required for users." });
+            }
+            const hashedPassword = await bcrypt.hash(password, 10);
+            newAccount = new User({ userName: username, userPassword: hashedPassword });
+        } 
+        else if (accountType === "organization") {
+            if (!username || !password) {
+                return res.status(400).json({ error: "Organization name and password are required." });
+            }
+            const hashedPassword = await bcrypt.hash(password, 10);
+            newAccount = new Organization({
+                orgName: username,
+                orgPassword: hashedPassword,
+                orgDesc: description
+            });
+        } 
+        else {
+            return res.status(400).json({ error: "Invalid account type." });
+        }
+
+        await newAccount.save();
+        
+    } catch (error) {
+        console.error("❌ Error creating account:", error);
+        res.status(500).json({ error: "Internal Server Error" });
     }
 });
 
