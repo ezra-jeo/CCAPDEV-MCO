@@ -171,7 +171,19 @@ app.get("/reviews/searchfilter/search:search?/qry1:qry1?/qry2:qry2?", async (req
 
 // Sort
 
-// app.get("/sort/:method", async (res, req) => {
-    
-// });
+app.get("/sort/:method", async (req, res) => {
+    try {
+        if (req.params.method == "name") {
+            const result = await orgs.find().sort({"orgName": 1}).toArray();
+            res.send({orgList: result});
+        }
+        else if (req.params.method == "rating") {
+            const result = await orgs.find().sort({"orgRating": 1}).toArray();
+            res.send({orgList: result});
+        }
+    }
+    catch (err) {
+        res.status(500).send("Error in Sorting");
+    }
+});
 app.listen(3000, () => console.log('Server running on http://localhost:3000'));

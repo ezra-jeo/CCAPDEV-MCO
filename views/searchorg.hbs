@@ -111,7 +111,14 @@
                 <div class="org-portion">
                     <div class="org-labels">
                         <span class="section-header">Organizations</span>
-                        <button id="sort-orgs">Sort by</button>
+                        <div id="sort-container">
+                            <button id="sort-orgs">Sort by</button>
+                            <div id="dropdown">
+                                <button id="name-btn" class="drop-select">Name</button>
+                                <button id="rating-btn" class="drop-select">Rating</button>
+                            </div>
+                        </div>
+ 
                     </div>
                     <div id="org-list">
                         {{#each orgList}}
