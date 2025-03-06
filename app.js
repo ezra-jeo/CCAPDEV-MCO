@@ -55,65 +55,7 @@ app.use('/reviewedit', revEditRoutes);
 app.use('/editorg', editOrgRoutes);
 app.use('/orgpage', orgPageRoutes);
 
-// Search org
-// app.get("/search/org=:org?", async (req, res) => {
-//     try {
-//         console.log(req.params.org);
-//         if (req.params.org) {
-//             const org = await orgs.find({orgName: {$regex: new RegExp(req.params.org, "i")}}).toArray();
-//             console.log(org);
-//             res.send({orgList: org});
-            
-//         }
-//         else {
-//             // res.status(400).send("Error in Search");
-//             const def = await orgs.find().toArray();
-//             console.log(def);
-//             res.send({orgList: def});
-//             console.log("No Search");
-
-//         }
-//     }
-//     catch (err) {
-//         res.status(500).send("Error in Searching for " + req.params.org);
-//     }
-
-// });
-
-// // Filter
-// app.get("/filter/query=:query?", async (req, res) => {
-//         try {
-//             console.log(req.params.query);
-//             if (req.params.query) { // Filter
-//                 let filterStars = [];
-//                 for (let filter of req.params.query) {
-//                     if (filter >= "1" && filter <= "5") 
-//                         filterStars.push(Number(filter));
-//                 }
-             
-//                 const org = await orgs.find({orgRating: {$in: filterStars}}).toArray();
-//                 res.send({orgList: org});   
-//             }
-//             else {
-//                 const def = await orgs.find().toArray();
-//                 console.log(def);
-//                 res.send({orgList: def});
-//                 console.log("No filter");
-//             }
-//         }
-//         catch (err) {
-//             res.status(500).send("Error in Filtering for");
-//         }
-
-//     });
-
-// Search and Filter
-// app.get("/searchfilter/org=?query=?", (req, res) => {
-//     res.send("Hello World this works!");
-//     console.log("Test");
-// });
-
-app.get("/searchfilter/org=:org/query=:query?", async (req, res) => {
+app.get("/searchfilter/org:org?/query:query?", async (req, res) => {
     try {
 
         let filterStars = [];
@@ -131,48 +73,13 @@ app.get("/searchfilter/org=:org/query=:query?", async (req, res) => {
         if (req.params.org) {
             query["orgName"] = {$regex: new RegExp(req.params.org, "i")};
         }   
+        if (Object.keys(query).length == 0) {
+             query = {};
+        }
         console.log(query);
         const result = await orgs.find(query).toArray();
         console.log(result);
         res.send({orgList: result});
-        // if (!(req.params.org || req.params.query)) {
-        //     console.log(Object.keys(query).length);
-        //     const result = await orgs.find().toArray();
-        //     console.log(result);
-        //     res.send({orgList: result});
-        // }
-        //else {
-            
-            
-        //}
-
-        // else {
-        //     console.log(query);
-        //     const result = await orgs.find().toArray();
-        //     res.send({orgList: result});
-        //     console.log(result)
-        // }
-
-        // if (filterStars && req.params.org) {
-        //     const result = await orgs.find({$and: [{orgName: {$regex: new RegExp(req.params.org, "i")}}, {orgRating: {$in: filterStars}}]}).toArray();
-        //     res.send({orgList: result});
-        //     console.log(result)
-        // }   
-        // else if (req.params.org) {
-        //     const result = await orgs.find({orgName: {$regex: new RegExp(req.params.org, "i")}}).toArray();
-        //     res.send({orgList: result});
-        //     console.log(result)
-        // }
-        // else if (filterStars) {
-        //     const result = await orgs.find({orgRating: {$in: filterStars}}).toArray();
-        //     res.send({orgList: result});
-        //     console.log(result)
-        // }
-        // else {
-        //     const result = await orgs.find().toArray();
-        //     res.send({orgList: result});
-        //     console.log(result);
-        // }
     }
     catch (err) {
         res.status(500).send("Error in Searching and Filter");
