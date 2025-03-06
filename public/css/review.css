@@ -3,7 +3,6 @@
     height: auto;
     width: 100%;
     max-width: 100%;
-    height: auto;
     box-sizing: border-box;
     background: #FFFFFF;
     border-radius: 10px; 
@@ -90,11 +89,6 @@
     padding-right: 20px;
     padding-bottom: 10px;
 }
-.fa-user { /* TODO: remove this */
-    font-size: 40px;
-    color:#3B6724; 
-    padding-right: 10px;
-}
 .profile-container img{
     height: 35px;
     width: 35px;
@@ -118,7 +112,7 @@
     max-height: 30%;
     background-color: #7BA167;
     display: flex;
-    flex-direction: column      ;
+    flex-direction: column;
     justify-content: center;
     align-items: flex-start;
     border-radius: 5px; 
@@ -145,10 +139,27 @@
 }
 .helpfulness-item {
     font-size: 12px;
+    background-color: transparent;
+    border: 1px solid #3B6724;
+    border-radius: 30px;
     display: flex;
     flex-direction: column;
     align-items: left;
     margin-right: 10px;
+}
+.helpfulness-item:hover {
+    background-color: #3B6724;
+    color: white;
+    font-weight: bold;
+}
+.helpfulness-item.active {
+    background-color: #3B6724;
+    font-weight: bold;
+    color: white;
+}
+.helpfulness-item.active[onclick*="dislikes"] {
+    font-weight: bold;
+    background-color: #3B6724;
 }
 .likes-container {
     display: flex;

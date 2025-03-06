@@ -5,6 +5,26 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="/css/userpage.css">
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const filterBtn = document.querySelector(".filter-btn");
+                const dropdownContent = document.querySelector(".dropdown-content");
+
+                filterBtn.addEventListener("click", function(event) {
+                    dropdownContent.classList.toggle("show");
+                    event.stopPropagation();
+                });
+
+                
+                document.addEventListener("click", function(event) {
+                    if (!filterBtn.contains(event.target) && !dropdownContent.contains(event.target)) {
+                        dropdownContent.classList.remove("show");
+                    }
+                });
+            });
+        </script>
+        
     </head>
 
     <body>
@@ -17,12 +37,12 @@
                 </div>
                 
                 <div class="profile-pic">
-                    <img src="/images/#{{profileImage}}">
+                    <img src="{{user.profileImage}}">
                 </div>
 
-                <h5 class="username">{{userName}}</h5>
+                <h5 class="username">{{user.userName}}</h5>
 
-                <div class="user-desc">{{userDesc}}</div>
+                <div class="user-desc">{{user.userDesc}}</div>
 
                 <a href="homepage.html">
                     <button class="logout-btn">Logout</button>
@@ -32,7 +52,6 @@
             <div class="review-content">
                 <h1>Reviews</h1>
                 <div class="review-nav">
-                    <button class="review-button"><u><b>Sort by Latest</b></u></button>
                     <div class="filter-dropdown">
                         <button class="review-button filter-btn"><u><b>Filter by rating</b></u></button>
                         <div class="dropdown-content">
@@ -42,24 +61,29 @@
                                 <i class="fa-solid fa-star"></i>
                                 <i class="fa-solid fa-star"></i>
                                 <i class="fa-solid fa-star"></i>
+                                (5)
                             </a>
                             <a href="#" data-rating="4">
                                 <i class="fa-solid fa-star"></i>
                                 <i class="fa-solid fa-star"></i>
                                 <i class="fa-solid fa-star"></i>
                                 <i class="fa-solid fa-star"></i>
+                                (4)
                             </a>
                             <a href="#" data-rating="3">
                                 <i class="fa-solid fa-star"></i>
                                 <i class="fa-solid fa-star"></i>
                                 <i class="fa-solid fa-star"></i>
+                                (3)
                             </a>
                             <a href="#" data-rating="2">
                                 <i class="fa-solid fa-star"></i>
                                 <i class="fa-solid fa-star"></i>
+                                (2)
                             </a>
                             <a href="#" data-rating="1">
                                 <i class="fa-solid fa-star"></i>
+                                (1)
                             </a>
                         </div>
                     </div>
