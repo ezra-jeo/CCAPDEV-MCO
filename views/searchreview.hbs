@@ -2,29 +2,39 @@
 <html>
     <head>
         <title>
-            DLSU Orgs To Pick - Search For Reviews
+            DLSU Orgs To Pick - Search for Organizations
         </title>
         <link rel="stylesheet" href="/css/search-style.css"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script type="text/javascript" src="/js/searchorg_function.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
+        <script>
+            Handlebars.registerHelper("times", function(n, block) { 
+                let result = "";
+                for (let i = 0; i < n; i++) {
+                    result += block.fn(i);
+                }
+                return result;
+            });
+        </script>
     </head>
     <body>
         <div class="content-page">
             <div class="search-portion">
-                <input class="search-bar" type="text" placeholder="Search for a Review"/>
-                <div id="search-icon-container">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </div>
+                <input id="search-bar" type="text" placeholder="Look for an Organization"/>
+                <button id="search-button"><i class="fa-solid fa-magnifying-glass"></i></button>
             </div>
             <div class="content-elements">
                 <div class="filter-portion">
                     <div class="filter-labels">
                         <span class="section-header">Filters</span>
-                        <span class="clear-feature">Clear</span>
+                        <button id="clear-feature">Clear</button>
                     </div>
                     <div class="ratings">
                         <span class="section-subheader">Ratings</span>
                         <form class="ratings-list">
                             <div class="ratings-input-field">
-                                <input type="checkbox" id="5-stars" name="5-stars" value="5-stars"/>
+                                <input type="checkbox" class="rate-opts" id="5-stars" name="5-stars" value="5"/>
                                 <label for="5-stars">5 
                                     <span class="stars">
                                         <i class="fa-solid fa-star"></i>
@@ -36,7 +46,7 @@
                                 </label>
                             </div>
                             <div class="ratings-input-field">
-                                <input type="checkbox" id="4-stars" name="4-stars" value="4-stars"/>
+                                <input type="checkbox" class="rate-opts" id="4-stars" name="4-stars" value="4"/>
                                 <label for="4-stars">4 
                                     <span class="stars">
                                     <i class="fa-solid fa-star"></i>
@@ -47,7 +57,7 @@
                                 </label>
                             </div>
                             <div class="ratings-input-field">
-                                <input type="checkbox" id="3-stars" name="3-stars" value="3-stars"/>
+                                <input type="checkbox" class="rate-opts" id="3-stars" name="3-stars" value="3"/>
                                 <label for="3-stars">3 
                                     <span class="stars">
                                     <i class="fa-solid fa-star"></i>
@@ -57,7 +67,7 @@
                                 </label>
                             </div>
                             <div class="ratings-input-field">
-                                <input type="checkbox" id="2-stars" name="2-stars" value="2-stars"/>
+                                <input type="checkbox" class="rate-opts" id="2-stars" name="2-stars" value="2"/>
                                 <label for="2-stars">2
                                     <span class="stars">
                                     <i class="fa-solid fa-star"></i>
@@ -66,7 +76,7 @@
                                 </label>
                             </div>
                             <div class="ratings-input-field">
-                            <input type="checkbox" id="1-stars" name="1-stars" value="1-stars"/>
+                            <input type="checkbox" class="rate-opts" id="1-stars" name="1-stars" value="1"/>
                                 <label for="1-stars">1
                                     <span class="stars">
                                     <i class="fa-solid fa-star"></i>
@@ -79,18 +89,18 @@
                     <div class="home-college">
                         <span class="section-subheader">Home College</span>
                         <form class="college-list">
-                            <input type="radio" id="ccs" name="ccs" value="ccs"/>
+                            <input type="checkbox" class="college-opts" id="ccs" name="ccs" value="ccs"/>
                             <label for="ccs">CCS </label><br/>
-                            <input type="radio" id="RVCOB" name="RVCOB" value="RVCOB"/>
-                            <label for="RVCOB">RVCOB </label><br/>
-                            <input type="radio" id="cos" name="cos" value="cos"/>
+                            <input type="checkbox" class="college-opts" id="rvcob" name="rvcob" value="rvcob"/>
+                            <label for="rvcob">RVCOB </label><br/>
+                            <input type="checkbox" class="college-opts" id="cos" name="cos" value="cos"/>
                             <label for="cos">COS </label><br/>
-                            <input type="radio" id="cla" name="cla" value="cla"/>
+                            <input type="checkbox" class="college-opts" id="cla" name="cla" value="cla"/>
                             <label for="cla">CLA </label><br/>
-                            <input type="radio" id="gcoe" name="gcoe" value="gcoe"/>
+                            <input type="checkbox" class="college-opts" id="gcoe" name="gcoe" value="gcoe"/>
                             <label for="gcoe">GCOE </label><br/>
-                            <input type="radio" id="other" name="other" value="other"/>
-                            <label for="other">Other </label><br/>
+                            <input type="checkbox" class="college-opts" id="other" name="other" value="other"/>
+                            <label for="other">OTHER </label><br/>
                         </form>
                     </div>
                 </div>  
