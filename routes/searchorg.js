@@ -2,8 +2,6 @@ const express = require('express');
 const mongoose = require("mongoose");
 const router = express.Router();
 
-mongoose.connect("mongodb://localhost:27017/orgs");
-
 const orgs = mongoose.connection.collection("organizations");
 
 router.get('/', async (req, res) => {

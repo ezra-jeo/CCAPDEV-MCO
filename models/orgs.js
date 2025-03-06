@@ -15,6 +15,7 @@ const orgSchema = new mongoose.Schema({
     orgRating: { type: Number, default: 0 },
     orgReviews: [{ type: Number }],
     orgDesc: {type: String},
+    orgPage: { type: String },
     orgCollege: { type: String },
     orgPassword: { type: String, required: true } 
 }, { timestamps: true });

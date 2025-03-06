@@ -6,8 +6,16 @@ const reviewSchema = new mongoose.Schema({
     profileImage: { type: String, default: "/images/icon.png" },
     timePosted: { type: Date, default: Date.now },
     reviewRating: { type: Number, required: true, min: 1, max: 5 },
-    orgName: { type: String, required: true, default: "Unknown Organization" },
-    orgPage: { type: String },
+    org: {
+        orgName: { type: String, required: true, unique: true },
+        orgPic: { type: String, default: "/images/icon.png" },
+        orgRating: { type: Number, default: 0 },
+        orgReviews: [{ type: Number }],
+        orgDesc: {type: String},
+        orgPage: { type: String },
+        orgCollege: { type: String },
+        orgPassword: { type: String, required: true } 
+    },
     reviewText: { type: String, required: true, default: "No review provided." },
     reviewImage: { type: String },
     responseMessage: { type: String, default: "" },
