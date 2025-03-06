@@ -190,7 +190,13 @@ app.post("/signup", async (req, res) => {
                 return res.status(400).json({ error: "Username and password are required for users." });
             }
             const hashedPassword = await bcrypt.hash(password, 10);
-            newAccount = new User({ userName: username, userPassword: hashedPassword });
+            newAccount = new User({ 
+                userName: username, 
+                userDesc: description,
+                userPage: username,
+                profileImage: "/images/icon.png",
+                userPassword: hashedPassword 
+            });
         } 
         else if (accountType === "organization") {
             if (!username || !password) {
@@ -199,8 +205,13 @@ app.post("/signup", async (req, res) => {
             const hashedPassword = await bcrypt.hash(password, 10);
             newAccount = new Organization({
                 orgName: username,
-                orgPassword: hashedPassword,
-                orgDesc: description
+                orgPic: "/images/icon.png",
+                orgDesc: description,
+                orgPage: username,
+                orgRating: 0,
+                orgReviews: 0,
+                orgCollege: "Others",
+                orgPassword: hashedPassword
             });
         } 
         else {
@@ -208,12 +219,17 @@ app.post("/signup", async (req, res) => {
         }
 
         await newAccount.save();
-        
+
+        console.log(`✅ ${accountType} created:`, newAccount);
+        res.json({ message: `${accountType} created successfully!`, account: newAccount });
     } catch (error) {
         console.error("❌ Error creating account:", error);
         res.status(500).json({ error: "Internal Server Error" });
     }
 });
+
+// logging in
+
 
 // using routes
 app.use('/', homepageRoutes);
