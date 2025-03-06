@@ -28,7 +28,7 @@
                 <div class="filter-portion">
                     <div class="filter-labels">
                         <span class="section-header">Filters</span>
-                        <span class="clear-feature">Clear</span>
+                        <button id="clear-feature">Clear</button>
                     </div>
                     <div class="ratings">
                         <span class="section-subheader">Ratings</span>
@@ -100,14 +100,14 @@
                             <input type="checkbox" class="college-opts" id="gcoe" name="gcoe" value="gcoe"/>
                             <label for="gcoe">GCOE </label><br/>
                             <input type="checkbox" class="college-opts" id="other" name="other" value="other"/>
-                            <label for="other">Other </label><br/>
+                            <label for="other">OTHER </label><br/>
                         </form>
                     </div>
                 </div>  
                 <div class="org-portion">
                     <div class="org-labels">
                         <span class="section-header">Organizations</span>
-                        <span class="sort-header">Sort by</span>
+                        <button id="sort-orgs">Sort by</button>
                     </div>
                     <div id="org-list">
                         {{#each orgList}}
@@ -130,7 +130,7 @@
                                     </span>
                                 </div>
                                 <div class="review-desc">
-                                   {{this.reviewDesc}}
+                                   {{this.orgDesc}}
                                 </div>
                                 <div class="org-college">
                                     {{this.orgCollege}}

@@ -55,9 +55,10 @@ app.use('/reviewedit', revEditRoutes);
 app.use('/editorg', editOrgRoutes);
 app.use('/orgpage', orgPageRoutes);
 
+
+// Search and filter
 app.get("/searchfilter/org:org?/qry1:qry1?/qry2:qry2?", async (req, res) => {
     try {
-
         let filterStars = [];
         if (req.params.qry1) {
             for (let filter of req.params.qry1.split(",")) {
@@ -88,7 +89,7 @@ app.get("/searchfilter/org:org?/qry1:qry1?/qry2:qry2?", async (req, res) => {
         if (Object.keys(query).length == 0) {
              query = {};
         }
-        
+
         console.log(query);
         const result = await orgs.find(query).toArray();
         console.log(result);
@@ -96,8 +97,12 @@ app.get("/searchfilter/org:org?/qry1:qry1?/qry2:qry2?", async (req, res) => {
     }
     catch (err) {
         res.status(500).send("Error in Searching and Filter");
-
     }
+});
 
+// Sort
+
+app.get("/sort/:method", async (res, req) => {
+    
 });
 app.listen(3000, () => console.log('Server running on http://localhost:3000'));

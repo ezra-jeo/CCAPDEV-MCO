@@ -74,7 +74,9 @@
     padding-top: 5%;
     gap: 1%;
 }
-.clear-feature {
+#clear-feature {
+    all: unset;
+    cursor: pointer;
     text-decoration: underline;
     margin-left: 5%;
     margin-left: 5%;
@@ -100,9 +102,9 @@
 .stars {
     color: white;
 }
-
-
-.sort-header {
+#sort-orgs {
+    all: unset;
+    cursor: pointer;
     font-size: 20px;
     text-decoration: underline;
     color: #3B6724;
@@ -179,7 +181,6 @@
     color: #728569;
     margin-top: 15px;
 }
-
 /* REVIEWS */
 .review-portion {
     flex: 1;
