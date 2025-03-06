@@ -87,29 +87,28 @@ app.get("/", async (req, res) => {
     }
 });
 
-//in progress
-app.get("/userpage", async (req, res) => {
+// fetching userpage
+app.get("/userpage/:userPage", async (req, res) => {
     try {
-        /*
         const userPage = req.params.userPage;
 
-        const user = await User.findOne({ userPage: userPage }).lean();
         const reviews = await Review.find({ userPage: userPage }).lean();
+
+        if (reviews.length === 0) {
+            //add div for no reviews later
+            return res.status(404).send("No reviews found for this user.");
+        }
+
+        const userName = reviews[0].userName;
+
+        const user = await User.findOne({ userName: userName }).lean();
+        
         res.render("userpage", {
-            userName: userName,
-            profileImage: profileImage,
-            userDesc: userDesc,
+            user: user,
             reviews: reviews
         });
 
-        */
-
-        //temp (DOES NOT WORK YET)
-        const reviews = await Review.find().lean(); // converting to json
-        res.render("userpage", { reviews });
-
     } catch (error) {
-        console.error("Error fetching user data or reviews:", error);
         res.status(500).send("Error loading userpage");
     }
 });
