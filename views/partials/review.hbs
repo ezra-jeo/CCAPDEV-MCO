@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="/css/review.css">
 
-<div class="review">
+<div class="review" data-review-id="{{_id}}">
     <div class="review-proper-container">
         <div class="review-container">
             <div class="review-header">
@@ -60,13 +60,17 @@
     </div>
     <div class="review-footer">
         <div class="helpfulness-container">
-            <div class="helpfulness-item">Mark as Helpful</div>
-            <div class="helpfulness-item">Mark as Unhelpful</div>
+            <button class="helpfulness-item" onclick="updateHelpfulness('dislikes', '{{_id}}')">
+                Mark as Unhelpful
+            </button>
+            <button class="helpfulness-item" onclick="updateHelpfulness('likes', '{{_id}}')">
+                Mark as Helpful
+            </button>
         </div>
         <div class="likes-container">
-            <div class="likes-container-content">{{dislikesCount}}</div>
+            <div class="likes-container-content" id="dislikes-{{_id}}">{{dislikesCount}}</div>
             <div class="likes-container-content"><i class="fa-regular fa-thumbs-down"></i></div>
-            <div class="likes-container-content">{{likesCount}}</div>  
+            <div class="likes-container-content" id="likes-{{_id}}">{{likesCount}}</div>
             <div class="likes-container-content"><i class="fa-regular fa-thumbs-up"></i></div>
         </div>
     </div>

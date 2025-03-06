@@ -11,18 +11,22 @@
 		{{> header}}
 
         <div class="org-profile">
-            <img class="org-profile-pic" src="https://images.ctfassets.net/61mmmjz7t2hb/LYaxJ195ZBD5yOEKXOQOR/c09ea48259f53fdf6cb9b4d0992f61eb/Untitled__4_.png">
-            <h2>La Salle Computer Society (LSCS)</h2>
+            <img class="org-profile-pic" src="{{org.orgPic}}" alt="{{org.orgName}}">
+            <h2>{{org.orgName}}</h2>
             <p>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                (69 reviews)
+                {{#times (round org.orgRating)}}
+                    <i class="fa-solid fa-star"></i>
+                {{/times}}
+
+                {{#times (sub 5 (round org.orgRating))}}
+                    <i class="fa-regular fa-star"></i>
+                {{/times}}
+
+                ({{totalReviews}} reviews)
             </p>
-            <p>The premier organization for computer science and technology enthusiasts at DLSU. LSCS provides workshops, coding competitions, and networking opportunities for students interested in software development, cybersecurity, and emerging tech.</p>
+            <p>{{org.reviewDesc}}</p>
             <span class="edit-icon"><button>
-                <a href="/editorg">
-                    ✎</a>
+                <a href="/editorg">✎</a>
                 </button>
             </span>
         </div>
@@ -33,6 +37,7 @@
                     Write a Review
                 </a>
             </div>
+		
             <div class="filter-review-container">
                 <div class="search-container">
                     <div class="search-bar-container">
@@ -40,7 +45,7 @@
                         <i class="fa-solid fa-magnifying-glass search-icon"></i>
                     </div>
                 </div>
-                <button class="filter-btn" onclick="sortReviews()">Sort by Latest</button>
+		    
                 <div class="filter-rating">
                     <button class="filter-btn">Filter by Rating</button>
                     <div class="dropdown">
@@ -54,6 +59,7 @@
                 </div>
             </div>
         </div>
+	    
         <div class="recent-reviews-container">
             {{#each reviews}}
                 {{> review orgpage=true}}

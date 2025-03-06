@@ -24,6 +24,13 @@ const hbs = exphbs.create({
             }
             return result;
         },
+        add: function(a, b) { return a + b; },
+        sub: function(a, b) { return a - b; },
+        gt: function(a, b) { return a > b; },
+        lt: function(a, b) { return a < b; },
+        eq: function(a, b) { return a === b; },
+        round: function(n) { return Math.round(n); },
+        
         timeAgo: function(timestamp) { // computing time posted in reviews
             const now = new Date();
             const past = new Date(timestamp);
@@ -113,6 +120,59 @@ app.get("/userpage/:userPage", async (req, res) => {
     }
 });
 
+app.get("/orgs/:orgName", async (req, res) => {
+    try {
+        const orgName = req.params.orgName; // Get organization name
+        const page = parseInt(req.query.page, 10) || 1;
+        const limit = 6; // Number of reviews per page
+        const skip = (page - 1) * limit; // Calculate how many reviews to skip
+
+        // Fetch organization details
+        const org = await Organization.findOne({ orgName: new RegExp("^" + orgName + "$", "i") }).lean();
+        if (!org) {
+            return res.status(404).send("Organization not found");
+        }
+
+        // Fetch and sort reviews by newest first
+        const reviews = await Review.find({ orgName: new RegExp("^" + orgName + "$", "i") })
+            .sort({ timePosted: -1 }) // Sort by newest first
+            .skip(skip) // Skip reviews based on the current page
+            .limit(limit)
+            .lean(); 
+
+        // Get the total number of reviews for this organization
+        const totalReviews = await Review.countDocuments({ orgName: new RegExp("^" + orgName + "$", "i") });
+
+        /* NOT DONE
+        // Calculate the total number of pages based on the total reviews and limit per page
+        const totalPages = totalReviews > 0 ? Math.ceil(totalReviews / limit) : 1;
+
+        // Ensure the current page is within a valid range
+        const currentPage = Math.min(Math.max(page, 1), totalPages);
+
+        // Calculate the average rating for the organization
+        const totalRatings = await Review.aggregate([
+            { $match: { orgName: new RegExp("^" + orgName + "$", "i") } }, // Match the organization's reviews
+            { $group: { _id: null, avgRating: { $avg: "$ratings" } } } // Compute the average rating
+        ]);
+
+        // Extract the average rating, default to "0.0" if there are no ratings
+        const avgRating = totalRatings?.[0]?.avgRating ? totalRatings[0].avgRating.toFixed(1) : "0.0";
+        */
+        res.render("orgpage", { 
+            org, 
+            reviews, 
+            //avgRating, 
+            totalReviews, 
+            //totalPages, 
+            //currentPage 
+        });
+    } catch (err) {
+        console.error("Error fetching organization data:", err);
+        res.status(500).send("Error loading orgpage"); 
+    }
+});
+
 // using routes
 app.use('/', homepageRoutes);
 app.use('/signup', signupRoutes);
@@ -124,7 +184,7 @@ app.use('/searchreview', searchRevRoutes);
 app.use('/reviewpage', revPageRoutes);
 app.use('/reviewedit', revEditRoutes);
 app.use('/editorg', editOrgRoutes);
-app.use('/orgpage', orgPageRoutes);
+app.use('/', orgPageRoutes);
 
 app.use('/userpage', userPageRoutes);
 
