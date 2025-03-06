@@ -20,7 +20,7 @@
                 </div>
             </div>
 
-            <form id="signup-form" name="signup">
+            <form id = "signup-form" name = "signup">
                 <div class = "input-field-container">
                     <div class = "indicator">Password</div>
                     <div class = "text-field-container">
@@ -100,7 +100,7 @@
                     const data = await response.json();
                     if (response.ok) {
                         alert(data.message);
-                        window.location.href = "/login";
+                            window.location.href = "/login";
                     } else {
                         alert(data.error);
                     }

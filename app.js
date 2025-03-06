@@ -4,6 +4,7 @@ const exphbs = require("express-handlebars");
 const path = require("path");
 const fs = require("fs");
 const bcrypt = require("bcrypt");
+const session = require("express-session");
 
 require("./db"); // connecting to mongoDB
 const Review = require("./models/reviews");
@@ -17,6 +18,7 @@ const hbs = exphbs.create({
     extname: "hbs",
     defaultLayout: "main",
     layoutsDir: path.join(__dirname, "views", "layouts"),
+    partialsDir: path.join(__dirname, "views", "partials"), // Add this line
     helpers: {
         times: function(n, block) { // for showing stars in reviews
             let result = "";
@@ -62,6 +64,19 @@ const hbs = exphbs.create({
 app.engine("hbs", hbs.engine);
 app.set("view engine", "hbs");
 app.set("views", path.join(__dirname, "views"));
+
+// to keep track if logged in
+app.use(session({
+    secret: "yourSecretKey",
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false }
+}));
+
+app.use((req, res, next) => {
+    res.locals.loggedInUser = req.session.user || null; // Pass logged-in user to all views
+    next();
+});
 
 // public
 app.use(express.static(path.join(__dirname, 'public')));
@@ -175,7 +190,7 @@ app.get("/orgs/:orgName", async (req, res) => {
 });
 
 // signing up
-app.post("/signup", async (req, res) => {
+app.post("/signup", async (req, res) => {       
     try {
         const { username, password, accountType, description } = req.body;
 
@@ -189,20 +204,19 @@ app.post("/signup", async (req, res) => {
             if (!username || !password) {
                 return res.status(400).json({ error: "Username and password are required for users." });
             }
-            const hashedPassword = await bcrypt.hash(password, 10);
+
             newAccount = new User({ 
                 userName: username, 
                 userDesc: description,
                 userPage: username,
                 profileImage: "/images/icon.png",
-                userPassword: hashedPassword 
+                userPassword: password
             });
         } 
         else if (accountType === "organization") {
             if (!username || !password) {
                 return res.status(400).json({ error: "Organization name and password are required." });
             }
-            const hashedPassword = await bcrypt.hash(password, 10);
             newAccount = new Organization({
                 orgName: username,
                 orgPic: "/images/icon.png",
@@ -211,7 +225,7 @@ app.post("/signup", async (req, res) => {
                 orgRating: 0,
                 orgReviews: 0,
                 orgCollege: "Others",
-                orgPassword: hashedPassword
+                orgPassword: password
             });
         } 
         else {
@@ -229,7 +243,57 @@ app.post("/signup", async (req, res) => {
 });
 
 // logging in
+app.post("/login", async (req, res) => {
+    try {
+        const { username, password } = req.body;
 
+        if (!username || !password) {
+            return res.status(400).json({ error: "Username and password are required." });
+        }
+
+        let account = await User.findOne({ userName: username }).lean();
+        let accountType = "student";
+
+        if (!account) {
+            account = await Organization.findOne({ orgName: username }).lean();
+            accountType = "organization";
+        }
+
+        if (!account) {
+            return res.status(404).json({ error: "Account not found." });
+        }
+
+        const isPasswordValid = password == account.userPassword || password == account.orgPassword
+
+        if (!isPasswordValid) {
+            return res.status(401).json({ error: "Invalid credentials." });
+        }
+
+        // to store user session
+        req.session.user = {
+            username: account.userName || account.orgName,
+            accountType: accountType
+        };
+
+        console.log(`✅ ${accountType} logged in:`, req.session.user);
+        res.json({ message: `Welcome back, ${username}!`, accountType });
+
+    } catch (error) {
+        console.error("❌ Error during login:", error);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+});
+
+// logging out
+app.get("/logout", (req, res) => {
+    req.session.destroy((err) => {
+        if (err) {
+            console.error("Logout error:", err);
+            return res.status(500).json({ error: "Error logging out." });
+        }
+        res.redirect("/");
+    });
+});
 
 // using routes
 app.use('/', homepageRoutes);
