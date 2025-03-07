@@ -59,7 +59,7 @@ const hbs = exphbs.create({
             } else {
                 return false; 
             }
-        }
+        },
         sub: function(a, b) { return a - b; },
         round: function(n) { return Math.round(n); },
         gt: function(a, b) { return a > b; },
