@@ -1,8 +1,19 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/', (req, res) => {
-    res.render('searchorg', { title: 'Search Organizations', layout: 'main' });
+const Organization = require("../models/orgs.js");
+
+router.get('/', async (req, res) => {
+    try {
+        res.render('searchorg', { 
+            title: 'Search Organizations', 
+            layout: 'main',
+            orgList: await Organization.find().lean()
+        });
+    }
+    catch (err) {
+        res.status(500).send("Error fetching organizations");
+    }
 });
 
 module.exports = router;
