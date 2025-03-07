@@ -6,63 +6,84 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="/css/userpage.css">
 
-    <script>
-document.addEventListener("DOMContentLoaded", function() {
-    const filterBtn = document.querySelector(".filter-btn");
-    const dropdownContent = document.querySelector(".dropdown-content");
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const filterBtn = document.querySelector(".filter-btn");
+                const dropdownContent = document.querySelector(".dropdown-content");
 
-    // Toggle dropdown menu visibility
-    filterBtn.addEventListener("click", function(event) {
-        dropdownContent.classList.toggle("show");
-        event.stopPropagation(); // Prevent event bubbling
-    });
-
-    // Close dropdown when clicking outside
-    document.addEventListener("click", function(event) {
-        if (!filterBtn.contains(event.target) && !dropdownContent.contains(event.target)) {
-            dropdownContent.classList.remove("show");
-        }
-    });
-
-    const filterLinks = document.querySelectorAll(".dropdown-content a");
-    const reviewContainer = document.getElementById("review-container");
-
-    filterLinks.forEach(link => {
-        link.addEventListener("click", async function(event) {
-            event.preventDefault();
-            const rating = this.getAttribute("data-rating");
-
-            try {
-                // Update URL without refreshing
-                const url = new URL(window.location.href);
-                url.searchParams.set("rating", rating);
-                window.history.pushState({}, "", url);
-
-                console.log("Updated URL:", url.toString()); // Debugging
-
-                // Fetch filtered reviews **only**, not the full page
-                const response = await fetch(url.toString(), {
-                    method: "GET",
-                    headers: { "X-Requested-With": "XMLHttpRequest" }
+                filterBtn.addEventListener("click", function(event) {
+                    dropdownContent.classList.toggle("show");
+                    event.stopPropagation();
                 });
 
-                if (!response.ok) {
-                    throw new Error(`HTTP error! Status: ${response.status}`);
-                }
+                document.addEventListener("click", function(event) {
+                    if (!filterBtn.contains(event.target) && !dropdownContent.contains(event.target)) {
+                        dropdownContent.classList.remove("show");
+                    }
+                });
 
-                // Replace **only** the reviews inside review-container
-                const reviewsHtml = await response.text();
-                reviewContainer.innerHTML = reviewsHtml; 
+                const filterLinks = document.querySelectorAll(".dropdown-content a");
+                const reviewContainer = document.getElementById("review-container");
 
-                console.log("Updated reviews successfully."); // Debugging
-            } catch (error) {
-                console.error("Error fetching filtered reviews:", error);
-            }
-        });
-    });
-});
-</script>
-        
+                filterLinks.forEach(link => {
+                    link.addEventListener("click", async function(event) {
+                        event.preventDefault();
+                        const rating = this.getAttribute("data-rating");
+
+                        try {
+                            const url = new URL(window.location.href);
+                            url.searchParams.set("rating", rating);
+                            window.history.pushState({}, "", url);
+
+                            const response = await fetch(url.toString(), {
+                                method: "GET",
+                                headers: { "X-Requested-With": "XMLHttpRequest" }
+                            });
+
+                            if (!response.ok) {
+                                throw new Error(`HTTP error! Status: ${response.status}`);
+                            }
+
+                            const reviewsHtml = await response.text();
+                            reviewContainer.innerHTML = reviewsHtml; 
+
+                        } catch (error) {
+                            console.error("Error fetching filtered reviews:", error);
+                        }
+                    });
+                });
+            });
+
+            document.addEventListener("DOMContentLoaded", function() {
+                const searchInput = document.querySelector(".review-search");
+                const reviewContainer = document.getElementById("review-container");
+
+                searchInput.addEventListener("input", async function() {
+                    const query = this.value.trim();
+
+                    try {
+                        const url = new URL(window.location.href);
+                        url.searchParams.set("search", query);
+                        window.history.pushState({}, "", url);
+
+                        const response = await fetch(url.toString(), {
+                            method: "GET",
+                            headers: { "X-Requested-With": "XMLHttpRequest" }
+                        });
+
+                        if (!response.ok) {
+                            throw new Error(`HTTP error! Status: ${response.status}`);
+                        }
+
+                        const reviewsHtml = await response.text();
+                        reviewContainer.innerHTML = reviewsHtml;
+
+                    } catch (error) {
+                        console.error("Error fetching search results:", error);
+                    }
+                });
+            });
+        </script>
     </head>
 
     <body>
@@ -123,6 +144,9 @@ document.addEventListener("DOMContentLoaded", function() {
                                 <i class="fa-solid fa-star"></i>
                                 (1)
                             </a>
+                            <a href="#" data-rating="">
+                                None
+                            </a>
                         </div>
                     </div>
                     <div class ="review-search-container">
@@ -132,9 +156,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 </div>
 
                 <div id="review-container" class="review-container">
-                    {{!#each reviews}}
                         {{> reloadreview}}
-                    {{!/each}}
                 </div>    
             </div>
         </div>

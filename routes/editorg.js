@@ -1,8 +1,7 @@
-const express = require('express');
+const express = require("express");
+const multer = require("multer");
+const Organization = require("../models/orgs");
+
 const router = express.Router();
 
-router.get('/', (req, res) => {
-    res.render('editorg', { title: 'Edit Org' });
-});
-
-module.exports = router;
+module.exports = router; 
