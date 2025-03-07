@@ -79,9 +79,16 @@ app.use(session({
     cookie: { secure: false }
 }));
 
+// pass logged-in user to all views
 app.use((req, res, next) => {
-    res.locals.loggedIn = req.session.user || null; // pass logged-in user to all views
-    next();     
+    res.locals.user = req.session.user || null;
+    next();
+});
+
+app.get('/reviews', (req, res) => {
+    res.render('reviews', { 
+        loggedIn: req.session.user
+    });
 });
 
 // public
@@ -191,7 +198,7 @@ app.post("/useredit/:userPage", async (req, res) => {
 
 
 // signing up
-app.post("/signup", async (req, res) => {       
+app.post("/review/:id/react", async (req, res) => {
     try {
         const { username, password, accountType, description } = req.body;
 
@@ -214,23 +221,14 @@ app.post("/signup", async (req, res) => {
                 userPassword: password
             });
         } 
-        else if (accountType === "organization") {
-            if (!username || !password) {
-                return res.status(400).json({ error: "Organization name and password are required." });
-            }
-            newAccount = new Organization({
-                orgName: username,
-                orgPic: "/images/default-icon-org.png",
-                orgDesc: description,
-                orgPage: username,
-                orgRating: 0,
-                orgReviews: 0,
-                orgCollege: "Others",
-                orgPassword: password
-            });
+        else if (reaction === "dislike") {
+            review.dislikesCount += 1;
+        }
+        else if (reaction === "undoLike" && review.likesCount > 0) {
+            review.likesCount -= 1;
         } 
-        else {
-            return res.status(400).json({ error: "Invalid account type." });
+        else if (reaction === "undoDislike" && review.dislikesCount > 0) {
+            review.dislikesCount -= 1;
         }
 
         await newAccount.save();
@@ -281,7 +279,7 @@ app.post("/login", async (req, res) => {
         if (accountType === "student") {
             req.session.user = {
                 userName: account.userName,
-                userPage: account.userPage,     
+                userPage: account.userPage,         
                 accountType: accountType,
                 userDesc: account.userDesc,
                 profileImage: account.profileImage,
@@ -290,7 +288,7 @@ app.post("/login", async (req, res) => {
         } else if (accountType === "organization") {
             req.session.user = {
                 orgName: account.orgName,
-                userPage: account.userPage,     
+                orgPage: account.orgPage,     
                 accountType: accountType,
                 orgDesc: account.userDesc,
                 orgPic: account.orgPic,

@@ -18,10 +18,11 @@
         
     <div class = "recent-reviews-section">
         <div class = "header-text">Recent Reviews</div>
+
         <div class = "recent-reviews-container">
             {{#each reviews}}
                 {{#if (lt @index 6)}} <!-- only loading 6 reviews in -->
-                    {{> review}}
+                    {{> review loggedIn=../loggedIn}}
                 {{/if}}
             {{/each}}
         </div>

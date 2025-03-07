@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="/css/review.css">
 
-<div class = "review" data-review-id = "{{_id}}">
+<div class = "review">  
     <div class = "review-proper-container">
         <div class = "review-container">  
 
@@ -17,12 +17,12 @@
                     </div>
                 </div>
                 <div class="rating-edit-container">
-                    <div class="rating-container">
+                    <div class="rating-container {{#if (eq loggedIn.userName userName) }} gone{{/if}}">
                         {{#times reviewRating}}
                             <i class="fa-solid fa-star"></i>
                         {{/times}}
                     </div>
-                    {{#if userName}}
+                    {{#if (eq loggedIn.userName userName) }}    
                         <div class="edit-container">
                             <a href="/reviewedit">
                                 <i class="fa-solid fa-pencil"></i>
@@ -77,26 +77,135 @@
     </div>
     <div class="review-footer">
         <div class="helpfulness-container">
-            <button class="helpfulness-item" onclick="updateHelpfulness('dislikes', '{{_id}}')">
-                Mark as Unhelpful
+            <button class="helpfulness-item" {{#if loggedIn}} onclick="updateHelpfulness('not', '{{_id}}')" {{/if}}>
+                Not Helpful
             </button>
-            <button class="helpfulness-item" onclick="updateHelpfulness('likes', '{{_id}}')">
-                Mark as Helpful
+            <button class="helpfulness-item" {{#if loggedIn}} onclick="updateHelpfulness('help', '{{_id}}')" {{/if}}>
+                Helpful
             </button>
         </div>
         <div class="likes-container">
-            <div class="likes-container-content" id="likes-{{_id}}">
+            <div class="likes-container-content" id="dislike-{{_id}}">
                 {{#if dislikesCount}}
                     <span>{{dislikesCount}}</span>
                 {{/if}}
             </div>
-            <div class="likes-container-content"><i class="fa-regular fa-thumbs-down"></i></div>
-            <div class="likes-container-content" id="likes-{{_id}}">
+            <div class="likes-container-content">
+                <i class="fa-regular fa-thumbs-down" id="dislike-icon-{{_id}}" {{#if loggedIn}} onclick="toggleLikeDislike('{{_id}}', 'dislike')" {{/if}}></i>
+            </div>
+            <div class="likes-container-content" id="like-{{_id}}">
                 {{#if likesCount}}
                     <span>{{likesCount}}</span>
                 {{/if}}
             </div>
-            <div class="likes-container-content"><i class="fa-regular fa-thumbs-up"></i></div>
+            <div class="likes-container-content">
+                <i class="fa-regular fa-thumbs-up" id="like-icon-{{_id}}" {{#if loggedIn}} onclick="toggleLikeDislike('{{_id}}', 'like')" {{/if}}></i>
+            </div>
         </div>
     </div>
 </div>
+
+<script> // toggling likes and dislikes
+    async function toggleLikeDislike(reviewId, reaction) {
+        try {
+            const likeIcon = document.getElementById(`like-icon-${reviewId}`);
+            const dislikeIcon = document.getElementById(`dislike-icon-${reviewId}`);
+            
+            const isLiked = likeIcon.classList.contains("fa-solid");
+            const isDisliked = dislikeIcon.classList.contains("fa-solid");
+
+            let action = reaction;
+
+            // Determine the action before sending the request
+            if (reaction === "like") {
+                if (isLiked) {
+                    action = "undoLike"; // Undo like
+                } 
+                else if (isDisliked) {
+                    action = "cancelDislike";
+                }
+                else {
+                    action = "like"; // Set like
+                }
+            } else if (reaction === "dislike") {
+                if (isDisliked) {
+                    action = "undoDislike"; // Undo dislike
+                } 
+                else if (isLiked) {
+                    action = "cancelLike";
+                }
+                else {
+                    action = "dislike"; // Set dislike
+                }
+            }
+
+            const response = await fetch(`/review/${reviewId}/react`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ reaction: action }),
+            });
+
+            const result = await response.json();
+
+            if (result.success) {
+                // Update counts
+                document.getElementById(`like-${reviewId}`).innerHTML = `<span>${result.likesCount}</span>`;
+                document.getElementById(`dislike-${reviewId}`).innerHTML = `<span>${result.dislikesCount}</span>`;
+
+                // Properly toggle icons
+                if (action === "like") {
+                    likeIcon.classList.add("fa-solid");
+                    likeIcon.classList.remove("fa-regular");
+                } 
+                else if (action === "dislike") {
+                    dislikeIcon.classList.add("fa-solid");
+                    dislikeIcon.classList.remove("fa-regular");
+                } 
+                else if (action === "undoLike") {
+                    likeIcon.classList.remove("fa-solid");
+                    likeIcon.classList.add("fa-regular");
+                } 
+                else if (action === "undoDislike") {
+                    dislikeIcon.classList.remove("fa-solid");
+                    dislikeIcon.classList.add("fa-regular");
+                }
+                else if (action === "cancelDislike") {
+                    likeIcon.classList.add("fa-solid");
+                    likeIcon.classList.remove("fa-regular");
+                    dislikeIcon.classList.remove("fa-solid");
+                    dislikeIcon.classList.add("fa-regular");
+                } 
+                else if (action === "cancelLike") {
+                    dislikeIcon.classList.add("fa-solid");
+                    dislikeIcon.classList.remove("fa-regular");
+                    likeIcon.classList.remove("fa-solid");
+                    likeIcon.classList.add("fa-regular");
+                }
+            } else {
+                alert("Error updating reaction.");
+            }
+        } catch (error) {
+            console.error("Error:", error);
+        }
+    }
+
+    function updateHelpfulness(type, reviewId) {
+        const helpfulBtn = document.querySelector(`[onclick="updateHelpfulness('help', '${reviewId}')"]`);
+        const unhelpfulBtn = document.querySelector(`[onclick="updateHelpfulness('not', '${reviewId}')"]`);
+
+        if (type === "help") {
+            // helpful toggle
+            helpfulBtn.classList.toggle("selected");
+            helpfulBtn.classList.toggle("active-green");
+            unhelpfulBtn.classList.remove("active-green");
+        } 
+        else if (type === "not") {
+            // not helpful toggle
+            unhelpfulBtn.classList.toggle("selected");
+            unhelpfulBtn.classList.toggle("active-green");
+            helpfulBtn.classList.remove("active-green");
+        }
+    }
+</script>

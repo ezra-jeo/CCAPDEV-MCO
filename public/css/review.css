@@ -136,9 +136,9 @@
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-}
+}   
 .helpfulness-item {
-    font-size: 12px;
+    font-size: 10px;
     background-color: transparent;
     border: 1px solid #3B6724;
     border-radius: 30px;
@@ -219,12 +219,14 @@
 .edit-container {
     display: none;
 }
-.rating-edit-container:hover .rating-container {
+.rating-edit-container:hover .gone {
     display: none;
 }
 .rating-edit-container:hover .edit-container {
     display: block;
 }
-.rating-container i {
-    cursor: pointer;
+.active-green {
+    background-color: #3B6724 !important;
+    color: white !important;
+    font-weight: bold;
 }
