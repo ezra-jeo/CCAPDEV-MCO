@@ -4,13 +4,16 @@ const exphbs = require("express-handlebars");
 const path = require("path");
 
 // const db = require("./db"); // connecting to mongoDB
-const Review = mongoose.connection.collection("reviews");
-const Organization = mongoose.connection.collection("organizations");
+const app = express();
+
 
 mongoose.connect("mongodb://localhost:27017/orgs");
 
+const Review = require("./models/reviews.js");
+const Organization = require("./models/orgs.js");
+// const Review = mongoose.connection.collection("reviews");
+// const Organization = mongoose.connection.collection("organizations");
 
-const app = express();
 
 // handlebars
 app.engine('hbs', exphbs.engine({
@@ -119,7 +122,7 @@ app.get("/orgs/searchfilter/org:org?/qry1:qry1?/qry2:qry2?", async (req, res) =>
         }
 
         console.log(query);
-        const result = await Organization.find(query).toArray();
+        const result = await Organization.find(query).lean();
         console.log(result);
         res.send({orgList: result});
     }
@@ -160,9 +163,9 @@ app.get("/reviews/searchfilter/search:search?/qry1:qry1?/qry2:qry2?", async (req
         if (Object.keys(query).length == 0) {
              query = {};
         }
-        console.log(await Review.find().toArray());
+        console.log(await Review.find().lean());
         console.log("query"+query);
-        const result = await Review.find(query).toArray();
+        const result = await Review.find(query).lean();
         console.log(result);
         res.send({reviewList: result});
     }
@@ -215,7 +218,7 @@ app.get("/orgs/sort/org:org?/qry1:qry1?/qry2:qry2?/method:method/order:order", a
         }
         console.log(order);
         console.log(query);
-        const result = await Organization.find(query).sort(order).toArray();
+        const result = await Organization.find(query).sort(order).lean();
         console.log(result);
         res.send({orgList: result});
     }

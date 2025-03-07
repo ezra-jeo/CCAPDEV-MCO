@@ -1,15 +1,14 @@
 const express = require('express');
-const mongoose = require("mongoose");
 const router = express.Router();
 
-const reviews = mongoose.connection.collection("reviews");
+const Review = require("../models/reviews.js");
 
 router.get('/', async (req, res) => {
     try {
         res.render('searchreview', { 
             title: 'Search Reviews', 
             layout: 'main',
-            reviewList: await reviews.find().toArray()
+            reviewList: await Review.find().lean()
         });
     }
     catch (err) {

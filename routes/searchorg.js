@@ -1,15 +1,14 @@
 const express = require('express');
-const mongoose = require("mongoose");
 const router = express.Router();
 
-const orgs = mongoose.connection.collection("organizations");
+const Organization = require("../models/orgs.js");
 
 router.get('/', async (req, res) => {
     try {
         res.render('searchorg', { 
             title: 'Search Organizations', 
             layout: 'main',
-            orgList: await orgs.find().toArray()
+            orgList: await Organization.find().lean()
         });
     }
     catch (err) {
