@@ -104,6 +104,7 @@ const editOrgRoutes = require('./routes/editorg');
 const orgPageRoutes = require('./routes/orgpage');
 
 const userPageRoutes = require('./routes/userpage');
+const userEditRoutes = require('./routes/useredit');
 
 // fetching recent reviews for homepage
 app.get("/", async (req, res) => {
@@ -139,11 +140,52 @@ app.get("/userpage/:userPage", async (req, res) => {
         if (req.headers["x-requested-with"] === "XMLHttpRequest") {
             res.render("partials/reloadreview", { reviews, layout: false });
         } else {
-            res.render("userpage", { user, reviews });
+            res.render("userpage", { user, reviews, userPage: reviews[0].userPage, loggedIn: req.session.user || null });
         }
     } catch (error) {
         console.error("Error loading user page:", error);
         res.status(500).send("Error loading user page");
+    }
+});
+
+// user edit page
+app.get("/useredit/:userPage", async (req, res) => {
+    try {
+        const userPage = req.params.userPage;
+        
+        // Find the user based on userPage
+        const user = await Review.findOne({ userPage }).lean();
+
+
+        if (!user) {
+            return res.status(404).send("User not found.");
+        }
+
+        res.render("useredit", { user, layout: false });
+    } catch (error) {
+        console.error("Error loading user edit page:", error);
+        res.status(500).send("Error loading user edit page.");
+    }
+});
+
+app.post("/useredit/:userPage", async (req, res) => {
+    try {
+        const userPage = req.params.userPage;
+        const findUser = await Review.findOne({ userPage: userPage }).lean();
+        let userName = findUser.userName;
+        const user = await User.findOne({ userName: userName }).lean();
+
+        const { description } = req.body;
+
+        if (description && description.trim() !== "") {
+            await User.updateOne({ userName: userName }, { $set: { userDesc: description } });
+        }
+    
+        res.redirect(`/userpage/${userPage}`);
+
+    } catch (error) {
+        console.error("Error loading user edit page:", error);
+        res.status(500).send("Error loading user edit page.");
     }
 });
 
@@ -314,6 +356,7 @@ app.use('/editorg', editOrgRoutes);
 app.use('/', orgPageRoutes);
 
 app.use('/userpage', userPageRoutes);
+app.use('/useredit', userEditRoutes);
 
 // Search and Filter
 app.get("/orgs/searchfilter/org:org?/qry1:qry1?/qry2:qry2?", async (req, res) => {
