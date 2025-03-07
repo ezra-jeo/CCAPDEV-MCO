@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const reviewSchema = new mongoose.Schema({
     userName: { type: String, required: true, default: "Anonymous" }, 
     userPage: { type: String },
-    profileImage: { type: String, default: "/images/icon.png" },
+    profileImage: { type: String, default: "/images/default-icon-user.png" },
     timePosted: { type: Date, default: Date.now },
     reviewRating: { type: Number, required: true, min: 1, max: 5 },
     orgName: { type: String, required: true, default: "Unknown Organization" },

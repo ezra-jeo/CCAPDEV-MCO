@@ -2,7 +2,7 @@
     {
         "userName": "Chynna Mae",
         "userPage": "",
-        "profileImage": "/images/icon.png",
+        "profileImage": "/images/default-icon-user.png",
         "timePosted": "2025-03-04T10:30:00.000Z",
         "ratings": 5,
         "orgPage": "",
@@ -16,7 +16,7 @@
     {
         "userName": "Emman P.",
         "userPage": "",
-        "profileImage": "/images/icon.png",
+        "profileImage": "/images/default-icon-user.png",
         "timePosted": "2025-02-28T15:45:00.000Z",
         "ratings": 4,
         "orgPage": "",
@@ -30,7 +30,7 @@
     {
         "userName": "Jeo",
         "userPage": "",
-        "profileImage": "/images/icon.png",
+        "profileImage": "/images/default-icon-user.png",
         "timePosted": "2025-03-01T08:20:00.000Z",
         "ratings": 3,
         "orgPage": "",
@@ -44,7 +44,7 @@
     {
         "userName": "Kyle",
         "userPage": "",
-        "profileImage": "/images/icon.png",
+        "profileImage": "/images/default-icon-user.png",
         "timePosted": "2025-02-26T19:10:00.000Z",
         "ratings": 5,
         "orgPage": "",
@@ -58,7 +58,7 @@
     {
         "userName": "Mae Tria",
         "userPage": "",
-        "profileImage": "/images/icon.png",
+        "profileImage": "/images/default-icon-user.png",
         "timePosted": "2025-03-02T13:55:00.000Z",
         "ratings": 2,
         "orgPage": "",
@@ -72,7 +72,7 @@
     {
         "userName": "Jane Doe",
         "userPage": "/userpage",
-        "profileImage": "/images/icon.png",
+        "profileImage": "/images/default-icon-user.png",
         "timePosted": "2025-03-02T13:55:00.000Z",
         "ratings": 2,
         "orgPage": "",

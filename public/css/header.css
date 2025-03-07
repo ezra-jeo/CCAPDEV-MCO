@@ -84,3 +84,11 @@
     align-items: center;
     margin: 10px;
 }
+.user-name-profile {
+    padding-right: 10px;    
+    color: #3B6724;
+}
+#avatar {   
+    height: 50px;
+    width: 50px;
+}

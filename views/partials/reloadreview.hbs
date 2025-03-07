@@ -1,0 +1,13 @@
+<link rel="stylesheet" href="/css/reloadreview.css">
+
+    <div id="review-container" class="review-container">
+        {{#if reviews.length}}
+            {{#each reviews}}
+                {{> review}}
+            {{/each}}
+        {{else}}
+            <div class="no-review">
+                <h3>No Reviews.</h3>
+            </div>
+        {{/if}}
+    </div> 

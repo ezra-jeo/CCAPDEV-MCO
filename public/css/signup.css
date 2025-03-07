@@ -183,3 +183,10 @@ textarea{
     outline: none;
     padding-right: 10px;
 }
+form {
+    all: unset;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
