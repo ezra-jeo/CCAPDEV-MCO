@@ -51,13 +51,17 @@
                 {{/if}}
 
                 {{#if responseMessage}}
-                <div class="response-container">
-                    <div class="response-header">{{orgName}} replied</div>
-                    <div class="response-message">
-                        <div>{{responseMessage}}</div>
+                    <div class="response-container">
+                        {{#if (eq loggedIn.userName responseUser)}}
+                            <div class="response-header">You replied</div>
+                        {{else}}
+                            <div class="response-header">{{orgName}} replied</div>
+                        {{/if}}
+                        <div class="response-message">
+                            {{responseMessage}}
+                        </div>
                     </div>
-                </div>
-                {{/if}} 
+                {{/if}}
 
                 {{#if orgpage}}
                 <div class="reply-section">
