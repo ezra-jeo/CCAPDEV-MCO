@@ -22,22 +22,22 @@
         {{#if (eq loggedIn.accountType "student")}}
             <div class = "profile-container">
                 <div class = "user-name-profile">
-                    <a href = "/userpage/{{loggedIn.userPage}}">
+                    <a href = "{{loggedIn.userPage}}">
                         {{loggedIn.userName}}
                     </a>
                 </div>      
-                <a href = "/userpage/{{loggedIn.userPage}}">
+                <a href = "{{loggedIn.userPage}}">
                     <img id = "avatar" src = "{{loggedIn.profileImage}}">
                 </a>         
             </div>
         {{else if (eq loggedIn.accountType "organization")}}
             <div class="profile-container">
                 <div class="user-name-profile">
-                    <a href="/orgpage/{{loggedIn.orgPage}}">
+                    <a href="{{loggedIn.orgPage}}">
                         {{loggedIn.orgName}}
                     </a>
                 </div>
-                <a href="/orgpage/{{loggedIn.orgPage}}">
+                <a href="{{loggedIn.orgPage}}">
                     <img id = "avatar" src="{{loggedIn.orgPic}}">
                 </a>
             </div>

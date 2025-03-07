@@ -79,9 +79,16 @@ app.use(session({
     cookie: { secure: false }
 }));
 
+// pass logged-in user to all views
 app.use((req, res, next) => {
-    res.locals.loggedIn = req.session.user || null; // pass logged-in user to all views
-    next();     
+    res.locals.user = req.session.user || null;
+    next();
+});
+
+app.get('/reviews', (req, res) => {
+    res.render('reviews', { 
+        loggedIn: req.session.user
+    });
 });
 
 // public
@@ -147,57 +154,76 @@ app.get("/userpage/:userPage", async (req, res) => {
     }
 });
 
+// dis/liking reviews
+app.post("/review/:id/react", async (req, res) => {
+    try {
+        const { reaction } = req.body;
+        const review = await Review.findById(req.params.id);
+
+        if (!review) {
+            return res.status(404).json({ success: false, message: "Review not found" });
+        }
+
+        // undo action
+        if (reaction === "undoLike") {
+            if (review.likesCount > 0) review.likesCount -= 1;
+        }
+        else if (reaction === "undoDislike") {
+            if (review.dislikesCount > 0) review.dislikesCount -= 1;
+        }
+        // dis/like
+        else if (reaction === "like") {
+            review.likesCount += 1;
+        } else if (reaction === "dislike") {
+            review.dislikesCount += 1;
+        }
+        // cancelling
+        else if (reaction === "cancelDislike") {
+            review.likesCount += 1;
+            review.dislikesCount -= 1;
+        }
+        else if (reaction === "cancelLike") {
+            review.likesCount -= 1;
+            review.dislikesCount += 1;
+        }
+
+        await review.save();
+
+        res.json({ success: true, likesCount: review.likesCount, dislikesCount: review.dislikesCount });
+
+    } catch (err) {
+        res.status(500).json({ success: false, message: "Server error" });
+    }
+});
 
 // signing up
-app.post("/signup", async (req, res) => {       
+app.post("/review/:id/react", async (req, res) => {
     try {
-        const { username, password, accountType, description } = req.body;
+        const { reaction } = req.body;
+        const review = await Review.findById(req.params.id);
 
-        if (!accountType) {
-            return res.status(400).json({ error: "Account type is required." });
+        if (!review) {
+            return res.status(404).json({ success: false, message: "Review not found" });
         }
 
-        let newAccount;
-
-        if (accountType === "student") {
-            if (!username || !password) {
-                return res.status(400).json({ error: "Username and password are required for users." });
-            }
-
-            newAccount = new User({ 
-                userName: username, 
-                userDesc: description,
-                userPage: username,
-                profileImage: "/images/default-icon-user.png",
-                userPassword: password
-            });
+        if (reaction === "like") {
+            review.likesCount += 1;
         } 
-        else if (accountType === "organization") {
-            if (!username || !password) {
-                return res.status(400).json({ error: "Organization name and password are required." });
-            }
-            newAccount = new Organization({
-                orgName: username,
-                orgPic: "/images/default-icon-org.png",
-                orgDesc: description,
-                orgPage: username,
-                orgRating: 0,
-                orgReviews: 0,
-                orgCollege: "Others",
-                orgPassword: password
-            });
+        else if (reaction === "dislike") {
+            review.dislikesCount += 1;
+        }
+        else if (reaction === "undoLike" && review.likesCount > 0) {
+            review.likesCount -= 1;
         } 
-        else {
-            return res.status(400).json({ error: "Invalid account type." });
+        else if (reaction === "undoDislike" && review.dislikesCount > 0) {
+            review.dislikesCount -= 1;
         }
 
-        await newAccount.save();
+        await review.save();
 
-        console.log(`✅ ${accountType} created:`, newAccount);
-        res.json({ message: `${accountType} created successfully!`, account: newAccount });
-    } catch (error) {
-        console.error("❌ Error creating account:", error);
-        res.status(500).json({ error: "Internal Server Error" });
+        res.json({ success: true, likesCount: review.likesCount, dislikesCount: review.dislikesCount });
+    } catch (err) {
+        res.status(500).json({ success: false, message: "Server error" });
     }
 });
 
@@ -239,7 +265,7 @@ app.post("/login", async (req, res) => {
         if (accountType === "student") {
             req.session.user = {
                 userName: account.userName,
-                userPage: account.userPage,     
+                userPage: account.userPage,         
                 accountType: accountType,
                 userDesc: account.userDesc,
                 profileImage: account.profileImage,
@@ -248,7 +274,7 @@ app.post("/login", async (req, res) => {
         } else if (accountType === "organization") {
             req.session.user = {
                 orgName: account.orgName,
-                userPage: account.userPage,     
+                orgPage: account.orgPage,     
                 accountType: accountType,
                 orgDesc: account.userDesc,
                 orgPic: account.orgPic,
