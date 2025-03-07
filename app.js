@@ -140,7 +140,7 @@ app.get("/userpage/:userPage", async (req, res) => {
         if (req.headers["x-requested-with"] === "XMLHttpRequest") {
             res.render("partials/reloadreview", { reviews, layout: false });
         } else {
-            res.render("userpage", { user, reviews, userPage: reviews[0].userPage });
+            res.render("userpage", { user, reviews, userPage: reviews[0].userPage, loggedIn: req.session.user || null });
         }
     } catch (error) {
         console.error("Error loading user page:", error);

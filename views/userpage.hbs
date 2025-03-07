@@ -90,11 +90,13 @@
        <div class="user-page">
             <div class="user-box">
                 <div class="edit-button">
+                {{#if (eq loggedIn.userName user.userName)}}
                     <a href="/useredit/{{userPage}}">
                         <button><i class="fa-solid fa-pen"></i></button>
                     </a>
+                {{/if}}
                 </div>
-                
+
                 <div class="profile-pic">
                     <img src="{{user.profileImage}}">
                 </div>
@@ -103,9 +105,11 @@
 
                 <div class="user-desc">{{user.userDesc}}</div>
 
+                {{#if (eq loggedIn.userName user.userName)}}
                 <a href="/">
                     <button class="logout-btn">Logout</button>
                 </a>
+                {{/if}}
             </div>
 
             <div class="review-content">
