@@ -59,7 +59,10 @@ const hbs = exphbs.create({
             } else {
                 return false; 
             }
-        }
+        },
+        sub: function(a, b) { return a - b; },
+        round: function(n) { return Math.round(n); },
+        gt: function(a, b) { return a > b; },
     }
 });
 
@@ -321,6 +324,27 @@ app.get("/logout", (req, res) => {
     });
 });
 
+//replying to a review
+app.post("/reply-to-review", async (req, res) => {
+    try {
+        const { reviewId, replyText } = req.body;
+
+        if (!reviewId || !replyText) {
+            return res.status(400).json({ success: false, message: "Review ID or reply message is missing." });
+        }
+
+        // Update the review with the organization's response
+        await Review.findByIdAndUpdate(reviewId, {
+            responseMessage: replyText
+        });
+
+        res.json({ success: true, message: "Reply added successfully!" });
+    } catch (err) {
+        console.error("Error replying to review:", err);
+        res.status(500).json({ success: false, message: "Internal server error" });
+    }
+});
+
 // using routes
 app.use('/', homepageRoutes);
 app.use('/signup', signupRoutes);
@@ -332,7 +356,7 @@ app.use('/searchreview', searchRevRoutes);
 app.use('/reviewpage', revPageRoutes);
 app.use('/reviewedit', revEditRoutes);
 app.use('/editorg', editOrgRoutes);
-app.use('/orgpage', orgPageRoutes);
+app.use('/', orgPageRoutes);
 
 app.use('/userpage', userPageRoutes);
 app.use('/useredit', userEditRoutes);

@@ -18,7 +18,7 @@ const hbs = exphbs.create({
     extname: "hbs",
     defaultLayout: "main",
     layoutsDir: path.join(__dirname, "views", "layouts"),
-    partialsDir: path.join(__dirname, "views", "partials"), // Add this line
+    partialsDir: path.join(__dirname, 'views', 'partials'),
     helpers: {
         times: function(n, block) { // for showing stars in reviews
             let result = "";
@@ -60,6 +60,9 @@ const hbs = exphbs.create({
                 return false; 
             }
         }
+        sub: function(a, b) { return a - b; },
+        round: function(n) { return Math.round(n); },
+        gt: function(a, b) { return a > b; },
     }
 });
 
@@ -106,17 +109,22 @@ const userPageRoutes = require('./routes/userpage');
 app.get("/", async (req, res) => {
     try {
         const reviews = await Review.find().sort({ timePosted: -1 }).lean(); // sort by latest time
-        res.render("homepage", { reviews });
+        res.render("homepage", { reviews, loggedIn: req.session.user || null });
     } catch (error) {
         console.error("Error fetching reviews:", error);
         res.status(500).send("Error loading reviews");
     }
 });
 
+// for userpage filtering (search + ratings)
 app.get("/userpage/:userPage", async (req, res) => {
     try {
         const userPage = req.params.userPage;
         const findUser = await Review.findOne({ userPage: userPage }).lean();
+
+        if (!findUser) {
+            return res.status(404).send("User not found.");
+        }
 
         let userName = findUser.userName;
         const user = await User.findOne({ userName: userName }).lean();
@@ -124,10 +132,11 @@ app.get("/userpage/:userPage", async (req, res) => {
         let query = { userName: userName };
 
         if (req.query.rating) query.reviewRating = parseInt(req.query.rating, 10);
-        
+        if (req.query.search) query.reviewText = { $regex: req.query.search, $options: "i" }; // Case-insensitive search
+
         const reviews = await Review.find(query).lean();
 
-        if (req.query.rating) {
+        if (req.headers["x-requested-with"] === "XMLHttpRequest") {
             res.render("partials/reloadreview", { reviews, layout: false });
         } else {
             res.render("userpage", { user, reviews });
@@ -137,6 +146,7 @@ app.get("/userpage/:userPage", async (req, res) => {
         res.status(500).send("Error loading user page");
     }
 });
+
 
 // signing up
 app.post("/signup", async (req, res) => {       
@@ -202,8 +212,6 @@ app.post("/login", async (req, res) => {
 
         let account;
         let accountType = "student";
-
-        // Check for user account
         account = await User.findOne({ userName: username }).lean();
 
         if (!account) {
@@ -215,7 +223,7 @@ app.post("/login", async (req, res) => {
             return res.status(404).json({ error: "Account not found." });
         }
 
-        // Validate password based on account type
+        // validating password
         let isPasswordValid = false;
         if (accountType === "student") {
             isPasswordValid = password === account.userPassword;
@@ -271,6 +279,27 @@ app.get("/logout", (req, res) => {
     });
 });
 
+//replying to a review
+app.post("/reply-to-review", async (req, res) => {
+    try {
+        const { reviewId, replyText } = req.body;
+
+        if (!reviewId || !replyText) {
+            return res.status(400).json({ success: false, message: "Review ID or reply message is missing." });
+        }
+
+        // Update the review with the organization's response
+        await Review.findByIdAndUpdate(reviewId, {
+            responseMessage: replyText
+        });
+
+        res.json({ success: true, message: "Reply added successfully!" });
+    } catch (err) {
+        console.error("Error replying to review:", err);
+        res.status(500).json({ success: false, message: "Internal server error" });
+    }
+});
+
 // using routes
 app.use('/', homepageRoutes);
 app.use('/signup', signupRoutes);
@@ -282,7 +311,7 @@ app.use('/searchreview', searchRevRoutes);
 app.use('/reviewpage', revPageRoutes);
 app.use('/reviewedit', revEditRoutes);
 app.use('/editorg', editOrgRoutes);
-app.use('/orgpage', orgPageRoutes);
+app.use('/', orgPageRoutes);
 
 app.use('/userpage', userPageRoutes);
 
