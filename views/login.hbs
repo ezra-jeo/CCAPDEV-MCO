@@ -6,42 +6,96 @@
     <link rel="stylesheet" href="/css/login.css">
 </head>
 <body>
-    <div class = "login-section">
-        <div class = "login-container">
-            <div class = "header-text">Log In</div>
-            <div class = "input-container">
-                <div class = "input-field-container">
-                    <div class = "indicator">Username</div>
-                    <div class = "text-field-container">
-                        <input type= "text" id = "username" name = "username" required>
+    <form id = "login-form" name = "login">
+        <div class = "login-section">
+            <div class = "login-container">
+                <div class = "header-text">Log In</div>
+                <div class = "input-container">
+                    <div class = "input-field-container">
+                        <div class = "indicator">Username</div>
+                        <div class = "text-field-container">
+                            <input type= "text" id = "username" name = "username" required>
+                        </div>
                     </div>
-                </div>
-                <div class = "input-field-container">
-                    <div class = "indicator">Password</div>
-                    <div class = "text-field-container">
-                        <input type= "password" id = "password" name = "password" required>
+                    <div class = "input-field-container">
+                        <div class = "indicator">Password</div>
+                        <div class = "text-field-container">
+                            <input type= "password" id = "password" name = "password" required>
+                        </div>
                     </div>
-                </div>
-                <div class = "remember-me-container">
                     <div class = "remember-me-container">
-                        <div class = "remember-me-child">
-                            <input type = "checkbox" id = "remember" name = "remember">
-                            <div class = "remember-me-text-container">Remember Me</div>
+                        <div class = "remember-me-container">
+                            <div class = "remember-me-child">
+                                <input type = "checkbox" id = "remember" name = "remember">
+                                <div class = "remember-me-text-container">Remember Me</div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class = "remember-me-container">
-                <div class = "submit-container">
-                    <a href="/signup">
-                        Don't have an account?
-                    </a>
-                    <a href="homepage_user.html">
-                        <div class = "submit-button">Log In</div>
-                    </a>
+                <div class = "remember-me-container">
+                    <div class = "submit-container">
+                        <a href="/signup">
+                            Don't have an account?
+                        </a>
+                        <button type="submit" class="submit-button">Log In</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </form>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const loginForm = document.getElementById("login-form");
+            const errorMessageDiv = document.getElementById("error-message");
+
+            loginForm.addEventListener("submit", async function (event) {
+                event.preventDefault();
+                console.log("Login button clicked!"); // Debugging
+
+                const username = document.getElementById("username").value.trim();
+                const password = document.getElementById("password").value.trim();
+                const rememberMe = document.getElementById("remember").checked;
+
+                if (!username || !password) {
+                    showErrorMessage("Please enter both username and password.");
+                    return;
+                }
+
+                console.log("Sending request to server..."); // Debugging
+
+                try {
+                    const response = await fetch("/login", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify({ username, password, rememberMe }),
+                    });
+
+                    const data = await response.json();
+
+                    console.log("Response received:", data); // Debugging
+
+                    if (response.ok) {
+                        alert(data.message);
+                        window.location.href = "/";
+                    } else {
+                        showErrorMessage(data.error || "Invalid login credentials.");
+                    }
+                } catch (error) {
+                    console.error("❌ Login error:", error);
+                    showErrorMessage("An error occurred. Please try again later.");
+                }
+            });
+
+            // Function to show error messages
+            function showErrorMessage(message) {
+                errorMessageDiv.style.display = 'block';
+                errorMessageDiv.textContent = message;
+            }
+        });
+    </script>
+
 </body>
 </html>

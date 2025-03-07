@@ -2,7 +2,9 @@ const mongoose = require('mongoose');
 
 const orgSchema = new mongoose.Schema({
     orgName: { type: String, required: true, unique: true },
-    orgPic: { type: String, default: "/images/icon.png" },
+    orgPic: { type: String, default: "/images/default-icon-org.png" },
+    orgDesc: { type: String },
+    orgPage: { type: String },
     orgRating: { type: Number, default: 0 },
     orgReviews: [{ type: Number }],
     orgCollege: { type: String },

@@ -8,27 +8,28 @@
     </head> 
 
     <body>
-		{{> header}}
+        <div class="wrapper">
+            <div class="org-profile">
+                <img class="org-profile-pic" src="{{org.orgPic}}" alt="{{org.orgName}}">
+                <h2>{{org.orgName}}</h2>
+                <p>
+                    {{#times (round org.orgRating)}}
+                        <i class="fa-solid fa-star"></i>
+                    {{/times}}
 
-        <div class="org-profile">
-            <img class="org-profile-pic" src="{{org.orgPic}}" alt="{{org.orgName}}">
-            <h2>{{org.orgName}}</h2>
-            <p>
-                {{#times (round org.orgRating)}}
-                    <i class="fa-solid fa-star"></i>
-                {{/times}}
+                    {{#times (sub 5 (round org.orgRating))}}
+                        <i class="fa-regular fa-star"></i>
+                    {{/times}}
 
-                {{#times (sub 5 (round org.orgRating))}}
-                    <i class="fa-regular fa-star"></i>
-                {{/times}}
-
-                ({{totalReviews}} reviews)
-            </p>
-            <p>{{org.reviewDesc}}</p>
-            <span class="edit-icon"><button>
-                <a href="/editorg">✎</a>
-                </button>
-            </span>
+                    ({{totalReviews}} reviews)
+                </p>
+                <p>{{org.orgDesc}}</p>
+                <span class="edit-icon">
+                    <button>
+                        <a href="/editorg/{{org.orgPage}}">✎</a>
+                    </button>
+                </span>
+            </div> <!--org-profiles-->
         </div>
         
         <div class="filters">
@@ -36,16 +37,16 @@
                 <a href="/reviewpage">
                     Write a Review
                 </a>
-            </div>
-		
+            </div> <!--add-review-container-->
+
             <div class="filter-review-container">
                 <div class="search-container">
                     <div class="search-bar-container">
-                        <input type="text" id="searchBar" placeholder="Search for a Review" onclick="searchReviews()">
+                        <input type="text" id="searchBar" placeholder="Search for a Review" onkeyup="searchReviews()">
                         <i class="fa-solid fa-magnifying-glass search-icon"></i>
-                    </div>
-                </div>
-		    
+                    </div> <!--search-bar-container-->
+                </div> <!--search-container-->
+
                 <div class="filter-rating">
                     <button class="filter-btn">Filter by Rating</button>
                     <div class="dropdown">
@@ -55,20 +56,33 @@
                         <a href="#" data-rating="3" onclick="filterByRating(3)">3 Stars</a>
                         <a href="#" data-rating="2" onclick="filterByRating(2)">2 Stars</a>
                         <a href="#" data-rating="1" onclick="filterByRating(1)">1 Star</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-	    
+                    </div> <!--dropdown-->
+                </div> <!--filter-rating-->
+            </div> <!--filter-review-container-->
+        </div> <!--filters-->
+
         <div class="recent-reviews-container">
             {{#each reviews}}
-                {{> review orgpage=true}}
-            {{/each}}
-        </div>
+                {{> review this orgpage=true}}
+            {{/each}}  
+        </div>  <!--recent-reviews-container-->
 
-	<div class="page-nav">
-		<span id="page-numbers"><span id="cur-page">1</span> 2 3 4 5 6 ></span>
-		<span id="cur-page-num">1 of 6 </span>
-	</div>
+		{{#if (gt totalPages 1)}}
+            <div class="page-nav">
+                {{#if (gt currentPage 1)}}
+                    <a href="?page={{sub currentPage 1}}">&lt; Prev</a>
+                {{/if}}
+
+                {{#if (lt currentPage totalPages)}}
+                    <a href="?page={{add currentPage 1}}">Next &gt;</a>
+                {{/if}}
+            </div> <!--page-nav-->
+        {{/if}}
+
+        <div class="page-nav">
+            <span id="page-numbers">
+                <span id="cur-page">{{currentPage}}</span> of {{totalPages}}
+            </span>
+        </div> <!--page-nav-->
     </body>
 </html>

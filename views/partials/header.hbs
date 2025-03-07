@@ -18,8 +18,31 @@
             <a href = "/searchreview">
                 <div class = "options-item">Search Reviews</div>
             </a>           
-        </div>
-        <div class = "profile-container">
+        </div>  
+        {{#if (eq loggedIn.accountType "student")}}
+            <div class = "profile-container">
+                <div class = "user-name-profile">
+                    <a href = "/userpage/{{loggedIn.userPage}}">
+                        {{loggedIn.userName}}
+                    </a>
+                </div>      
+                <a href = "/userpage/{{loggedIn.userPage}}">
+                    <img id = "avatar" src = "{{loggedIn.profileImage}}">
+                </a>         
+            </div>
+        {{else if (eq loggedIn.accountType "organization")}}
+            <div class="profile-container">
+                <div class="user-name-profile">
+                    <a href="/orgpage/{{loggedIn.orgPage}}">
+                        {{loggedIn.orgName}}
+                    </a>
+                </div>
+                <a href="/orgpage/{{loggedIn.orgPage}}">
+                    <img id = "avatar" src="{{loggedIn.orgPic}}">
+                </a>
+            </div>
+        {{else}}
+            <div class = "profile-container">
             <a href="/signup">
                 <div class = "sign-up">Sign Up</div>
             </a>
@@ -27,5 +50,6 @@
                 <div class = "log-in">Log In</div>
             </a>         
         </div>
+        {{/if}}
     </div>
 </div>

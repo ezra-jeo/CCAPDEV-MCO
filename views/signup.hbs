@@ -10,7 +10,7 @@
         <div class = "signup-container">
             <div class = "header-text">Sign Up</div>
             <div class = "avatar-container">
-                <img src = "/images/icon.png">
+                <img id = "avatar-image" src = "/images/default-icon-user.png">
             <div class = "indicator-2">Change Avatar</div>
             </div>
             <div class = "input-field-container">
@@ -20,65 +20,117 @@
                 </div>
             </div>
 
-            <div class = "input-field-container">
-                <div class = "indicator">Password</div>
-                <div class = "text-field-container">
-                    <input type= "password" id = "password" name = "password" required>
+            <form id = "signup-form" name = "signup">
+                <div class = "input-field-container">
+                    <div class = "indicator">Password</div>
+                    <div class = "text-field-container">
+                        <input type= "password" id = "password" name = "password" required>
+                    </div>
                 </div>
-            </div>
 
-            <div class = "input-field-container">
-                <div class = "indicator" style = "font-size: 12px;">Confirm Password</div>
-                <div class = "text-field-container">
-                    <input type= "password" id = "password" name = "password-confirm" required>
+                <div class = "input-field-container">
+                    <div class = "indicator" style = "font-size: 12px;">Confirm Password</div>
+                    <div class = "text-field-container">
+                        <input type= "password" id = "password-confirm" name = "password-confirm" required>
+                    </div>
                 </div>
-            </div>
 
-            <div class = "input-field-container-2">
-                <div class = "indicator">Description</div>
-                <div class = "text-area-container">
-                    <textarea type= "description" id = "description" name = "description"></textarea>
+                <div class = "input-field-container-2">
+                    <div class = "indicator">Description</div>
+                    <div class = "text-area-container">
+                        <textarea type= "description" id = "description" name = "description"></textarea>
+                    </div>
                 </div>
-            </div>
 
-            <div class = "input-field-container">
-                <div class = "indicator">Account</div>
-                <div class = "account-type-group">
-                    <input type = "radio" id = "student" name = "account_type" value = "student">
-                    <div class = "remember-me-text-container">Student</div>
-                    <input type = "radio" id = "organization" name = "account_type" value = "organization">
-                    <div class = "remember-me-text-container">Organization</div>
-                </div>
-            </div>  
+                <div class = "input-field-container">
+                    <div class = "indicator">Account</div>
+                    <div class = "account-type-group">
+                        <input type = "radio" id = "student" name = "account_type" value = "student">
+                        <div class = "remember-me-text-container">Student</div>
+                        <input type = "radio" id = "organization" name = "account_type" value = "organization">
+                        <div class = "remember-me-text-container">Organization</div>
+                    </div>
+                </div>  
 
-            <div class = "remember-me-container"> 
-                <div class = "submit-container">
-                    <a href="/login">
-                        Already have an account?
-                    </a>
-                        <div class = "submit-button">Sign Up</div>
+                <div class = "remember-me-container"> 
+                    <div class = "submit-container">
+                        <a href="/login">
+                            Already have an account?
+                        </a>
+                            <button type="submit" class="submit-button">Sign Up</button>
+                    </div>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 
-    <!-- logic for org and student -->
-    <script>
+    <script> // sending form
         document.addEventListener("DOMContentLoaded", function () {
-            document.querySelector(".submit-button").addEventListener("click", function(event) {
+            document.getElementById("signup-form").addEventListener("submit", async function(event) {
                 event.preventDefault();
-                
-                const studentRadio = document.getElementById("student");
-                const organizationRadio = document.getElementById("organization");
-    
-                if(studentRadio.checked) {
-                    window.location.href = "homepage_user.html";
-                } else if(organizationRadio.checked) {
-                    window.location.href = "homepage_org.html";
-                } else {
-                    alert("Please select an account type (Student or Organization).");
+
+                const username = document.getElementById("username").value.trim();
+                const password = document.getElementById("password").value;
+                const passwordConfirm = document.getElementById("password-confirm").value;
+                const description = document.getElementById("description").value.trim();
+                const accountType = document.querySelector("input[name='account_type']:checked");
+
+                if (!accountType) { // no account type selected
+                    alert("Please select an account type.");
+                    return;
+                }
+
+                if (password !== passwordConfirm) { // password mismatch
+                    alert("Passwords do not match!");
+                    return;
+                }
+
+                try {
+                    const response = await fetch("/signup", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({
+                            username,
+                            password,
+                            description,
+                            accountType: accountType.value
+                        })
+                    });
+
+                    const data = await response.json();
+                    if (response.ok) {
+                        alert(data.message);
+                            window.location.href = "/login";
+                    } else {
+                        alert(data.error);
+                    }
+                } catch (error) {
+                    alert("An error occurred. Please try again later.");
                 }
             });
+        });
+    </script>
+
+    <script> // changing profile image based on account type
+        document.addEventListener("DOMContentLoaded", function () {
+            const avatarImage = document.getElementById("avatar-image");
+
+            function updateAvatarImage() {
+                const selectedAccountType = document.querySelector("input[name='account_type']:checked");
+                if (selectedAccountType) {
+                    if (selectedAccountType.value === "student") {
+                        avatarImage.src = "/images/default-icon-user.png"; 
+                    } else if (selectedAccountType.value === "organization") {
+                        avatarImage.src = "/images/default-icon-org.png";
+                    }
+                }
+            }
+
+            const studentRadio = document.getElementById("student");
+            const orgRadio = document.getElementById("organization");
+
+            studentRadio.addEventListener("change", updateAvatarImage);
+            orgRadio.addEventListener("change", updateAvatarImage);
         });
     </script>
 

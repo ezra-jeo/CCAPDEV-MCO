@@ -1,0 +1,57 @@
+[
+  {
+    "_id": { "$oid": "67c8602b48fabfa781931bf0" },
+    "orgName": "GDGOC",
+    "orgPic": "/images/default-icon-org.png",
+    "orgDesc": "A tech community focused on Google Developer technologies.",
+    "orgPage": "gdgoc",
+    "orgRating": 4.7,
+    "orgReviews": 128,
+    "orgCollege": "CCS",
+    "orgPassword": "securepass123"
+  },
+  {
+    "_id": { "$oid": "67c8602b48fabfa781931bf1" },
+    "orgName": "LSCS",
+    "orgPic": "/images/default-icon-org.png",
+    "orgDesc": "The leading organization for software development enthusiasts.",
+    "orgPage": "lscs",
+    "orgRating": 4.5,
+    "orgReviews": 98,
+    "orgCollege": "CCS",
+    "orgPassword": "lscsrocks456"
+  },
+  {
+    "_id": { "$oid": "67c8602b48fabfa781931bf2" },
+    "orgName": "DSS",
+    "orgPic": "/images/default-icon-org.png",
+    "orgDesc": "Data Science Society - a hub for analytics, AI, and machine learning enthusiasts.",
+    "orgPage": "dss",
+    "orgRating": 4.3,
+    "orgReviews": 75,
+    "orgCollege": "CCS",
+    "orgPassword": "datasciencerulez"
+  },
+  {
+    "_id": { "$oid": "67c8602b48fabfa781931bf3" },
+    "orgName": "AU",
+    "orgPic": "/images/default-icon-org.png",
+    "orgDesc": "For the women and for the children.",
+    "orgPage": "au",
+    "orgRating": 4.8,
+    "orgReviews": 145,
+    "orgCollege": "CLA",
+    "orgPassword": "womenandchildren"
+  },
+  {
+    "_id": { "$oid": "67c8602b48fabfa781931bf4" },
+    "orgName": "PTS",
+    "orgPic": "/images/default-icon-org.png",
+    "orgDesc": "Peer Tutor Society",
+    "orgPage": "pts",
+    "orgRating": 4.6,
+    "orgReviews": 87,
+    "orgCollege": "CCS",
+    "orgPassword": "ptssuccess2025"
+  }
+]
