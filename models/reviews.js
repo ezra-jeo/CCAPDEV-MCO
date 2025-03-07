@@ -8,6 +8,7 @@ const reviewSchema = new mongoose.Schema({
     reviewRating: { type: Number, required: true, min: 1, max: 5 },
     orgName: { type: String, required: true, default: "Unknown Organization" },
     orgPage: { type: String },
+    orgCollege: { type: String},
     reviewText: { type: String, required: true, default: "No review provided." },
     reviewImage: { type: String },
     responseMessage: { type: String, default: "" },

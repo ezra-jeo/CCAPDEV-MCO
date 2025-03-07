@@ -22,7 +22,7 @@ const source = '{{#each reviewList}}\
             </div>\
             <div class="review-body">\
                 <a href = "{{orgPage}}">\
-                    <div class = "review-body-header">{{org.orgName}}\
+                    <div class = "review-body-header">{{orgName}}\
                         {{#if orgpage}}\
                             <a href="/reviewedit">Edit Review</a>\
                         {{/if}}\
@@ -36,7 +36,7 @@ const source = '{{#each reviewList}}\
                 {{/if}}\
                 {{#if responseMessage}}\
                 <div class="response-container">\
-                    <div class="response-header">{{org.orgName}} replied</div>\
+                    <div class="response-header">{{orgName}} replied</div>\
                     <div class="response-message">\
                         <div>{{responseMessage}}</div>\
                     </div>\

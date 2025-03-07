@@ -382,7 +382,7 @@ app.get("/reviews/searchfilter/search:search?/qry1:qry1?/qry2:qry2?", async (req
             query["reviewRating"] = {$in: filterStars};
         }
         if (filterCollege.length > 0) {
-            query["org.orgCollege"] = {$in: filterCollege};
+            query["orgCollege"] = {$in: filterCollege};
         }
         if (Object.keys(query).length == 0) {
              query = {};
@@ -397,9 +397,7 @@ app.get("/reviews/searchfilter/search:search?/qry1:qry1?/qry2:qry2?", async (req
     }
 });
 
-
-// Sort
-
+// Sort orgs
 app.get("/orgs/sort/org:org?/qry1:qry1?/qry2:qry2?/method:method/order:order", async (req, res) => {
     try {
 
@@ -453,17 +451,17 @@ app.get("/orgs/sort/org:org?/qry1:qry1?/qry2:qry2?/method:method/order:order", a
 
 app.listen(3000, () => console.log('Server running on http://localhost:3000'));
 
-// closing db connection
-const closeDatabase = () => {
-    mongoose.connection.close(() => {
-        console.log("MongoDB connection closed.");
-        process.exit(0);
-    });
-};
+// // closing db connection
+// const closeDatabase = () => {
+//     mongoose.connection.close(() => {
+//         console.log("MongoDB connection closed.");
+//         process.exit(0);
+//     });
+// };
 
-process.on("SIGINT", closeDatabase);
-process.on("SIGTERM", closeDatabase);
-process.on("uncaughtException", (err) => {
-    console.error("Uncaught Exception:", err);
-    closeDatabase();
-});
+// process.on("SIGINT", closeDatabase);
+// process.on("SIGTERM", closeDatabase);
+// process.on("uncaughtException", (err) => {
+//     console.error("Uncaught Exception:", err);
+//     closeDatabase();
+// });
