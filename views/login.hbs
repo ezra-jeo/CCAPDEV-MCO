@@ -47,6 +47,7 @@
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const loginForm = document.getElementById("login-form");
+            const errorMessageDiv = document.getElementById("error-message");
 
             loginForm.addEventListener("submit", async function (event) {
                 event.preventDefault();
@@ -78,7 +79,7 @@
 
                     if (response.ok) {
                         alert(data.message);
-                            window.location.href = "/";
+                        window.location.href = "/";
                     } else {
                         showErrorMessage(data.error || "Invalid login credentials.");
                     }
@@ -87,6 +88,12 @@
                     showErrorMessage("An error occurred. Please try again later.");
                 }
             });
+
+            // Function to show error messages
+            function showErrorMessage(message) {
+                errorMessageDiv.style.display = 'block';
+                errorMessageDiv.textContent = message;
+            }
         });
     </script>
 

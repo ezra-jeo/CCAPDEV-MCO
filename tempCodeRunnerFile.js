@@ -18,7 +18,7 @@ const hbs = exphbs.create({
     extname: "hbs",
     defaultLayout: "main",
     layoutsDir: path.join(__dirname, "views", "layouts"),
-    partialsDir: path.join(__dirname, "views", "partials"),
+    partialsDir: path.join(__dirname, "views", "partials"), // Add this line
     helpers: {
         times: function(n, block) { // for showing stars in reviews
             let result = "";
@@ -202,6 +202,8 @@ app.post("/login", async (req, res) => {
 
         let account;
         let accountType = "student";
+
+        // Check for user account
         account = await User.findOne({ userName: username }).lean();
 
         if (!account) {
@@ -213,7 +215,7 @@ app.post("/login", async (req, res) => {
             return res.status(404).json({ error: "Account not found." });
         }
 
-        // validating password
+        // Validate password based on account type
         let isPasswordValid = false;
         if (accountType === "student") {
             isPasswordValid = password === account.userPassword;

@@ -10,7 +10,7 @@
         <div class = "signup-container">
             <div class = "header-text">Sign Up</div>
             <div class = "avatar-container">
-                <img src = "/images/icon.png">
+                <img id = "avatar-image" src = "/images/default-icon-user.png">
             <div class = "indicator-2">Change Avatar</div>
             </div>
             <div class = "input-field-container">
@@ -64,7 +64,7 @@
         </div>
     </div>
 
-    <script>
+    <script> // sending form
         document.addEventListener("DOMContentLoaded", function () {
             document.getElementById("signup-form").addEventListener("submit", async function(event) {
                 event.preventDefault();
@@ -108,6 +108,29 @@
                     alert("An error occurred. Please try again later.");
                 }
             });
+        });
+    </script>
+
+    <script> // changing profile image based on account type
+        document.addEventListener("DOMContentLoaded", function () {
+            const avatarImage = document.getElementById("avatar-image");
+
+            function updateAvatarImage() {
+                const selectedAccountType = document.querySelector("input[name='account_type']:checked");
+                if (selectedAccountType) {
+                    if (selectedAccountType.value === "student") {
+                        avatarImage.src = "/images/default-icon-user.png"; 
+                    } else if (selectedAccountType.value === "organization") {
+                        avatarImage.src = "/images/default-icon-org.png";
+                    }
+                }
+            }
+
+            const studentRadio = document.getElementById("student");
+            const orgRadio = document.getElementById("organization");
+
+            studentRadio.addEventListener("change", updateAvatarImage);
+            orgRadio.addEventListener("change", updateAvatarImage);
         });
     </script>
 

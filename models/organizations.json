@@ -2,7 +2,7 @@
   {
     "_id": { "$oid": "67c8602b48fabfa781931bf0" },
     "orgName": "GDGOC",
-    "orgPic": "/images/icon.png",
+    "orgPic": "/images/default-icon-org.png",
     "orgDesc": "A tech community focused on Google Developer technologies.",
     "orgPage": "gdgoc",
     "orgRating": 4.7,
@@ -13,7 +13,7 @@
   {
     "_id": { "$oid": "67c8602b48fabfa781931bf1" },
     "orgName": "LSCS",
-    "orgPic": "/images/icon.png",
+    "orgPic": "/images/default-icon-org.png",
     "orgDesc": "The leading organization for software development enthusiasts.",
     "orgPage": "lscs",
     "orgRating": 4.5,
@@ -24,7 +24,7 @@
   {
     "_id": { "$oid": "67c8602b48fabfa781931bf2" },
     "orgName": "DSS",
-    "orgPic": "/images/icon.png",
+    "orgPic": "/images/default-icon-org.png",
     "orgDesc": "Data Science Society - a hub for analytics, AI, and machine learning enthusiasts.",
     "orgPage": "dss",
     "orgRating": 4.3,
@@ -35,7 +35,7 @@
   {
     "_id": { "$oid": "67c8602b48fabfa781931bf3" },
     "orgName": "AU",
-    "orgPic": "/images/icon.png",
+    "orgPic": "/images/default-icon-org.png",
     "orgDesc": "For the women and for the children.",
     "orgPage": "au",
     "orgRating": 4.8,
@@ -46,7 +46,7 @@
   {
     "_id": { "$oid": "67c8602b48fabfa781931bf4" },
     "orgName": "PTS",
-    "orgPic": "/images/icon.png",
+    "orgPic": "/images/default-icon-org.png",
     "orgDesc": "Peer Tutor Society",
     "orgPage": "pts",
     "orgRating": 4.6,

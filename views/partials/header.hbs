@@ -19,16 +19,27 @@
                 <div class = "options-item">Search Reviews</div>
             </a>           
         </div>  
-        {{#if user}}
+        {{#if (eq loggedIn.accountType "student")}}
             <div class = "profile-container">
                 <div class = "user-name-profile">
-                    <a href = "/userpage/{{user.userPage}}">
-                        {{user.username}}
+                    <a href = "/userpage/{{loggedIn.userPage}}">
+                        {{loggedIn.userName}}
                     </a>
                 </div>      
-                <a href = "/userpage/{{user.userPage}}">
-                    <img src = "{{user.profileImage}}">
+                <a href = "/userpage/{{loggedIn.userPage}}">
+                    <img id = "avatar" src = "{{loggedIn.profileImage}}">
                 </a>         
+            </div>
+        {{else if (eq loggedIn.accountType "organization")}}
+            <div class="profile-container">
+                <div class="user-name-profile">
+                    <a href="/orgpage/{{loggedIn.orgPage}}">
+                        {{loggedIn.orgName}}
+                    </a>
+                </div>
+                <a href="/orgpage/{{loggedIn.orgPage}}">
+                    <img id = "avatar" src="{{loggedIn.orgPic}}">
+                </a>
             </div>
         {{else}}
             <div class = "profile-container">

@@ -4,7 +4,7 @@
     "userName": "Chynna Mae",
     "userDesc": "Dogshow",
     "userPage": "chynna-mae",
-    "profileImage": "/images/icon.png",
+    "profileImage": "/images/default-icon-user.png",
     "userPassword": "jay143"
   },
   {
@@ -12,7 +12,7 @@
     "userName": "Emman P.",
     "userDesc": "I love my dogs!",
     "userPage": "emman-p",
-    "profileImage": "/images/icon.png",
+    "profileImage": "/images/default-icon-user.png",
     "userPassword": "tofustella0928"
   },
   {
@@ -20,7 +20,7 @@
     "userName": "ezra-jeo",
     "userDesc": "Avid gamer and web developer",
     "userPage": "ezra-jeo",
-    "profileImage": "/images/icon.png",
+    "profileImage": "/images/default-icon-user.png",
     "userPassword": "delrosario"
   },
   {
@@ -28,7 +28,7 @@
     "userName": "Kyle",
     "userDesc": "Loves writing reviews on clubs",
     "userPage": "kyle",
-    "profileImage": "https://example.com/profiles/sarah.jpg",
+    "profileImage": "/images/default-icon-user.png",
     "userPassword": "hashed_password_321"
   },
   {
@@ -36,7 +36,7 @@
     "userName": "Jane Doe",
     "userDesc": "UX designer exploring communities",
     "userPage": "jane-doe",
-    "profileImage": "/images/icon.png",
+    "profileImage": "/images/default-icon-user.png",
     "userPassword": "password123"
   }
 ]
