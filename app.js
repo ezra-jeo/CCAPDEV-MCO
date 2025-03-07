@@ -49,6 +49,15 @@ const hbs = exphbs.create({
                 }
             }
             return "Just now";
+        },
+
+        lt: function(a, b, options) {
+            if (options.fn) {
+                // Block usage: {{#lt a b}} ... {{else}} ... {{/lt}}
+                return a < b ? options.fn(this) : options.inverse(this);
+            }
+            // Inline usage: {{lt a b}}
+            return a < b;
         }
     }
 });
@@ -103,10 +112,15 @@ app.get("/", async (req, res) => {
     }
 });
 
+// for userpage filtering (search + ratings)
 app.get("/userpage/:userPage", async (req, res) => {
     try {
         const userPage = req.params.userPage;
         const findUser = await Review.findOne({ userPage: userPage }).lean();
+
+        if (!findUser) {
+            return res.status(404).send("User not found.");
+        }
 
         let userName = findUser.userName;
         const user = await User.findOne({ userName: userName }).lean();
@@ -114,10 +128,11 @@ app.get("/userpage/:userPage", async (req, res) => {
         let query = { userName: userName };
 
         if (req.query.rating) query.reviewRating = parseInt(req.query.rating, 10);
-        
+        if (req.query.search) query.reviewText = { $regex: req.query.search, $options: "i" }; // Case-insensitive search
+
         const reviews = await Review.find(query).lean();
 
-        if (req.query.rating) {
+        if (req.headers["x-requested-with"] === "XMLHttpRequest") {
             res.render("partials/reloadreview", { reviews, layout: false });
         } else {
             res.render("userpage", { user, reviews });
@@ -127,6 +142,7 @@ app.get("/userpage/:userPage", async (req, res) => {
         res.status(500).send("Error loading user page");
     }
 });
+
 
 // signing up
 app.post("/signup", async (req, res) => {       
