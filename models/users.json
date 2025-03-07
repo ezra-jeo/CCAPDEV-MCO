@@ -1,60 +1,42 @@
-[{
-  "_id": {
-    "$oid": "67c8602b48fabfa781931bf0"
+[
+  {
+    "_id": { "$oid": "67c85c7d48fabfa781931bc8" },
+    "userName": "Chynna Mae",
+    "userDesc": "Dogshow",
+    "userPage": "chynna-mae",
+    "profileImage": "/images/icon.png",
+    "userPassword": "jay143"
   },
-  "orgName": "GDGOC",
-  "orgPic": "",
-  "orgRating": 4.7,
-  "orgReviews": 128,
-  "reviewDesc": "A tech community focused on Google Developer technologies.",
-  "orgCollege": "CCS",
-  "orgPassword": "securepass123"
-},
-{
-  "_id": {
-    "$oid": "67c8602b48fabfa781931bf1"
+  {
+    "_id": { "$oid": "67c85c7d48fabfa781931bc9" },
+    "userName": "Emman P.",
+    "userDesc": "I love my dogs!",
+    "userPage": "emman-p",
+    "profileImage": "/images/icon.png",
+    "userPassword": "tofustella0928"
   },
-  "orgName": "LSCS",
-  "orgPic": "",
-  "orgRating": 4.5,
-  "orgReviews": 98,
-  "reviewDesc": "The leading organization for software development enthusiasts.",
-  "orgCollege": "CCS",
-  "orgPassword": "lscsrocks456"
-},
-{
-  "_id": {
-    "$oid": "67c8602b48fabfa781931bf2"
+  {
+    "_id": { "$oid": "67c85c7d48fabfa781931bca" },
+    "userName": "ezra-jeo",
+    "userDesc": "Avid gamer and web developer",
+    "userPage": "ezra-jeo",
+    "profileImage": "/images/icon.png",
+    "userPassword": "delrosario"
   },
-  "orgName": "DSS",
-  "orgPic": "",
-  "orgRating": 4.3,
-  "orgReviews": 75,
-  "reviewDesc": "Data Science Society - a hub for analytics, AI, and machine learning enthusiasts.",
-  "orgCollege": "CCS",
-  "orgPassword": "datasciencerulez"
-},
-{
-  "_id": {
-    "$oid": "67c8602b48fabfa781931bf3"
+  {
+    "_id": { "$oid": "67c85c7d48fabfa781931bcb" },
+    "userName": "Kyle",
+    "userDesc": "Loves writing reviews on clubs",
+    "userPage": "kyle",
+    "profileImage": "https://example.com/profiles/sarah.jpg",
+    "userPassword": "hashed_password_321"
   },
-  "orgName": "AU",
-  "orgPic": "",
-  "orgRating": 4.8,
-  "orgReviews": 145,
-  "reviewDesc": "For the women and for the children.",
-  "orgCollege": "CLA",
-  "orgPassword": "auroraleaders789"
-},
-{
-  "_id": {
-    "$oid": "67c8602b48fabfa781931bf4"
-  },
-  "orgName": "PTS",
-  "orgPic": "",
-  "orgRating": 4.6,
-  "orgReviews": 87,
-  "reviewDesc": "Peer Tutor Society",
-  "orgCollege": "CCS",
-  "orgPassword": "ptssuccess2025"
-}]
+  {
+    "_id": { "$oid": "67c85c7d48fabfa781931bcc" },
+    "userName": "Jane Doe",
+    "userDesc": "UX designer exploring communities",
+    "userPage": "jane-doe",
+    "profileImage": "/images/icon.png",
+    "userPassword": "password123"
+  }
+]

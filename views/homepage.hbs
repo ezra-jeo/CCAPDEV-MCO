@@ -20,7 +20,9 @@
         <div class = "header-text">Recent Reviews</div>
         <div class = "recent-reviews-container">
             {{#each reviews}}
-                {{> review}}
+                {{#if (lt @index 6)}} <!-- only loading 6 reviews in -->
+                    {{> review}}
+                {{/if}}
             {{/each}}
         </div>
     </div>

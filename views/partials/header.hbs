@@ -18,8 +18,20 @@
             <a href = "/searchreview">
                 <div class = "options-item">Search Reviews</div>
             </a>           
-        </div>
-        <div class = "profile-container">
+        </div>  
+        {{#if user}}
+            <div class = "profile-container">
+                <div class = "user-name-profile">
+                    <a href = "/userpage/{{user.userPage}}">
+                        {{user.username}}
+                    </a>
+                </div>      
+                <a href = "/userpage/{{user.userPage}}">
+                    <img src = "{{user.profileImage}}">
+                </a>         
+            </div>
+        {{else}}
+            <div class = "profile-container">
             <a href="/signup">
                 <div class = "sign-up">Sign Up</div>
             </a>
@@ -27,5 +39,6 @@
                 <div class = "log-in">Log In</div>
             </a>         
         </div>
+        {{/if}}
     </div>
 </div>
