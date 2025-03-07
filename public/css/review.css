@@ -177,3 +177,54 @@
 .likes-container-content:not(:has(i)) {
     font-size: 14px;    
 }
+
+.edit-container {
+    width: 100%;
+    padding-bottom: 10px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.edit-container .fa-trash {
+    font-size: 16px;
+    cursor: pointer;
+    color: #353535;
+}
+.edit-container .fa-pencil {
+    font-size: 16px;
+    cursor: pointer;
+    color: #353535;
+    margin-right: 10px;
+}
+.edit-container .fa-pencil:hover {
+    color: #7BA167;
+}
+.edit-container .fa-trash:hover {
+    color:  #aa3b3b;
+}
+.edit-container-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+}
+.rating-edit-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: flex-start;
+    margin-left: auto; 
+}
+.edit-container {
+    display: none;
+}
+.rating-edit-container:hover .rating-container {
+    display: none;
+}
+.rating-edit-container:hover .edit-container {
+    display: block;
+}
+.rating-container i {
+    cursor: pointer;
+}

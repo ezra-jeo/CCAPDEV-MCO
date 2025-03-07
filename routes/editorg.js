@@ -1,6 +1,6 @@
 const express = require("express");
 const multer = require("multer");
-const Organization = require("../models/orgs");
+const Organization = require("../models/organizations");
 
 const router = express.Router();
 

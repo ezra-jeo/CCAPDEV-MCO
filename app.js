@@ -18,7 +18,7 @@ const hbs = exphbs.create({
     extname: "hbs",
     defaultLayout: "main",
     layoutsDir: path.join(__dirname, "views", "layouts"),
-    partialsDir: path.join(__dirname, "views", "partials"),
+    partialsDir: path.join(__dirname, 'views', 'partials'),
     helpers: {
         times: function(n, block) { // for showing stars in reviews
             let result = "";
@@ -106,7 +106,7 @@ const userPageRoutes = require('./routes/userpage');
 app.get("/", async (req, res) => {
     try {
         const reviews = await Review.find().sort({ timePosted: -1 }).lean(); // sort by latest time
-        res.render("homepage", { reviews });
+        res.render("homepage", { reviews, loggedIn: req.session.user || null });
     } catch (error) {
         console.error("Error fetching reviews:", error);
         res.status(500).send("Error loading reviews");
