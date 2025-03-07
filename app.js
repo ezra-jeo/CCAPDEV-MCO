@@ -6,13 +6,11 @@ const path = require("path");
 // const db = require("./db"); // connecting to mongoDB
 const app = express();
 
-
 mongoose.connect("mongodb://localhost:27017/orgs");
 
 const Review = require("./models/reviews.js");
 const Organization = require("./models/orgs.js");
-// const Review = mongoose.connection.collection("reviews");
-// const Organization = mongoose.connection.collection("organizations");
+
 
 
 // handlebars
@@ -97,16 +95,14 @@ app.get("/orgs/searchfilter/org:org?/qry1:qry1?/qry2:qry2?", async (req, res) =>
                     filterStars.push(Number(filter));
             }
         }    
-        console.log(req.params.qry1);
 
         let filterCollege = [];
         if (req.params.qry2) {
             for (let filter of req.params.qry2.split(",")) {
                 filterCollege.push(filter);
             }
-        }    
+        }  
 
-        console.log("filterCollege" + filterCollege);
         let query = {};
         if (req.params.org) {
             query["orgName"] = {$regex: new RegExp(req.params.org, "i")};
@@ -120,11 +116,11 @@ app.get("/orgs/searchfilter/org:org?/qry1:qry1?/qry2:qry2?", async (req, res) =>
         if (Object.keys(query).length == 0) {
              query = {};
         }
-
-        console.log(query);
+        
         const result = await Organization.find(query).lean();
-        console.log(result);
         res.send({orgList: result});
+        console.log("Org Sent Result " + result + " Query: " + query);
+
     }
     catch (err) {
         res.status(500).send("Error in Searching and Filter");
@@ -140,7 +136,6 @@ app.get("/reviews/searchfilter/search:search?/qry1:qry1?/qry2:qry2?", async (req
                     filterStars.push(Number(filter));
             }
         }    
-        console.log(req.params.qry1);
 
         let filterCollege = [];
         if (req.params.qry2) {
@@ -149,7 +144,6 @@ app.get("/reviews/searchfilter/search:search?/qry1:qry1?/qry2:qry2?", async (req
             }
         }    
 
-        console.log(req.params.search);
         let query = {};
         if (req.params.search) {
             query["$or"] = [{"reviewText": {$regex: new RegExp(req.params.search, "i")}}, {"org.orgName": {$regex: new RegExp(req.params.search, "i")}}];
@@ -163,11 +157,10 @@ app.get("/reviews/searchfilter/search:search?/qry1:qry1?/qry2:qry2?", async (req
         if (Object.keys(query).length == 0) {
              query = {};
         }
-        console.log(await Review.find().lean());
-        console.log("query"+query);
+
         const result = await Review.find(query).lean();
-        console.log(result);
         res.send({reviewList: result});
+        console.log("Review Sent Result " + result + " Query: " + query);
     }
     catch (err) {
         res.status(500).send("Error in Searching and Filter");
@@ -187,12 +180,14 @@ app.get("/orgs/sort/org:org?/qry1:qry1?/qry2:qry2?/method:method/order:order", a
                     filterStars.push(Number(filter));
             }
         }    
+
         let filterCollege = [];
         if (req.params.qry2) {
             for (let filter of req.params.qry2.split(",")) {
                 filterCollege.push(filter);
             }
         }    
+
         let query = {};
         if (req.params.org) {
             query["orgName"] = {$regex: new RegExp(req.params.org, "i")};
@@ -210,17 +205,16 @@ app.get("/orgs/sort/org:org?/qry1:qry1?/qry2:qry2?/method:method/order:order", a
         let order = {};
         
         if (req.params.method && req.params.method == "name") {
-            console.log("Reached here!");
             order = {"orgName": Number(req.params.order)};
         }
         else if (req.params.method && req.params.method == "rating") {
             order = {"orgRating": Number(req.params.order)};
         }
-        console.log(order);
-        console.log(query);
+
         const result = await Organization.find(query).sort(order).lean();
-        console.log(result);
         res.send({orgList: result});
+        console.log("Org Sent Result " + result + " Query: " + query);
+
     }
     catch (err) {
         res.status(500).send("Error in Sorting");
