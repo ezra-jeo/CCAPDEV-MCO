@@ -138,9 +138,9 @@ app.get("/userpage/:userPage", async (req, res) => {
         const reviews = await Review.find(query).lean();
 
         if (req.headers["x-requested-with"] === "XMLHttpRequest") {
-            res.render("partials/reloadreview", { reviews, layout: clear });
+            res.render("partials/reloadreview", { reviews, layout: false });
         } else {
-            res.render("userpage", { user, reviews });
+            res.render("userpage", { user, reviews, userPage: reviews[0].userPage });
         }
     } catch (error) {
         console.error("Error loading user page:", error);
@@ -154,41 +154,38 @@ app.get("/useredit/:userPage", async (req, res) => {
         const userPage = req.params.userPage;
         
         // Find the user based on userPage
-        const user = await User.findOne({ userPage }).lean();
+        const user = await Review.findOne({ userPage }).lean();
+
+
         if (!user) {
             return res.status(404).send("User not found.");
         }
 
-        res.render("useredit", { user, loggedIn: req.session.user });
+        res.render("useredit", { user, layout: false });
     } catch (error) {
         console.error("Error loading user edit page:", error);
         res.status(500).send("Error loading user edit page.");
     }
 });
 
-// Handle user profile update
-app.get("/useredit/:userPage", async (req, res) => {
+app.post("/useredit/:userPage", async (req, res) => {
     try {
-        const { description } = req.body;
         const userPage = req.params.userPage;
-        
-        const user = await User.findOne({ userPage });
-        if (!user) {
-            return res.status(404).send("User not found.");
-        }
+        const findUser = await Review.findOne({ userPage: userPage }).lean();
+        let userName = findUser.userName;
+        const user = await User.findOne({ userName: userName }).lean();
 
-        // Only update if the description is not empty
+        const { description } = req.body;
+
         if (description && description.trim() !== "") {
-            await User.updateOne({ userPage }, { userDesc: description });
-
-            // Update session data
-            req.session.user.userDesc = description;
+            await User.updateOne({ userName: userName }, { $set: { userDesc: description } });
         }
+    
+        res.redirect(`/userpage/${userPage}`);
 
-        res.redirect("/userpage/" + userPage);
     } catch (error) {
-        console.error("Error updating user:", error);
-        res.status(500).send("Error updating profile.");
+        console.error("Error loading user edit page:", error);
+        res.status(500).send("Error loading user edit page.");
     }
 });
 
