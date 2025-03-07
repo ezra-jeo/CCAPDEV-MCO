@@ -6,30 +6,30 @@
     <link rel="stylesheet" href="/css/useredit.css">
 </head>
 <body>
-    <div class = "edit-section">
-        <div class = "edit-container">
-            <div class = "header-text">Edit Profile</div>
-            <div class = "avatar-container">
-                <img src = "/images/icon.png">
-            <div class = "indicator-2">Change Avatar</div>
-            </div>
-
-            <div class = "input-field-container">
-                <div class = "indicator">Description</div>
-                <div class = "text-area-container">
-                    <textarea type= "description" id = "description" name = "description"></textarea>
+    <form id="edit-form" action="/useredit" method="POST">
+        <div class="edit-section">
+            <div class="edit-container">
+                <div class="header-text">Edit Profile</div>
+                <div class="avatar-container">
+                    <img src="/images/icon.png">
+                    <div class="indicator-2">Change Avatar</div>
                 </div>
-            </div>
 
-            <div class = "remember-me-container"> 
-                <div class = "submit-container">
-                    <a href="/userpage">
-                        <u>Discard Changes</u>
-                    </a>
-                        <div class = "submit-button">Save</div>
+                <div class="input-field-container">
+                    <div class="indicator">Description</div>
+                    <div class="text-area-container">
+                        <textarea id="description" name="description"></textarea>
+                    </div>
+                </div>
+
+                <div class="remember-me-container">
+                    <div class="submit-container">
+                        <a href="/userpage/{{user.userPage}}"><u>Discard Changes</u></a>
+                        <button type="submit" class="submit-button">Save</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </form>
 </body>
 </html>

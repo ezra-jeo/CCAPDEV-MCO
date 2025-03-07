@@ -101,6 +101,7 @@ const editOrgRoutes = require('./routes/editorg');
 const orgPageRoutes = require('./routes/orgpage');
 
 const userPageRoutes = require('./routes/userpage');
+const userEditRoutes = require('./routes/useredit');
 
 // fetching recent reviews for homepage
 app.get("/", async (req, res) => {
@@ -134,13 +135,57 @@ app.get("/userpage/:userPage", async (req, res) => {
         const reviews = await Review.find(query).lean();
 
         if (req.headers["x-requested-with"] === "XMLHttpRequest") {
-            res.render("partials/reloadreview", { reviews, layout: false });
+            res.render("partials/reloadreview", { reviews, layout: clear });
         } else {
             res.render("userpage", { user, reviews });
         }
     } catch (error) {
         console.error("Error loading user page:", error);
         res.status(500).send("Error loading user page");
+    }
+});
+
+// user edit page
+app.get("/useredit/:userPage", async (req, res) => {
+    try {
+        const userPage = req.params.userPage;
+        
+        // Find the user based on userPage
+        const user = await User.findOne({ userPage }).lean();
+        if (!user) {
+            return res.status(404).send("User not found.");
+        }
+
+        res.render("useredit", { user, loggedIn: req.session.user });
+    } catch (error) {
+        console.error("Error loading user edit page:", error);
+        res.status(500).send("Error loading user edit page.");
+    }
+});
+
+// Handle user profile update
+app.get("/useredit/:userPage", async (req, res) => {
+    try {
+        const { description } = req.body;
+        const userPage = req.params.userPage;
+        
+        const user = await User.findOne({ userPage });
+        if (!user) {
+            return res.status(404).send("User not found.");
+        }
+
+        // Only update if the description is not empty
+        if (description && description.trim() !== "") {
+            await User.updateOne({ userPage }, { userDesc: description });
+
+            // Update session data
+            req.session.user.userDesc = description;
+        }
+
+        res.redirect("/userpage/" + userPage);
+    } catch (error) {
+        console.error("Error updating user:", error);
+        res.status(500).send("Error updating profile.");
     }
 });
 
@@ -290,6 +335,7 @@ app.use('/editorg', editOrgRoutes);
 app.use('/orgpage', orgPageRoutes);
 
 app.use('/userpage', userPageRoutes);
+app.use('/useredit', userEditRoutes);
 
 app.listen(3000, () => console.log('Server running on http://localhost:3000'));
 
