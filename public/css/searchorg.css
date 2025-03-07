@@ -1,0 +1,232 @@
+.section-header {
+    font-size: 25px;  
+    font-family: Konkhmer Sleokchher;
+    color: #1E1E1E;
+}
+.section-subheader {
+    font-weight: bold;
+    text-decoration: underline;
+    color: #363636;
+}
+
+
+/* MAIN CONTENT */
+.content-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 5%;
+    padding-bottom: 5%;
+
+}
+.content-elements {
+    display: grid;
+    grid-template-columns: 25% 75%;
+    justify-content: center;
+    padding-bottom: 5%;
+}
+
+/* SEARCH */
+.search-portion {
+    display: flex;
+    flex-direction: row;
+    width: fit-content;
+    height: 150px;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    align-self: center;
+}    
+#search-bar-org {
+    font-family: Konkhmer Sleokchher;
+    font-size: 15px;
+    text-indent: 15px;
+    width: 50vw;
+    height: 33%;
+    border-radius: 35px;
+    border: none;
+}
+#search-bar-org::placeholder {
+    color: #AB9D99;
+}
+#search-button-org {
+    all: unset;
+    position: absolute;
+    width: 40px;
+    color: #7BA167;
+    font-size: 30px;
+    right: 0;
+    cursor: pointer;
+}
+
+/* FILTER */
+.filter-portion {
+    display: flex;
+    flex-direction: column;
+    background-color: #BBCAB2;
+    width: 65%;
+    height: 100vh;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    padding-left: 5%;
+    padding-top: 5%;
+    gap: 1%;
+}
+#clear-feature-org {
+    all: unset;
+    cursor: pointer;
+    text-decoration: underline;
+    margin-left: 5%;
+    margin-left: 5%;
+}
+.ratings, .home-college {
+    color: #363636;
+}
+.ratings-list, .college-list {
+    line-height: 40px;
+}
+.ratings-input-field {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 4%;
+}
+.ratings-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.stars i{
+    color: white;
+}
+#sort-orgs {
+    all: unset;
+    cursor: pointer;
+    font-size: 20px;
+    text-decoration: underline;
+    color: #3B6724;
+    font-weight: bold; 
+}
+#dropdown {
+    display: none;
+    position: absolute;
+    background: white;
+    box-shadow: 15px 15px 20px rgba(171, 157, 153, 1);
+    border-radius: 5px;
+    padding: 5px;
+    width: auto;
+    border-radius: 5px;    
+}
+.drop-select {
+    all:unset;
+    cursor: pointer;
+    border-bottom: solid 1px black;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+
+}
+#sort-container:hover #dropdown {
+    display: flex;
+    flex-direction: column;
+}
+#sort-container {
+    position: relative;
+    font-size: 14px;
+}
+
+/* ORGANIZATION */
+.org-portion {
+    flex: 1;
+    padding-bottom: 5%;
+    display: flex;
+    flex-direction: column;
+}
+.org-labels {
+    display: flex;
+    gap: 3%;    
+    align-items: center;
+}
+#org-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 1rem;
+    align-items: center;
+}
+.org-section {
+    display: grid;
+    grid-template-columns: 25% 1fr;
+    column-gap: 2%;
+    background-color: white;
+    width: 65%;
+    height: 80%;
+    align-items: center;
+    border-radius: 10px;
+    padding: 20px;
+
+}
+.org-profile-pic {
+    width: 100%;
+    border-radius: 50%;
+    justify-self: center;
+    align-items: center;
+    background-color: white;
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.25);
+}
+.org-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;    
+}
+.org-name {
+    text-decoration: underline; 
+    font-size: 26px;
+    font-weight: bold;
+    color: #363636;
+}
+.org-stars {
+    display: flex;
+    flex-direction: row;
+    color: #F8C437;
+    font-size: 20px;
+}
+.rating-text {
+    margin-left: 2%;
+    margin-left: 2%;
+    font-weight: lighter;
+    font-size: 18px;
+    color: #363636;
+}
+.review-desc {    
+    width: 100%;
+    font-size: 16px;
+}
+.org-college {
+    color: #728569;
+    margin-top: 15px;
+}
+
+/* BOX SHADOW */
+.search-bar, .filter-portion, .org-section {
+    box-shadow: 20px 20px 15px rgba(0,0,0,0.25);
+}
+
+/* PAGE NAV */
+.page-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 55%;
+    align-self: center;
+}
+#page-numbers {
+    font-size: 18px;
+    color: #9F9F9F;
+    font-weight: bold;
+    letter-spacing: 5px;
+}
+#cur-page, #cur-page-num {
+    font-size: 18px;
+    color: #363636;
+    font-weight: bold;
+}
+

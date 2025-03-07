@@ -1,0 +1,149 @@
+.section-header {
+    font-size: 25px;  
+    font-family: Konkhmer Sleokchher;
+    color: #1E1E1E;
+}
+.section-subheader {
+    font-weight: bold;
+    text-decoration: underline;
+    color: #363636;
+}
+
+
+/* MAIN CONTENT */
+.content-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 5%;
+    padding-bottom: 5%;
+}
+.content-elements {
+    display: grid;
+    grid-template-columns: 25% 75%;
+    justify-content: center;
+    padding-bottom: 5%;
+}
+
+/* SEARCH */
+.search-portion {
+    display: flex;
+    flex-direction: row;
+    width: fit-content;
+    height: 150px;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    align-self: center;
+}    
+#search-bar-review{
+    font-family: Konkhmer Sleokchher;
+    font-size: 15px;
+    text-indent: 15px;
+    width: 50vw;
+    height: 33%;
+    border-radius: 35px;
+    border: none;
+}
+#search-bar-review::placeholder {
+    color: #AB9D99;
+}
+#search-button-review {
+    all: unset;
+    position: absolute;
+    width: 40px;
+    color: #7BA167;
+    font-size: 30px;
+    right: 0;
+    cursor: pointer;
+}
+
+/* FILTER */
+.filter-portion {
+    display: flex;
+    flex-direction: column;
+    background-color: #BBCAB2;
+    width: 65%;
+    height: 100vh;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    padding-left: 5%;
+    padding-top: 5%;
+    gap: 1%;
+}
+#clear-feature-review {
+    all: unset;
+    cursor: pointer;
+    text-decoration: underline;
+    margin-left: 5%;
+    margin-left: 5%;
+}
+.ratings, .home-college {
+    color: #363636;
+}
+.ratings-list, .college-list {
+    line-height: 40px;
+}
+.ratings-input-field {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 4%;
+    gap: 4%;
+}
+.ratings-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.stars i{
+    color: white;
+}
+#sort-reviews {
+    all: unset;
+    cursor: pointer;
+    font-size: 20px;
+    text-decoration: underline;
+    color: #3B6724;
+    font-weight: bold; 
+}
+
+/* REVIEWS */
+.review-portion {   
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 5%;
+}
+#review-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 1rem;
+    align-items: center;
+}
+/* BOX SHADOW */
+.search-bar, .filter-portion, .org-section {
+    box-shadow: 20px 20px 15px rgba(0,0,0,0.25);
+}
+
+/* PAGE NAV */
+.page-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 55%;
+    align-self: center;
+}
+#page-numbers {
+    font-size: 18px;
+    color: #9F9F9F;
+    font-weight: bold;
+    letter-spacing: 5px;
+}
+#cur-page, #cur-page-num {
+    font-size: 18px;
+    color: #363636;
+    font-weight: bold;
+}
+

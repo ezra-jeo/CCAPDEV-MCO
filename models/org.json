@@ -1,0 +1,61 @@
+[
+        {
+            "orgName": "ACM",
+            "orgPic": "https://images.ctfassets.net/61mmmjz7t2hb/5sij3G8Ja0xudFKYzB0G5X/9a2e6225b0041f30a4491074f0269b7e/309635725_119364917577616_2019543968390839357_n.jpg",
+            "reviewPlural": true,
+            "orgRating": 3,
+            "orgReviews": 1000,
+            "orgDesc": "A globally recognized computing organization that fosters knowledge sharing and innovation in computer science. The DLSU ACM chapter organizes hackathons, research discussions, and career-building events for tech-driven students.",
+            "orgPage": "orgpage.hbs",
+            "orgCollege": "OTHER",
+            "orgPassword": "acm123"
+        }
+    ,
+    
+        {
+            "orgName": "LSCS",
+            "orgPic": "https://images.ctfassets.net/61mmmjz7t2hb/LYaxJ195ZBD5yOEKXOQOR/c09ea48259f53fdf6cb9b4d0992f61eb/Untitled__4_.png",
+            "orgRating": 5,
+            "orgReviews": 1,
+            "orgDesc": "The premier organization for computer science and technology enthusiasts at DLSU. LSCS provides workshops, coding competitions, and networking opportunities for students interested in software development, cybersecurity, and emerging tech",
+            "orgPage": "orgpage.hbs",
+            "orgCollege": "CCS",
+            "orgPassword": "lscs123"
+        }
+    ,
+    
+        {
+            "orgName": "GDSC",
+            "orgPic": "https://images.ctfassets.net/61mmmjz7t2hb/4vnDrX0eGKubRAZj4ZgSj8/b180847b648beabe61acdfa7fb03f145/276299850_855070862555233_5428224711235080768_n.jpg",
+            "orgRating": 3,
+            "orgReviews": 69000,
+            "orgDesc": "A student community supported by Google Developers aims to equip students with technical skills through hands-on projects, coding workshops, and mentorship programs especially mobile and web development, cloud computing, and AI.",
+            "orgPage": "orgpage.hbs",
+            "orgCollege": "CCS",
+            "orgPassword": "gdsc123"
+        }
+    ,
+    
+        {
+            "orgName": "SPRINT",
+            "orgPic": "https://images.ctfassets.net/61mmmjz7t2hb/5aDb2bL9ky65AGlwFgSoxY/17abffcebead21cf116afc40de28805e/308096425_483440627162009_3432782778026634183_n.jpg",
+            "orgRating": 3,
+            "orgReviews": 10000,
+            "orgDesc": "A student organization dedicated to software engineering and development. SPRINT offers training sessions, development boot camps, and hands-on projects to help students gain real-world programming experience.",
+            "orgPage": "orgpage.hbs",
+            "orgCollege": "OTHER",
+            "orgPassword": "sprint123"
+        }
+    ,
+    
+        {
+            "orgName": "DSS",
+            "orgPic": "https://images.ctfassets.net/61mmmjz7t2hb/1Ywaa1YxRhq7jddpLB2Kkw/91e6f289d6af5febe5f10294e7251127/vertical_logo_ver__black_.png",
+            "orgRating": 3,
+            "orgReviews": 10000,
+            "orgDesc": " The go-to organization for data science and analytics enthusiasts at DLSU. DSS provides training in machine learning, big data, and statistical analysis, preparing students for careers in data-driven industries.",
+            "orgPage": "orgpage.hbs",
+            "orgCollege": "RVCOB",
+            "orgPassword": "dss123"
+        }
+    ]
