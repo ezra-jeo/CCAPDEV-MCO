@@ -5,18 +5,7 @@
             DLSU Orgs To Pick - Search for Organizations
         </title>
         <link rel="stylesheet" href="/css/searchorg.css"/>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
         <script type="text/javascript" src="/js/searchorg_function.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
-        <script>
-            Handlebars.registerHelper("times", function(n, block) { 
-                let result = "";
-                for (let i = 0; i < n; i++) {
-                    result += block.fn(i);
-                }
-                return result;
-            });
-        </script>
     </head>
     <body>
         {{!-- Todo:

@@ -3,7 +3,6 @@
 <div class = "review">  
     <div class = "review-proper-container">
         <div class = "review-container">  
-
             <div class="review-header">
                 <div class="profile-container">
                     <img src="{{profileImage}}" alt="Profile">
@@ -112,7 +111,7 @@
             const isDisliked = dislikeIcon.classList.contains("fa-solid");
 
             let action = reaction;
-
+            console.log(action);
             // determine the action before sending the request
             if (reaction === "like") {
                 if (isLiked) {
@@ -145,7 +144,7 @@
             });
 
             const result = await response.json();
-
+            console.log(response);
             if (result.success) {
                 // Update counts
                 document.getElementById(`like-${reviewId}`).innerHTML = 

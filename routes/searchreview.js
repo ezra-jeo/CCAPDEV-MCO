@@ -51,6 +51,7 @@ router.get("/searchfilter/search:search?/qry1:qry1?/qry2:qry2?", async (req, res
         const result = await Review.find(query).lean();
         res.send({reviewList: result});
         console.log(`Query: ${query}`);
+        console.log(result);
     }
     catch (err) {
         res.status(500).send("Error in Searching and Filter");

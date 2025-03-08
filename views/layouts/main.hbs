@@ -10,6 +10,59 @@
     <link href="https://fonts.googleapis.com/css2?family=Konkhmer+Sleokchher&family=Koulen&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Konkhmer+Sleokchher&family=Koulen&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/3b737d3964.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/css/review.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
+    <script>
+        Handlebars.registerHelper("times", function(n, block) { 
+            let result = "";
+            for (let i = 0; i < n; i++) {
+                result += block.fn(i);
+            }
+            return result;
+        });
+        Handlebars.registerHelper("timeAgo", function(timestamp) { // computing time posted in reviews
+        const now = new Date();
+        const past = new Date(timestamp);
+        const diffInSeconds = Math.floor((now - past) / 1000);
+
+        const timeIntervals = {
+            year: 31536000,
+            month: 2592000,
+            week: 604800,
+            day: 86400,
+            hour: 3600,
+            minute: 60,
+            second: 1
+        };
+
+        for (const [unit, seconds] of Object.entries(timeIntervals)) {
+            const interval = Math.floor(diffInSeconds / seconds);
+            if (interval >= 1) {
+                return `${interval} ${unit}${interval > 1 ? "s" : ""} ago`;
+            }
+        }
+        return "Just now";
+        });
+
+        Handlebars.registerHelper("lt", function (a, b) {
+            return a < b;
+        });
+        Handlebars.registerHelper("gt", function (a, b) {
+            return a > b;
+        });
+        Handlebars.registerHelper("eq", function(a, b, options) {
+            if (a === b) {
+                return true; 
+            } else {
+                return false; 
+            }
+        });
+    Handlebars.registerHelper("sub", function(a, b) { return a - b; });
+    Handlebars.registerHelper("round", function(n) { return Math.round(n); });
+    Handlebars.registerHelper("gt", function(a, b) { return a > b; });
+    </script>
 </head>
 <body>
     {{> header}}
