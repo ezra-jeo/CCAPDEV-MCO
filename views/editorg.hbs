@@ -9,32 +9,34 @@
 
     <body>
         <form id="edit-org-form" method="POST" enctype="multipart/form-data">
-            <div class="content">
-                <div class="edit-box">
-                    <div class="edit-container">
-                        <h5>Edit Org Profile</h5>
+            <div class="wrapper">
+                <div class="content">
+                    <div class="edit-box">
+                        <div class="edit-container">
+                            <h5>Edit Org Profile</h5>
 
-                        <div class="profile">
-                            <img class="org-profile-pic" src="{{org.orgPic}}" alt="Organization Logo">
-                        </div> <!--profile-->
+                            <div class="profile">
+                                <img class="org-profile-pic" src="{{org.orgPic}}" alt="Organization Logo">
+                            </div> <!--profile-->
 
-                        <label for="logo-upload" class="change-btn">Change Logo</label>
-                        <input type="file" id="logo-upload" accept=".jpg, .jpeg, .png" style="display: none;">
+                            <label for="logo-upload" class="change-btn">Change Logo</label>
+                            <input type="file" id="logo-upload" accept=".jpg, .jpeg, .png" style="display: none;">
 
-                        <div class="desc-container">
-                            <b>Description</b>
-                            <div class="desc-box-container">
-                                <textarea class="desc-box" id="org-desc">{{org.orgDesc}}</textarea>
-                            </div>
-                        </div> <!--desc-container-->
+                            <div class="desc-container">
+                                <b>Description</b>
+                                <div class="desc-box-container">
+                                    <textarea class="desc-box" id="org-desc">{{org.orgDesc}}</textarea>
+                                </div>
+                            </div> <!--desc-container-->
 
-                        <div class="btn-container">
-                            <button type="reset" class="discard-btn">Discard Changes</button>
-                            <button type="submit" class="save-btn">Make Changes</button>
-                        </div> <!--btn-container-->
-                    </div> <!--edit-container-->
-                </div> <!--edit-box-->
-            </div> <!--content -->
+                            <div class="btn-container">
+                                <button type="reset" class="discard-btn">Discard Changes</button>
+                                <button type="submit" class="save-btn">Make Changes</button>
+                            </div> <!--btn-container-->
+                        </div> <!--edit-container-->
+                    </div> <!--edit-box-->
+                </div> <!--content -->
+            </div> <!--wrapper-->
         </form>
     </body>
 </html>
