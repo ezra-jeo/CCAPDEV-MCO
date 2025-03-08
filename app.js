@@ -53,9 +53,6 @@ const hbs = exphbs.create({
         lt: function (a, b) {
             return a < b;
         },
-        gt: function (a, b) {
-            return a > b;
-        },
         eq: function(a, b, options) {
             if (a === b) {
                 return true; 
@@ -79,7 +76,7 @@ app.use(session({
     secret: "yourSecretKey",
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: false }
+    cookie: { secure: false, httpOnly: true } 
 }));
 
 // pass logged-in user to all views
@@ -315,7 +312,7 @@ app.post("/login", async (req, res) => {
         } else if (accountType === "organization") {
             req.session.user = {
                 orgName: account.orgName,
-                userPage: account.userPage,     
+                orgPage: account.orgPage,     
                 accountType: accountType,
                 orgDesc: account.userDesc,
                 orgPic: account.orgPic,
@@ -335,13 +332,17 @@ app.post("/login", async (req, res) => {
     }
 });
 
-// logging out
 app.get("/logout", (req, res) => {
+    console.log("Logging out user:", req.session.user);
+    
     req.session.destroy((err) => {
         if (err) {
             console.error("Logout error:", err);
             return res.status(500).json({ error: "Error logging out." });
         }
+
+        // Ensure cookie is also cleared
+        res.clearCookie("connect.sid"); 
         res.redirect("/");
     });
 });
