@@ -4,48 +4,54 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">  
         <link rel="stylesheet" href="/css/reviewpage.css">  
+        <script src="/js/reviewpage_func.js"></script>
     </head>
 
     <body>
-        <div class="review-container">
-            <h2 style="font-size: 40px">Writing a Review</h2>
+        <div class="wrapper">
+            <div class="review-container">
+                <h2>Writing a Review</h2> 
+                <form id="reviewForm" 
+                    data-username="{{#if loggedIn}}{{loggedIn.userName}}{{/if}}"
+                    data-userpage="{{#if loggedIn.userPage}}{{loggedIn.userPage}}{{/if}}"
+                    data-orgName="{{orgName}}" 
+                    data-orgPage="{{orgPage}}">
 
-            <div class="profile">
-                <i class="fa-solid fa-user"></i>
+                    <div class="organization-container">
+                        {{#if orgName}}
+                            <h2>Organization: <span>{{orgName}}</span></h2>
+                        {{else}}
+                            <label for="organization"><b>Select Organization:</b></label><br/>
+                            <select id="organization">
+                                <option value="">Select an organization</option>
+                                <option value="GDGOC">Google Developer Groups on Campus (GDGOC)</option>
+                                <option value="LSCS">La Salle Computer Society (LSCS)</option>
+                                <option value="DSS">Data Science Society (DSS)</option>
+                                <option value="AU">Archers for UNICEF (AU)</option>
+                                <option value="PTS">Peer Tutor Society (PTS)</option>
+                            </select>
+                        {{/if}}
+                    </div>
+
+                    <label><b>Rating:</b></label>
+                    <div class="rating">
+                        <span class="star" data-value="1"><i class="fa-solid fa-star"></i></span>
+                        <span class="star" data-value="2"><i class="fa-solid fa-star"></i></span>
+                        <span class="star" data-value="3"><i class="fa-solid fa-star"></i></span>
+                        <span class="star" data-value="4"><i class="fa-solid fa-star"></i></span>
+                        <span class="star" data-value="5"><i class="fa-solid fa-star"></i></span>
+                    </div>
+                    <input type="hidden" id="rating" name="rating" required>
+
+                    <label for="description"><b>Description:</b></label><br />
+                    <textarea id="description" required></textarea><br />
+
+                    <div class="btn-container">
+                        <button type="reset" class="discard-btn" id="discardChanges">Discard</button>
+                        <button type="submit" class="submit-btn">Submit</button>
+                    </div>
+                </form>
             </div>
-            
-            <form id="reviewForm">
-                <label><b>Rating:</b></label>
-                <div class="rating">
-                    <span class="star" data-value="1"><i class="fa-solid fa-star"></i></span>
-                    <span class="star" data-value="2"><i class="fa-solid fa-star"></i></span>
-                    <span class="star" data-value="3"><i class="fa-solid fa-star"></i></span>
-                    <span class="star" data-value="4"><i class="fa-solid fa-star"></i></span>
-                    <span class="star" data-value="5"><i class="fa-solid fa-star"></i></span>
-                </div>
-                <input type="hidden" id="rating" name="rating" required>
-                
-                <label for="organization"><b>Organization</b></label><br/>
-                <select id="organization" required>
-                    <option>Select an organization</option>
-                    <option>La Salle Computer Society (LSCS)</option>
-                    <option>Google Developer Student Clubs (GDSC)</option>
-                    <option>The Society of Proactive Role Models INspiring Total Development (SPRINT)</option>
-                    <option>DLSU Association for Computing Machinery Student Chapter (ACM)</option>
-                    <option>DLSU Data Science Society (DSS)</option>
-                </select>
-
-                <br/>
-                <label for="description"><b>Description</b></label><br/>
-                <textarea id="description" required></textarea><br/>
-                <label for="attachments" class="file-label">Add attachments</label>
-                <input type="file" id="attachments" accept="image/*,video/*" multiple>
-                
-                <div class="btn-container">
-                    <button type="reset" class="discard-btn">Discard</button>
-                    <button type="submit" class="submit-btn">Submit</button>
-                </div>
-            </form>
         </div>
     </body>
 </html>
