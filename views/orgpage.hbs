@@ -24,28 +24,37 @@
                     ({{totalReviews}} reviews)
                 </p>
                 <p>{{org.orgDesc}}</p>
-                <span class="edit-icon">
-                    <button>
-                        <a href="/editorg/{{org.orgPage}}">✎</a>
-                    </button>
-                </span>
-            </div> <!--org-profiles-->
-        </div>
+
+                {{#if loggedIn}}
+                    {{#if (eq loggedIn.accountType "organization")}}
+                        {{#if (eq loggedIn.orgPage org.orgPage)}}
+                            <span class="edit-icon">
+                                <button>
+                                    <a href="/editorg/{{org.orgPage}}">✎</a>
+                                </button>
+                            </span>
+                        {{/if}}
+                    {{/if}}
+                {{/if}}
+            </div> <!--org-profile-->
+        </div> <!--wrapper-->
         
         <div class="filters">
-            <div class="add-review-container">
-                <a href="/reviewpage">
-                    Write a Review
-                </a>
-            </div> <!--add-review-container-->
+            {{#if user}}
+                {{#if (eq user.accountType "student")}}
+                    <div class="add-review-container">
+                        <a href="/reviewpage">Write a Review</a>
+                    </div>
+                {{/if}}
+            {{/if}}
 
             <div class="filter-review-container">
                 <div class="search-container">
                     <div class="search-bar-container">
                         <input type="text" id="searchBar" placeholder="Search for a Review" onkeyup="searchReviews()">
                         <i class="fa-solid fa-magnifying-glass search-icon"></i>
-                    </div> <!--search-bar-container-->
-                </div> <!--search-container-->
+                    </div> 
+                </div> 
 
                 <div class="filter-rating">
                     <button class="filter-btn">Filter by Rating</button>
@@ -56,18 +65,18 @@
                         <a href="#" data-rating="3" onclick="filterByRating(3)">3 Stars</a>
                         <a href="#" data-rating="2" onclick="filterByRating(2)">2 Stars</a>
                         <a href="#" data-rating="1" onclick="filterByRating(1)">1 Star</a>
-                    </div> <!--dropdown-->
-                </div> <!--filter-rating-->
-            </div> <!--filter-review-container-->
-        </div> <!--filters-->
+                    </div> 
+                </div> 
+            </div> 
+        </div> 
 
         <div class="recent-reviews-container">
             {{#each reviews}}
-                {{> review this orgpage=true}}
+                {{> review this orgpage=true loggedIn=../user}}
             {{/each}}  
-        </div>  <!--recent-reviews-container-->
+        </div>
 
-		{{#if (gt totalPages 1)}}
+        {{#if (gt totalPages 1)}}
             <div class="page-nav">
                 {{#if (gt currentPage 1)}}
                     <a href="?page={{sub currentPage 1}}">&lt; Prev</a>
@@ -76,13 +85,13 @@
                 {{#if (lt currentPage totalPages)}}
                     <a href="?page={{add currentPage 1}}">Next &gt;</a>
                 {{/if}}
-            </div> <!--page-nav-->
+            </div> 
         {{/if}}
 
         <div class="page-nav">
             <span id="page-numbers">
                 <span id="cur-page">{{currentPage}}</span> of {{totalPages}}
             </span>
-        </div> <!--page-nav-->
+        </div> 
     </body>
 </html>
