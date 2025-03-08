@@ -87,7 +87,6 @@ function clear() {
 }
 
 function sortAscName() {
-
     let search = $("#search-bar-org").val().trim(); // Search
 
     let filterStars = [];  // Filters
@@ -103,7 +102,6 @@ function sortAscName() {
     $.get(`/searchorg/sort/org${search}/qry1${filterStars}/qry2${filterCollege}/methodname/order1`, retrieveData);
 }
 function sortDescName() {
-
     let search = $("#search-bar-org").val().trim(); // Search
 
     let filterStars = [];  // Filters
@@ -119,7 +117,6 @@ function sortDescName() {
     $.get(`/searchorg/sort/org${search}/qry1${filterStars}/qry2${filterCollege}/methodname/order-1`, retrieveData);
 }
 function sortAscRating() {
-
     let search = $("#search-bar-org").val().trim(); // Search
 
     let filterStars = [];  // Filters
@@ -135,7 +132,6 @@ function sortAscRating() {
     $.get(`/searchorg/sort/org${search}/qry1${filterStars}/qry2${filterCollege}/methodrating/order1`, retrieveData);
 }
 function sortDescRating() {
-
     let search = $("#search-bar-org").val().trim(); // Search
 
     let filterStars = [];  // Filters
@@ -152,6 +148,8 @@ function sortDescRating() {
 }
 
 $(document).ready(() => {
+
+
     $("#search-button-org").click(searchAndFilter);
     $(".rate-opts-org").change(searchAndFilter);
     $(".college-opts-org").change(searchAndFilter);
@@ -160,4 +158,15 @@ $(document).ready(() => {
     $("#rating-asc-btn").click(sortAscRating);
     $("#name-desc-btn").click(sortDescName);
     $("#rating-desc-btn").click(sortDescRating);
+
+    // for queries from the homepage
+    const urlParams = new URLSearchParams(window.location.search);
+    const triggerButtonId = urlParams.get("trigger");
+
+    if (triggerButtonId) {
+        console.log("Triggering button:", triggerButtonId);
+        
+        // Simulate button click
+        $(`#${triggerButtonId}`).prop("checked", true).trigger("change");
+    }
 });
