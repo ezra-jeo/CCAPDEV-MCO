@@ -1,18 +1,24 @@
-.fa-user {
-    font-size: 40px;
-    color:#3B6724; 
+.wrapper {
+    padding: 5px;
+}
+
+h5 {
+    font-size: 50px;
+    margin: auto;
+    padding: 10px;
 }
 .profile img {
-    font-size: 70px;
+    width: 80px;
+    height: 80px;   
     color:#3B6724; 
     padding-bottom: 10px;
-    padding-top: 20px;
+    padding: 10px 10px;
 }
 .content {
     display: flex;
     flex-direction: row;
-    margin: 100px;
-    padding-top: 20px;
+    margin: 100px 0 73px;
+    padding: 10px;
     align-items: center;
     justify-content: center;
 }
@@ -37,7 +43,7 @@
 .desc-container {
     display: flex;
     flex-direction: row;
-    gap: 15px;
+    gap: 10px;
     align-items: stretch;
     justify-content: space-between;
     margin-top: 20px;
@@ -55,7 +61,6 @@
     min-height: 150px;
     font-size: 16px;
     border: none;
-    
 }
 .btn-container {
     display: flex;
@@ -77,28 +82,33 @@
     border-color:#3B6724;
     border-style: none;
     font-weight: bold;
-    text-decoration: underline;
+    text-decoration: none;
 }
 .change-btn:hover {
     background: #3B6724;
     border-style: solid;
     border-radius: 40px;
     color: white;
-    text-decoration: underline;
+    text-decoration: none;
     cursor: pointer;
 }
 .save-btn {
     width: 200px;
     height: 40px;
-    background-color: #3B6724;
+    background-color: transparent;
     border-radius: 15px;
     border: none;
     font-family: 'Rubik', sans-serif;
-    color: white;
+    color: black;
     font-size: 20px;
     align-items: center;
     justify-content: center;
     cursor: pointer;
+}
+.save-btn:hover {
+    background-color: #3B6724;
+    font-weight: bold;
+    color: white;
 }
 .discard-btn {
     width: 200px;
@@ -112,9 +122,8 @@
     justify-content: center;
     cursor: pointer;
 }
-
-.org-profile-pic {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
+.discard-btn:hover {
+    background-color: darkred;
+    font-weight: bold;
+    color: white;    
 }
