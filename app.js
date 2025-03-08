@@ -390,8 +390,7 @@ app.get("/orgs/searchfilter/org:org?/qry1:qry1?/qry2:qry2?", async (req, res) =>
         
         const result = await Organization.find(query).lean();
         res.send({orgList: result});
-        console.log("Org Sent Result " + result + " Query: " + query);
-
+        console.log(`Query: ${query}`);
     }
     catch (err) {
         res.status(500).send("Error in Searching and Filter");
@@ -431,7 +430,7 @@ app.get("/reviews/searchfilter/search:search?/qry1:qry1?/qry2:qry2?", async (req
 
         const result = await Review.find(query).lean();
         res.send({reviewList: result});
-        console.log("Review Sent Result " + result + " Query: " + query);
+        console.log(`Query: ${query}`);
     }
     catch (err) {
         res.status(500).send("Error in Searching and Filter");
@@ -482,7 +481,7 @@ app.get("/orgs/sort/org:org?/qry1:qry1?/qry2:qry2?/method:method/order:order", a
 
         const result = await Organization.find(query).sort(order).lean();
         res.send({orgList: result});
-        console.log("Org Sent Result " + result + " Query: " + query);
+        console.log(`Query: ${query}`);
 
     }
     catch (err) {

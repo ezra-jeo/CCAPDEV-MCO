@@ -2,7 +2,11 @@ const express = require('express');
 const router = express.Router();
 
 router.get('/', (req, res) => {
-    res.render('signup', { title: 'Sign Up', layout: 'clear' });
+    res.render('signup', { 
+        title: 'Sign Up', 
+        layout: 'clear',
+        loggedIn: req.session.user
+     });
 });
 
 module.exports = router;

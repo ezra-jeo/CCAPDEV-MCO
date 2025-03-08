@@ -8,7 +8,8 @@ router.get('/', async (req, res) => {
         res.render('searchreview', { 
             title: 'Search Reviews', 
             layout: 'main',
-            reviewList: await Review.find().lean()
+            reviewList: await Review.find().lean(),
+            loggedIn: req.session.user
         });
     }
     catch (err) {

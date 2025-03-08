@@ -8,7 +8,8 @@ router.get('/', async (req, res) => {
         res.render('searchorg', { 
             title: 'Search Organizations', 
             layout: 'main',
-            orgList: await Organization.find().lean()
+            orgList: await Organization.find().lean(),
+            loggedIn: req.session.user
         });
     }
     catch (err) {
