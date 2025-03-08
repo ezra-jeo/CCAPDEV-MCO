@@ -20,7 +20,6 @@ router.get("/:orgName", async (req, res) => {
 
         // Fetch and sort reviews by newest first
         const reviews = await Review.find({ orgName: new RegExp("^" + orgName + "$", "i") })
-            .sort({ timePosted: -1 }) // Sort by newest first
             .skip(skip) // Skip reviews based on the current page
             .limit(limit)
             .lean(); 
@@ -48,7 +47,8 @@ router.get("/:orgName", async (req, res) => {
             totalReviews, 
             totalPages, 
             currentPage,
-        });
+            loggedIn: req.session.user,
+        });               
     } catch (err) {
         console.error("Error fetching organization data:", err);
         res.status(500).send("Error loading orgpage"); 
