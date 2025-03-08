@@ -83,6 +83,15 @@
                     }
                 });
             });
+
+            document.addEventListener("click", function(event) {
+                if (event.target.matches(".fa-thumbs-up, .fa-thumbs-down")) {
+                    const reviewId = event.target.getAttribute("id").split("-")[2]; 
+                    const reaction = event.target.classList.contains("fa-thumbs-up") ? "like" : "dislike";
+                    toggleLikeDislike(reviewId, reaction);
+                }
+            });
+
         </script>
     </head>
 
