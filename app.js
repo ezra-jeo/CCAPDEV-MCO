@@ -332,6 +332,7 @@ app.post("/login", async (req, res) => {
     }
 });
 
+// logout
 app.get("/logout", (req, res) => {
     console.log("Logging out user:", req.session.user);
     
@@ -341,7 +342,6 @@ app.get("/logout", (req, res) => {
             return res.status(500).json({ error: "Error logging out." });
         }
 
-        // Ensure cookie is also cleared
         res.clearCookie("connect.sid"); 
         res.redirect("/");
     });
