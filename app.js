@@ -129,10 +129,11 @@ app.get("/userpage/:userPage", async (req, res) => {
     try {
         const userPage = req.params.userPage;
         
-        // Find user in Users or Organizations
+        // finding user
         let user = await User.findOne({ userPage }).lean();
         let isOrganization = false;
 
+        // or org
         if (!user) {
             user = await Organization.findOne({ orgPage: userPage }).lean();
             if (!user) {
@@ -191,6 +192,7 @@ app.get("/useredit/:userPage", async (req, res) => {
     }
 });
 
+// user edit
 app.post("/useredit/:userPage", async (req, res) => {
     try {
         const userPage = req.params.userPage;
@@ -221,10 +223,12 @@ app.post("/signup", async (req, res) => {
             return res.status(400).json({ error: "Account type is required." });
         }
 
+        const hashedPassword = await bcrypt.hash(password, 10);
+
         let newAccount;
 
         if (accountType === "student") {
-            if (!username || !password) {
+            if (!username || !hashedPassword) {
                 return res.status(400).json({ error: "Username and password are required for users." });
             }
 
@@ -233,11 +237,11 @@ app.post("/signup", async (req, res) => {
                 userDesc: description,
                 userPage: username,
                 profileImage: "/images/default-icon-user.png",
-                userPassword: password
+                userPassword: hashedPassword
             });
         } 
         else if (accountType === "organization") {
-            if (!username || !password) {
+            if (!username || !hashedPassword) {
                 return res.status(400).json({ error: "Organization name and password are required." });
             }
             newAccount = new Organization({
@@ -248,7 +252,7 @@ app.post("/signup", async (req, res) => {
                 orgRating: 0,
                 orgReviews: 0,
                 orgCollege: "Others",
-                orgPassword: password
+                orgPassword: hashedPassword
             });
         } 
         else {
@@ -287,41 +291,49 @@ app.post("/login", async (req, res) => {
             return res.status(404).json({ error: "Account not found." });
         }
 
-        // validating password
+        const storedPassword = account.userPassword || account.orgPassword;
+
         let isPasswordValid = false;
-        if (accountType === "student") {
-            isPasswordValid = password === account.userPassword;
-        } else if (accountType === "organization") {
-            isPasswordValid = password === account.orgPassword;
+
+        if (storedPassword.startsWith("$2b$")) {
+            // hashed password
+            isPasswordValid = await bcrypt.compare(password, storedPassword);
+        } else {
+            // comparing with plain text
+            isPasswordValid = password === storedPassword;
+
+            if (isPasswordValid) {
+                const hashedPassword = await bcrypt.hash(password, 10);
+                if (accountType === "student") {
+                    await User.updateOne({ userName: username }, { userPassword: hashedPassword });
+                } else {
+                    await Organization.updateOne({ orgName: username }, { orgPassword: hashedPassword });
+                }
+                console.log(`🔄 Password upgraded to bcrypt for ${username}`);
+            }
         }
 
         if (!isPasswordValid) {
             return res.status(401).json({ error: "Invalid credentials." });
         }
 
-        // storing user session
-        if (accountType === "student") {
-            req.session.user = {
-                userName: account.userName,
-                userPage: account.userPage,     
-                accountType: accountType,
-                userDesc: account.userDesc,
-                profileImage: account.profileImage,
-                userPassword: password
-            };
-        } else if (accountType === "organization") {
-            req.session.user = {
-                orgName: account.orgName,
-                orgPage: account.orgPage,     
-                accountType: accountType,
-                orgDesc: account.userDesc,
-                orgPic: account.orgPic,
-                orgRating: 0,
-                orgReviews: 0,
-                orgCollege: "Others",
-                orgPassword: password
-            };
-        }
+        // storing in user session
+        req.session.user = (accountType === "student") ? {
+            userName: account.userName,
+            userPage: account.userPage,     
+            accountType: accountType,
+            userDesc: account.userDesc,
+            profileImage: account.profileImage,
+        } : {
+            orgName: account.orgName,
+            orgPage: account.orgPage,     
+            accountType: accountType,
+            orgDesc: account.orgDesc,
+            orgPic: account.orgPic,
+            orgRating: 0,
+            orgReviews: 0,
+            orgCollege: "Others",
+        };
 
         console.log(`✅ ${accountType} logged in:`, req.session.user);
         res.json({ message: `Welcome back, ${username}!`, accountType });
