@@ -13,7 +13,10 @@ router.get("/:orgPage", async (req, res) => {
             console.log(`Organization "${orgPage}" not found!`);
             return res.status(404).send("Organization not found");
         }
-        res.render("editorg", { org: org.toObject() });
+        res.render("editorg", { 
+            org: org.toObject(),
+            loggedIn: req.session.user,
+        });
     } catch (error) {
         console.error("Error fetching organization:", error);
         res.status(500).send("Internal Server Error");
