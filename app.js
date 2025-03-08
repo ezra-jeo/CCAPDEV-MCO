@@ -128,26 +128,42 @@ app.get("/", async (req, res) => {
 app.get("/userpage/:userPage", async (req, res) => {
     try {
         const userPage = req.params.userPage;
-        const findUser = await Review.findOne({ userPage: userPage }).lean();
+        
+        // Find user in Users or Organizations
+        let user = await User.findOne({ userPage }).lean();
+        let isOrganization = false;
 
-        if (!findUser) {
-            return res.status(404).send("User not found.");
+        if (!user) {
+            user = await Organization.findOne({ orgPage: userPage }).lean();
+            if (!user) {
+                return res.status(404).send("User not found.");
+            }
+            isOrganization = true;
         }
 
-        let userName = findUser.userName;
-        const user = await User.findOne({ userName: userName }).lean();
+        // fetch reviews based on the username (stored in reviews)
+        const userName = isOrganization ? user.orgName : user.userName;
+        let query = { userName };
 
-        let query = { userName: userName };
-
-        if (req.query.rating) query.reviewRating = parseInt(req.query.rating, 10);
-        if (req.query.search) query.reviewText = { $regex: req.query.search, $options: "i" }; // Case-insensitive search
+        if (req.query.rating) {
+            query.reviewRating = parseInt(req.query.rating, 10);
+        }
+        if (req.query.search) {
+            query.reviewText = { $regex: req.query.search, $options: "i" };
+        }
 
         const reviews = await Review.find(query).lean();
 
         if (req.headers["x-requested-with"] === "XMLHttpRequest") {
             res.render("partials/reloadreview", { reviews, layout: false });
         } else {
-            res.render("userpage", { user, reviews, userPage: reviews[0].userPage, loggedIn: req.session.user || null });
+            res.render("userpage", { 
+                user, 
+                reviews, 
+                userPage: user.userPage, 
+                loggedIn: req.session.user || null,
+                isOrganization
+            });
         }
     } catch (error) {
         console.error("Error loading user page:", error);
@@ -161,7 +177,7 @@ app.get("/useredit/:userPage", async (req, res) => {
         const userPage = req.params.userPage;
         
         // Find the user based on userPage
-        const user = await Review.findOne({ userPage }).lean();
+        const user = await User.findOne({ userPage }).lean();
 
 
         if (!user) {
@@ -196,9 +212,8 @@ app.post("/useredit/:userPage", async (req, res) => {
     }
 });
 
-
 // signing up
-app.post("/review/:id/react", async (req, res) => {
+app.post("/signup", async (req, res) => {       
     try {
         const { username, password, accountType, description } = req.body;
 
@@ -221,14 +236,23 @@ app.post("/review/:id/react", async (req, res) => {
                 userPassword: password
             });
         } 
-        else if (reaction === "dislike") {
-            review.dislikesCount += 1;
-        }
-        else if (reaction === "undoLike" && review.likesCount > 0) {
-            review.likesCount -= 1;
+        else if (accountType === "organization") {
+            if (!username || !password) {
+                return res.status(400).json({ error: "Organization name and password are required." });
+            }
+            newAccount = new Organization({
+                orgName: username,
+                orgPic: "/images/default-icon-org.png",
+                orgDesc: description,
+                orgPage: username,
+                orgRating: 0,
+                orgReviews: 0,
+                orgCollege: "Others",
+                orgPassword: password
+            });
         } 
-        else if (reaction === "undoDislike" && review.dislikesCount > 0) {
-            review.dislikesCount -= 1;
+        else {
+            return res.status(400).json({ error: "Invalid account type." });
         }
 
         await newAccount.save();
@@ -279,7 +303,7 @@ app.post("/login", async (req, res) => {
         if (accountType === "student") {
             req.session.user = {
                 userName: account.userName,
-                userPage: account.userPage,         
+                userPage: account.userPage,     
                 accountType: accountType,
                 userDesc: account.userDesc,
                 profileImage: account.profileImage,
@@ -288,7 +312,7 @@ app.post("/login", async (req, res) => {
         } else if (accountType === "organization") {
             req.session.user = {
                 orgName: account.orgName,
-                orgPage: account.orgPage,     
+                userPage: account.userPage,     
                 accountType: accountType,
                 orgDesc: account.userDesc,
                 orgPic: account.orgPic,
@@ -319,7 +343,49 @@ app.get("/logout", (req, res) => {
     });
 });
 
-//replying to a review
+// dis/liking reviews
+app.post("/review/:id/react", async (req, res) => {
+    try {
+        const { reaction } = req.body;
+        const review = await Review.findById(req.params.id);
+
+        if (!review) {
+            return res.status(404).json({ success: false, message: "Review not found" });
+        }
+
+        // undo action
+        if (reaction === "undoLike") {
+            if (review.likesCount > 0) review.likesCount -= 1;
+        }
+        else if (reaction === "undoDislike") {
+            if (review.dislikesCount > 0) review.dislikesCount -= 1;
+        }
+        // dis/like
+        else if (reaction === "like") {
+            review.likesCount += 1;
+        } else if (reaction === "dislike") {
+            review.dislikesCount += 1;
+        }
+        // cancelling
+        else if (reaction === "cancelDislike") {
+            review.likesCount += 1;
+            review.dislikesCount -= 1;
+        }
+        else if (reaction === "cancelLike") {
+            review.likesCount -= 1;
+            review.dislikesCount += 1;
+        }
+
+        await review.save();
+
+        res.json({ success: true, likesCount: review.likesCount, dislikesCount: review.dislikesCount });
+
+    } catch (err) {
+        res.status(500).json({ success: false, message: "Server error" });
+    }
+});
+
+// replying to a review
 app.post("/reply-to-review", async (req, res) => {
     try {
         const { reviewId, replyText } = req.body;
