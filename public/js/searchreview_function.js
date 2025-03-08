@@ -104,7 +104,7 @@ function searchAndFilter() {
     });
 
     console.log("Filter college " + filterCollege);
-    $.get(`/reviews/searchfilter/search${search}/qry1${filterStars}/qry2${filterCollege}`, retrieveData);
+    $.get(`/searchreview/searchfilter/search${search}/qry1${filterStars}/qry2${filterCollege}`, retrieveData);
 }
 
 function clear() {
