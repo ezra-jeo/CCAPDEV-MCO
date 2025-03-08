@@ -83,7 +83,7 @@
         </div>
         <div class="likes-container">
             <div class="likes-container-content" id="dislike-{{_id}}">
-                {{#if dislikesCount}}
+                {{#if (gt dislikesCount 0)}}
                     <span>{{dislikesCount}}</span>
                 {{/if}}
             </div>
@@ -91,7 +91,7 @@
                 <i class="fa-regular fa-thumbs-down" id="dislike-icon-{{_id}}" {{#if loggedIn}} onclick="toggleLikeDislike('{{_id}}', 'dislike')" {{/if}}></i>
             </div>
             <div class="likes-container-content" id="like-{{_id}}">
-                {{#if likesCount}}
+                {{#if (gt likesCount 0)}}
                     <span>{{likesCount}}</span>
                 {{/if}}
             </div>
@@ -113,26 +113,26 @@
 
             let action = reaction;
 
-            // Determine the action before sending the request
+            // determine the action before sending the request
             if (reaction === "like") {
                 if (isLiked) {
-                    action = "undoLike"; // Undo like
+                    action = "undoLike";
                 } 
                 else if (isDisliked) {
                     action = "cancelDislike";
                 }
                 else {
-                    action = "like"; // Set like
+                    action = "like";
                 }
             } else if (reaction === "dislike") {
                 if (isDisliked) {
-                    action = "undoDislike"; // Undo dislike
+                    action = "undoDislike"; 
                 } 
                 else if (isLiked) {
                     action = "cancelLike";
                 }
                 else {
-                    action = "dislike"; // Set dislike
+                    action = "dislike";
                 }
             }
 
@@ -148,8 +148,11 @@
 
             if (result.success) {
                 // Update counts
-                document.getElementById(`like-${reviewId}`).innerHTML = `<span>${result.likesCount}</span>`;
-                document.getElementById(`dislike-${reviewId}`).innerHTML = `<span>${result.dislikesCount}</span>`;
+                document.getElementById(`like-${reviewId}`).innerHTML = 
+                    result.likesCount > 0 ? `<span>${result.likesCount}</span>` : "";
+                document.getElementById(`dislike-${reviewId}`).innerHTML = 
+                    result.dislikesCount > 0 ? `<span>${result.dislikesCount}</span>` : "";
+
 
                 // Properly toggle icons
                 if (action === "like") {

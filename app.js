@@ -53,6 +53,9 @@ const hbs = exphbs.create({
         lt: function (a, b) {
             return a < b;
         },
+        gt: function (a, b) {
+            return a > b;
+        },
         eq: function(a, b, options) {
             if (a === b) {
                 return true; 
