@@ -4,7 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{title}}</title>
-    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/main.css
+        
+    {{#if isReviewPage}}
+        <link rel="stylesheet" href="/css/review.css">
+    {{/if}}
+    {{#if isEditReview}}
+        <link rel="stylesheet" href="/css/reviewedit.css">
+    {{/if}}
+    {{#if isEditOrg}}
+        <link rel="stylesheet" href="/css/editorg.css">
+    {{/if}}
+    
     <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">  
     <link href="https://fonts.googleapis.com/css2?family=Koulen&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">    
     <link href="https://fonts.googleapis.com/css2?family=Konkhmer+Sleokchher&family=Koulen&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
@@ -63,6 +74,13 @@
     Handlebars.registerHelper("round", function(n) { return Math.round(n); });
     Handlebars.registerHelper("gt", function(a, b) { return a > b; });
     </script>
+
+    {{#if isEditReview}}
+        <script src="/js/reviewedit_func.js" defer></script>
+    {{/if}}
+    {{#if isEditOrg}}
+        <script src="/js/editorg_func.js" defer></script>
+    {{/if}}
 </head>
 <body>
     {{> header}}
