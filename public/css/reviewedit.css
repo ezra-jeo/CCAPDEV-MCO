@@ -1,11 +1,21 @@
+label {
+    font-weight: bold;
+}
+h5 {
+    font-size: 40px;
+    margin: auto;
+    
+}
+.wrapper {
+    padding: 5px;
+}
 .content {
     display: flex;
     flex-direction: row;
-    margin-top: 100px;
     align-items: center;
+    margin: 112.5px auto ;
     justify-content: center;
 }
-
 .edit-box {
     display: flex;
     flex-direction: column;
@@ -32,13 +42,24 @@
     justify-content: space-between;
     margin-top: 20px;
 }
-.star-container {
+.rating-container {
     display: flex;
-    flex-direction: row;
-    gap: 15px;
-    align-items: stretch;
-    justify-content: flex-start;
+    flex-direction: row;    
     margin-top: 20px;
+}
+.rating {
+    margin: auto;
+}
+.fa-star {
+    font-size: 30px;
+    padding-bottom: 10px;
+}
+.star {
+    font-size: 40px;
+    color: black;
+}
+.star.selected, .star:hover {
+    color: gold;
 }
 .desc-box-container {
     display: flex;
@@ -48,53 +69,52 @@
 }
 .desc-box {
     display: flex;
-    background-color: #7BA167;
+    background-color: #BBCAB2;
     width: 100%;
     min-height: 150px;
     font-size: 16px;
-}
-.changes-container {
+}  
+.btn-container {
     display: flex;
-    flex-direction: row;
-    gap: 10px;   
-    margin-top: 20px;
-    align-items: center;
     justify-content: right;
+    gap: 20px;
+    margin-top: 10px;
 }
-.changes-button {
-    display: flex;
-    width: 200px;
-    height: 40px;
-    background-color: #3B6724;
-    border-radius: 15px;
-    border: none;
+.discard-btn {
     font-family: 'Rubik', sans-serif;
-    color: white;
-    font-size: 20px;
-    align-items: center;
-    justify-content: center;
-}
-.user-pic {
-    max-height: 150px;
-    max-width: 150px;
-    height: auto;
-    width: 100%;
-    border-radius: 50%;
-    margin: 25px;
-}
-
-.fa-user {
-    font-size: 40px;
-    color:#3B6724; 
-    padding-right: 10px;
-}
-
-.user-name-profile {
-    color:#3B6724;
+    background-color: transparent;
+    color: black;
     padding: 10px;
+    border: none;
+    font-size: 20px;
+    border-radius: 30px;
+    cursor: pointer;
 }
-
-.fa-solid {
-    font-size: 30px;
-    margin: 0px;
+.discard-btn:hover {
+    background: transparent;
+    color: red;
+    padding: 10px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.submit-btn {
+    font-family: 'Rubik', sans-serif;
+    background-color: transparent;
+    color: black;
+    padding: 10px;
+    border: none;
+    font-size: 20px;
+    border-radius: 30px;
+    cursor: pointer;
+}
+.submit-btn:hover {
+    background: rgb(59, 103, 36);
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: bold;
 }
