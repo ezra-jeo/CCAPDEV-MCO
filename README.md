@@ -1,7 +1,13 @@
 
 # DLSU Orgs to Pick
 - A review application for various organizations around De La Salle University.
-  
+
+## Developers
+- Del Rosario, Ezra Jeonadab G.
+- Ong, Kyle Edward M.
+- Punsalan, Emmanuel Gerald G.
+- Tria, Chynna Mae Z.
+
 ## Setup
 Please make sure that Node.js is properly installed on your computer.
 
