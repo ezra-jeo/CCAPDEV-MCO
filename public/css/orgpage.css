@@ -1,4 +1,14 @@
 /* ORG HEADER */
+.logout-btn {  
+    margin-top: 15px;
+    background-color: #3B6724;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+}
 .wrapper {
     padding: 5px;
 }
