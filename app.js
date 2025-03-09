@@ -112,6 +112,7 @@ const orgPageRoutes = require('./routes/orgpage');
 
 const userPageRoutes = require('./routes/userpage');
 const userEditRoutes = require('./routes/useredit');
+const aboutRoutes = require('./routes/about');
 
 // fetching recent reviews for homepage
 app.get("/", async (req, res) => {
@@ -454,6 +455,8 @@ app.post("/submit-review", async (req, res) => {
 app.use('/', homepageRoutes);
 app.use('/signup', signupRoutes);
 app.use('/login', loginRoutes);
+
+app.use('/about', aboutRoutes);
 
 app.use('/searchorg', searchOrgRoutes);
 app.use('/searchreview', searchRevRoutes);
