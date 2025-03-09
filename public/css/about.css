@@ -7,6 +7,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 10%;
+    margin-bottom: 10%; 
 }
 .about-container {
     width: 60%;
@@ -33,6 +35,8 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: flex-start;
+    text-wrap: wrap;
+    overflow-wrap: break-word;
 }
 .parag {
     justify-content: left;
@@ -40,6 +44,8 @@
     font-size: large;
     font-weight: normal;
     margin-bottom: 5px;
+    width: 100%;
+    text-wrap: wrap;
 }
 .name {
     justify-content: left;
