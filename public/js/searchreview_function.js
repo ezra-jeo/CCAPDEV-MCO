@@ -1,4 +1,4 @@
-const templateString = "\
+const source = "\
 {{#each reviewList}} \
 <div class=\"review\">  \
     <div class=\"review-proper-container\">  \
@@ -58,17 +58,35 @@ const templateString = "\
             </div>  \
         </div>  \
     </div>  \
-</div>  \
-<div class=\"review-footer\">  \
-    <div class=\"helpfulness-container\">  \
-        <button class=\"helpfulness-item\" data-action=\"not\" data-review-id=\"{{_id}}\" {{#if ../loggedIn}} onclick=\"updateHelpfulness('not', '{{_id}}')\" {{/if}}>  \
-            Not Helpful  \
-        </button>  \
-        <button class=\"helpfulness-item\" data-action=\"help\" data-review-id=\"{{_id}}\" {{#if ../loggedIn}} onclick=\"updateHelpfulness('help', '{{_id}}')\" {{/if}}>  \
-            Helpful  \
-        </button>  \
+    <div class=\"review-footer\">  \
+        <div class=\"helpfulness-container\">  \
+            <button class=\"helpfulness-item\" data-action=\"not\" data-review-id=\"{{_id}}\" {{#if ../loggedIn}} onclick=\"updateHelpfulness('not', '{{_id}}')\" {{/if}}>  \
+                Not Helpful  \
+            </button>  \
+            <button class=\"helpfulness-item\" data-action=\"help\" data-review-id=\"{{_id}}\" {{#if ../loggedIn}} onclick=\"updateHelpfulness('help', '{{_id}}')\" {{/if}}>  \
+                Helpful  \
+            </button>  \
+        </div>  \
+        <div class=\"likes-container\">  \
+            <div class=\"likes-container-content\" id=\"dislike-{{_id}}\">  \
+                {{#if (gt dislikesCount 0)}}  \
+                    <span>{{dislikesCount}}</span>  \
+                {{/if}}  \
+            </div>  \
+            <div class=\"likes-container-content\">  \
+                <i class=\"fa-regular fa-thumbs-down\" id=\"dislike-icon-{{_id}}\" {{#if ../loggedIn}} onclick=\"toggleLikeDislike('{{_id}}', 'dislike')\" {{/if}}></i>  \
+            </div>  \
+            <div class=\"likes-container-content\" id=\"like-{{_id}}\">  \
+                {{#if (gt likesCount 0)}}  \
+                    <span>{{likesCount}}</span>  \
+                {{/if}}  \
+            </div>  \
+            <div class=\"likes-container-content\">  \
+                <i class=\"fa-regular fa-thumbs-up\" id=\"like-icon-{{_id}}\" {{#if ../loggedIn}} onclick=\"toggleLikeDislike('{{_id}}', 'like')\" {{/if}}></i>  \
+            </div>  \
+        </div>  \
     </div>  \
-</div> \
+</div>  \
 {{/each}}";
 
 
