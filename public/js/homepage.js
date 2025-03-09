@@ -43,7 +43,7 @@ $(document).ready(() => {
     $("#search-1-stars").click(getSearch(1));
 
     $("#search-ccs").click(getSearch("ccs", "college"));
-    $("#search-cla").click(getSearch("rvcob", "college"));
+    $("#search-rvcob").click(getSearch("rvcob", "college"));
     $("#search-cos").click(getSearch("cos", "college"));
     $("#search-cla").click(getSearch("cla", "college"));
     $("#search-gcoe").click(getSearch("gcoe", "college"));
