@@ -3,7 +3,7 @@
     <div id="review-container" class="review-container">
         {{#if reviews.length}}
             {{#each reviews}}
-                {{> review}}
+                {{> review loggedIn=../loggedIn}}
             {{/each}}
         {{else}}
             <div class="no-review">
