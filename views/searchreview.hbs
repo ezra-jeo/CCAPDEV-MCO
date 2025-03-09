@@ -6,7 +6,7 @@
         </title>
         <link rel="stylesheet" href="/css/searchreview.css"/>
         <script type="text/javascript" src="/js/searchreview_function.js"></script>
-        <link rel="stylesheet" href="/css/review.css">
+        <link rel="stylesheet" href="/css/review.css" />
     </head>
     <body>
         <div class="content-page">
@@ -100,9 +100,9 @@
                     </div>
                     <div id="review-list">
                         {{#each reviewList}}
-                         <div class = "review">  
-                            <div class = "review-proper-container">
-                                <div class = "review-container">  
+                        <div class="review">  
+                            <div class="review-proper-container">
+                                <div class="review-container">  
                                     <div class="review-header">
                                         <div class="profile-container">
                                             <img src="{{profileImage}}" alt="Profile">
@@ -116,17 +116,17 @@
                                             </div>
                                         </div>
                                         <div class="rating-edit-container">
-                                            <div class="rating-container {{#if (eq loggedIn.userName userName) }} gone{{/if}}">
+                                            <div class="rating-container {{#if (eq ../loggedIn.userName userName) }} gone{{/if}}">
                                                 {{#times reviewRating}}
                                                     <i class="fa-solid fa-star"></i>
                                                 {{/times}}
                                             </div>
-                                            {{#if (eq loggedIn.userName userName) }}    
+                                            {{#if (eq ../loggedIn.userName userName)}}    
                                                 <div class="edit-container">
-                                                    <a href="/reviewedit">
+                                                    <a href="/reviewedit/{{_id}}">
                                                         <i class="fa-solid fa-pencil"></i>
                                                     </a>
-                                                    <a href="/">
+                                                    <a href="/"> <!-- FIXME: -->
                                                         <i class="fa-solid fa-trash"></i>
                                                     </a>
                                                 </div>
@@ -134,9 +134,8 @@
                                         </div>
                                     </div>
                                     <div class="review-body">
-                                        <a href = "{{orgPage}}">
-                                            <div class = "review-body-header">{{loggedIn.userName}}{{orgName}}
-                                            </div>
+                                        <a href="{{orgPage}}">
+                                            <div class="review-body-header">{{orgName}}</div>
                                         </a>     
                                         <div class="review-text">{{reviewText}}</div>
 
@@ -148,7 +147,7 @@
 
                                         {{#if responseMessage}}
                                             <div class="response-container">
-                                                {{#if (eq loggedIn.userName responseUser)}}
+                                                {{#if (eq ../loggedIn.userName responseUser)}}
                                                     <div class="response-header">You replied</div>
                                                 {{else}}
                                                     <div class="response-header">{{orgName}} replied</div>
@@ -171,12 +170,13 @@
                                     </div>
                                 </div>
                             </div>
+
                             <div class="review-footer">
                                 <div class="helpfulness-container">
-                                    <button id="helpful" id="not-help-{{_id}}" class="helpfulness-item"  data-action="not" data-review-id="{{_id}}" {{#if loggedIn}} onclick="updateHelpfulness('not', '{{_id}}')" {{/if}}>
+                                    <button class="helpfulness-item" data-action="not" data-review-id="{{_id}}" {{#if ../loggedIn}} onclick="updateHelpfulness('not', '{{_id}}')" {{/if}}>
                                         Not Helpful
                                     </button>
-                                    <button id="not-helpful" id="help-{{_id}}" class="helpfulness-item"  data-action="help" data-review-id="{{_id}}" {{#if loggedIn}} onclick="updateHelpfulness('help', '{{_id}}')" {{/if}}>
+                                    <button class="helpfulness-item" data-action="help" data-review-id="{{_id}}" {{#if ../loggedIn}} onclick="updateHelpfulness('help', '{{_id}}')" {{/if}}>
                                         Helpful
                                     </button>
                                 </div>
@@ -187,7 +187,7 @@
                                         {{/if}}
                                     </div>
                                     <div class="likes-container-content">
-                                        <i class="fa-regular fa-thumbs-down" id="dislike-icon-{{_id}}" {{#if loggedIn}} onclick="toggleLikeDislike('{{_id}}', 'dislike')" {{/if}}></i>
+                                        <i class="fa-regular fa-thumbs-down" id="dislike-icon-{{_id}}" {{#if ../loggedIn}} onclick="toggleLikeDislike('{{_id}}', 'dislike')" {{/if}}></i>
                                     </div>
                                     <div class="likes-container-content" id="like-{{_id}}">
                                         {{#if (gt likesCount 0)}}
@@ -195,36 +195,17 @@
                                         {{/if}}
                                     </div>
                                     <div class="likes-container-content">
-                                        <i class="fa-regular fa-thumbs-up" id="like-icon-{{_id}}" {{#if loggedIn}} onclick="toggleLikeDislike('{{_id}}', 'like')" {{/if}}></i>
+                                        <i class="fa-regular fa-thumbs-up" id="like-icon-{{_id}}" {{#if ../loggedIn}} onclick="toggleLikeDislike('{{_id}}', 'like')" {{/if}}></i>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
                         {{/each}}
                     </div>
                 </div>
             </div>
          </div>
         <script> // toggling likes and dislikes
-            document.addEventListener("click", function (event) {
-                if (event.target.matches(".fa-thumbs-up, .fa-thumbs-down")) {
-                    console.log("Click detected on:", event.target);
-                    const reviewId = event.target.id.split("-")[2];
-                    console.log("Review ID:", reviewId);
-                    const reaction = event.target.classList.contains("fa-thumbs-up") ? "like" : "dislike";
-                    console.log("Reaction:", reaction);
-                    toggleLikeDislike(reviewId, reaction);
-                }
-                if (event.target.matches(".helpfulness-item")) {
-                    const reviewId = event.target.getAttribute("data-review-id");
-                    const action = event.target.getAttribute("data-action");
-                    console.log(reviewId);
-                    if (reviewId && action) {
-                        updateHelpfulness(action, reviewId);
-                    }
-                }
-            });
             async function toggleLikeDislike(reviewId, reaction) {
                 try {
                     const likeIcon = document.getElementById(`like-icon-${reviewId}`);

@@ -9,8 +9,9 @@ router.get('/', async (req, res) => {
             title: 'Search Reviews', 
             layout: 'main',
             reviewList: await Review.find().lean(),
-            loggedIn: req.session.user
+            loggedIn: req.session.user || null
         });
+        console.log(req.session.user);
     }
     catch (err) {
         res.status(500).send("Error fetching reviews");
@@ -49,7 +50,8 @@ router.get("/searchfilter/search:search?/qry1:qry1?/qry2:qry2?", async (req, res
         }
 
         const result = await Review.find(query).lean();
-        res.send({reviewList: result});
+        res.send({reviewList: result, loggedIn: req.session.user});
+        console.log(req.session.user);
         console.log(`Query: ${query}`);
         console.log(result);
     }

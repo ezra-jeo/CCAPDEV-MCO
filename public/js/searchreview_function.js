@@ -1,102 +1,76 @@
-const source = '\
-{{#each reviewList}}\
-<div class = "review">  \
-    <div class = "review-proper-container">\
-        <div class = "review-container">  \
-            <div class="review-header">\
-                <div class="profile-container">\
-                    <img src="{{profileImage}}" alt="Profile">\
-                </div>\
-                <div class="post-info">\
-                    <div class="user-info-container">\
-                        <a href="/userpage/{{userPage}}">\
-                            <div class="user-name">{{userName}}</div>\
-                        </a>\
-                        <div class="time">{{timeAgo timePosted}}</div>\
-                    </div>\
-                </div>\
-                <div class="rating-edit-container">\
-                    <div class="rating-container {{#if (eq loggedIn.userName userName) }} gone{{/if}}">\
-                        {{#times reviewRating}}\
-                            <i class="fa-solid fa-star"></i>\
-                        {{/times}}\
-                    </div>\
-                    {{#if (eq loggedIn.userName userName) }}    \
-                        <div class="edit-container">\
-                            <a href="/reviewedit">\
-                                <i class="fa-solid fa-pencil"></i>\
-                            </a>\
-                            <a href="/">\
-                                <i class="fa-solid fa-trash"></i>\
-                            </a>\
-                        </div>\
-                    {{/if}}\
-                </div>\
-            </div>\
-            <div class="review-body">\
-                <a href = "{{orgPage}}">\
-                    <div class = "review-body-header">{{orgName}}</div>\
-                </a>     \
-                <div class="review-text">{{reviewText}}</div>\
-                {{#if reviewImage}}\
-                    <div class="image">\
-                        <img src="{{reviewImage}}" alt="Review Image">\
-                    </div>\
-                {{/if}}\
-                {{#if responseMessage}}\
-                    <div class="response-container">\
-                        {{#if (eq loggedIn.userName responseUser)}}\
-                            <div class="response-header">You replied</div>\
-                        {{else}}\
-                            <div class="response-header">{{orgName}} replied</div>\
-                        {{/if}}\
-                        <div class="response-message">\
-                            {{responseMessage}}\
-                        </div>\
-                    </div>\
-                {{/if}}\
-                {{#if orgpage}}\
-                <div class="reply-section">\
-                    <button class="reply-btn">Reply to this Review</button>\
-                    <div class="reply-box-container">\
-                        <textarea class="reply-textbox" placeholder="Write a reply..."></textarea>\
-                        <button class="submit-reply-btn" data-review-id="{{_id}}">Submit</button>\
-                    </div>\
-                </div>\
-                {{/if}}\
-            </div>\
-        </div>\
-    </div>\
-    <div class="review-footer">\
-        <div class="helpfulness-container">\
-            <button class="helpfulness-item" {{#if loggedIn}} onclick="updateHelpfulness(\'not\', \'{{_id}}\')" {{/if}}>\
-                Not Helpful\
-            </button>\
-            <button class="helpfulness-item" {{#if loggedIn}} onclick="updateHelpfulness(\'help\', \'{{_id}}\')" {{/if}}>\
-                Helpful\
-            </button>\
-        </div>\
-        <div class="likes-container">\
-            <div class="likes-container-content" id="dislike-{{_id}}">\
-                {{#if (gt dislikesCount 0)}}\
-                    <span>{{dislikesCount}}</span>\
-                {{/if}}\
-            </div>\
-            <div class="likes-container-content">\
-                <i class="fa-regular fa-thumbs-down" id="dislike-icon-{{_id}}" {{#if loggedIn}} onclick="toggleLikeDislike(\'{{_id}}\', \'dislike\')" {{/if}}></i>\
-            </div>\
-            <div class="likes-container-content" id="like-{{_id}}">\
-                {{#if (gt likesCount 0)}}\
-                    <span>{{likesCount}}</span>\
-                {{/if}}\
-            </div>\
-            <div class="likes-container-content">\
-                <i class="fa-regular fa-thumbs-up" id="like-icon-{{_id}}" {{#if loggedIn}} onclick="toggleLikeDislike(\'{{_id}}\', \'like\')" {{/if}}></i>\
-            </div>\
-        </div>\
-    </div>\
-</div>\
-{{/each}}'; 
+const templateString = "\
+{{#each reviewList}} \
+<div class=\"review\">  \
+    <div class=\"review-proper-container\">  \
+        <div class=\"review-container\">  \
+            <div class=\"review-header\">  \
+                <div class=\"profile-container\">  \
+                    <img src=\"{{profileImage}}\" alt=\"Profile\">  \
+                </div>  \
+                <div class=\"post-info\">  \
+                    <div class=\"user-info-container\">  \
+                        <a href=\"/userpage/{{userPage}}\">  \
+                            <div class=\"user-name\">{{userName}}</div>  \
+                        </a>  \
+                        <div class=\"time\">{{timeAgo timePosted}}</div>  \
+                    </div>  \
+                </div>  \
+                <div class=\"rating-edit-container\">  \
+                    <div class=\"rating-container {{#if (eq ../loggedIn.userName userName) }} gone{{/if}}\">  \
+                        {{#times reviewRating}}  \
+                            <i class=\"fa-solid fa-star\"></i>  \
+                        {{/times}}  \
+                    </div>  \
+                    {{#if (eq ../loggedIn.userName userName) }}    \
+                        <div class=\"edit-container\">  \
+                            <a href=\"/reviewedit/{{_id}}\">  \
+                                <i class=\"fa-solid fa-pencil\"></i>  \
+                            </a>  \
+                            <a href=\"/\">  \
+                                <i class=\"fa-solid fa-trash\"></i>  \
+                            </a>  \
+                        </div>  \
+                    {{/if}}  \
+                </div>  \
+            </div>  \
+            <div class=\"review-body\">  \
+                <a href=\"{{orgPage}}\">  \
+                    <div class=\"review-body-header\">{{orgName}}</div>  \
+                </a>  \
+                <div class=\"review-text\">{{reviewText}}</div>  \
+                {{#if reviewImage}}  \
+                    <div class=\"image\">  \
+                        <img src=\"{{reviewImage}}\" alt=\"Review Image\">  \
+                    </div>  \
+                {{/if}}  \
+                {{#if responseMessage}}  \
+                    <div class=\"response-container\">  \
+                        {{#if (eq ../loggedIn.userName responseUser)}}  \
+                            <div class=\"response-header\">You replied</div>  \
+                        {{else}}  \
+                            <div class=\"response-header\">{{orgName}} replied</div>  \
+                        {{/if}}  \
+                        <div class=\"response-message\">  \
+                            {{responseMessage}}  \
+                        </div>  \
+                    </div>  \
+                {{/if}}  \
+            </div>  \
+        </div>  \
+    </div>  \
+</div>  \
+<div class=\"review-footer\">  \
+    <div class=\"helpfulness-container\">  \
+        <button class=\"helpfulness-item\" data-action=\"not\" data-review-id=\"{{_id}}\" {{#if ../loggedIn}} onclick=\"updateHelpfulness('not', '{{_id}}')\" {{/if}}>  \
+            Not Helpful  \
+        </button>  \
+        <button class=\"helpfulness-item\" data-action=\"help\" data-review-id=\"{{_id}}\" {{#if ../loggedIn}} onclick=\"updateHelpfulness('help', '{{_id}}')\" {{/if}}>  \
+            Helpful  \
+        </button>  \
+    </div>  \
+</div> \
+{{/each}}";
+
 
 function retrieveData(data, status) {
     if(status=="success") {
@@ -143,112 +117,6 @@ function clear() {
     $(".college-opts-review:checked").each(function() {
         $(this).prop("checked", false).trigger("change");
     });
-}
- // toggling likes and dislikes
-async function toggleLikeDislike(reviewId, reaction) {
-    try {
-        const likeIcon = document.getElementById(`like-icon-${reviewId}`);
-        const dislikeIcon = document.getElementById(`dislike-icon-${reviewId}`);
-        
-        const isLiked = likeIcon.classList.contains("fa-solid");
-        const isDisliked = dislikeIcon.classList.contains("fa-solid");
-
-        let action = reaction;
-
-        // determine the action before sending the request
-        if (reaction === "like") {
-            if (isLiked) {
-                action = "undoLike";
-            } 
-            else if (isDisliked) {
-                action = "cancelDislike";
-            }
-            else {
-                action = "like";
-            }
-        } else if (reaction === "dislike") {
-            if (isDisliked) {
-                action = "undoDislike"; 
-            } 
-            else if (isLiked) {
-                action = "cancelLike";
-            }
-            else {
-                action = "dislike";
-            }
-        }
-
-        const response = await fetch(`/review/${reviewId}/react`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ reaction: action }),
-        });
-
-        const result = await response.json();
-
-        if (result.success) {
-            // Update counts
-            document.getElementById(`like-${reviewId}`).innerHTML = 
-                result.likesCount > 0 ? `<span>${result.likesCount}</span>` : "";
-            document.getElementById(`dislike-${reviewId}`).innerHTML = 
-                result.dislikesCount > 0 ? `<span>${result.dislikesCount}</span>` : "";
-
-
-            // Properly toggle icons
-            if (action === "like") {
-                likeIcon.classList.add("fa-solid");
-                likeIcon.classList.remove("fa-regular");
-            } 
-            else if (action === "dislike") {
-                dislikeIcon.classList.add("fa-solid");
-                dislikeIcon.classList.remove("fa-regular");
-            } 
-            else if (action === "undoLike") {
-                likeIcon.classList.remove("fa-solid");
-                likeIcon.classList.add("fa-regular");
-            } 
-            else if (action === "undoDislike") {
-                dislikeIcon.classList.remove("fa-solid");
-                dislikeIcon.classList.add("fa-regular");
-            }
-            else if (action === "cancelDislike") {
-                likeIcon.classList.add("fa-solid");
-                likeIcon.classList.remove("fa-regular");
-                dislikeIcon.classList.remove("fa-solid");
-                dislikeIcon.classList.add("fa-regular");
-            } 
-            else if (action === "cancelLike") {
-                dislikeIcon.classList.add("fa-solid");
-                dislikeIcon.classList.remove("fa-regular");
-                likeIcon.classList.remove("fa-solid");
-                likeIcon.classList.add("fa-regular");
-            }
-        } else {
-            alert("Error updating reaction.");
-        }
-    } catch (error) {
-        console.error("Error:", error);
-    }
-}
-
-function updateHelpfulness(type, reviewId) {
-    const helpfulBtn = document.querySelector(`[onclick="updateHelpfulness('help', '${reviewId}')"]`);
-    const unhelpfulBtn = document.querySelector(`[onclick="updateHelpfulness('not', '${reviewId}')"]`);
-
-    if (type === "help") {
-        // helpful toggle
-        helpfulBtn.classList.toggle("selected");
-        helpfulBtn.classList.toggle("active-green");
-        unhelpfulBtn.classList.remove("active-green");
-    } 
-    else if (type === "not") {
-        // not helpful toggle
-        unhelpfulBtn.classList.toggle("selected");
-        unhelpfulBtn.classList.toggle("active-green");
-        helpfulBtn.classList.remove("active-green");
-    }
 }
 
 $(document).ready(() => {
