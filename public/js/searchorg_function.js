@@ -1,14 +1,3 @@
-// Filter (DONE)
-    // Per rating
-    // Per college
-// Search (DONE)
-    // Search for everything??
-// Sort by:
-    // Name
-    // Rating
-// Clear feature (DONE)
-// Page navigation:
-    // 
 const source = '\
                 {{#each orgList}}\
                 <div class="org-section">\
@@ -38,11 +27,6 @@ const source = '\
                     </div>\
                 </div>\
                 {{/each}}';
-/*
-TODO: 
--Handle get error when no input is passed.
-- explored other search capabilities??
-*/
 
 function retrieveData(data, status) {
     if(status=="success") {
@@ -148,8 +132,6 @@ function sortDescRating() {
 }
 
 $(document).ready(() => {
-
-
     $("#search-button-org").click(searchAndFilter);
     $(".rate-opts-org").change(searchAndFilter);
     $(".college-opts-org").change(searchAndFilter);
@@ -159,7 +141,7 @@ $(document).ready(() => {
     $("#name-desc-btn").click(sortDescName);
     $("#rating-desc-btn").click(sortDescRating);
 
-    // for queries from the homepage
+    // For queries from the homepage
     const urlParams = new URLSearchParams(window.location.search);
     const triggerButtonId = urlParams.get("trigger");
 

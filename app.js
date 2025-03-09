@@ -470,18 +470,3 @@ app.use('/userpage', userPageRoutes);
 app.use('/useredit', userEditRoutes);
 
 app.listen(3000, () => console.log('Server running on http://localhost:3000'));
-
-// // closing db connection
-// const closeDatabase = () => {
-//     mongoose.connection.close(() => {
-//         console.log("MongoDB connection closed.");
-//         process.exit(0);
-//     });
-// };
-
-// process.on("SIGINT", closeDatabase);
-// process.on("SIGTERM", closeDatabase);
-// process.on("uncaughtException", (err) => {
-//     console.error("Uncaught Exception:", err);
-//     closeDatabase();
-// });
