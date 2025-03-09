@@ -24,6 +24,13 @@
                     ({{totalReviews}} reviews)
                 </p>
                 <p>{{org.orgDesc}}</p>
+                <div> 
+                    {{#if (eq loggedIn.orgPage org.orgPage)}}
+                        <a href="/logout">
+                            <button class="logout-btn">Logout</button>
+                        </a>
+                    {{/if}}
+                </div>
 
                 {{#if loggedIn}}
                     {{#if (eq loggedIn.accountType "organization")}}
