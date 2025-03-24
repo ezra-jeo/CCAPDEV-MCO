@@ -58,7 +58,7 @@ function searchAndFilter() {
         filterCollege.push($(this).val().toUpperCase());
     });
 
-    $.get(`/searchorg/searchfilter/org${search}/qry1${filterStars}/qry2${filterCollege}`, retrieveData);
+    $.get(`/searchorg/searchfilter?org=${search}&qry1=${filterStars}&qry2=${filterCollege}`, retrieveData);
 }
 
 function clear() {
@@ -83,7 +83,7 @@ function sortAscName() {
         filterCollege.push($(this).val().toUpperCase());
     });
 
-    $.get(`/searchorg/sort/org${search}/qry1${filterStars}/qry2${filterCollege}/methodname/order1`, retrieveData);
+    $.get(`/searchorg/sort?org=${search}&qry1=${filterStars}&qry2=${filterCollege}&method=name&order=1`, retrieveData);
 }
 function sortDescName() {
     let search = $("#search-bar-org").val().trim(); // Search
@@ -98,7 +98,7 @@ function sortDescName() {
         filterCollege.push($(this).val().toUpperCase());
     });
     
-    $.get(`/searchorg/sort/org${search}/qry1${filterStars}/qry2${filterCollege}/methodname/order-1`, retrieveData);
+    $.get(`/searchorg/sort?org=${search}&qry1=${filterStars}&qry2=${filterCollege}&method=name&order=-1`, retrieveData);
 }
 function sortAscRating() {
     let search = $("#search-bar-org").val().trim(); // Search
@@ -113,7 +113,7 @@ function sortAscRating() {
         filterCollege.push($(this).val().toUpperCase());
     });
     
-    $.get(`/searchorg/sort/org${search}/qry1${filterStars}/qry2${filterCollege}/methodrating/order1`, retrieveData);
+    $.get(`/searchorg/sort?org=${search}&qry1=${filterStars}&qry2=${filterCollege}&method=rating&order=1`, retrieveData);
 }
 function sortDescRating() {
     let search = $("#search-bar-org").val().trim(); // Search
@@ -128,7 +128,7 @@ function sortDescRating() {
         filterCollege.push($(this).val().toUpperCase());
     });
     
-    $.get(`/searchorg/sort/org${search}/qry1${filterStars}/qry2${filterCollege}/methodrating/order-1`, retrieveData);
+    $.get(`/searchorg/sort?org=${search}&qry1=${filterStars}&qry2=${filterCollege}&method=rating&order=-1`, retrieveData);
 }
 
 $(document).ready(() => {

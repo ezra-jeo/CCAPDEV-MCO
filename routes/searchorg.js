@@ -17,26 +17,26 @@ router.get('/', async (req, res) => {
     }
 });
 
-router.get("/searchfilter/org:org?/qry1:qry1?/qry2:qry2?", async (req, res) => {
+router.get("/searchfilter", async (req, res) => {
     try {
         let filterStars = [];
-        if (req.params.qry1) {
-            for (let filter of req.params.qry1.split(",")) {
+        if (req.query.qry1) {
+            for (let filter of req.query.qry1.split(",")) {
                 if (filter >= "1" && filter <= "5") 
                     filterStars.push(Number(filter));
             }
         }    
 
         let filterCollege = [];
-        if (req.params.qry2) {
-            for (let filter of req.params.qry2.split(",")) {
+        if (req.query.qry2) {
+            for (let filter of req.query.qry2.split(",")) {
                 filterCollege.push(filter);
             }
         }  
 
         let query = {};
-        if (req.params.org) {
-            query["orgName"] = {$regex: new RegExp(req.params.org, "i")};
+        if (req.query.org) {
+            query["orgName"] = {$regex: new RegExp(req.query.org, "i")};
         }   
         if (filterStars.length > 0) {
             query["orgRating"] = {$in: filterStars};
@@ -57,27 +57,27 @@ router.get("/searchfilter/org:org?/qry1:qry1?/qry2:qry2?", async (req, res) => {
     }
 });
 
-router.get("/sort/org:org?/qry1:qry1?/qry2:qry2?/method:method/order:order", async (req, res) => {
+router.get("/sort", async (req, res) => {
     try {
 
         let filterStars = [];
-        if (req.params.qry1) {
-            for (let filter of req.params.qry1.split(",")) {
+        if (req.query.qry1) {
+            for (let filter of req.query.qry1.split(",")) {
                 if (filter >= "1" && filter <= "5") 
                     filterStars.push(Number(filter));
             }
         }    
 
         let filterCollege = [];
-        if (req.params.qry2) {
-            for (let filter of req.params.qry2.split(",")) {
+        if (req.query.qry2) {
+            for (let filter of req.query.qry2.split(",")) {
                 filterCollege.push(filter);
             }
         }    
 
         let query = {};
-        if (req.params.org) {
-            query["orgName"] = {$regex: new RegExp(req.params.org, "i")};
+        if (req.query.org) {
+            query["orgName"] = {$regex: new RegExp(req.query.org, "i")};
         }   
         if (filterStars.length > 0) {
             query["orgRating"] = {$in: filterStars};
@@ -91,11 +91,11 @@ router.get("/sort/org:org?/qry1:qry1?/qry2:qry2?/method:method/order:order", asy
         
         let order = {};
         
-        if (req.params.method && req.params.method == "name") {
-            order = {"orgName": Number(req.params.order)};
+        if (req.query.method && req.query.method == "name") {
+            order = {"orgName": Number(req.query.order)};
         }
-        else if (req.params.method && req.params.method == "rating") {
-            order = {"orgRating": Number(req.params.order)};
+        else if (req.query.method && req.query.method == "rating") {
+            order = {"orgRating": Number(req.query.order)};
         }
 
         const result = await Organization.find(query).sort(order).lean();
