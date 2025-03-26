@@ -469,4 +469,14 @@ app.use('/', orgPageRoutes);
 app.use('/userpage', userPageRoutes);
 app.use('/useredit', userEditRoutes);
 
+function finalClose(){
+    console.log('Close connection at the end!');
+    mongoose.connection.close();
+    process.exit();
+}
+
+process.on('SIGTERM',finalClose);
+process.on('SIGINT',finalClose);
+process.on('SIGQUIT', finalClose);
+
 app.listen(3000, () => console.log('Server running on http://localhost:3000'));
