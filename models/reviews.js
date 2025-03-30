@@ -12,6 +12,7 @@ const reviewSchema = new mongoose.Schema({
     reviewText: { type: String, required: true, default: "No review provided." },
     reviewImage: { type: String },
     responseMessage: { type: String, default: "" },
+    responseUser: { type: String, default: "" },
     likesCount: { type: Number, default: 0 },
     dislikesCount: { type: Number, default: 0 }
 }, { timestamps: true });
