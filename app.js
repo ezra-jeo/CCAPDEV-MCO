@@ -109,6 +109,7 @@ const revPageRoutes = require('./routes/reviewpage');
 const revEditRoutes = require('./routes/reviewedit');
 const editOrgRoutes = require('./routes/editorg');
 const orgPageRoutes = require('./routes/orgpage');
+const deleteRoutes = require('./routes/delete');
 
 const userPageRoutes = require('./routes/userpage');
 const userEditRoutes = require('./routes/useredit');
@@ -321,43 +322,22 @@ app.post("/reply-to-review", async (req, res) => {
             return res.status(400).json({ success: false, message: "Review ID or reply message is missing." });
         }
 
+        if (!req.session.user) {
+           return res.status(403).json({ success: false, message: "You must be logged in to reply"});
+        }
+
+        const responseUser = req.session.user.orgName || req.session.user.userName;
+
         // Update the review with the organization's response
         await Review.findByIdAndUpdate(reviewId, {
-            responseMessage: replyText
+            responseMessage: replyText,
+            responseUser: responseUser
         });
 
         res.json({ success: true, message: "Reply added successfully!" });
     } catch (err) {
         console.error("Error replying to review:", err);
-        res.status(500).json({ success: false, message: "Internal server error" });
-    }
-});
-
-// writing a review
-app.post("/submit-review", async (req, res) => {
-    try {
-        const { userName, userPage, profileImage, reviewRating, reviewText, orgName, orgPage } = req.body;
-
-        if (!reviewRating || !reviewText.trim() || !orgName || !orgPage) {
-            return res.status(400).json({ error: "All required fields must be provided." });
-        }
-
-        const newReview = new Review({
-            userName,
-            userPage,
-            profileImage,
-            reviewRating,
-            reviewText,
-            orgName,
-            orgPage,
-            timePosted: new Date()
-        });
-
-        await newReview.save();
-        res.json({ message: "Review submitted successfully!", orgPage });
-    } catch (error) {
-        console.error("Error submitting review:", error);
-        res.status(500).json({ error: "Internal Server Error" });
+        res.status(500).json({ success: false, message: "Server error" });
     }
 });
 
@@ -375,6 +355,7 @@ app.use('/reviewpage', revPageRoutes);
 app.use('/reviewedit', revEditRoutes);
 app.use('/editorg', editOrgRoutes);
 app.use('/', orgPageRoutes);
+app.use('/review',deleteRoutes);
 
 app.use('/userpage', userPageRoutes);
 app.use('/useredit', userEditRoutes);

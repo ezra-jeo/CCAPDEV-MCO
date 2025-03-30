@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const descriptionInput = document.getElementById("description");
     const orgDropdown = document.getElementById("organization");
 
-    // Get data from form attributes
     let orgName = reviewForm.dataset.orgname;
     let orgPage = reviewForm.dataset.orgpage;
     const userName = reviewForm.dataset.username || "Anonymous"; // Default to Anonymous if not logged in
@@ -18,7 +17,6 @@ document.addEventListener("DOMContentLoaded", () => {
             const value = Number(star.getAttribute("data-value"));
             ratingInput.value = value;
 
-            // Fix: Ensure correct star selection
             stars.forEach((s, index) => {
                 s.classList.toggle("selected", index + 1 <= value);
             });
@@ -52,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         try {
-            const response = await fetch("/submit-review", {
+            const response = await fetch("/reviewpage/submit-review", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(reviewData),

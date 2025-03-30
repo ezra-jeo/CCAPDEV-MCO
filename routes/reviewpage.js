@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Organization = require("../models/organizations");
+const Review = require("../models/reviews");
 
 // GET route to render review page for a specific org
 router.get("/:orgPage", async (req, res) => {
@@ -36,6 +37,42 @@ router.get("/", async (req, res) => {
     } catch (error) {
         console.error("Error loading review page:", error);
         res.status(500).send("Internal Server Error");
+    }
+});
+
+router.post("/submit-review", async (req, res) => {
+    try {
+        const { userName, userPage, profileImage, reviewRating, reviewText, orgName, orgPage } = req.body;
+
+        if (!reviewRating || !reviewText.trim() || !orgName || !orgPage) {
+            return res.status(400).json({ error: "All required fields must be provided." });
+        }
+
+        // Create new review
+        const newReview = new Review({
+            userName,
+            userPage,
+            profileImage,
+            reviewRating,
+            reviewText,
+            orgName,
+            orgPage,
+            timePosted: new Date()
+        });
+
+        await newReview.save();
+
+        // Count reviews for the org and update orgReviews
+        const totalReviews = await Review.countDocuments({ orgName });
+        await Organization.findOneAndUpdate(
+            { orgName },
+            { orgReviews: totalReviews }
+        );
+
+        res.json({ message: "Review submitted successfully!", orgPage });
+    } catch (error) {
+        console.error("Error submitting review:", error);
+        res.status(500).json({ error: "Server Error" });
     }
 });
 
