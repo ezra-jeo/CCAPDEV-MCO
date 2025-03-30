@@ -5,7 +5,7 @@ const path = require("path");
 const fs = require("fs");
 const bcrypt = require("bcrypt");
 const session = require("express-session");
-
+require("dotenv").config();
 require("./db"); // connecting to mongoDB
 const Review = require("./models/reviews");
 const Organization = require("./models/organizations");
