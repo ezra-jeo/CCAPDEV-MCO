@@ -33,6 +33,16 @@ document.addEventListener("DOMContentLoaded", () => {
             reviewText: descriptionInput.value.trim(),
         };
 
+        if (!updatedReview.reviewRating || updatedReview.reviewRating < 1 || updatedReview.reviewRating > 5) {
+            alert("Please select a rating before submitting.");
+            return;
+        }
+
+        if (!updatedReview.reviewText) {
+            alert("Please enter a review description before submitting.");
+            return;
+        }
+
         try {
             const response = await fetch(`/reviewedit/${reviewId}`, {
                 method: "POST",
