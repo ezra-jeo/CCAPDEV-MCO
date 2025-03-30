@@ -333,34 +333,6 @@ app.post("/reply-to-review", async (req, res) => {
     }
 });
 
-// writing a review
-app.post("/submit-review", async (req, res) => {
-    try {
-        const { userName, userPage, profileImage, reviewRating, reviewText, orgName, orgPage } = req.body;
-
-        if (!reviewRating || !reviewText.trim() || !orgName || !orgPage) {
-            return res.status(400).json({ error: "All required fields must be provided." });
-        }
-
-        const newReview = new Review({
-            userName,
-            userPage,
-            profileImage,
-            reviewRating,
-            reviewText,
-            orgName,
-            orgPage,
-            timePosted: new Date()
-        });
-
-        await newReview.save();
-        res.json({ message: "Review submitted successfully!", orgPage });
-    } catch (error) {
-        console.error("Error submitting review:", error);
-        res.status(500).json({ error: "Internal Server Error" });
-    }
-});
-
 // using routes
 app.use('/', homepageRoutes);
 app.use('/signup', signupRoutes);
