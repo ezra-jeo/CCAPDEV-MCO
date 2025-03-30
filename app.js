@@ -109,6 +109,7 @@ const revPageRoutes = require('./routes/reviewpage');
 const revEditRoutes = require('./routes/reviewedit');
 const editOrgRoutes = require('./routes/editorg');
 const orgPageRoutes = require('./routes/orgpage');
+const deleteRoutes = require('./routes/delete');
 
 const userPageRoutes = require('./routes/userpage');
 const userEditRoutes = require('./routes/useredit');
@@ -347,6 +348,7 @@ app.use('/reviewpage', revPageRoutes);
 app.use('/reviewedit', revEditRoutes);
 app.use('/editorg', editOrgRoutes);
 app.use('/', orgPageRoutes);
+app.use('/review',deleteRoutes);
 
 app.use('/userpage', userPageRoutes);
 app.use('/useredit', userEditRoutes);
