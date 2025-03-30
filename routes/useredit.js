@@ -39,10 +39,14 @@ router.post("/useredit/:userPage", async (req, res) => {
         let userName = findUser.userName;
         const user = await User.findOne({ userName: userName }).lean();
 
-        const { description } = req.body;
+        const { description, "profileImage": profileImage } = req.body;
 
         if (description && description.trim() !== "") {
             await User.updateOne({ userName: userName }, { $set: { userDesc: description } });
+        }
+
+        if (profileImage && profileUrl.trim() !== "") {
+            await User.updateOne({ profileImage: profileImage }, { $set: { profileImage: profileImage } });
         }
     
         res.redirect(`/userpage/${userPage}`);

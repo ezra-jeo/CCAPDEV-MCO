@@ -11,8 +11,14 @@
             <div class="edit-container">
                 <div class="header-text">Edit Profile</div>
                 <div class="avatar-container">
-                    <img src="/images/icon.png">
-                    <div class="indicator-2">Change Avatar</div>
+                    <img src="{{user.profileImage}}">
+                </div>
+
+                <div class="url-field-container">
+                    <div class="indicator">Change Avatar</div>
+                    <div class="text-area-container">
+                        <textarea id="profileImage" name="profileImage"></textarea>
+                    </div>
                 </div>
 
                 <div class="input-field-container">
