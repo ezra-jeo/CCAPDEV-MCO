@@ -1,6 +1,16 @@
 .wrapper {
     padding: 5px;
 }
+body {
+    padding-bottom: 100px;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
 h2 {
     font-size: 50px;
     margin: auto;
@@ -17,7 +27,7 @@ form h2 {
     width: 60%;
     padding: 5px;
     text-align: center;
-    margin: 100px auto 39px;
+    margin: 100px auto;
 }
 .organization-container {
     display: flex;
@@ -116,4 +126,10 @@ textarea {
     border-radius: 30px;
     cursor: pointer;
     font-weight: bold;
+}
+#image-preview {
+    display: none; 
+    max-width: 100px; 
+    margin: auto;
+    padding: 10px;
 }
