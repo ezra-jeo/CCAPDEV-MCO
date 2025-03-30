@@ -110,6 +110,7 @@ const revEditRoutes = require('./routes/reviewedit');
 const editOrgRoutes = require('./routes/editorg');
 const orgPageRoutes = require('./routes/orgpage');
 const deleteRoutes = require('./routes/delete');
+const replyRoutes = require('./routes/reply');
 
 const userPageRoutes = require('./routes/userpage');
 const userEditRoutes = require('./routes/useredit');
@@ -313,34 +314,6 @@ app.post("/review/:id/react", async (req, res) => {
     }
 });
 
-// replying to a review
-app.post("/reply-to-review", async (req, res) => {
-    try {
-        const { reviewId, replyText } = req.body;
-
-        if (!reviewId || !replyText) {
-            return res.status(400).json({ success: false, message: "Review ID or reply message is missing." });
-        }
-
-        if (!req.session.user) {
-           return res.status(403).json({ success: false, message: "You must be logged in to reply"});
-        }
-
-        const responseUser = req.session.user.orgName || req.session.user.userName;
-
-        // Update the review with the organization's response
-        await Review.findByIdAndUpdate(reviewId, {
-            responseMessage: replyText,
-            responseUser: responseUser
-        });
-
-        res.json({ success: true, message: "Reply added successfully!" });
-    } catch (err) {
-        console.error("Error replying to review:", err);
-        res.status(500).json({ success: false, message: "Server error" });
-    }
-});
-
 // using routes
 app.use('/', homepageRoutes);
 app.use('/signup', signupRoutes);
@@ -356,6 +329,7 @@ app.use('/reviewedit', revEditRoutes);
 app.use('/editorg', editOrgRoutes);
 app.use('/', orgPageRoutes);
 app.use('/review',deleteRoutes);
+app.use('/', replyRoutes);
 
 app.use('/userpage', userPageRoutes);
 app.use('/useredit', userEditRoutes);
