@@ -2,8 +2,8 @@
   "_id": {
     "$oid": "67c85e9a48fabfa781931be0"
   },
-  "userName": "Chynna T.",
-  "userPage": "chynna-t",
+  "userName": "ChynnaMaeZTria",
+  "userPage": "chynna-mae",
   "profileImage": "/images/default-icon-user.png",
   "timePosted": "2025-03-05T16:30:00Z",
   "reviewRating": 5,
@@ -40,8 +40,8 @@
   "_id": {
     "$oid": "67c85e9a48fabfa781931be2"
   },
-  "userName": "Ezra D.",
-  "userPage": "ezra-d",
+  "userName": "ezra-jeo",
+  "userPage": "ezra-jeo",
   "profileImage": "/images/default-icon-user.png",
   "timePosted": "2025-03-03T16:15:00Z",
   "reviewRating": 3,
@@ -59,8 +59,8 @@
   "_id": {
     "$oid": "67c85e9a48fabfa781931be3"
   },
-  "userName": "Kyle O.",
-  "userPage": "kyle-o",
+  "userName": "Kyle",
+  "userPage": "kyle",
   "profileImage": "/images/default-icon-user.png",
   "timePosted": "2025-03-02T17:00:00Z",
   "reviewRating": 5,
@@ -79,7 +79,7 @@
     "$oid": "67c85e9a48fabfa781931be4"
   },
   "userName": "Jane Doe",
-  "userPage": "jane-d",
+  "userPage": "jane-doe",
   "profileImage": "/images/default-icon-user.png",
   "timePosted": "2025-03-01T18:20:00Z",
   "reviewRating": 4,
@@ -105,10 +105,14 @@
   "orgName": "GDGOC",
   "orgPage": "gdgoc",
   "orgCollege": "CCS",
-  "reviewText": "I love how the organization fosters learning and collaboration through well-structured events, including technical workshops, hackathons, and boot camps. Notably, their Google Cloud workshops offer hands-on experience with real-world applications, making complex concepts more accessible. ",
+  "reviewText": "Cool!",
   "reviewImage": "",
+<<<<<<< HEAD
   "responseMessage": "Thanks for the feedback!",
   "responseUser": "",
+=======
+  "responseMessage": "Wow!",
+>>>>>>> parent of e5ce5b3 (Fixed the data on reviews and users json files)
   "likesCount": 88,
   "dislikesCount": 4
 }]
