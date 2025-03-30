@@ -8,7 +8,7 @@ router.post("/submit", async (req, res) => {
     try {
         const {userName, orgName, reviewRating, reviewText, reviewImage} = req.body;
 
-        // Create and save the new review
+        // Create new review
         const newReview = new Review({
             userName,
             orgName,
