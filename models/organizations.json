@@ -1,57 +1,75 @@
-[
-  {
-    "_id": { "$oid": "67c8602b48fabfa781931bf0" },
-    "orgName": "GDGOC",
-    "orgPic": "https://scontent.fmnl25-2.fna.fbcdn.net/v/t39.30808-6/474444678_619379693793371_5071102139988313382_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeFip3M_KB-Y6oef1NsGU8pKhX8Z-pJVtMCFfxn6klW0wExdX6aRe90x3OB--VI40aTkjLEjNe7gF0nCN8rmxFb1&_nc_ohc=xj7cL7O4J-MQ7kNvgGTDT42&_nc_oc=Adj1sHcrGj2UHKi_w5ngAO1X5P7YjHzb_WG9JI2drggkFhvd40fFnSdhNoKBGPp5I5Y&_nc_zt=23&_nc_ht=scontent.fmnl25-2.fna&_nc_gid=AldTMdpV-yquRk8bBCK6KBq&oh=00_AYEpVCiDK-oP-9zihWfTt8mZZknSuESM6EhnQVK2-pxH9Q&oe=67D1A793",
-    "orgDesc": "A tech community focused on Google Developer technologies.",
-    "orgPage": "gdgoc",
-    "orgRating": 4,
-    "orgReviews": 128,
-    "orgCollege": "CCS",
-    "orgPassword": "securepass123"
+[{
+  "_id": {
+    "$oid": "67c8602b48fabfa781931bf0"
   },
-  {
-    "_id": { "$oid": "67c8602b48fabfa781931bf1" },
-    "orgName": "LSCS",
-    "orgPic": "https://scontent.fmnl25-4.fna.fbcdn.net/v/t39.30808-6/462565143_937343991758517_3934195989556103177_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeHW0OTVE0jVoUOI122jDP2nrIUjDCvDYLmshSMMK8NguQHgclBdI5m0tqypBkzgENKH3LfWXuzbFon7Ovbm7cgJ&_nc_ohc=Sr224LNqbcUQ7kNvgEGIsaS&_nc_oc=Adj0TeqeJDeuvY0X93pfLfPDdi4-K0p1twT4P6BtNyPovS-nvInbuaaIzBkR79EUPlo&_nc_zt=23&_nc_ht=scontent.fmnl25-4.fna&_nc_gid=AIBVEFdy18e4y8-vr10TwAU&oh=00_AYHjp-8xHnm81CgZSo48f9Me8K4VMUNVdWD_s8S-T6W7Dg&oe=67D1ADE4",
-    "orgDesc": "The leading organization for software development enthusiasts.",
-    "orgPage": "lscs",
-    "orgRating": 5,
-    "orgReviews": 98,
-    "orgCollege": "CCS",
-    "orgPassword": "lscsrocks456"
-  },
-  {
-    "_id": { "$oid": "67c8602b48fabfa781931bf2" },
-    "orgName": "DSS",
-    "orgPic": "https://images.ctfassets.net/61mmmjz7t2hb/1Ywaa1YxRhq7jddpLB2Kkw/91e6f289d6af5febe5f10294e7251127/vertical_logo_ver__black_.png",
-    "orgDesc": "Data Science Society - a hub for analytics, AI, and machine learning enthusiasts.",
-    "orgPage": "dss",
-    "orgRating": 4,
-    "orgReviews": 75,
-    "orgCollege": "CCS",
-    "orgPassword": "datasciencerulez"
-  },
-  {
-    "_id": { "$oid": "67c8602b48fabfa781931bf3" },
-    "orgName": "AU",
-    "orgPic": "https://scontent.fmnl25-6.fna.fbcdn.net/v/t39.30808-6/462053925_866165838993413_4313319478849776581_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeFtGUwHWZY1GiK-ne16Bx2FPS5nrmApXzg9LmeuYClfOG3IljsRXCH6Gx1tkK5ekqEr6XRJ2WiRXpABqcUdHnWy&_nc_ohc=uZ3wZiAbrTwQ7kNvgHSd4tF&_nc_oc=AdiTNoNN0FFcv1R1vTg_4CAAc6auaOf_BYQghDfZwwv7j6Z-djXDFpCTqQuAkDq43uU&_nc_zt=23&_nc_ht=scontent.fmnl25-6.fna&_nc_gid=AIm27xKkZW7J5yMA9n2PyJP&oh=00_AYEmPNW-nC08WsOyCC--9ON793UVgCsAEyOBOnZYE-xnhw&oe=67D1B009",
-    "orgDesc": "For the women and for the children.",
-    "orgPage": "au",
-    "orgRating": 3,
-    "orgReviews": 145,
-    "orgCollege": "CLA",
-    "orgPassword": "womenandchildren"
-  },
-  {
-    "_id": { "$oid": "67c8602b48fabfa781931bf4" },
-    "orgName": "PTS",
-    "orgPic": "https://scontent.fmnl25-6.fna.fbcdn.net/v/t39.30808-6/306916579_461094302727853_6621450303091594203_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeGYdeb-EEF1X6hIfZ4xURt-cs2Z6xdKwKpyzZnrF0rAqrzeWnGjRc2wyLdey1bhPOPieJ6ijoUyURTy3FlX68mg&_nc_ohc=mMsiqkKmgfYQ7kNvgHLS-4a&_nc_oc=AdgIjd0OWeUcvZ8YHSxOnMleRAl2tvds1QQLH1D9fPxoNnDYBsrVNLTJjVq5TmsiQRk&_nc_zt=23&_nc_ht=scontent.fmnl25-6.fna&_nc_gid=A_NBkWgxHyw9F9PZpB2gaXP&oh=00_AYEjp9WkIz8vZHo50_A-4l_LRnHP9_NV1Kf_y_3PVDMUPQ&oe=67D1A3BE",
-    "orgDesc": "Peer Tutor Society",
-    "orgPage": "pts",
-    "orgRating": 3,
-    "orgReviews": 87,
-    "orgCollege": "CCS",
-    "orgPassword": "ptssuccess2025"
+  "orgName": "GDGOC",
+  "orgPic": "https://images.ctfassets.net/61mmmjz7t2hb/4vnDrX0eGKubRAZj4ZgSj8/b180847b648beabe61acdfa7fb03f145/276299850_855070862555233_5428224711235080768_n.jpg",
+  "orgDesc": "A community of Lasallians helping one another learn emerging technologies with Google to solve real-world problems for our communities and local businesses.",
+  "orgPage": "gdgoc",
+  "orgRating": 5,
+  "orgReviews": [
+    2
+  ],
+  "orgCollege": "CCS",
+  "orgPassword": "$2b$10$zpciZ9EgCT6RPkrVSwuOD.OcXM.DPIpw/mIipA0V9xuh/gVjPgyT6",
+  "updatedAt": {
+    "$date": "2025-03-30T10:55:03.482Z"
   }
-]
+},
+{
+  "_id": {
+    "$oid": "67c8602b48fabfa781931bf1"
+  },
+  "orgName": "LSCS",
+  "orgPic": "https://images.ctfassets.net/61mmmjz7t2hb/LYaxJ195ZBD5yOEKXOQOR/c09ea48259f53fdf6cb9b4d0992f61eb/Untitled__4_.png",
+  "orgDesc": "Living Yesterday's Vision\nSetting Today's Trends\nInspiring Tomorrow's Leaders",
+  "orgPage": "lscs",
+  "orgRating": 5,
+  "orgReviews": 98,
+  "orgCollege": "CCS",
+  "orgPassword": "lscsrocks456"
+},
+{
+  "_id": {
+    "$oid": "67c8602b48fabfa781931bf2"
+  },
+  "orgName": "DSS",
+  "orgPic": "https://images.ctfassets.net/61mmmjz7t2hb/1Ywaa1YxRhq7jddpLB2Kkw/91e6f289d6af5febe5f10294e7251127/vertical_logo_ver__black_.png",
+  "orgDesc": "Building a diverse community to transform data into action.",
+  "orgPage": "dss",
+  "orgRating": 4,
+  "orgReviews": 75,
+  "orgCollege": "CCS",
+  "orgPassword": "datasciencerulez"
+},
+{
+  "_id": {
+    "$oid": "67c8602b48fabfa781931bf3"
+  },
+  "orgName": "AU",
+  "orgPic": "https://scontent.fmnl33-5.fna.fbcdn.net/v/t39.30808-6/462053925_866165838993413_4313319478849776581_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeFtGUwHWZY1GiK-ne16Bx2FPS5nrmApXzg9LmeuYClfOG3IljsRXCH6Gx1tkK5ekqEr6XRJ2WiRXpABqcUdHnWy&_nc_ohc=prDCpX5tJXsQ7kNvgFQPy27&_nc_oc=AdmzWCaZlMcLfRi-0k00vRNT3IzLiW_dhpYGBWJQ_mtNv3r-iwJXnXa3ZjYneNJQq__F2Rim-FScGDRyrPU5_n3K&_nc_zt=23&_nc_ht=scontent.fmnl33-5.fna&_nc_gid=LxURAf0uzQayw48zPdBUrw&oh=00_AYHbezErtx2CGipX8f7BgKSB4SXw1RoDxUEyD7uz-JhwMQ&oe=67EF2189",
+  "orgDesc": "Archers for UNICEF (AU) is a non-profit student organization in De La Salle University working in aid of UNICEF Philippines.",
+  "orgPage": "au",
+  "orgRating": 5,
+  "orgReviews": [
+    1
+  ],
+  "orgCollege": "CLA",
+  "orgPassword": "womenandchildren",
+  "updatedAt": {
+    "$date": "2025-03-30T10:57:18.573Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67c8602b48fabfa781931bf4"
+  },
+  "orgName": "PTS",
+  "orgPic": "https://scontent.fmnl33-5.fna.fbcdn.net/v/t39.30808-6/462053925_866165838993413_4313319478849776581_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeFtGUwHWZY1GiK-ne16Bx2FPS5nrmApXzg9LmeuYClfOG3IljsRXCH6Gx1tkK5ekqEr6XRJ2WiRXpABqcUdHnWy&_nc_ohc=prDCpX5tJXsQ7kNvgFQPy27&_nc_oc=AdmzWCaZlMcLfRi-0k00vRNT3IzLiW_dhpYGBWJQ_mtNv3r-iwJXnXa3ZjYneNJQq__F2Rim-FScGDRyrPU5_n3K&_nc_zt=23&_nc_ht=scontent.fmnl33-5.fna&_nc_gid=LxURAf0uzQayw48zPdBUrw&oh=00_AYHbezErtx2CGipX8f7BgKSB4SXw1RoDxUEyD7uz-JhwMQ&oe=67EF2189",
+  "orgDesc": "The Peer Tutors Society is an initiative under the Office of the Associate Dean of the College of Computer Studies that aims to select, train, qualify, and deploy volunteer students to conduct tutorials related to math and computer studies.",
+  "orgPage": "pts",
+  "orgRating": 3,
+  "orgReviews": 87,
+  "orgCollege": "CCS",
+  "orgPassword": "ptssuccess2025"
+}]
