@@ -1,41 +1,41 @@
 [
   {
     "_id": { "$oid": "67c85c7d48fabfa781931bc8" },
-    "userName": "Chynna Mae",
-    "userDesc": "Dogshow",
-    "userPage": "chynna-mae",
+    "userName": "Chynna T.",
+    "userDesc": "Aspiring software engineer with an interest in AI and automation",
+    "userPage": "chynna-t",
     "profileImage": "/images/default-icon-user.png",
     "userPassword": "jay143"
   },
   {
     "_id": { "$oid": "67c85c7d48fabfa781931bc9" },
     "userName": "Emman P.",
-    "userDesc": "I love my dogs!",
+    "userDesc": "Tech enthusiast exploring cybersecurity and ethical hacking",
     "userPage": "emman-p",
     "profileImage": "/images/default-icon-user.png",
     "userPassword": "tofustella0928"
   },
   {
     "_id": { "$oid": "67c85c7d48fabfa781931bca" },
-    "userName": "ezra-jeo",
-    "userDesc": "Avid gamer and web developer",
-    "userPage": "ezra-jeo",
+    "userName": "Ezra D.",
+    "userDesc": "Full-stack web developer passionate about gaming technologies",
+    "userPage": "ezra-d",
     "profileImage": "/images/default-icon-user.png",
     "userPassword": "delrosario"
   },
   {
     "_id": { "$oid": "67c85c7d48fabfa781931bcb" },
-    "userName": "Kyle",
-    "userDesc": "Loves writing reviews on clubs",
-    "userPage": "kyle",
+    "userName": "Kyle O.",
+    "userDesc": "Tech blogger reviewing software tools and development trends",
+    "userPage": "kyle-o",
     "profileImage": "/images/default-icon-user.png",
     "userPassword": "hashed_password_321"
   },
   {
     "_id": { "$oid": "67c85c7d48fabfa781931bcc" },
-    "userName": "Jane Doe",
-    "userDesc": "UX designer exploring communities",
-    "userPage": "jane-doe",
+    "userName": "Jane D.",
+    "userDesc": "UX designer focusing on human-computer interaction and accessibility",
+    "userPage": "jane-d",
     "profileImage": "/images/default-icon-user.png",
     "userPassword": "password123"
   }
