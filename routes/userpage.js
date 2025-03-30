@@ -18,7 +18,7 @@ router.get("/userpage/:userPage", async (req, res) => {
         const userPage = req.params.userPage;
         
         // finding user
-        let user = await User.findOne({ userPage }).lean();
+        let user = await Review.findOne({ userPage }).lean();
         let isOrganization = false;
 
         // or org
