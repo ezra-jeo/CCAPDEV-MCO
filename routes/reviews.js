@@ -6,7 +6,7 @@ const router = express.Router();
 
 router.post("/submit", async (req, res) => {
     try {
-        const { userName, orgName, reviewRating, reviewText, reviewImage } = req.body;
+        const {userName, orgName, reviewRating, reviewText, reviewImage} = req.body;
 
         // Create and save the new review
         const newReview = new Review({
@@ -19,8 +19,8 @@ router.post("/submit", async (req, res) => {
         await newReview.save();
 
         // Update total review count for the organization
-        const totalReviews = await Review.countDocuments({ orgName });
-        await Organization.findOneAndUpdate({ orgName }, { orgReviews: totalReviews });
+        const totalReviews = await Review.countDocuments({orgName});
+        await Organization.findOneAndUpdate({orgName}, {orgReviews: totalReviews});
 
         res.redirect(`/review/${orgName}`);
     } catch (err) {
