@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 
 const User = require("../models/users.js");
+const Organization = require("../models/organizations.js");
+const Review = require("../models/reviews.js");
 
 router.get('/', (req, res) => {
     res.render('userpage', { 
