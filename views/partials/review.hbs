@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="/css/review.css">
+<script src="/js/delete.js"></script>
 
 <div class = "review">  
     <div class = "review-proper-container">
@@ -26,7 +27,7 @@
                             <a href="/reviewedit/{{_id}}">
                                 <i class="fa-solid fa-pencil"></i>
                             </a>
-                            <a href="/"> <!-- FIXME: -->
+                            <a href="#" class="delete-review" data-id="{{_id}}">
                                 <i class="fa-solid fa-trash"></i>
                             </a>
                         </div>
@@ -48,10 +49,10 @@
 
                 {{#if responseMessage}}
                     <div class="response-container">
-                        {{#if (eq loggedIn.userName responseUser)}}
+                        {{#if (eq responseUser loggedIn.userName)}}
                             <div class="response-header">You replied</div>
                         {{else}}
-                            <div class="response-header">{{orgName}} replied</div>
+                            <div class="response-header">{{responseUser}} replied</div>
                         {{/if}}
                         <div class="response-message">
                             {{responseMessage}}
