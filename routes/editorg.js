@@ -6,13 +6,13 @@ const router = express.Router();
 // GET route to retrieve the editorg page
 router.get("/:orgPage", async (req, res) => {
     try {
-        const { orgPage } = req.params;
-        const org = await Organization.findOne({ orgPage }); // Find organization in db
+        const {orgPage} = req.params;
+        const org = await Organization.findOne({orgPage: new RegExp("^" + orgPage + "$", "i")}); // Find org in db
 
         if (!org) {
-            console.log(`Organization "${orgPage}" not found!`);
             return res.status(404).send("Organization not found");
         }
+
         res.render("editorg", { 
             org: org.toObject(),
             loggedIn: req.session.user,
@@ -23,28 +23,37 @@ router.get("/:orgPage", async (req, res) => {
     }
 });
 
-// POST route to update organization profile
+// POST route to update org profile
 router.post("/:orgPage", async (req, res) => {
     try {
-        const { orgPage } = req.params; 
-        const { description } = req.body; // Get description from form data
+        const {orgPage} = req.params;
+        const {orgDesc, orgPic} = req.body; 
 
-        // Update only the description field
-        const updatedOrg = await Organization.findOneAndUpdate(
-            { orgPage }, // Find by orgPage
-            { $set: { orgDesc: description } }, // Update orgDesc
-            { new: true } // Return the updated details
-        );
-
-        if (!updatedOrg) {
-            return res.status(404).json({ error: "Organization not found." }); 
+        // Validate required fields
+        if (!orgDesc || !orgPic) {
+            return res.status(400).json({ error: "Both description and image URL are required." });
         }
 
-        // Send a response with success message and orgPage for redirection
-        res.json({ message: "Organization updated successfully!", orgPage: updatedOrg.orgPage });
+        // Find the org
+        const org = await Organization.findOne({orgPage});
+        if (!org) {
+            return res.status(404).json({error: "Organization not found."});
+        }
+
+        // Update org profile in the db
+        const updatedOrg = await Organization.findOneAndUpdate(
+            {orgPage},
+            {orgDesc, orgPic},
+            {new: true}
+        );
+
+        //Update session data
+        req.session.user.orgPic = updatedOrg.orgPic;
+
+        res.json({success: true, message: "Organization profile updated successfully!", orgPage: updatedOrg.orgPage});
     } catch (error) {
         console.error("Error updating organization:", error);
-        res.status(500).json({ error: "Internal server error." });
+        res.status(500).json({error: "Server error."});
     }
 });
 
