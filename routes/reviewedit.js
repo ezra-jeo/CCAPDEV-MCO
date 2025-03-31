@@ -27,21 +27,16 @@ router.get("/:id", async (req, res) => {
 // POST route to update review
 router.post("/:id", async (req, res) => {
     try {
-        const { id } = req.params;
+        const {id} = req.params;
         let {reviewRating, reviewText} = req.body;
 
         // Convert reviewRating to a number
         reviewRating = Number(reviewRating);
 
-        // Fetch the existing review 
+        // Fetch the existing review
         const existingReview = await Review.findById(id);
         if (!existingReview) {
             return res.status(404).json({error: "Review not found."});
-        }
-
-        // Check if changes are made
-        if (existingReview.reviewRating === reviewRating && existingReview.reviewText === reviewText) {
-            return res.status(400).json({error: "No changes detected. Please modify your review before submitting."});
         }
 
         // Mark as edited and update the review
@@ -50,7 +45,7 @@ router.post("/:id", async (req, res) => {
         existingReview.edited = true;
         await existingReview.save();
 
-        // Update Organization's Average Rating
+        // Update orgs Average Rating
         const orgName = existingReview.orgName;
         const reviews = await Review.find({orgName});
 
@@ -59,8 +54,8 @@ router.post("/:id", async (req, res) => {
             const newAvgRating = totalRating / reviews.length;
 
             await Organization.findOneAndUpdate(
-                {orgName},
-                {orgRating: newAvgRating}
+                { orgName },
+                { orgRating: newAvgRating }
             );
         }
 
