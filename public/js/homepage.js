@@ -43,10 +43,16 @@ $(document).ready(() => {
     $("#search-1-stars").click(getSearch(1));
 
     $("#search-ccs").click(getSearch("ccs", "college"));
-    $("#search-rvcobno").click(getSearch("rvcob", "college"));
+    $("#search-rvcob").click(getSearch("rvcob", "college"));
     $("#search-cos").click(getSearch("cos", "college"));
     $("#search-cla").click(getSearch("cla", "college"));
     $("#search-gcoe").click(getSearch("gcoe", "college"));
     $("#search-other").click(getSearch("other", "college"));
+
+    $("#search-button").click(() => {
+        let searchVal = $("#search-bar-hp").val();
+        location.replace(`/searchOrg?homepage-org=${encodeURIComponent(searchVal)}`);
+
+    });
 
 });

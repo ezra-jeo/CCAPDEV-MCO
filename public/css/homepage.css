@@ -56,7 +56,10 @@
     color: #7BA167;
     font-size: 25px;
 }
-
+#search-button {
+    all: unset;
+    cursor: pointer;
+}
 /* RECENT REVIEWS SECTION */
 .recent-reviews-section {
     background-color: #BBCAB2;

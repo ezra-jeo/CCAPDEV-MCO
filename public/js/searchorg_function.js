@@ -144,6 +144,13 @@ $(document).ready(() => {
     // For queries from the homepage
     const urlParams = new URLSearchParams(window.location.search);
     const triggerButtonId = urlParams.get("trigger");
+    const searchQuery = urlParams.get("homepage-org")
+
+    if (searchQuery) {
+        console.log("From homepage... Searching for: " + searchQuery);
+        $("#search-bar-org").val(searchQuery);
+        $("#search-button-org").click();
+    }
 
     if (triggerButtonId) {
         console.log("Triggering button:", triggerButtonId);
@@ -151,4 +158,6 @@ $(document).ready(() => {
         // Simulate button click
         $(`#${triggerButtonId}`).prop("checked", true).trigger("change");
     }
+
+
 });
