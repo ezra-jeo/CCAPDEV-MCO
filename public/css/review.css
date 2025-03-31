@@ -230,3 +230,8 @@
     color: white !important;
     font-weight: bold;
 }
+.edited-label {
+    font-size: 0.85em;
+    color: gray;
+    margin-left: 5px;
+}
