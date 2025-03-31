@@ -318,9 +318,8 @@ app.post("/review/:id/react", async (req, res) => {
 app.post("/useredit/:userPage", async (req, res) => {
     try {
         const userPage = req.params.userPage;
-        const findUser = await Review.findOne({ userPage: userPage }).lean();
+        const findUser = await User.findOne({ userPage: userPage }).lean();
         let userName = findUser.userName;
-        const user = await User.findOne({ userName: userName }).lean();
 
         const { description, "profileImage": profileImage } = req.body;
 
@@ -330,7 +329,7 @@ app.post("/useredit/:userPage", async (req, res) => {
 
         if (profileImage && profileImage.trim() !== "") {
             await User.updateOne({ userName: userName }, { $set: { profileImage: profileImage } });
-            await Review.updateMany({userName: userName}, { $set: { profileImage: profileImage } });
+            await Review.updateMany({ userPage: userPage }, { $set: { profileImage: profileImage } });
         }
     
         res.redirect(`/userpage/${userPage}`);
