@@ -335,7 +335,7 @@ router.get("/useredit/:userPage", async (req, res) => {
 });
 
 // user edit
-router.post("/useredit/:userPage", async (req, res) => {
+app.post("/useredit/:userPage", async (req, res) => {
     try {
         const userPage = req.params.userPage;
         const findUser = await Review.findOne({ userPage: userPage }).lean();
