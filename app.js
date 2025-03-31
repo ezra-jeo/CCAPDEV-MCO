@@ -369,11 +369,6 @@ app.use('/', replyRoutes);
 app.use('/userpage', userPageRoutes);
 app.use('/useredit', userEditRoutes);
 
-// destroying session on window close
-window.addEventListener("beforeunload", async function () {
-    await fetch("/logout", { method: "POST", credentials: "include" });
-});
-
 function finalClose(){
     console.log('Close connection at the end!');
     mongoose.connection.close();
