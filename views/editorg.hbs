@@ -8,7 +8,7 @@
     </head>
 
     <body>
-        <form id="edit-org-form" method="POST" enctype="multipart/form-data">
+        <form id="edit-org-form" method="POST">
             <div class="wrapper">
                 <div class="content">
                     <div class="edit-box">
@@ -16,21 +16,21 @@
                             <h5>Edit Org Profile</h5>
 
                             <div class="profile">
-                                <img class="org-profile-pic" src="{{org.orgPic}}" alt="Organization Logo">
+                                <img class="org-profile-pic" id="preview-image" src="{{org.orgPic}}" alt="Organization Logo">
                             </div> <!--profile-->
 
-                            <label for="logo-upload" class="change-btn">Change Logo</label>
-                            <input type="file" id="logo-upload" accept=".jpg, .jpeg, .png" style="display: none;">
+                            <label for="logo-url">Change Logo URL:</label>
+                            <input type="text" id="logo-url" name="orgPic" value="{{org.orgPic}}" placeholder="Enter image URL">
 
                             <div class="desc-container">
                                 <b>Description</b>
                                 <div class="desc-box-container">
-                                    <textarea class="desc-box" id="org-desc">{{org.orgDesc}}</textarea>
+                                    <textarea class="desc-box" id="org-desc" name="orgDesc" required>{{org.orgDesc}}</textarea>
                                 </div>
                             </div> <!--desc-container-->
 
                             <div class="btn-container">
-                                <button type="reset" class="discard-btn">Discard Changes</button>
+                                <button type="reset" class="discard-btn" id="discardChanges">Discard</button>
                                 <button type="submit" class="save-btn">Make Changes</button>
                             </div> <!--btn-container-->
                         </div> <!--edit-container-->
