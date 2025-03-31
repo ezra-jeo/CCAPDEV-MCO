@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
 });
 
 // user edit page
-app.get("/:userPage", async (req, res) => {
+router.get("/:userPage", async (req, res) => {
     try {
         const userPage = req.params.userPage;
         
@@ -30,7 +30,7 @@ app.get("/:userPage", async (req, res) => {
 });
 
 // user edit
-app.post("/:userPage", async (req, res) => {
+router.post("/:userPage", async (req, res) => {
     try {
         const userPage = req.params.userPage;
         const findUser = await Review.findOne({ userPage: userPage }).lean();
