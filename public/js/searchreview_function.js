@@ -34,7 +34,7 @@ const source = "\
                 </div>  \
             </div>  \
             <div class=\"review-body\">  \
-                <a href=\"{{orgPage}}\">  \
+                <a href=\"/orgpage/{{orgPage}}\">  \
                     <div class=\"review-body-header\">{{orgName}}</div>  \
                 </a>  \
                 <div class=\"review-text\">{{reviewText}}</div>  \

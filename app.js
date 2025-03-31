@@ -314,6 +314,31 @@ app.post("/review/:id/react", async (req, res) => {
     }
 });
 
+// user edit
+app.post("/useredit/:userPage", async (req, res) => {
+    try {
+        const userPage = req.params.userPage;
+        const findUser = await Review.findOne({ userPage: userPage }).lean();
+        let userName = findUser.userName;
+        const user = await User.findOne({ userName: userName }).lean();
+
+        const { description, "profileImage": profileImage } = req.body;
+
+        if (description && description.trim() !== "") {
+            await User.updateOne({ userName: userName }, { $set: { userDesc: description } });
+        }
+
+        if (profileImage && profileUrl.trim() !== "") {
+            await User.updateOne({ profileImage: profileImage }, { $set: { profileImage: profileImage } });
+        }
+    
+        res.redirect(`/userpage/${userPage}`);
+
+    } catch (error) {
+        console.error("Error loading user edit page:", error);
+        res.status(500).send("Error loading user edit page.");
+    }
+});
 
 // using routes
 app.use('/', homepageRoutes);
@@ -328,7 +353,7 @@ app.use('/searchreview', searchRevRoutes);
 app.use('/reviewpage', revPageRoutes);
 app.use('/reviewedit', revEditRoutes);
 app.use('/editorg', editOrgRoutes);
-app.use('/', orgPageRoutes);
+app.use('/orgpage', orgPageRoutes);
 app.use('/review',deleteRoutes);
 app.use('/', replyRoutes);
 

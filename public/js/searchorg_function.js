@@ -3,7 +3,7 @@ const source = '\
                 <div class="org-section">\
                     <img class="org-profile-pic" src="{{this.orgPic}}"/>\
                     <div class="org-info">\
-                        <a href = {{this.orgPage}}>\
+                        <a href = /orgpage/{{this.orgPage}}>\
                             <div class="org-name">\
                                 {{this.orgName}}\
                             </div>\
@@ -14,7 +14,7 @@ const source = '\
                                 <i class="fa-solid fa-star"></i>\
                                 {{/times}}\
                                 <span class="rating-text">\
-                                    {{this.orgRating}}({{this.orgReviews}} reviews)\
+                                    {{this.orgRating}} ({{this.orgReviews}} reviews)\
                                 </span>\
                             </span>\
                         </div>\
