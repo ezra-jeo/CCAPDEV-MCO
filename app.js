@@ -315,7 +315,6 @@ app.post("/review/:id/react", async (req, res) => {
 });
 
 // user edit
-// user edit
 app.post("/useredit/:userPage", async (req, res) => {
     try {
         const userPage = req.params.userPage;
@@ -348,6 +347,15 @@ app.post("/useredit/:userPage", async (req, res) => {
         res.status(500).send("Error loading user edit page.");
     }
 });
+
+// destroying session after a few minutes
+app.use(session({
+    secret: "your_secret",
+    resave: false,
+    saveUninitialized: true,
+    cookie: { maxAge: 60 * 1000 }
+}));
+
 
 // using routes
 app.use('/', homepageRoutes);
