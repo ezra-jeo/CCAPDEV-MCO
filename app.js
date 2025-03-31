@@ -315,6 +315,7 @@ app.post("/review/:id/react", async (req, res) => {
 });
 
 // user edit
+// user edit
 app.post("/useredit/:userPage", async (req, res) => {
     try {
         const userPage = req.params.userPage;
@@ -325,11 +326,19 @@ app.post("/useredit/:userPage", async (req, res) => {
 
         if (description && description.trim() !== "") {
             await User.updateOne({ userName: userName }, { $set: { userDesc: description } });
+            // Update session if it's the current user
+            if (req.session.user && req.session.user.userName === userName) {
+                req.session.user.userDesc = description;
+            }
         }
 
         if (profileImage && profileImage.trim() !== "") {
             await User.updateOne({ userName: userName }, { $set: { profileImage: profileImage } });
-            await Review.updateMany({ userPage: userPage }, { $set: { profileImage: profileImage } });
+            await Review.updateMany({ userName: userName }, { $set: { profileImage: profileImage } });
+            // Update session if it's the current user
+            if (req.session.user && req.session.user.userName === userName) {
+                req.session.user.profileImage = profileImage;
+            }
         }
     
         res.redirect(`/userpage/${userPage}`);
