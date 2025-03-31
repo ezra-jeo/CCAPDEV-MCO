@@ -330,6 +330,7 @@ app.post("/useredit/:userPage", async (req, res) => {
 
         if (profileImage && profileImage.trim() !== "") {
             await User.updateOne({ userName: userName }, { $set: { profileImage: profileImage } });
+            await Review.updateMany({userName: userName}, { $set: { profileImage: profileImage } });
         }
     
         res.redirect(`/userpage/${userPage}`);
