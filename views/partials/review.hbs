@@ -11,7 +11,12 @@
                 <div class="post-info">
                     <div class="user-info-container">
                         <a href="/userpage/{{userPage}}">
-                            <div class="user-name">{{userName}}</div>
+                            <div class="user-name">
+                                {{userName}}
+                                {{#if edited}}
+                                    <span class="edited-label">(Edited)</span>
+                                {{/if}}
+                            </div>
                         </a>
                         <div class="time">{{timeAgo timePosted}}</div>
                     </div>

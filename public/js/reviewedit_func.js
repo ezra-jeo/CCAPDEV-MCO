@@ -3,7 +3,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const ratingInput = document.getElementById("rating");
     const reviewForm = document.getElementById("editReviewForm");
     const descriptionInput = document.getElementById("description");
-    let selectedRating = parseInt(ratingInput.value, 10); // Get existing rating
+    const originalText = descriptionInput.value.trim();
+    let selectedRating = parseInt(ratingInput.value, 10); 
+    const originalRating = selectedRating;
 
     // Pre-fill stars based on existing rating
     function updateStarSelection(rating) {
@@ -12,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
             star.classList.toggle("selected", value <= rating);
         });
     }
-    updateStarSelection(selectedRating); // Pre-fill on page load
+    updateStarSelection(selectedRating);
 
     // Handle star click to update rating
     stars.forEach((star) => {
@@ -28,17 +30,16 @@ document.addEventListener("DOMContentLoaded", () => {
         event.preventDefault();
 
         const reviewId = reviewForm.dataset.reviewId;
-        const updatedReview = {
-            reviewRating: ratingInput.value,
-            reviewText: descriptionInput.value.trim(),
-        };
+        const updatedReviewText = descriptionInput.value.trim();
+        const updatedRating = parseInt(ratingInput.value, 10);
 
-        if (!updatedReview.reviewRating || updatedReview.reviewRating < 1 || updatedReview.reviewRating > 5) {
-            alert("Please select a rating before submitting.");
+        // Prevent submission if no changes
+        if (updatedReviewText === originalText && updatedRating === originalRating) {
+            alert("No changes detected. Please modify your review before submitting.");
             return;
         }
 
-        if (!updatedReview.reviewText) {
+        if (!updatedReviewText) {
             alert("Please enter a review description before submitting.");
             return;
         }
@@ -47,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const response = await fetch(`/reviewedit/${reviewId}`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(updatedReview),
+                body: JSON.stringify({reviewRating: updatedRating, reviewText: updatedReviewText}),
             });
 
             const result = await response.json();
