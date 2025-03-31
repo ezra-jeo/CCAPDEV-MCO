@@ -5,15 +5,8 @@ const User = require("../models/users.js");
 const Organization = require("../models/organizations.js");
 const Review = require("../models/reviews.js");
 
-router.get('/', (req, res) => {
-    res.render('userpage', { 
-        title: 'User Page',
-        loggedIn: req.session.user 
-    });
-});
-
 // for userpage filtering (search + ratings)
-router.get("/userpage/:userPage", async (req, res) => {
+router.get(":userPage", async (req, res) => {
     try {
         const userPage = req.params.userPage;
         
