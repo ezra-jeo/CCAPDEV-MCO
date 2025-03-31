@@ -6,25 +6,15 @@ const Organization = require("../models/organizations.js");
 const Review = require("../models/reviews.js");
 
 // for userpage filtering (search + ratings)
-router.get(":userPage", async (req, res) => {
+router.get("/userpage/:userPage", async (req, res) => {
     try {
         const userPage = req.params.userPage;
         
         // finding user
-        let user = await User.findOne({ userPage }).lean();
-        let isOrganization = false;
-
-        // or org
-        if (!user) {
-            user = await Organization.findOne({ orgPage: userPage }).lean();
-            if (!user) {
-                return res.status(404).send("User not found.");
-            }
-            isOrganization = true;
-        }
+        let user = await User.findOne({ userPage: userPage }).lean();
 
         // fetch reviews based on the username (stored in reviews)
-        const userName = isOrganization ? user.orgName : user.userName;
+        const userName = user.userName;
         let query = { userName };
 
         if (req.query.rating) {
@@ -44,7 +34,6 @@ router.get(":userPage", async (req, res) => {
                 reviews, 
                 userPage: user.userPage, 
                 loggedIn: req.session.user || null,
-                isOrganization
             });
         }
     } catch (error) {
