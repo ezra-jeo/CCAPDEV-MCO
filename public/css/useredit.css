@@ -81,7 +81,7 @@
     margin-left: 10px;
     cursor: pointer;
 }
-textarea{
+.input-field-container textarea{
     width: 100%;
     height: 75px;
     background-color: #BBCAB2;
@@ -106,13 +106,28 @@ textarea{
     padding-left: 10px;
     padding-right: 10px;
 }
-
-.url-field-container {
+.profile-field-container {
     height: 10px;
     width: 75%;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    padding: 10px;
+}
+.url-field-container {
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 10px;
+}
+.url-field-container textarea{
+    width: 100%;
+    height: 10px;
+    background-color: #BBCAB2;
+    border: none;
+    outline: none;
     padding: 10px;
 }
