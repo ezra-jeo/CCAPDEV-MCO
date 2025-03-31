@@ -48,6 +48,13 @@
     text-wrap: wrap;
 }
 .link {
+    justify-content: left;
+    align-items: left;
+    font-size: large;
+    font-weight: normal;
+    margin-bottom: 5px;
+    width: 100%;
+    text-wrap: wrap;
     color: rgb(114, 114, 210);
     text-decoration: underline;
     transition: color 0.2s ease-in-out;
