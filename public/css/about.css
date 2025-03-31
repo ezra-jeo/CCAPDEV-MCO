@@ -46,16 +46,17 @@
     margin-bottom: 5px;
     width: 100%;
     text-wrap: wrap;
-    margin-top: 40px;
+}
+.link {
     color: rgb(114, 114, 210);
     text-decoration: underline;
     transition: color 0.2s ease-in-out;
 }
-.parag:hover {
+.link:hover {
     color: rgb(216, 94, 94);
 }
 
-.parag:active {
+.link:active {
     color: rgb(129, 44, 44);
 }
 .name {
