@@ -315,7 +315,7 @@ app.post("/review/:id/react", async (req, res) => {
 });
 
 // user edit page
-router.get("/useredit/:userPage", async (req, res) => {
+app.get("/:userPage", async (req, res) => {
     try {
         const userPage = req.params.userPage;
         
@@ -335,7 +335,7 @@ router.get("/useredit/:userPage", async (req, res) => {
 });
 
 // user edit
-app.post("/useredit/:userPage", async (req, res) => {
+app.post("/:userPage", async (req, res) => {
     try {
         const userPage = req.params.userPage;
         const findUser = await Review.findOne({ userPage: userPage }).lean();

@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
 });
 
 // for userpage filtering (search + ratings)
-router.get("/userpage/:userPage", async (req, res) => {
+router.get("/:userPage", async (req, res) => {
     try {
         const userPage = req.params.userPage;
         
