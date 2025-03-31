@@ -5,16 +5,33 @@ const User = require("../models/users.js");
 const Organization = require("../models/organizations.js");
 const Review = require("../models/reviews.js");
 
+router.get('/', (req, res) => {
+    res.render('userpage', { 
+        title: 'User Page',
+        loggedIn: req.session.user 
+    });
+});
+
 // for userpage filtering (search + ratings)
 router.get("/userpage/:userPage", async (req, res) => {
     try {
         const userPage = req.params.userPage;
         
         // finding user
-        let user = await User.findOne({ userPage: userPage }).lean();
+        let user = await User.findOne({ userPage }).lean();
+        let isOrganization = false;
+
+        // or org
+        if (!user) {
+            user = await Organization.findOne({ orgPage: userPage }).lean();
+            if (!user) {
+                return res.status(404).send("User not found.");
+            }
+            isOrganization = true;
+        }
 
         // fetch reviews based on the username (stored in reviews)
-        const userName = user.userName;
+        const userName = isOrganization ? user.orgName : user.userName;
         let query = { userName };
 
         if (req.query.rating) {
@@ -34,6 +51,7 @@ router.get("/userpage/:userPage", async (req, res) => {
                 reviews, 
                 userPage: user.userPage, 
                 loggedIn: req.session.user || null,
+                isOrganization
             });
         }
     } catch (error) {
@@ -41,5 +59,6 @@ router.get("/userpage/:userPage", async (req, res) => {
         res.status(500).send("Error loading user page");
     }
 });
+
 
 module.exports = router;
