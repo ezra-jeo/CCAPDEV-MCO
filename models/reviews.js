@@ -15,7 +15,9 @@ const reviewSchema = new mongoose.Schema({
     responseUser: { type: String, default: "" },
     likesCount: { type: Number, default: 0 },
     dislikesCount: { type: Number, default: 0 },
-    edited: { type: Boolean, default: false }
+    edited: { type: Boolean, default: false }, 
+    likes: { type: [String], default: [] }, 
+    dislikes: { type: [String], default: [] }
 }, { timestamps: true });
 
 module.exports = mongoose.model('Review', reviewSchema);

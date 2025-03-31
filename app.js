@@ -63,6 +63,12 @@ const hbs = exphbs.create({
         sub: function(a, b) { return a - b; },
         round: function(n) { return Math.round(n); },
         gt: function(a, b) { return a > b; },
+        contains: function(array, value, options) {
+            if (array && array.includes(value)) {
+                return true;
+            }
+            return false;
+        }
     }
 });
 
@@ -185,7 +191,7 @@ app.post("/signup", async (req, res) => {
 // logging in
 app.post("/login", async (req, res) => {
     try {
-        const { username, password } = req.body;
+        const { username, password, remember } = req.body;
 
         if (!username || !password) {
             return res.status(400).json({ error: "Username and password are required." });
@@ -224,6 +230,13 @@ app.post("/login", async (req, res) => {
                 }
                 console.log(`🔄 Password upgraded to bcrypt for ${username}`);
             }
+        }
+
+        // extending session when remember me is checked
+        if (remember) {
+            req.session.cookie.maxAge = 30 * 24 * 60 * 60 * 1000; // 30 days
+        } else {
+            req.session.cookie.expires = false; 
         }
 
         if (!isPasswordValid) {
@@ -281,28 +294,53 @@ app.post("/review/:id/react", async (req, res) => {
         if (!review) {
             return res.status(404).json({ success: false, message: "Review not found" });
         }
+        if (!req.session.user) {
+            return res.status(401).json({ success: false, message: "You must be logged in to react" });
+        }
+
+        const userName = req.session.user.userName;
 
         // undo action
         if (reaction === "undoLike") {
-            if (review.likesCount > 0) review.likesCount -= 1;
+                if (review.likes.includes(userName)) {
+                    review.likes = review.likes.filter(user => user !== userName);
+                    review.likesCount--;
+            };
         }
         else if (reaction === "undoDislike") {
-            if (review.dislikesCount > 0) review.dislikesCount -= 1;
+            if (review.dislikes.includes(userName)) {
+                review.dislikes = review.dislikes.filter(user => user !== userName);
+                review.dislikesCount--;
+            }
         }
         // dis/like
-        else if (reaction === "like") {
-            review.likesCount += 1;
-        } else if (reaction === "dislike") {
-            review.dislikesCount += 1;
+        else if (reaction === "like") { // 
+            if (!review.likes.includes(userName) && !review.dislikes.includes(userName)) {
+                review.likes.push(userName);
+                review.likesCount++; 
+            }
+        } else if (reaction === "dislike") { //
+            if (!review.likes.includes(userName) && !review.dislikes.includes(userName)) {
+                review.dislikes.push(userName);
+                review.dislikesCount++;
+            }
         }
         // cancelling
         else if (reaction === "cancelDislike") {
-            review.likesCount += 1;
-            review.dislikesCount -= 1;
+            if (review.dislikes.includes(userName)) {
+                review.dislikes = review.dislikes.filter(user => user !== userName);
+                review.dislikesCount--;
+                review.likes.push(userName);
+                review.likesCount++;
+            }
         }
         else if (reaction === "cancelLike") {
-            review.likesCount -= 1;
-            review.dislikesCount += 1;
+            if (review.likes.includes(userName)) {
+                review.likes = review.likes.filter(user => user !== userName);
+                review.likesCount--;
+                review.dislikes.push(userName);
+                review.dislikesCount++;
+            }
         }
 
         await review.save();
@@ -347,15 +385,6 @@ app.post("/useredit/:userPage", async (req, res) => {
         res.status(500).send("Error loading user edit page.");
     }
 });
-
-// destroying session after a few minutes
-app.use(session({
-    secret: "your_secret",
-    resave: false,
-    saveUninitialized: true,
-    cookie: { maxAge: 60 * 1000 }
-}));
-
 
 // using routes
 app.use('/', homepageRoutes);

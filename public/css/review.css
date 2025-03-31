@@ -253,3 +253,15 @@
     color: gray;
     margin-left: 5px;
 }
+.fa-thumbs-down {
+    transition: color 0.5s ease;
+}
+.likes-container-content .fa-thumbs-down:hover {
+    color:  #aa3b3b;
+}
+.fa-thumbs-up {
+    transition: color 0.5s ease;
+}
+.likes-container-content .fa-thumbs-up:hover {
+    color: #7BA167;
+}
