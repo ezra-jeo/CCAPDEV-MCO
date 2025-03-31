@@ -180,16 +180,6 @@
     padding-right: 20px;
     padding-bottom: 10px;
 }
-.fa-user { /* TODO: remove this */
-    font-size: 40px;
-    color:#3B6724; 
-    padding-right: 10px;
-}
-.profile-container img{
-    height: 35px;
-    width: 35px;
-    padding-right: 10px;
-}
 .image {
     height: 100px;     
     width: 100%;   

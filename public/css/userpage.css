@@ -17,6 +17,7 @@ html, body {
     padding-bottom: 40px;
 }
 .user-box {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -29,21 +30,28 @@ html, body {
     text-align: center;
     padding: 20px;
     margin-top: 30px;
-    min-height: 400px;
 }
 .edit-button {
+    position: absolute;
+    top: 0;
     display: flex;
     justify-content: flex-end;
-    width: 100%;
+    width: 95%;
     padding: 10px; 
+    margin-top: 10px;
     box-sizing: border-box;
 }
 .edit-button button {
+    font-size: 15px;
     background: none;
     border: none;
     cursor: pointer;
     padding: 5px;
-    color: #3B6724;
+    color: #353535;
+    transition: color 0.5s ease-in-out;
+}
+.edit-button button:hover {
+    color: #7BA167;
 }
 .profile-pic {
     display: flex;
@@ -52,7 +60,6 @@ html, body {
     width: 100px;
     height: 120px;
     border-radius: 50%;
-    margin-bottom: 15px;
 }
 .profile-pic img {
     width: 100px;
@@ -62,17 +69,16 @@ html, body {
 .username {
     font-size: 20px;
     font-weight: bold;
-    margin-top: 5px;
+    margin-top: 10px;
+    margin-bottom: 5px;
 }
 .user-desc {
     font-size: 14px;
     color: #555;
-    margin-bottom: 10px;
-    min-height: 100px;
+    margin-bottom: 30px;
     justify-content: center;
 }
 .logout-btn {  
-    margin-top: 15px;
     background-color: #3B6724;
     color: white;
     border: none;
@@ -97,8 +103,7 @@ html, body {
     flex-direction: row;
     justify-content: flex-start;
     gap: 20px;
-    margin-bottom: 20px;
-    margin-left: 20px;
+    margin-left: 40px;
 }
 .review-button {
     height: 50px;
@@ -176,4 +181,13 @@ html, body {
     display: flex;
     justify-content: space-between;
     gap: 10px;
+}
+
+.header-text {
+    justify-content: center;
+    align-items: center;
+    font-size: xx-large;
+    font-weight: bold;
+    margin-left: 40px;
+    margin-bottom: 10px;
 }

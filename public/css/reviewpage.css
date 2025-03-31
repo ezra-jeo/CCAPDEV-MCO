@@ -59,6 +59,7 @@ p {
 .star {
     font-size: 40px;
     color: black;
+    transition: color 0.2s ease-in-out;
 }
 .star.selected, .star:hover {
     color: gold;

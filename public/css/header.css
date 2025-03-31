@@ -55,7 +55,7 @@
     padding: 10px;
     margin: 10px;
 }
-.profile-container {
+.profile-containers {
     display: flex;
     flex-direction: row;
     justify-content: right;
@@ -92,4 +92,5 @@
 #avatar {   
     height: 50px;
     width: 50px;
+    clip-path: circle(45%);
 }

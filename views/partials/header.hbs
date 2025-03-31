@@ -23,7 +23,7 @@
             </a>           
         </div>  
         {{#if (eq loggedIn.accountType "student")}}
-            <div class = "profile-container">
+            <div class = "profile-containers">
                 <div class = "user-name-profile">
                     <a href = "/userpage/{{loggedIn.userPage}}/">
                         {{loggedIn.userName}}
@@ -34,7 +34,7 @@
                 </a>         
             </div>
         {{else if (eq loggedIn.accountType "organization")}}
-            <div class="profile-container">
+            <div class="profile-containers">
                 <div class="user-name-profile">
                     <a href="{{loggedIn.orgPage}}">
                         {{loggedIn.orgName}}
@@ -45,7 +45,7 @@
                 </a>
             </div>
         {{else}}
-            <div class = "profile-container">
+            <div class = "profile-containers">
             <a href="/signup">
                 <div class = "sign-up">Sign Up</div>
             </a>

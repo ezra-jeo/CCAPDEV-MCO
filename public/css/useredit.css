@@ -46,6 +46,8 @@
 .avatar-container img {
     height: 80px;
     width: 80px;
+    clip-path: circle(45%);
+    object-fit: cover;
 }
 .remember-me-container {
     height: 20px;

@@ -1,2 +1,1 @@
-require("dotenv").config();
-require("./db"); // connecting to mongoDB
+const hashedPassword = await bcrypt.hash(password, 10);

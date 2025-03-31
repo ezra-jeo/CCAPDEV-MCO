@@ -45,6 +45,7 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: left;
+    margin-top: 2.5px;
     width: 100%;
 }
 .user-name {
@@ -59,6 +60,9 @@
     justify-content: flex-end;
     align-items: flex-start;
     margin-left: auto;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+    opacity: 1;
+    visibility: visible;
 }
 .fa-star {
     color: #F8C437;
@@ -89,10 +93,20 @@
     padding-right: 20px;
     padding-bottom: 10px;
 }
-.profile-container img{
-    height: 35px;
-    width: 35px;
-    padding-right: 10px;
+.profile-container-img {
+    display: flex;
+    justify-content: center;    
+    align-items: center;
+    height: 40px;
+    width: 40px;
+    clip-path: circle(45%);
+    object-fit: cover;
+    margin-right: 5px;
+}
+
+.profile-container-img img{ 
+    height: 90%;
+    width: 90%;
 }
 .image {
     height: 100px;     
@@ -151,6 +165,7 @@
     background-color: #3B6724;
     color: white;
     font-weight: bold;
+    transition: color 0.2s ease-in-out;
 }
 .helpfulness-item.active {
     background-color: #3B6724;
@@ -189,12 +204,14 @@
     font-size: 16px;
     cursor: pointer;
     color: #353535;
+    transition: color 0.5s ease-in-out;
 }
 .edit-container .fa-pencil {
     font-size: 16px;
     cursor: pointer;
     color: #353535;
     margin-right: 10px;
+    transition: color 0.5s ease-in-out;
 }
 .edit-container .fa-pencil:hover {
     color: #7BA167;
@@ -221,6 +238,7 @@
 }
 .rating-edit-container:hover .gone {
     display: none;
+    transition: opacity 0.5s ease;
 }
 .rating-edit-container:hover .edit-container {
     display: block;
