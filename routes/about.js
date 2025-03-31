@@ -3,7 +3,7 @@ const router = express.Router();
 
 router.get('/', (req, res) => {
     res.render('about', { 
-        title: 'About', 
+        title: 'About Us', 
         layout: 'main',
         loggedIn: req.session.user
      });
