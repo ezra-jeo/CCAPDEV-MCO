@@ -1,28 +1,39 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // Select form and description box elements
     const form = document.getElementById("edit-org-form");
     const descBox = document.getElementById("org-desc");
+    const urlInput = document.getElementById("logo-url");
+    const previewImage = document.getElementById("preview-image");
 
-    // Event listener for form submission
+    // Update preview image when URL is typed
+    urlInput.addEventListener("input", () => {
+        previewImage.src = urlInput.value;
+    });
+
     form.addEventListener("submit", async (event) => {
-        event.preventDefault(); // Prevent default form submission behavior
+        event.preventDefault();
 
-        const formData = new FormData();
-        formData.append("description", descBox.value); // Only send description
+        // Validate input
+        if (!descBox.value.trim() || !urlInput.value.trim()) {
+            alert("Both description and image URL are required.");
+            return;
+        }
+
+        const formData = {
+            orgDesc: descBox.value,
+            orgPic: urlInput.value, 
+        };
 
         try {
-            // Send the form data using a POST request to the current page 
             const response = await fetch(window.location.pathname, {
                 method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ description: descBox.value }), // Send JSON instead of FormData
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify(formData),
             });
 
-            const result = await response.json(); // Parse response as JSON
-
+            const result = await response.json();
             if (response.ok) {
                 alert("Organization updated successfully!");
-                window.location.href = `/${result.orgPage}`; // Redirect to the organization's profile page
+                window.location.href = `/orgpage/${result.orgPage}`; // Redirect to org page
             } else {
                 alert(result.error || "Failed to update organization.");
             }
@@ -30,5 +41,9 @@ document.addEventListener("DOMContentLoaded", () => {
             console.error("Error updating organization:", error);
             alert("An error occurred while updating the organization.");
         }
+    });
+
+    document.getElementById("discardChanges").addEventListener("click", () => {
+        window.history.back();
     });
 });
