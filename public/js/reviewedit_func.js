@@ -3,9 +3,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const ratingInput = document.getElementById("rating");
     const reviewForm = document.getElementById("editReviewForm");
     const descriptionInput = document.getElementById("description");
-    const originalRating = selectedRating;
     const originalText = descriptionInput.value.trim();
     let selectedRating = parseInt(ratingInput.value, 10); 
+    const originalRating = selectedRating;
 
     // Pre-fill stars based on existing rating
     function updateStarSelection(rating) {
@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const updatedReviewText = descriptionInput.value.trim();
         const updatedRating = parseInt(ratingInput.value, 10);
 
-        // Prevent Submission if no Changes
+        // Prevent submission if no changes
         if (updatedReviewText === originalText && updatedRating === originalRating) {
             alert("No changes detected. Please modify your review before submitting.");
             return;
