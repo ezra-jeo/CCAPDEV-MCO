@@ -15,7 +15,8 @@
   "responseMessage": "",
   "responseUser": "",
   "likesCount": 18,
-  "dislikesCount": 1
+  "dislikesCount": 1,
+  "edited": false
 },
 {
   "_id": {
@@ -34,7 +35,8 @@
   "responseMessage": "Thanks for the feedback! We'll add more coding challenges in future events.",
   "responseUser": "",
   "likesCount": 11,
-  "dislikesCount": 2
+  "dislikesCount": 2,
+  "edited": false
 },
 {
   "_id": {
@@ -53,7 +55,8 @@
   "responseMessage": "",
   "responseUser": "",
   "likesCount": 7,
-  "dislikesCount": 4
+  "dislikesCount": 4,
+  "edited": false
 },
 {
   "_id": {
@@ -72,7 +75,8 @@
   "responseMessage": "",
   "responseUser": "",
   "likesCount": 22,
-  "dislikesCount": 0
+  "dislikesCount": 0,
+  "edited": false
 },
 {
   "_id": {
@@ -91,7 +95,8 @@
   "responseMessage": "",
   "responseUser": "",
   "likesCount": 16,
-  "dislikesCount": 1
+  "dislikesCount": 1,
+  "edited": false
 },
 {
   "_id": {
@@ -110,5 +115,6 @@
   "responseMessage": "Thanks for the feedback!",
   "responseUser": "",
   "likesCount": 88,
-  "dislikesCount": 4
+  "dislikesCount": 4,
+  "edited": false
 }]
