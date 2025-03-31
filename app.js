@@ -328,7 +328,7 @@ app.post("/useredit/:userPage", async (req, res) => {
             await User.updateOne({ userName: userName }, { $set: { userDesc: description } });
         }
 
-        if (profileImage && profileUrl.trim() !== "") {
+        if (profileImage && profileImage.trim() !== "") {
             await User.updateOne({ profileImage: profileImage }, { $set: { profileImage: profileImage } });
         }
     
