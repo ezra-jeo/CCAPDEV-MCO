@@ -82,7 +82,7 @@ app.use(session({
     secret: "yourSecretKey",
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: false, httpOnly: true } 
+    cookie: { secure: false }
 }));
 
 // pass logged-in user to all views
