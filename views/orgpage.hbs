@@ -25,34 +25,28 @@
                 </p>
                 <p>{{org.orgDesc}}</p>
                 <div> 
-                    {{#if (eq loggedIn.orgPage org.orgPage)}}
+                    {{#if (eq loggedIn.accountType "organization")}}
                         <a href="/logout">
                             <button class="logout-btn">Logout</button>
                         </a>
                     {{/if}}
                 </div>
 
-                {{#if loggedIn}}
-                    {{#if (eq loggedIn.accountType "organization")}}
-                        {{#if (eq loggedIn.orgPage org.orgPage)}}
-                            <span class="edit-icon">
-                                <button>
-                                    <a href="/editorg/{{org.orgPage}}">✎</a>
-                                </button>
-                            </span>
-                        {{/if}}
-                    {{/if}}
+                {{#if (eq loggedIn.accountType "organization")}}
+                    <span class="edit-icon">
+                        <button>
+                            <a href="/editorg/{{org.orgPage}}">✎</a>
+                        </button>
+                    </span>
                 {{/if}}
             </div> <!--org-profile-->
         </div> <!--wrapper-->
         
         <div class="filters">
-            {{#if user}}
-                {{#if (eq user.accountType "student")}}
-                    <div class="add-review-container">
-                        <a href="/reviewpage/{{org.orgPage}}">Write a Review</a>
-                    </div>
-                {{/if}}
+            {{#if (eq loggedIn.accountType "student")}}
+                <div class="add-review-container">
+                    <a href="/reviewpage/{{org.orgPage}}">Write a Review</a>
+                </div>
             {{/if}}
 
             <div class="filter-review-container">
