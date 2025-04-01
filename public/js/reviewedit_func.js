@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (response.ok) {
                 alert("Review updated successfully!");
-                window.location.href = `/${result.orgPage}`; // Redirect to org page
+                window.location.href = `/orgpage/${result.orgPage}`; // Redirect to org page
             } else {
                 alert(result.error || "Failed to update review.");
             }
