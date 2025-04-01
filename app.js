@@ -82,7 +82,7 @@ app.use(session({
     secret: "yourSecretKey",
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: false }
+    cookie: { secure: false, httpOnly: true } 
 }));
 
 // pass logged-in user to all views
@@ -130,61 +130,6 @@ app.get("/", async (req, res) => {
     } catch (error) {
         console.error("Error fetching reviews:", error);
         res.status(500).send("Error loading reviews");
-    }
-});
-
-// signing up
-app.post("/signup", async (req, res) => {       
-    try {
-        const { username, password, accountType, description } = req.body;
-
-        if (!accountType) {
-            return res.status(400).json({ error: "Account type is required." });
-        }
-
-        const hashedPassword = await bcrypt.hash(password, 10);
-
-        let newAccount;
-
-        if (accountType === "student") {
-            if (!username || !hashedPassword) {
-                return res.status(400).json({ error: "Username and password are required for users." });
-            }
-
-            newAccount = new User({ 
-                userName: username, 
-                userDesc: description,
-                userPage: username,
-                profileImage: "/images/default-icon-user.png",
-                userPassword: hashedPassword
-            });
-        } 
-        else if (accountType === "organization") {
-            if (!username || !hashedPassword) {
-                return res.status(400).json({ error: "Organization name and password are required." });
-            }
-            newAccount = new Organization({
-                orgName: username,
-                orgPic: "/images/default-icon-org.png",
-                orgDesc: description,
-                orgPage: username,
-                orgRating: 0,
-                orgReviews: 0,
-                orgCollege: "Others",
-                orgPassword: hashedPassword
-            });
-        } 
-        else {
-            return res.status(400).json({ error: "Invalid account type." });
-        }
-
-        await newAccount.save();
-
-        console.log(`✅ ${accountType} created:`, newAccount);
-        res.json({ message: `${accountType} created successfully!`, account: newAccount });
-    } catch (error) {
-        console.error("❌ Error creating account:", error);
-        res.status(500).json({ error: "Internal Server Error" });
     }
 });
 
