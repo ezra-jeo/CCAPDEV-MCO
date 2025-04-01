@@ -19,7 +19,7 @@
 
                     <div class="organization-container">
                         {{#if orgName}}
-                            <h2>Organization: <span>{{orgName}}</span></h2>
+                            <h2>Organization: <span>{{orgPage}}</span></h2>
                         {{else}}
                             <label for="organization"><b>Select Organization:</b></label><br/>
                             <select id="organization">
@@ -31,7 +31,7 @@
                                 <option value="PTS">Peer Tutor Society (PTS)</option>
                             </select>
                         {{/if}}
-                    </div>
+                    </div><!--organization-container-->
 
                     <label><b>Rating:</b></label>
                     <div class="rating">
@@ -40,18 +40,22 @@
                         <span class="star" data-value="3"><i class="fa-solid fa-star"></i></span>
                         <span class="star" data-value="4"><i class="fa-solid fa-star"></i></span>
                         <span class="star" data-value="5"><i class="fa-solid fa-star"></i></span>
-                    </div>
+                    </div><!--rating-->
                     <input type="hidden" id="rating" name="rating" required>
 
                     <label for="description"><b>Description:</b></label><br />
                     <textarea id="description" required></textarea><br />
 
+                    <label for="reviewImage"><b>Image URL:</b></label>
+                    <input type="text" id="reviewImage" name="reviewImage" placeholder="Enter image URL">
+                    <img id="image-preview" alt="Image Preview">
+
                     <div class="btn-container">
                         <button type="reset" class="discard-btn" id="discardChanges">Discard</button>
                         <button type="submit" class="submit-btn">Submit</button>
-                    </div>
+                    </div><!--btn-container-->
                 </form>
-            </div>
-        </div>
+            </div><!--review-container-->
+        </div><!--wrapper-->
     </body>
 </html>

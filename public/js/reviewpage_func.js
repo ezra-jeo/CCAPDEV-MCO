@@ -4,6 +4,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const reviewForm = document.getElementById("reviewForm");
     const descriptionInput = document.getElementById("description");
     const orgDropdown = document.getElementById("organization");
+    const imageInput = document.getElementById("reviewImage");
+    const imagePreview = document.getElementById("image-preview");
 
     let orgName = reviewForm.dataset.orgname;
     let orgPage = reviewForm.dataset.orgpage;
@@ -23,6 +25,17 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
+    // Image URL Preview
+    imageInput.addEventListener("input", () => {
+        const url = imageInput.value.trim();
+        if (url) {
+            imagePreview.src = url;
+            imagePreview.style.display = "block";
+        } else {
+            imagePreview.style.display = "none";
+        }
+    });
+
     // Form submission
     reviewForm.addEventListener("submit", async (event) => {
         event.preventDefault(); // Prevent default form submission
@@ -34,25 +47,27 @@ document.addEventListener("DOMContentLoaded", () => {
             orgPage = selectedOption.value.toLowerCase();
         }
 
-        const reviewData = {
-            userName,
-            userPage, 
-            profileImage,
-            reviewRating: ratingInput.value,
-            reviewText: descriptionInput.value.trim(),
-            orgName, 
-            orgPage,
-        };
-
-        if (!reviewData.reviewRating || !reviewData.reviewText || !reviewData.orgName || !reviewData.orgPage) {
+        // Form validation
+        if (!ratingInput.value || !descriptionInput.value.trim() || !orgName || !orgPage) {
             alert("Please fill out all fields.");
             return;
         }
 
+        const reviewData = {
+            userName,
+            userPage,
+            profileImage,
+            reviewRating: ratingInput.value,
+            reviewText: descriptionInput.value.trim(),
+            orgName,
+            orgPage,
+            reviewImage: imageInput.value.trim(),
+        };
+
         try {
             const response = await fetch("/reviewpage/submit-review", {
                 method: "POST",
-                headers: { "Content-Type": "application/json" },
+                headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(reviewData),
             });
 
@@ -60,7 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (response.ok) {
                 alert("Review submitted successfully!");
-                window.location.href = `/${result.orgPage}`; // Redirect to org page
+                window.location.href = `/orgpage/${result.orgPage}`; // Redirect to org page
             } else {
                 alert(result.error || "Failed to submit review.");
             }

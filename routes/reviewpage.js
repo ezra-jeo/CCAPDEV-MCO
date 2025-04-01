@@ -9,7 +9,7 @@ router.get("/:orgPage", async (req, res) => {
     try {
         const {orgPage} = req.params;
 
-        const org = await Organization.findOne({orgPage});
+        const org = await Organization.findOne({orgPage: new RegExp("^" + orgPage + "$", "i")});
 
         if (!org) {
             return res.status(404).send("Organization not found.");
@@ -41,39 +41,53 @@ router.get("/", async (req, res) => {
     }
 });
 
+// POST route to submit a review
 router.post("/submit-review", async (req, res) => {
     try {
-        const {userName, userPage, profileImage, reviewRating, reviewText, orgName, orgPage} = req.body;
+        const {userName, userPage, profileImage, reviewRating, reviewText, orgName, orgPage, reviewImage} = req.body;
 
         if (!reviewRating || !reviewText.trim() || !orgName || !orgPage) {
             return res.status(400).json({error: "All required fields must be provided."});
         }
 
-        // Create new review
-        const newReview = new Review({
+        // Create review data object
+        let reviewData = {
             userName,
             userPage,
             profileImage,
-            reviewRating,
+            reviewRating : Number(reviewRating),
             reviewText,
             orgName,
             orgPage,
-            timePosted: new Date()
-        });
+            reviewImage,
+            timePosted: new Date(),
+        };
 
+        // Save new review
+        const newReview = new Review(reviewData);
         await newReview.save();
 
-        // Count reviews for the org and update orgReviews
-        const totalReviews = await Review.countDocuments({orgName});
-        await Organization.findOneAndUpdate(
-            { orgName },
-            { orgReviews: totalReviews }
+        // Fetch all reviews for the organization to recalculate rating
+        const reviews = await Review.find({orgName});
+        const totalReviews = reviews.length;
+
+        let newAvgRating = 0;
+        if (totalReviews > 0) {
+            const totalRating = reviews.reduce((sum, review) => sum + review.reviewRating, 0);
+            newAvgRating = totalRating / totalReviews;
+        }
+
+        // Update organization details with new average rating
+        const org = await Organization.findOneAndUpdate(
+            {orgName},
+            {orgRating: newAvgRating, orgReviews: totalReviews},
+            {new: true} 
         );
 
-        res.json({message: "Review submitted successfully!", orgPage});
+        res.json({ message: "Review submitted successfully!", orgPage: org.orgPage});
     } catch (error) {
         console.error("Error submitting review:", error);
-        res.status(500).json({ error: "Server Error" });
+        res.status(500).json({error: "Server Error"});
     }
 });
 
