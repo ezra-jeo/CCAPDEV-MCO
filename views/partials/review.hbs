@@ -56,7 +56,7 @@
 
                 {{#if responseMessage}}
                     <div class="response-container">
-                        {{#if (eq responseUser loggedIn.userName)}}
+                         {{#if (or (eq responseUser loggedIn.userName) (eq responseUser loggedIn.orgName))}}
                             <div class="response-header">You replied</div>
                         {{else}}
                             <div class="response-header">{{responseUser}} replied</div>

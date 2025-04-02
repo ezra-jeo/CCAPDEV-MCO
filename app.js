@@ -50,9 +50,6 @@ const hbs = exphbs.create({
             }
             return "Just now";
         },
-        lt: function (a, b) {
-            return a < b;
-        },
         eq: function(a, b, options) {
             if (a === b) {
                 return true; 
@@ -60,16 +57,18 @@ const hbs = exphbs.create({
                 return false; 
             }
         },
+        lt: function (a, b) {return a < b;},
         sub: function(a, b) { return a - b; },
         round: function(n) { return Math.round(n); },
         gt: function(a, b) { return a > b; },
+        or: function (a, b) { return a || b; },
         contains: function(array, value, options) {
             if (array && array.includes(value)) {
                 return true;
             }
             return false;
-        }
-    }
+        }, 
+    },
 });
 
 // hbs views
