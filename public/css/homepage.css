@@ -1,9 +1,10 @@
+/* TITLE AND SEARCH BAR SECTION */
 .landing-container {
     position: relative;
     height: 100vh;
     width: 100%;
 }
-/* TITLE AND SEARCH BAR SECTION */
+
 .hook-section {
     font-weight: bolder;
     width: 100%;
@@ -12,7 +13,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: rgba(59, 103, 36, 0.3); /* Optional: Adds slight transparency */
+    background-color: rgba(59, 103, 36, 0.3); 
     position: relative;
     z-index: 2;
 }
