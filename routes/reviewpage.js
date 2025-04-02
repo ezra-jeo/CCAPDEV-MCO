@@ -44,8 +44,9 @@ router.get("/", async (req, res) => {
 // POST route to submit a review
 router.post("/submit-review", async (req, res) => {
     try {
-        const {userName, userPage, profileImage, reviewRating, reviewText, orgName, orgPage, reviewImage} = req.body;
-
+        const { reviewRating, reviewText, orgName, orgPage, reviewImage} = req.body;
+        const {userName, userPage, profileImage} = req.session.user;
+        
         if (!reviewRating || !reviewText.trim() || !orgName || !orgPage) {
             return res.status(400).json({error: "All required fields must be provided."});
         }
