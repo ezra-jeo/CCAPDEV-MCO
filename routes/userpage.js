@@ -44,7 +44,9 @@ router.get("/:userPage", async (req, res) => {
         const reviews = await Review.find(query).lean();
 
         if (req.headers["x-requested-with"] === "XMLHttpRequest") {
-            res.render("partials/reloadreview", { reviews, layout: false });
+            res.render("partials/reloadreview", { reviews,
+                loggedIn: req.session.user || null,
+                layout: false });
         } else {
             res.render("userpage", { 
                 user, 
