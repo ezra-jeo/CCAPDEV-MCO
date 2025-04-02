@@ -9,9 +9,11 @@
             </div>
         </a>
         <div class = "options-container">
-            <a href = "/reviewpage">
-                <div class = "options-item"></i>Write a Review</div>
-            </a>
+            {{#if (eq loggedIn.accountType "student")}}
+                <a href = "/reviewpage">
+                    <div class = "options-item"></i>Write a Review</div>
+                </a>
+            {{/if}}
             <a href = "/searchorg">
                 <div class = "options-item">Search Organizations</div>
             </a>

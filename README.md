@@ -17,7 +17,7 @@ Please make sure that Node.js is properly installed on your computer.
 
 ```
 npm init
-npm i bcrypt express express-handlebars express-session mongoose multer
+npm i bcrypt dotenv express express-handlebars express-session mongoose
 ```
 ### Step 2. Set-up the Database
 - Import the orgs2pick-connection.json file as the connection, which will automatically import the database and its collections.
