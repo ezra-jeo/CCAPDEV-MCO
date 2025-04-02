@@ -25,7 +25,7 @@ router.get("/:userPage", async (req, res) => {
             return res.status(404).send("User not found.");
         }
 
-        res.render("useredit", { user, layout: false });
+        res.render("useredit", { user, layout: clear });
     } catch (error) {
         console.error("Error loading user edit page:", error);
         res.status(500).send("Error loading user edit page.");
