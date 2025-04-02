@@ -4,9 +4,11 @@ const source = "\
     <div class=\"review-proper-container\">  \
         <div class=\"review-container\">  \
             <div class=\"review-header\">  \
-                <div class=\"profile-container\">  \
-                    <img src=\"{{profileImage}}\" alt=\"Profile\">  \
-                </div>  \
+                <a href=\"/userpage/{{userPage}}\">\
+                    <div class=\"profile-container-img\">  \
+                        <img src=\"{{profileImage}}\" alt=\"Profile\">  \
+                    </div>  \
+                </a> \
                 <div class=\"post-info\">  \
                     <div class=\"user-info-container\">  \
                         <a href=\"/userpage/{{userPage}}\">  \
