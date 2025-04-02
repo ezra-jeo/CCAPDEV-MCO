@@ -56,6 +56,8 @@ const hbs = exphbs.create({
             } else {
                 return false; 
             }
+        }, add: function(a, b) {
+            return a + b;
         },
         lt: function (a, b) {return a < b;},
         sub: function(a, b) { return a - b; },
