@@ -4,11 +4,9 @@ const source = "\
     <div class=\"review-proper-container\">  \
         <div class=\"review-container\">  \
             <div class=\"review-header\">  \
-                <a href=\"/userpage/{{userPage}}\">\
-                    <div class=\"profile-container-img\">  \
-                        <img src=\"{{profileImage}}\" alt=\"Profile\">  \
-                    </div>  \
-                </a> \
+                <div class=\"profile-container-img\">  \
+                    <img src=\"{{profileImage}}\" alt=\"Profile\">  \
+                </div>  \
                 <div class=\"post-info\">  \
                     <div class=\"user-info-container\">  \
                         <a href=\"/userpage/{{userPage}}\">  \
@@ -28,7 +26,7 @@ const source = "\
                             <a href=\"/reviewedit/{{_id}}\">  \
                                 <i class=\"fa-solid fa-pencil\"></i>  \
                             </a>  \
-                            <a href=\"/\">  \
+                            <a href=\"#\" class=\"delete-review\" data-id=\"{{_id}}\">  \
                                 <i class=\"fa-solid fa-trash\"></i>  \
                             </a>  \
                         </div>  \
@@ -50,13 +48,22 @@ const source = "\
                         {{#if (eq ../loggedIn.userName responseUser)}}  \
                             <div class=\"response-header\">You replied</div>  \
                         {{else}}  \
-                            <div class=\"response-header\">{{orgName}} replied</div>  \
+                            <div class=\"response-header\">{{responseUser}} replied</div>  \
                         {{/if}}  \
                         <div class=\"response-message\">  \
                             {{responseMessage}}  \
                         </div>  \
                     </div>  \
                 {{/if}}  \
+                {{#if orgpage}}\
+                <div class=\"reply-section\">\
+                    <button class=\"reply-btn\">Reply to this Review</button>\
+                    <div class=\"reply-box-container\">\
+                        <textarea class=\"reply-textbox\" placeholder=\"Write a reply...\"></textarea>\
+                        <button class=\"submit-reply-btn\" data-review-id=\"{{_id}}\">Submit</button>\
+                    </div>\
+                </div>\
+                {{/if}}\
             </div>  \
         </div>  \
     </div>  \

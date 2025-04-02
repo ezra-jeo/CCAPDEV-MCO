@@ -6,6 +6,7 @@
         </title>
         <link rel="stylesheet" href="/css/searchreview.css"/>
         <script type="text/javascript" src="/js/searchreview_function.js"></script>
+        <script src="/js/delete.js"></script>
         <link rel="stylesheet" href="/css/review.css" />
     </head>
     <body>
@@ -126,9 +127,9 @@
                                                     <a href="/reviewedit/{{_id}}">
                                                         <i class="fa-solid fa-pencil"></i>
                                                     </a>
-                                                    <a href="/"> <!-- FIXME: -->
-                                                        <i class="fa-solid fa-trash"></i>
-                                                    </a>
+                                                <a href="#" class="delete-review" data-id="{{_id}}">
+                                                    <i class="fa-solid fa-trash"></i>
+                                                </a>
                                                 </div>
                                             {{/if}}
                                         </div>

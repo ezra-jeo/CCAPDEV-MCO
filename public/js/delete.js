@@ -1,42 +1,41 @@
-document.addEventListener("DOMContentLoaded", () => {
-    document.querySelectorAll(".delete-review").forEach(button => {
-        button.replaceWith(button.cloneNode(true));
-    });
 
-    document.querySelectorAll(".delete-review").forEach(button => {
-        button.addEventListener("click", async function (event) {
-            event.preventDefault();
+document.addEventListener("click", async function (event) {
+    const deleteButton = event.target.closest(".delete-review");
 
-            const reviewId = this.getAttribute("data-id");
+    if (!deleteButton) return;
+    event.stopImmediatePropagation();
+    event.preventDefault();
 
-            if (!confirm("Are you sure you want to delete this review?")) {
-                return;
-            }
+    const reviewId = event.target.closest(".delete-review").dataset.id;
 
-            try {
-                const response = await fetch(`/review/delete/${reviewId}`, {
-                    method: "DELETE",
-                    headers: { "Content-Type": "application/json" }
-                });
+    if (!confirm("Are you sure you want to delete this review?")) {
+        return;
+    }
 
-                const data = await response.json();
-
-                if (data.success) {
-                    alert("Review deleted successfully!");
-
-                    const reviewItem = this.closest(".review-item");
-                    if (reviewItem) {
-                        reviewItem.remove(); 
-                    } else {
-                        location.reload(); 
-                    }
-                } else {
-                    alert(data.message);
-                }
-            } catch (error) {
-                console.error("Error deleting review:", error);
-                alert("Failed to delete review.");
-            }
+    try {
+        const response = await fetch(`/review/delete/${reviewId}`, {
+            method: "DELETE",
+            headers: { "Content-Type": "application/json" }
         });
-    });
+
+        const data = await response.json();
+
+        if (data.success) {
+            alert("Review deleted successfully!");
+
+            const reviewItem = event.target.closest(".review-item");
+            if (reviewItem) {
+                reviewItem.remove(); 
+            } else {
+                location.reload(); 
+            }
+        } else {
+            alert(data.message);
+        }    
+    } 
+    catch (error) {
+        console.error("Error deleting review:", error);
+        alert("Failed to delete review.");
+    }
+    
 });
